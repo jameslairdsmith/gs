@@ -1,5 +1,5 @@
 Package: scheduler
-Title: What the Package Does (One Line, Title Case)
+Title: Make recurring calendar events a little easier
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "First",
