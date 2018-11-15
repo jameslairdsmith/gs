@@ -1,3 +1,11 @@
+is_occuring <- function(date_element){
+
+  if(!is_temporal(date_element)){
+    stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
+  }
+  date_element
+}
+
 or_occuring <- function(elem_1, elem_2){
 
   if(!is_temporal(elem_1)){
