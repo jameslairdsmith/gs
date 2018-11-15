@@ -3,11 +3,11 @@ or_occuring <- function(object, ...)
 
 or_occuring.default <- function(elem_1, elem_2){
 
-  if(!(inherits(elem_1, "date_element") | inherits(elem_1, "schedule"))){
+  if(!is_temporal(elem_1)){
     stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
   }
 
-  if(!(inherits(elem_2, "date_element") | inherits(elem_2, "schedule"))){
+  if(!is_temporal(elem_2)){
     stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
   }
 
