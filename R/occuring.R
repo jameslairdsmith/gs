@@ -10,7 +10,7 @@ or_occuring <- function(elem_1, elem_2){
 
   out <- list(elem_1, elem_2)
 
-  class(out) <- c("schedule","or_schedule")
+  class(out) <- c("schedule", "or_schedule")
 
   out
 }
