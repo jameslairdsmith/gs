@@ -1,16 +1,16 @@
-#' @rdname occuring_on
-#' @export
+or_occuring <- function(elem_1, elem_2){
 
-occuring_on <- function(object, ...)
-  UseMethod("occuring_on")
+  if(!is_temporal(elem_1)){
+    stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
+  }
 
-occuring_on.default <- function(x, .f, ...){
+  if(!is_temporal(elem_2)){
+    stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
+  }
 
-  partial_func <- purrr::partial(.f, ..., .lazy = F)
+  out <- list(elem_1, elem_2)
 
-  out <- list(x = x,
-              .f = partial_func)
+  class(out) <- c("schedule","or_schedule")
 
-  class(out) <- "date_element"
   out
 }
