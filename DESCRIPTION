@@ -15,4 +15,5 @@ BugReports: https://github.com/jameslairdsmith/scheduler/issues
 Suggests: 
     testthat
 Imports: 
-    purrr
+    purrr,
+    lubridate
