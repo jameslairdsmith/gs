@@ -1,11 +1,11 @@
-on_year <- function(x, ...){
+in_year <- function(x, ...){
   make_element(x, lubridate::year, ...)
 }
 
-on_isoyear <- function(x, ...){
+in_isoyear <- function(x, ...){
   make_element(x, lubridate::isoyear, ...)
 }
 
-on_epiyear <- function(x, ...){
+in_epiyear <- function(x, ...){
   make_element(x, lubridate::epiyear, ...)
 }
