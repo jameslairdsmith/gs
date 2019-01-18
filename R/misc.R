@@ -22,3 +22,11 @@ both_logical <- function(x){
 
   is.logical(x[[1]]) & is.logical(x[[2]])
 }
+
+is_function_list <- function(x){
+
+  x %>%
+    purrr::map(rlang::is_function) %>%
+    purrr::flatten_lgl() %>%
+    all()
+}
