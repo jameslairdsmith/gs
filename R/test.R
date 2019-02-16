@@ -6,12 +6,19 @@ test_date <- function(object, ...)
 
 test_date.Date <- function(date, x, ...){
 
-  test_date(x, date)
+  test_date(x, date, ...)
 }
 
 test_date.date_element <- function(date_element, date, ...){
 
-  date_element$x == date_element$.f(date)
+  #date_element$x == date_element$.f(date)
+
+  list_of_results <- purrr::map(date_element$.f, purrr::exec, date)
+
+  list_of_results <- lapply(list_of_results, as.character)
+
+  any(date_element$x == list_of_results)
+
 }
 
 test_date.schedule <- function(schedule, date, ...){
