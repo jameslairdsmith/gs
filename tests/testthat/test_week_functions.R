@@ -29,9 +29,9 @@ test_that("in_epiweek functions works", {
   first_epiweek_of_year <- in_epiweek(1)
   last_epiweek_of_year <- in_epiweek(52)
 
-  expect_true(test_date(dmy("01/01/2000"), last_isoweek_of_year))
-  expect_true(test_date(dmy("03/01/2000"), first_isoweek_of_year))
-  expect_false(test_date(dmy("02/01/2000"), first_isoweek_of_year))
+  expect_true(test_date(dmy("30/12/2000"), last_epiweek_of_year))
+  expect_true(test_date(dmy("03/01/2000"), first_epiweek_of_year))
+  expect_false(test_date(dmy("09/01/2000"), first_epiweek_of_year))
   expect_true(test_date(dmy("01/01/1990"), first_epiweek_of_year))
   expect_true(test_date(dmy("31/12/1990"), first_epiweek_of_year))
 })
