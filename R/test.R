@@ -4,6 +4,11 @@
 test_date <- function(object, ...)
   UseMethod("test_date")
 
+test_date.Date <- function(date, x, ...){
+
+  test_date(x, date)
+}
+
 test_date.date_element <- function(date_element, date, ...){
 
   date_element$x == date_element$.f(date)
