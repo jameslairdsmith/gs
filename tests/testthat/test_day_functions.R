@@ -32,11 +32,11 @@ test_that("on_mday function works", {
 
 test_that("on_wday function works", {
 
-  first_day_of_month <- on_wday("Thu")
+  on_Thursday <- on_wday("Thu")
 
-  expect_true(test_date(dmy("12/07/1990"), first_day_of_month))
-  expect_false(test_date(dmy("13/07/1990"), first_day_of_month))
-  expect_false(test_date(dmy("11/07/1990"), first_day_of_month))
-  expect_true(test_date(dmy("19/07/1990"), first_day_of_month))
-  expect_false(test_date(dmy("20/07/1990"), first_day_of_month))
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("13/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("20/07/1990"), on_Thursday))
 })
