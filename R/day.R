@@ -22,10 +22,10 @@ on_wday <- function(x, ...){
                        on_wday_label_full), ...)
 }
 
-on_wday_label_abbr <- function(x){
-  lubridate::wday(x, label = T, abbr = T)
+on_wday_label_abbr <- function(x, ...){
+  lubridate::wday(x, label = T, abbr = T, ...)
 }
 
-on_wday_label_full <- function(x){
-  lubridate::wday(x, label = T, abbr = F)
+on_wday_label_full <- function(x, ...){
+  lubridate::wday(x, label = T, abbr = F, ...)
 }
