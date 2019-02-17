@@ -41,6 +41,17 @@ test_that("on_wday function works with number", {
   expect_false(test_date(dmy("20/07/1990"), on_Thursday))
 })
 
+test_that("user can change week_start on_wday function", {
+
+  on_Thursday <- on_wday(4, week_start = 1)
+
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("13/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday))
+  expect_false(test_date(dmy("20/07/1990"), on_Thursday))
+})
+
 test_that("on_wday function works with abbreviated name of day", {
 
   on_Thursday <- on_wday("Thu")
