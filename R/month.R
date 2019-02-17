@@ -1,7 +1,13 @@
-in_month <- function(x, label = TRUE, abbr = TRUE, ...){
-  make_element(x, list(lubridate::month,
-                       in_month_label_abbr,
-                       in_month_label_full), label = label, abbr = abbr, ...)
+# in_month <- function(x, label = TRUE, abbr = TRUE, ...){
+#   make_element(x, list(lubridate::month,
+#                        in_month_label_abbr,
+#                        in_month_label_full), label = label, abbr = abbr, ...)
+# }
+
+in_month <- function(x, ...){
+   make_element(x, list(lubridate::month,
+                        in_month_label_abbr,
+                        in_month_label_full), ...)
 }
 
 
