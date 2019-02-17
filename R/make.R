@@ -6,7 +6,7 @@ make_element <- function(x, .f, ...){
     .f <- list(.f)
   }
 
-  partial_func <- purrr::map(.f, purrr::partial, .lazy = T)
+  partial_func <- purrr::map(.f, purrr::partial, ..., .lazy = F)
 
   out <- list(x = x,
               .f = partial_func)
