@@ -1,30 +1,30 @@
-on_nth <- function(n, x, within, ...){
+on_nth <- function(n, x, within_given, ...){
 
   output <- list(n = n,
                  x = x,
-                 within = within)
+                 within_given = within_given)
 
   class(output) <- "date_range_element"
 
   output
 }
 
-on_first <- function(x, within, ...){
-  on_nth(1, x, within, ...)
+on_first <- function(x, within_given, ...){
+  on_nth(1, x, within_given, ...)
 }
 
-on_second <- function(x, within, ...){
-  on_nth(2, x, within, ...)
+on_second <- function(x, within_given, ...){
+  on_nth(2, x, within_given, ...)
 }
 
-on_third <- function(x, within, ...){
-  on_nth(3, x, within, ...)
+on_third <- function(x, within_given, ...){
+  on_nth(3, x, within_given, ...)
 }
 
-on_fourth <- function(x, within, ...){
-  on_nth(4, x, within, ...)
+on_fourth <- function(x, within_given, ...){
+  on_nth(4, x, within_given, ...)
 }
 
-on_last <- function(x, within, ...){
-  on_nth(-1, x, within, ...)
+on_last <- function(x, within_given, ...){
+  on_nth(-1, x, within_given, ...)
 }
