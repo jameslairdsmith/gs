@@ -16,7 +16,14 @@ on_qday <- function(x, ...){
 #                        on_wday_label_full), label = label, abbr = abbr, ...)
 # }
 
-on_wday <- function(x, ...){
+on_wday <- function(x, override_name_check = FALSE, ...){
+
+  if(override_name_check == FALSE){
+
+    if(!(x %in% get_all_day_specs())){
+      stop("x is not a legitimate day name")
+    }}
+
   make_element(x, list(lubridate::wday,
                        on_wday_label_abbr,
                        on_wday_label_full), ...)
