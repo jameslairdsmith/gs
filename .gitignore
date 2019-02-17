@@ -3,3 +3,5 @@
 .Rproj.user
 .DS_Store
 archive
+.Rhistory*
+.Rhistory (1)
