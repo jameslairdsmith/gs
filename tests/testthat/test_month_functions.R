@@ -9,3 +9,13 @@ test_that("in_month function work", {
   expect_false(test_date(dmy("12/06/1990"), in_july))
   expect_false(test_date(dmy("13/06/1990"), in_july))
 })
+
+test_that("in_month function errors when given invalid spec", {
+  expect_error(in_month("Febr"))
+  expect_error(in_month(13))
+})
+
+test_that("in_month function can override name check", {
+  expect_error(in_month("Febr", override_name_check = TRUE), NA)
+  expect_error(in_month(13, override_name_check = TRUE), NA)
+})

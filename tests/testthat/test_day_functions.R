@@ -73,3 +73,13 @@ test_that("on_wday function works with full name of day", {
   expect_true(test_date(dmy("19/07/1990"), on_Thursday))
   expect_false(test_date(dmy("20/07/1990"), on_Thursday))
 })
+
+test_that("on_wday function errors with invalid input", {
+  expect_error(on_wday("Thurs"))
+  expect_error(on_wday(8))
+})
+
+test_that("on_wday function can override name check", {
+  expect_error(on_wday("Thurs", override_name_check = TRUE), NA)
+  expect_error(on_wday(8, override_name_check = TRUE), NA)
+})
