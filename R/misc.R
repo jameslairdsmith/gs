@@ -30,3 +30,7 @@ is_function_list <- function(x){
     purrr::flatten_lgl() %>%
     all()
 }
+
+silent_equals_test <- function(x, y){
+  suppressWarnings(magrittr::equals(x, y))
+}

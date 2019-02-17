@@ -11,13 +11,11 @@ test_date.Date <- function(date, x, ...){
 
 test_date.date_element <- function(date_element, date, ...){
 
-  list_of_results <- purrr::map(date_element$.f, purrr::exec, date)
-
-  list_of_results <- purrr::modify_if(list_of_results, is.factor, as.character)
-
-  list_of_results <- suppressWarnings(date_element$x == list_of_results)
-
-  list_of_results <- ifelse(is.na(list_of_results), FALSE, list_of_results)
+  list_of_results <-
+    purrr::map(date_element$.f, purrr::exec, date) %>%
+    purrr::modify_if(is.factor, as.character) %>%
+    silent_equals_test(date_element$x) %>%
+    ifelse(is.na(.), FALSE, .)
 
   any(list_of_results)
 
