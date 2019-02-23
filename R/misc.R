@@ -6,6 +6,14 @@ is_date_range_element <- function(x){
   inherits(x, "date_range_element")
 }
 
+is_date_before_element <- function(x){
+  inherits(x, "date_before_element")
+}
+
+is_date_after_element <- function(x){
+  inherits(x, "date_after_element")
+}
+
 is_schedule <- function(x){
   inherits(x, "schedule")
 }

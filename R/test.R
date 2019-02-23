@@ -66,12 +66,58 @@ date_eval.date_range_element <- function(date_range_element, date, ...){
   }
 }
 
+date_eval.date_after_element <- function(date_after_element, date, ...){
+
+  date_element_to_be_tested <- date_after_element$x
+  date_to_be_tested_against <- date
+  given_date_function <- date_after_element$within_given
+  given_date_parameter <- given_date_function(date)
+
+  updated_date <- date - days(1)
+  #n_occurances <- 0
+
+  while(given_date_function(updated_date) == given_date_parameter){
+
+    #print(updated_date)
+
+    if(date_eval(date_element_to_be_tested, updated_date)){
+      return(TRUE)
+    }
+    updated_date <- updated_date - days(1)
+  }
+  FALSE
+}
+
+date_eval.date_before_element <- function(date_before_element, date, ...){
+
+  date_element_to_be_tested <- date_before_element$x
+  date_to_be_tested_against <- date
+  given_date_function <- date_before_element$within_given
+  given_date_parameter <- given_date_function(date)
+
+  updated_date <- date + days(1)
+  #n_occurances <- 0
+
+  while(given_date_function(updated_date) == given_date_parameter){
+
+    #print(updated_date)
+
+    if(date_eval(date_element_to_be_tested, updated_date)){
+      return(TRUE)
+    }
+    updated_date <- updated_date + days(1)
+  }
+  FALSE
+}
+
 date_eval.schedule <- function(schedule, date, ...){
 
     out <-
       schedule %>%
       purrr::modify_if(is_date_element, date_eval, date) %>%
       purrr::modify_if(is_date_range_element, date_eval, date) %>%
+      purrr::modify_if(is_date_before_element, date_eval, date) %>%
+      purrr::modify_if(is_date_after_element, date_eval, date) %>%
       purrr::modify_if(is_schedule, date_eval.schedule, date) %>%
       purrr::modify_if(is_schedule, recon)
 
