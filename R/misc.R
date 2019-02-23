@@ -46,3 +46,19 @@ is_function_list <- function(x){
 silent_equals_test <- function(x, y){
   suppressWarnings(magrittr::equals(x, y))
 }
+
+is_or_schedule <- function(x){
+  inherits(x, "or_schedule")
+}
+
+is_and_schedule <- function(x){
+  inherits(x, "and_schedule")
+}
+
+or_schedule_early_recon <- function(or_schedule){
+  if(!is_or_schedule){stop("Should only be applied to or_schedule object")}
+
+  if(or_schedule[[1]] | or_schedule[[2]]){
+    TRUE
+  } else {or_schedule}
+}
