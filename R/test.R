@@ -71,6 +71,7 @@ date_eval.schedule <- function(schedule, date, ...){
     out <-
       schedule %>%
       purrr::modify_if(is_date_element, date_eval, date) %>%
+      purrr::modify_if(is_date_range_element, date_eval, date) %>%
       purrr::modify_if(is_schedule, date_eval.schedule, date) %>%
       purrr::modify_if(is_schedule, recon)
 
