@@ -110,11 +110,18 @@ date_eval.date_before_element <- function(date_before_element, date, ...){
   FALSE
 }
 
+date_eval.not_schedule <- function(not_schedule, date, ...){
+  out <- test_date(date, not_schedule[[1]])
+
+  !out
+}
+
 date_eval.schedule <- function(schedule, date, ...){
 
     out <-
       schedule %>%
       purrr::modify_if(is_date_element, date_eval, date) %>%
+      purrr::modify_if(is_not_schedule, date_eval, date) %>%
       purrr::modify_if(is_date_range_element, date_eval, date) %>%
       purrr::modify_if(is_date_before_element, date_eval, date) %>%
       purrr::modify_if(is_date_after_element, date_eval, date) %>%

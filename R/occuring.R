@@ -8,14 +8,6 @@ occuring <- function(date_element){
 
 also_occuring <- function(elem_1, elem_2){
 
-  # if(!is_temporal(elem_1)){
-  #   stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
-  # }
-  #
-  # if(!is_temporal(elem_2)){
-  #   stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
-  # }
-
   out <- list(elem_1, elem_2)
 
   class(out) <- c("schedule", "or_schedule")
@@ -25,17 +17,35 @@ also_occuring <- function(elem_1, elem_2){
 
 only_occuring <- function(elem_1, elem_2){
 
-  # if(!is_temporal(elem_1)){
-  #   stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
-  # }
-  #
-  # if(!is_temporal(elem_2)){
-  #   stop("both arguments must be either of type 'date_element' or 'schedule'", call. = F)
-  # }
-
   out <- list(elem_1, elem_2)
 
   class(out) <- c("schedule", "and_schedule")
 
   out
+}
+
+not_occuring <- function(elem_1, elem_2 = NULL){
+
+  # out <- list(elem_1)
+  #
+  # class(out) <- c("not_schedule")
+  #
+  # out
+
+  if(is.null(elem_2)){
+
+    out <- list(elem_1)
+
+    class(out) <- c("not_schedule")
+
+    out
+
+  } else {
+
+    out <- list(elem_2)
+
+    class(out) <- c("not_schedule")
+
+    elem_1 %>% only_occuring(out)
+  }
 }

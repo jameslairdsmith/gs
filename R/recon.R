@@ -10,3 +10,8 @@ recon.and_schedule <- function(x){
 
   x[[1]] & x[[2]]
 }
+
+# recon.not_schedule <- function(x){
+#
+#   !x[[1]]
+# }

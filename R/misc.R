@@ -55,6 +55,10 @@ is_and_schedule <- function(x){
   inherits(x, "and_schedule")
 }
 
+is_not_schedule <- function(x){
+  inherits(x, "not_schedule")
+}
+
 or_schedule_early_recon <- function(or_schedule){
   if(!is_or_schedule){stop("Should only be applied to or_schedule object")}
 
