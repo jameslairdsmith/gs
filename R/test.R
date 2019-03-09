@@ -118,17 +118,37 @@ date_eval.not_schedule <- function(not_schedule, date, ...){
 
 date_eval.schedule <- function(schedule, date, ...){
 
-    out <-
-      schedule %>%
-      purrr::modify_if(is_date_element, date_eval, date) %>%
-      purrr::modify_if(is_not_schedule, date_eval, date) %>%
-      purrr::modify_if(is_date_range_element, date_eval, date) %>%
-      purrr::modify_if(is_date_before_element, date_eval, date) %>%
-      purrr::modify_if(is_date_after_element, date_eval, date) %>%
-      purrr::modify_if(is_schedule, date_eval.schedule, date) %>%
-      purrr::modify_if(is_schedule, recon)
+  out <- schedule
 
-    if(both_logical(out)){
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_date_element, date_eval, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_not_schedule, date_eval, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_date_range_element, date_eval, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_date_before_element, date_eval, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_date_after_element, date_eval, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_schedule, date_eval.schedule, date)
+
+  if(can_recon(out)){return(recon(out))}
+
+  out <- out %>% purrr::modify_if(is_schedule, recon)
+
+    if(can_recon(out)){
       recon(out)
     } else {
       date_eval.schedule(out, date)

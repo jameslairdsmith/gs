@@ -3,12 +3,18 @@ recon <- function(object, ...)
 
 recon.or_schedule <- function(x){
 
-  x[[1]] | x[[2]]
+  #x[[1]] | x[[2]]
+
+
+  if(rlang::is_true(x[[1]]) | rlang::is_true(x[[2]])){return(TRUE)} else {return(FALSE)}
+
 }
 
 recon.and_schedule <- function(x){
 
-  x[[1]] & x[[2]]
+  #x[[1]] & x[[2]]
+
+  if(rlang::is_false(x[[1]]) | rlang::is_false(x[[2]])){return(FALSE)} else {return(TRUE)}
 }
 
 # recon.not_schedule <- function(x){
