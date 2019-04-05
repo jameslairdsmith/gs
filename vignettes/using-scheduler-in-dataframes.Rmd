@@ -40,9 +40,34 @@ on_weeked <- on_wday("Sat") %>% also_occuring(on_wday("Sun"))
 View(on_christmas)
 ```
 
+```{r}
+View(on_christmas[1])
+```
+
 
 ```{r}
 test_date(dmy("25/12/1990"), on_christmas)
+```
+
+```{r}
+on_christmas  <- on_mday(25) %>% only_occuring(in_month("Dec"))
+
+if(is_date_element(on_christmas[[1]])){
+  on_christmas[[1]] <- date_eval(on_christmas[[1]], dmy("24/12/1990"))
+}
+
+can_recon(on_christmas)
+```
+
+```{r}
+bench::mark(rlang::is_false(on_christmas[[1]]),
+            on_christmas[[1]] == FALSE
+            #identical(on_christmas[[1]], FALSE)
+            )
+```
+
+```{r}
+on_christmas[[1]]
 ```
 
 
