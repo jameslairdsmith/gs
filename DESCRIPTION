@@ -13,8 +13,11 @@ LazyData: true
 URL: https://github.com/jameslairdsmith/scheduler
 BugReports: https://github.com/jameslairdsmith/scheduler/issues
 Suggests: 
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Imports: 
     purrr,
     lubridate
 RoxygenNote: 6.1.0
+VignetteBuilder: knitr

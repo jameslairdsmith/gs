@@ -1,0 +1,52 @@
+---
+title: "Using scheduler with dataframes"
+author: "James Laird-Smith"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(tidyverse)
+library(anomalize)
+library(lubridate)
+```
+
+```{r}
+#tidyverse_cran_downloads <- data(tidyverse_cran_downloads, package = "anomalize")
+```
+
+```{r}
+tidyverse_cran_downloads
+```
+
+```{r}
+on_christmas  <- on_mday(25) %>% only_occuring(in_month("Dec"))
+
+on_weeked <- on_wday("Sat") %>% also_occuring(on_wday("Sun"))
+```
+
+```{r}
+test_date(dmy("25/12/1990"), on_christmas)
+```
+
+
+```{r}
+tidyverse_cran_downloads %>% 
+  mutate(day_type = case_when(
+    test_date(date, on_christmas) ~ "Christmas",
+    test_date(date, on_weeked) ~ "Weekend",
+    TRUE ~ "Normal Day"
+  ))
+```
+
