@@ -122,6 +122,10 @@ date_eval.schedule <- function(schedule, date, ...){
 
   out <- schedule
 
+  if(is_date_element(out[[1]])){
+    out[1] <- date_eval(out[[1]], date)
+  }
+
   if(can_recon(out)){return(recon(out))}
 
   out <- out %>% purrr::modify_if(is_date_element, date_eval, date)
