@@ -17,13 +17,15 @@ date_eval <- function(object, ...)
 
 date_eval.date_element <- function(date_element, date, ...){
 
-  list_of_results <-
-    purrr::map(date_element$.f, purrr::exec, date) %>%
-    purrr::modify_if(is.factor, as.character) %>%
-    silent_equals_test(date_element$x) %>%
-    ifelse(is.na(.), FALSE, .)
+  # list_of_results <-
+  #   purrr::map(date_element$.f, purrr::exec, date) %>%
+  #   purrr::modify_if(is.factor, as.character) %>%
+  #   silent_equals_test(date_element$x) %>%
+  #   ifelse(is.na(.), FALSE, .)
+  #
+  # any(list_of_results)
 
-  any(list_of_results)
+  date_element$x == date_element$.f(date)
 
 }
 

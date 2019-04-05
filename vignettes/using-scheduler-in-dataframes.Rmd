@@ -37,6 +37,11 @@ on_weeked <- on_wday("Sat") %>% also_occuring(on_wday("Sun"))
 ```
 
 ```{r}
+View(on_christmas)
+```
+
+
+```{r}
 test_date(dmy("25/12/1990"), on_christmas)
 ```
 
@@ -45,7 +50,7 @@ test_date(dmy("25/12/1990"), on_christmas)
 tidyverse_cran_downloads %>% 
   mutate(day_type = case_when(
     test_date(date, on_christmas) ~ "Christmas",
-    test_date(date, on_weeked) ~ "Weekend",
+    #test_date(date, on_weeked) ~ "Weekend",
     TRUE ~ "Normal Day"
   ))
 ```

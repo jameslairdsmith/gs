@@ -35,7 +35,7 @@ test_that("in_month function errors when given invalid spec", {
   expect_error(in_month(13))
 })
 
-test_that("in_month function can override name check", {
-  expect_error(in_month("Febr", override_name_check = TRUE), NA)
-  expect_error(in_month(13, override_name_check = TRUE), NA)
-})
+# test_that("in_month function can override name check", {
+#   expect_error(in_month("Febr", override_name_check = TRUE), NA)
+#   expect_error(in_month(13, override_name_check = TRUE), NA)
+# })
