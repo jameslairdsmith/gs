@@ -6,9 +6,15 @@ test_date <- function(object, ...)
 
 test_date.Date <- function(date, x, ...){
 
-  temp_function <- purrr::partial(date_eval, x, ...)
+  #temp_function <- purrr::partial(date_eval, x, ...)
   #date_eval(x, date, ...)
-  purrr::map_lgl(date, temp_function, ...)
+  #purrr::map_lgl(date, temp_function, ...)
+
+  #temp_function <- function(date, ...){date_eval(x, date, ...)}
+
+  purrr::map_lgl(date,
+                 function(date, ...){date_eval(x, date, ...)},
+                 ...)
 }
 
 
@@ -113,7 +119,9 @@ date_eval.date_before_element <- function(date_before_element, date, ...){
 }
 
 date_eval.not_schedule <- function(not_schedule, date, ...){
-  out <- test_date(date, not_schedule[[1]])
+  #out <- test_date(date, not_schedule[[1]])
+
+  out <- date_eval(not_schedule[[1]], date)
 
   !out
 }
