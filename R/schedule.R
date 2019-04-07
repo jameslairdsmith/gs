@@ -1,4 +1,9 @@
-schedule <- function(x, from, to, ...){
+schedule <- function(x, from, to, during = NULL, ...){
+
+  if(!is.null(during)){
+    from <- lubridate::make_date(year = during)
+    to <- lubridate::make_date(year = during, month = 12, day = 31)
+  }
 
   if(is.numeric(from)){
     from <- lubridate::make_date(year = from)
