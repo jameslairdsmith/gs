@@ -4,6 +4,10 @@ on_date <- function(x, ...){
 
 after <- function(x, within_given, ...){
 
+  if(is.character(within_given)){
+    within_given <- strings_to_date_functions(within_given)
+  }
+
   output <- list(x = x,
                  within_given = within_given)
 
@@ -13,6 +17,10 @@ after <- function(x, within_given, ...){
 }
 
 before <- function(x, within_given, ...){
+
+  if(is.character(within_given)){
+    within_given <- strings_to_date_functions(within_given)
+  }
 
   output <- list(x = x,
                  within_given = within_given)

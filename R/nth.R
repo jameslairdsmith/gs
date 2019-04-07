@@ -1,5 +1,9 @@
 on_nth <- function(n, x, within_given, ...){
 
+  if(is.character(within_given)){
+    within_given <- strings_to_date_functions(within_given)
+  }
+
   output <- list(n = n,
                  x = x,
                  within_given = within_given)

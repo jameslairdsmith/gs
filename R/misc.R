@@ -67,4 +67,13 @@ or_schedule_early_recon <- function(or_schedule){
   } else {or_schedule}
 }
 
-
+strings_to_date_functions <- function(str){
+  str <- str
+  .f <- dplyr::case_when(
+    str == "month" ~ quote(lubridate::month),
+    str == "quarter" ~ quote(lubridate::quarter),
+    str == "year" ~ quote(lubridate::year),
+    str == "semester" ~ quote(lubridate::semester)
+  )
+  eval(.f)
+}

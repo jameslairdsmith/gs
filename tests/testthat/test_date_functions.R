@@ -18,12 +18,28 @@ test_that("after() function works", {
   expect_false(test_date(dmy("07/07/2019"), after(my_birthday, within_given = lubridate::month)))
 })
 
+test_that("after() function works with string for within_given", {
+
+  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+
+  expect_true(test_date(dmy("20/07/2019"), after(my_birthday, within_given = "month")))
+  expect_false(test_date(dmy("07/07/2019"), after(my_birthday, within_given = "month")))
+})
+
 test_that("before() function works", {
 
   my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
 
   expect_false(test_date(dmy("20/07/2019"), before(my_birthday, within_given = lubridate::month)))
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = lubridate::month)))
+})
+
+test_that("before() function works with string value for within_given", {
+
+  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+
+  expect_false(test_date(dmy("20/07/2019"), before(my_birthday, within_given = "month")))
+  expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = "month")))
 })
 
 
