@@ -52,3 +52,15 @@ test_that("`on_nth` function works as part of a schedule", {
   expect_false(test_date(dmy("05/07/1990"), second_thursday_of_july))
   expect_false(test_date(dmy("11/07/1990"), second_thursday_of_july))
 })
+
+test_that("`on_nth` function works on a vector", {
+
+  Thursday <- on_wday("Thu")
+  second_thursday_of_month <-
+    on_nth(2, Thursday, within_given = lubridate::month)
+
+  date_vector <- c(dmy("12/07/1990"), dmy("13/07/1990"))
+
+  expect_equal(test_date(date_vector, second_thursday_of_month), c(TRUE, FALSE))
+
+})
