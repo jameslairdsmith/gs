@@ -75,8 +75,12 @@ on_christmas[[1]]
 tidyverse_cran_downloads %>% 
   mutate(day_type = case_when(
     test_date(date, on_christmas) ~ "Christmas",
-    #test_date(date, on_weeked) ~ "Weekend",
+    test_date(date, on_weeked) ~ "Weekend",
     TRUE ~ "Normal Day"
   ))
+```
+
+```{r}
+schedule(x = on_christmas, from = dmy("01/01/1990"), to = dmy("01/01/2010"))
 ```
 
