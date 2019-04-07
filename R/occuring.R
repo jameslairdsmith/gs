@@ -8,7 +8,7 @@ occuring <- function(date_element){
 
 also_occuring <- function(elem_1, elem_2){
 
-  out <- list(elem_1, elem_2)
+  out <- list(elem_2, elem_1)
 
   class(out) <- c("schedule", "or_schedule")
 
@@ -17,7 +17,7 @@ also_occuring <- function(elem_1, elem_2){
 
 only_occuring <- function(elem_1, elem_2){
 
-  out <- list(elem_1, elem_2)
+  out <- list(elem_2, elem_1)
 
   class(out) <- c("schedule", "and_schedule")
 
