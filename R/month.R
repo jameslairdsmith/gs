@@ -1,3 +1,29 @@
+#' Create a month element
+#'
+#' Allows users to create object that embody all dates taking place within a
+#' specific month. Users can specify which month using either 1) The month
+#' name (eg. "January"), the month's abbreviation (eg. "Jan") or the month
+#' number within the year (eg. 1).
+#'
+#'
+#' @param x The name, abbreviation or number of the month.
+#' @param override_name_check Whether to allow month names and abbreviations
+#' not found in in your default local (not recommended).
+#' @keywords month, date, scedule
+#' @importFrom magrittr %>%
+#' @importFrom lubridate month
+
+#' @return A month date element
+#' @examples
+#' library(magrittr)
+#' library(lubridate)
+#'
+#'January <- in_month("Jan")
+#'
+#' test_date.Date(dmy("31/01/1990"), January)
+#' @export
+
+
 in_month <- function(x, override_name_check = FALSE, ...){
 
 

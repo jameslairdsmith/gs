@@ -1,3 +1,5 @@
+#' Test a date against a schedule
+#'
 #' @rdname test_date
 #' @export
 
