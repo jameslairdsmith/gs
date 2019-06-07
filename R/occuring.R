@@ -20,7 +20,7 @@ only_occuring <- function(elem_1, elem_2){
   out <- list(elem_2, elem_1)
 
   .fn <- function(date){
-    elem_1$func(date) && elem_2$func(date)
+    elem_1$func(date) & elem_2$func(date)
   }
 
   out <- list(name = "schedule",
@@ -35,7 +35,12 @@ not_occuring <- function(elem_1, elem_2 = NULL){
 
   if(is.null(elem_2)){
 
-    out <- list(elem_1)
+    .fn <- function(date){
+      !elem_1$func(date)
+    }
+
+    out <- list(name = "not_schedule",
+                func = .fn)
 
     class(out) <- c("not_schedule")
 
@@ -43,9 +48,15 @@ not_occuring <- function(elem_1, elem_2 = NULL){
 
   } else {
 
-    out <- list(elem_2)
+    .fn <- function(date){
+      !elem_2$func(date)
+    }
+
+    out <- list(name = "not_schedule",
+                func = .fn)
 
     class(out) <- c("not_schedule")
+
 
     elem_1 %>% only_occuring(out)
   }
