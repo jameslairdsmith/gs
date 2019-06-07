@@ -1,13 +1,13 @@
 context("test_date_vec")
 
-# test_that("test_date() works on a vector", {
-#
-#   date_vector <- c(dmy("01/01/1990"), dmy("02/01/1990"), dmy("03/01/1990"))
-#   first_day_of_year <- on_yday(1)
-#
-#   expect_equal(test_date(date_vector, first_day_of_year), c(TRUE, FALSE, FALSE))
-# })
-#
+test_that("test_date() works on a vector", {
+
+  date_vector <- c(dmy("01/01/1990"), dmy("02/01/1990"), dmy("03/01/1990"))
+  first_day_of_year <- on_yday(1)
+
+  expect_equal(test_date(date_vector, first_day_of_year), c(TRUE, FALSE, FALSE))
+})
+
 # test_that("test_date() on and_schedule works on a vector", {
 #
 #   date_vector <- c(dmy("01/01/2000"), dmy("02/01/2000"), dmy("03/01/2000"))
