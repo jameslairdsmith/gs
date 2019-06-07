@@ -14,7 +14,7 @@ after <- function(x, within_given, ...){
   }
 
   .fn <- function(date){
-    x
+
     date_element_to_be_tested <- x
     date_to_be_tested_against <- date
     given_date_function <- within_given
