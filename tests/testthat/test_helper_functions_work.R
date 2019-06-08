@@ -1,4 +1,4 @@
-context("test-helper_functions_work")
+context("test_helper_functions_work")
 
 test_that("schedule_annually works with start date", {
   expected_result <- seq.Date(from = dmy("01/01/2000"), to = dmy("01-01-2005"), by = "1 year")
