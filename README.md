@@ -3,6 +3,8 @@
 
 # scheduler
 
+This is a branch only.
+
 Recurring calendar events are very common in everyday life. While some
 kinds are straightforward to deal with, others are difficult to
 conceptualise and therefore difficult to program with.

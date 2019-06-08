@@ -1,16 +1,13 @@
 make_element <- function(x, .f, ...){
 
-  # if(rlang::is_function(.f)){
-  #   .f <- list(.f)
-  # }
+  .fn <- function(date){
+    .f(date, ...) == x
+  }
 
- # partial_func <- purrr::map(.f, purrr::partial, ..., .lazy = F)
-
-  partial_func <- purrr::partial(.f, ..., .lazy = F)
-
-  out <- list(x = x,
-              .f = partial_func)
+  out <- list(name = "date_test",
+              func = .fn)
 
   class(out) <- "date_element"
+
   out
 }
