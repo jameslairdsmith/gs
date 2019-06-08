@@ -78,8 +78,3 @@ test_that("on_wday function errors with invalid input", {
   expect_error(on_wday("Thurs"))
   expect_error(on_wday(8))
 })
-
-# test_that("on_wday function can override name check", {
-#   expect_error(on_wday("Thurs", override_name_check = TRUE), NA)
-#   expect_error(on_wday(8, override_name_check = TRUE), NA)
-# })
