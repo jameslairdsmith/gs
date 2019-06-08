@@ -38,6 +38,18 @@ test_that("after() function works on a vector", {
   expect_equal(test_date(days_around_birthday, after_birthday), expected_result)
 })
 
+test_that("after() function works on a long vector", {
+
+  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+
+  expected_result <- seq.Date(from = dmy("13/07/1990"), to = dmy("31/07/1990"), by = "1 day")
+  days_in_1990 <- seq.Date(from = dmy("01/01/1990"), to = dmy("31/12/1990"), by = "1 day")
+
+  after_birthday <- after(my_birthday, within_given = "month")
+
+  expect_equal(days_in_1990[test_date(days_in_1990, after_birthday)], expected_result)
+})
+
 test_that("before() function works", {
 
   my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
@@ -56,6 +68,18 @@ test_that("before() function works on a vector", {
   before_birthday <- before(my_birthday, within_given = "month")
 
   expect_equal(test_date(days_around_birthday, before_birthday), expected_result)
+})
+
+test_that("before() function works on a long vector", {
+
+  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+
+  expected_result <- seq.Date(from = dmy("01/07/1990"), to = dmy("11/07/1990"), by = "1 day")
+  days_in_1990 <- seq.Date(from = dmy("01/01/1990"), to = dmy("31/12/1990"), by = "1 day")
+
+  before_birthday <- before(my_birthday, within_given = "month")
+
+  expect_equal(days_in_1990[test_date(days_in_1990, before_birthday)], expected_result)
 })
 
 test_that("before() function works with string value for within_given", {
