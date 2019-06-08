@@ -1,5 +1,4 @@
 schedule_annually <- function(starting, ending, years, inclusive = TRUE){
-  #if(missing(ending)){starting %m+% years(0:years)}
 
   if(inclusive == FALSE){
     num_start <- 1
