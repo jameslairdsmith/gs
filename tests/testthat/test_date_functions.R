@@ -46,6 +46,18 @@ test_that("before() function works", {
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = lubridate::month)))
 })
 
+test_that("before() function works on a vector", {
+
+  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+
+  expected_result <- c(T, T, F, F, F)
+  days_around_birthday <- seq.Date(from = dmy("10/07/1990"), to = dmy("14/07/1990"), by = "1 day")
+
+  before_birthday <- before(my_birthday, within_given = "month")
+
+  expect_equal(test_date(days_around_birthday, before_birthday), expected_result)
+})
+
 test_that("before() function works with string value for within_given", {
 
   my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
