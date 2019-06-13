@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a month element — in_month • scheduler</title>
+<title>Create a month schedule — in_month • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,12 +30,14 @@
 
 
 
-<meta property="og:title" content="Create a month element — in_month" />
+<meta property="og:title" content="Create a month schedule — in_month" />
 
-<meta property="og:description" content="Allows users to create object that embody all dates taking place within a
-specific month. Users can specify which month using either 1) The month
-name (eg. &quot;January&quot;), the month's abbreviation (eg. &quot;Jan&quot;) or the month
-number within the year (eg. 1)." />
+<meta property="og:description" content="Allows users to create an abstract object representing all dates taking
+place within a
+specific month. Users can specify which month using:
+1) The month name (eg. &quot;January&quot;),
+2) The month's abbreviation (eg. &quot;Jan&quot;) or
+3) the month number within the year (eg. 1)." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -102,17 +104,19 @@ number within the year (eg. 1)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a month element</h1>
+    <h1>Create a month schedule</h1>
     <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/month.R'><code>R/month.R</code></a></small>
     <div class="hidden name"><code>in_month.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Allows users to create object that embody all dates taking place within a
-specific month. Users can specify which month using either 1) The month
-name (eg. "January"), the month's abbreviation (eg. "Jan") or the month
-number within the year (eg. 1).</p>
+    <p>Allows users to create an abstract object representing all dates taking
+place within a
+specific month. Users can specify which month using:
+1) The month name (eg. "January"),
+2) The month's abbreviation (eg. "Jan") or
+3) the month number within the year (eg. 1).</p>
     
     </div>
 
@@ -147,7 +151,7 @@ not found in in your default local (not recommended).</p></td>
 #&gt; <span class='message'>    date</span></div><div class='input'>
 <span class='no'>January</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>)
 
-<span class='fu'>test_date.Date</span>(<span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"31/01/1990"</span>), <span class='no'>January</span>)</div><div class='output co'>#&gt; <span class='error'>Error in test_date.Date(dmy("31/01/1990"), January): could not find function "test_date.Date"</span></div></pre>
+<span class='fu'>test_date</span>(<span class='fu'><a href='http://lubridate.tidyverse.org/reference/ymd.html'>dmy</a></span>(<span class='st'>"31/01/1990"</span>), <span class='no'>January</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
