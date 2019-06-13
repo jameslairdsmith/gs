@@ -1,9 +1,11 @@
-#' Create a month element
+#' Create a month schedule
 #'
-#' Allows users to create object that embody all dates taking place within a
-#' specific month. Users can specify which month using either 1) The month
-#' name (eg. "January"), the month's abbreviation (eg. "Jan") or the month
-#' number within the year (eg. 1).
+#' Allows users to create an abstract object representing all dates taking
+#' place within a
+#' specific month. Users can specify which month using:
+#' 1) The month name (eg. "January"),
+#' 2) The month's abbreviation (eg. "Jan") or
+#' 3) the month number within the year (eg. 1).
 #'
 #'
 #' @param x The name, abbreviation or number of the month.
@@ -20,20 +22,30 @@
 #'
 #'January <- in_month("Jan")
 #'
-#' test_date.Date(dmy("31/01/1990"), January)
+#' test_date(dmy("31/01/1990"), January)
 #' @export
 
 
-in_month <- function(x, override_name_check = FALSE, ...){
+in_month <- function(...){
 
+   char_vec <- purrr::flatten_chr(list(...))
 
-  # if(override_name_check == FALSE){
+   if(length(char_vec) > 1){
 
+      my_schedule <- in_month(char_vec[1])
 
+      for(i in 2:length(char_vec)){
+         my_schedule <- also_occuring(my_schedule, in_month(char_vec[i]))
+      }
+      return(my_schedule)
+   }
+
+   #x <- purrr::flatten_chr(...)[1]
+
+   x <- purrr::flatten_chr(list(...))[1]
 
    if(!(x %in% get_all_month_specs())){
       stop("x is not a legitimate month name")}
-   #}
 
    if(x %in% 1:12){
       appro_function <- lubridate::month}
@@ -44,18 +56,34 @@ in_month <- function(x, override_name_check = FALSE, ...){
    if(x %in% get_month_abbr_names()){
       appro_function <- in_month_label_abbr}
 
-   # make_element(x, list(lubridate::month,
-   #                      in_month_label_abbr,
-   #                      in_month_label_full), ...)
-
-   make_element(x, appro_function, ...)
+   make_element(x, appro_function)
 }
 
+# in_month <- function(x, override_name_check = FALSE, ...){
+#
+#    if(!(x %in% get_all_month_specs())){
+#       stop("x is not a legitimate month name")}
+#
+#    if(x %in% 1:12){
+#       appro_function <- lubridate::month}
+#
+#    if(x %in% get_month_names()){
+#       appro_function <- in_month_label_full}
+#
+#    if(x %in% get_month_abbr_names()){
+#       appro_function <- in_month_label_abbr}
+#
+#    make_element(x, appro_function, ...)
+# }
 
- in_month_label_abbr <- function(x){
+in_month_label_abbr <- function(x){
    lubridate::month(x, label = TRUE, abbr = TRUE)
  }
 
- in_month_label_full <- function(x){
+in_month_label_full <- function(x){
    lubridate::month(x, label = TRUE, abbr = FALSE)
- }
+}
+
+iden_func <- function(...){
+   return(list(...))
+}
