@@ -2,10 +2,17 @@
 % Please edit documentation in R/test.R
 \name{test_date}
 \alias{test_date}
-\title{Test a date against a schedule}
+\title{Test whether a date falls on a schedule.}
 \usage{
-test_date(object, ...)
+test_date(date, x, ...)
+}
+\arguments{
+\item{date}{A date object}
+
+\item{x}{A schedule object}
 }
 \description{
-Test a date against a schedule
+Used to test.
 }
+\keyword{date,}
+\keyword{schedule}

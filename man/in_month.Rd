@@ -2,7 +2,7 @@
 % Please edit documentation in R/month.R
 \name{in_month}
 \alias{in_month}
-\title{Create a month element}
+\title{Create a month schedule}
 \usage{
 in_month(x, override_name_check = FALSE, ...)
 }
@@ -16,10 +16,12 @@ not found in in your default local (not recommended).}
 A month date element
 }
 \description{
-Allows users to create object that embody all dates taking place within a
-specific month. Users can specify which month using either 1) The month
-name (eg. "January"), the month's abbreviation (eg. "Jan") or the month
-number within the year (eg. 1).
+Allows users to create an abstract object representing all dates taking
+place within a
+specific month. Users can specify which month using:
+1) The month name (eg. "January"),
+2) The month's abbreviation (eg. "Jan") or
+3) the month number within the year (eg. 1).
 }
 \examples{
 library(magrittr)
@@ -27,7 +29,7 @@ library(lubridate)
 
 January <- in_month("Jan")
 
-test_date.Date(dmy("31/01/1990"), January)
+test_date(dmy("31/01/1990"), January)
 }
 \keyword{date,}
 \keyword{month,}
