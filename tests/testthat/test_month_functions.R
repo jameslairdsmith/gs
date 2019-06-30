@@ -59,7 +59,7 @@ test_that("in_month function errors when given invalid spec", {
   expect_error(in_month(13))
 })
 
-test_that("in_month function works with multiple months", {
+test_that("in_month function works with two months", {
 
   expected_dates <- seq.Date(from = dmy("01/01/2000"),
                              to = dmy("29/02/2000"),
@@ -68,4 +68,18 @@ test_that("in_month function works with multiple months", {
   Jan_and_Feb <- in_month("Jan", "Feb")
 
   expect_equal(expected_dates, schedule(Jan_and_Feb, during = 2000))
+})
+
+test_that("in_month function works with mutliple months", {
+
+  expected_dates <- c(seq.Date(from = dmy("01/01/2000"),
+                               to = dmy("29/02/2000"),
+                               by = "1 day"),
+                      seq.Date(from = dmy("01/12/2000"),
+                               to = dmy("31/12/2000"),
+                               by = "1 day"))
+
+  Jan_Feb_and_Dec <- in_month("Jan", "Feb", "Dec")
+
+  expect_equal(schedule(Jan_Feb_and_Dec, during = 2000), expected_dates)
 })
