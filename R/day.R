@@ -10,15 +10,28 @@ on_qday <- function(x, ...){
   make_element(x, lubridate::qday, ...)
 }
 
-on_wday <- function(x, override_name_check = FALSE, ...){
+on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 
-    if(!(x %in% get_all_day_specs())){
-      stop("x is not a legitimate day name")
+  x <- unlist(list(...))
+
+  if(length(x) > 1){
+
+    my_schedule <- on_wday(x[1], week_start = week_start)
+
+    for(i in 2:length(x)){
+      my_schedule <- also_occuring(my_schedule,
+                                   on_wday(x[i],
+                                           week_start = week_start))
     }
+    return(my_schedule)
+  }
 
+  if(!(x %in% get_all_day_specs())){
+    stop("x is not a legitimate wday name")}
 
   if(x %in% 1:7){
-    appro_function <- lubridate::wday}
+    partial_wday <- purrr::partial(lubridate::wday, week_start = week_start)
+    appro_function <- partial_wday}
 
   if(x %in% get_day_names()){
     appro_function <- on_wday_label_full}
@@ -26,7 +39,8 @@ on_wday <- function(x, override_name_check = FALSE, ...){
   if(x %in% get_day_abbr_names()){
     appro_function <- on_wday_label_abbr}
 
-  make_element(x, appro_function, ...)
+  make_element(x, appro_function)
+
 }
 
 on_wday_label_abbr <- function(x, ...){
