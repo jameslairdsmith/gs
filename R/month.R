@@ -3,14 +3,13 @@
 #' Allows users to create an abstract object representing all dates taking
 #' place within a
 #' specific month. Users can specify which month using:
+#'
 #' 1) The month name (eg. "January"),
 #' 2) The month's abbreviation (eg. "Jan") or
 #' 3) the month number within the year (eg. 1).
 #'
 #'
-#' @param x The name, abbreviation or number of the month.
-#' @param override_name_check Whether to allow month names and abbreviations
-#' not found in in your default local (not recommended).
+#' @param ... months in which the schedule occurs.
 #' @keywords month, date, scedule
 #' @importFrom magrittr %>%
 #' @importFrom lubridate month
@@ -28,19 +27,17 @@
 
 in_month <- function(...){
 
-   char_vec <- unlist(list(...))
+   x <- unlist(list(...))
 
-   if(length(char_vec) > 1){
+   if(length(x) > 1){
 
-      my_schedule <- in_month(char_vec[1])
+      my_schedule <- in_month(x[1])
 
-      for(i in 2:length(char_vec)){
-         my_schedule <- also_occuring(my_schedule, in_month(char_vec[i]))
+      for(i in 2:length(x)){
+         my_schedule <- also_occuring(my_schedule, in_month(x[i]))
       }
       return(my_schedule)
    }
-
-   x <- unlist(list(...))
 
    if(!(x %in% get_all_month_specs())){
       stop("x is not a legitimate month name")}
