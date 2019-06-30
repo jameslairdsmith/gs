@@ -41,6 +41,19 @@ test_that("on_wday function works with number", {
   expect_false(test_date(dmy("20/07/1990"), on_Thursday))
 })
 
+test_that("on_wday function works with two numbers", {
+
+  on_Thursday_or_Friday <- on_wday(5, 6)
+
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("13/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("14/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("20/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("21/07/1990"), on_Thursday_or_Friday))
+})
+
 test_that("user can change week_start on_wday function", {
 
   on_Thursday <- on_wday(4, week_start = 1)
@@ -63,6 +76,19 @@ test_that("on_wday function works with abbreviated name of day", {
   expect_false(test_date(dmy("20/07/1990"), on_Thursday))
 })
 
+test_that("on_wday function works with abbreviated name of two days", {
+
+  on_Thursday_or_Friday <- on_wday("Thu", "Fri")
+
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("13/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("14/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("20/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("21/07/1990"), on_Thursday_or_Friday))
+})
+
 test_that("on_wday function works with full name of day", {
 
   on_Thursday <- on_wday("Thursday")
@@ -72,6 +98,34 @@ test_that("on_wday function works with full name of day", {
   expect_false(test_date(dmy("11/07/1990"), on_Thursday))
   expect_true(test_date(dmy("19/07/1990"), on_Thursday))
   expect_false(test_date(dmy("20/07/1990"), on_Thursday))
+})
+
+test_that("on_wday function works with full name of two days", {
+
+  on_Thursday_or_Friday <- on_wday("Thursday", "Friday")
+
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("13/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("14/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday_or_Friday))
+  expect_true(test_date(dmy("20/07/1990"), on_Thursday_or_Friday))
+  expect_false(test_date(dmy("21/07/1990"), on_Thursday_or_Friday))
+})
+
+test_that("on_wday function works with multiple mixed day specs", {
+
+  on_Thursday_or_Friday_or_Sat <- on_wday("Thursday", 6, "Sat")
+
+  expect_true(test_date(dmy("12/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_true(test_date(dmy("13/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_true(test_date(dmy("14/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_false(test_date(dmy("15/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_false(test_date(dmy("11/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_true(test_date(dmy("19/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_true(test_date(dmy("20/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_true(test_date(dmy("21/07/1990"), on_Thursday_or_Friday_or_Sat))
+  expect_false(test_date(dmy("22/07/1990"), on_Thursday_or_Friday_or_Sat))
 })
 
 test_that("on_wday function errors with invalid input", {
