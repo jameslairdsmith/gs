@@ -34,10 +34,7 @@
 
 <meta property="og:description" content="Allows users to create an abstract object representing all dates taking
 place within a
-specific month. Users can specify which month using:
-1) The month name (eg. &quot;January&quot;),
-2) The month's abbreviation (eg. &quot;Jan&quot;) or
-3) the month number within the year (eg. 1)." />
+specific month. Users can specify which month using:" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -113,32 +110,30 @@ specific month. Users can specify which month using:
     
     <p>Allows users to create an abstract object representing all dates taking
 place within a
-specific month. Users can specify which month using:
-1) The month name (eg. "January"),
-2) The month's abbreviation (eg. "Jan") or
-3) the month number within the year (eg. 1).</p>
+specific month. Users can specify which month using:</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>in_month</span>(<span class='no'>x</span>, <span class='kw'>override_name_check</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>in_month</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>The name, abbreviation or number of the month.</p></td>
-    </tr>
-    <tr>
-      <th>override_name_check</th>
-      <td><p>Whether to allow month names and abbreviations
-not found in in your default local (not recommended).</p></td>
+      <th>...</th>
+      <td><p>months in which the schedule occurs.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A month date element</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>1) The month name (eg. "January"),
+2) The month's abbreviation (eg. "Jan") or
+3) the month number within the year (eg. 1).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -159,6 +154,8 @@ not found in in your default local (not recommended).</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

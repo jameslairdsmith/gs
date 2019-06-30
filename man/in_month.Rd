@@ -4,13 +4,10 @@
 \alias{in_month}
 \title{Create a month schedule}
 \usage{
-in_month(x, override_name_check = FALSE, ...)
+in_month(...)
 }
 \arguments{
-\item{x}{The name, abbreviation or number of the month.}
-
-\item{override_name_check}{Whether to allow month names and abbreviations
-not found in in your default local (not recommended).}
+\item{...}{months in which the schedule occurs.}
 }
 \value{
 A month date element
@@ -19,6 +16,8 @@ A month date element
 Allows users to create an abstract object representing all dates taking
 place within a
 specific month. Users can specify which month using:
+}
+\details{
 1) The month name (eg. "January"),
 2) The month's abbreviation (eg. "Jan") or
 3) the month number within the year (eg. 1).
