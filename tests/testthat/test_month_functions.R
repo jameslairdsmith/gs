@@ -83,3 +83,17 @@ test_that("in_month function works with mutliple months", {
 
   expect_equal(schedule(Jan_Feb_and_Dec, during = 2000), expected_dates)
 })
+
+test_that("in_month function works with mutliple months specified as integers", {
+
+  expected_dates <- c(seq.Date(from = dmy("01/01/2000"),
+                               to = dmy("29/02/2000"),
+                               by = "1 day"),
+                      seq.Date(from = dmy("01/12/2000"),
+                               to = dmy("31/12/2000"),
+                               by = "1 day"))
+
+  Jan_Feb_and_Dec <- in_month(1, 2, 12)
+
+  expect_equal(schedule(Jan_Feb_and_Dec, during = 2000), expected_dates)
+})
