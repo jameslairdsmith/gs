@@ -50,3 +50,7 @@ on_wday_label_abbr <- function(x, ...){
 on_wday_label_full <- function(x, ...){
   lubridate::wday(x, label = T, abbr = F, ...)
 }
+
+on_weekend <- function(){
+  on_wday("Sat", "Sun")
+}

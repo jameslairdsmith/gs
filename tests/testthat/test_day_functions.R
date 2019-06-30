@@ -132,3 +132,9 @@ test_that("on_wday function errors with invalid input", {
   expect_error(on_wday("Thurs"))
   expect_error(on_wday(8))
 })
+
+test_that("on_weekend function works", {
+  expect_false(test_date(dmy("20/07/1990"), on_weekend()))
+  expect_true(test_date(dmy("21/07/1990"), on_weekend()))
+  expect_true(test_date(dmy("22/07/1990"), on_weekend()))
+})
