@@ -28,7 +28,8 @@
 
 in_month <- function(...){
 
-   char_vec <- purrr::flatten_chr(list(...))
+   #char_vec <- purrr::flatten_chr(list(...))
+   char_vec <- unlist(list(...))
 
    if(length(char_vec) > 1){
 
@@ -40,9 +41,8 @@ in_month <- function(...){
       return(my_schedule)
    }
 
-   #x <- purrr::flatten_chr(...)[1]
-
-   x <- purrr::flatten_chr(list(...))[1]
+   #x <- purrr::flatten_chr(list(...))[1]
+   x <- unlist(list(...))
 
    if(!(x %in% get_all_month_specs())){
       stop("x is not a legitimate month name")}
