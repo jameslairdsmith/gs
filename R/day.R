@@ -14,27 +14,12 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 
   x <- unlist(list(...))
 
-  # if(length(x) > 1){
-  #
-  #   my_schedule <- on_wday(x[1], week_start = week_start)
-  #
-  #   for(i in 2:length(x)){
-  #     my_schedule <- also_occuring(my_schedule,
-  #                                  on_wday(x[i],
-  #                                          week_start = week_start))
-  #   }
-  #   return(my_schedule)
-  # }
-
   if(length(x) > 1){
 
     my_schedule <- check_vec_loop(x, on_wday, week_start = week_start)
 
     return(my_schedule)
   }
-
-
-#  if(length(x) > 1){return(my_schedule)}
 
   if(!(x %in% get_all_day_specs())){
     stop("x is not a legitimate wday name")}
