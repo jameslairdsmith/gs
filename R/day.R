@@ -6,8 +6,18 @@ on_yday <- function(x, ...){
   make_element(x, lubridate::yday, ...)
 }
 
-on_qday <- function(x, ...){
-  make_element(x, lubridate::qday, ...)
+on_qday <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1){
+
+    my_schedule <- check_vec_loop(x, on_qday)
+
+    return(my_schedule)
+  }
+
+  make_element(x, lubridate::qday)
 }
 
 on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
