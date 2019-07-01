@@ -10,6 +10,15 @@ test_that("on_yday function works", {
   expect_false(test_date(dmy("02/01/2000"), first_day_of_year))
 })
 
+test_that("on_yday function works with multiple inputs", {
+
+  first_or_second_day_of_year <- on_yday(1, 2)
+
+  expect_true(test_date(dmy("01/01/2000"), first_or_second_day_of_year))
+  expect_true(test_date(dmy("02/01/2000"), first_or_second_day_of_year))
+  expect_false(test_date(dmy("03/01/2000"), first_or_second_day_of_year))
+})
+
 test_that("on_qday function works", {
 
   first_day_of_quarter <- on_qday(1)
@@ -41,6 +50,20 @@ test_that("on_mday function works", {
   expect_false(test_date(dmy("02/04/2000"), first_day_of_month))
   expect_false(test_date(dmy("02/01/2000"), first_day_of_month))
 })
+
+test_that("on_mday function works with multiple inputs", {
+
+  first_or_second_day_of_month <- on_mday(1, 2)
+
+  expect_true(test_date(dmy("01/01/2000"), first_or_second_day_of_month))
+  expect_true(test_date(dmy("01/02/2000"), first_or_second_day_of_month))
+  expect_true(test_date(dmy("01/04/2000"), first_or_second_day_of_month))
+  expect_true(test_date(dmy("02/04/2000"), first_or_second_day_of_month))
+  expect_true(test_date(dmy("02/01/2000"), first_or_second_day_of_month))
+  expect_false(test_date(dmy("03/04/2000"), first_or_second_day_of_month))
+  expect_false(test_date(dmy("03/01/2000"), first_or_second_day_of_month))
+})
+
 
 test_that("on_wday function works with number", {
 

@@ -1,9 +1,29 @@
-on_mday <- function(x, ...){
-  make_element(x, lubridate::mday, ...)
+on_mday <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1){
+
+    my_schedule <- check_vec_loop(x, on_mday)
+
+    return(my_schedule)
+  }
+
+  make_element(x, lubridate::mday)
 }
 
-on_yday <- function(x, ...){
-  make_element(x, lubridate::yday, ...)
+on_yday <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1){
+
+    my_schedule <- check_vec_loop(x, on_yday)
+
+    return(my_schedule)
+  }
+
+  make_element(x, lubridate::yday)
 }
 
 on_qday <- function(...){
