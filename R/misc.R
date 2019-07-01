@@ -77,3 +77,15 @@ strings_to_date_functions <- function(str){
   )
   eval(.f)
 }
+
+check_vec_loop <- function(vec, func, ...){
+  if(length(vec) > 1){
+
+    my_schedule <- func(vec[1], ...)
+
+    for(i in 2:length(vec)){
+      my_schedule <- also_occuring(my_schedule, func(vec[i], ...))
+    }
+    my_schedule
+  }
+}
