@@ -21,7 +21,7 @@ after <- function(x, within_given = NULL){
   if(is.Date(x)){
 
     .fn <- function(date){
-      date > hard_date
+      date > x
     }
 
     out <- list(name = "date_after_element",
@@ -66,7 +66,7 @@ before <- function(x, within_given = NULL){
   if(is.Date(x)){
 
     .fn <- function(date){
-      date < hard_date
+      date < x
     }
 
     out <- list(name = "date_before_element",
