@@ -69,6 +69,17 @@ test_that("after() function works on a long vector", {
   expect_equal(days_in_1990[test_date(days_in_1990, after_birthday)], expected_result)
 })
 
+test_that("after() function works on a date value",{
+
+  my_birthday <- dmy("12/07/1990")
+
+  after_my_birthday <- after(my_birthday)
+
+  expect_true(test_date(dmy("13/07/1990"), after_my_birthday))
+  expect_false(test_date(dmy("11/07/1990"), after_my_birthday))
+
+})
+
 test_that("before() function works", {
 
   my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
@@ -107,6 +118,17 @@ test_that("before() function works with string value for within_given", {
 
   expect_false(test_date(dmy("20/07/2019"), before(my_birthday, within_given = "month")))
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = "month")))
+})
+
+test_that("before() function works on a date value",{
+
+  my_birthday <- dmy("12/07/1990")
+
+  before_my_birthday <- before(my_birthday)
+
+  expect_false(test_date(dmy("13/07/1990"), before_my_birthday))
+  expect_true(test_date(dmy("11/07/1990"), before_my_birthday))
+
 })
 
 
