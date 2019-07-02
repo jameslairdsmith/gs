@@ -1,6 +1,15 @@
-on_date <- function(x, ...){
+on_date <- function(...){
 
-  out <- make_element(x, identity, ...)
+  x <- unlist(list(...))
+
+  if(length(x) > 1){
+
+    my_schedule <- check_vec_loop(x, on_date)
+
+    return(my_schedule)
+  }
+
+  out <- make_element(x, identity)
 
   class(out) <- "date_element"
 
