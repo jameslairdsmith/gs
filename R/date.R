@@ -16,7 +16,21 @@ on_date <- function(...){
   out
 }
 
-after <- function(x, within_given, ...){
+after <- function(x, within_given = NULL){
+
+  if(is.Date(x)){
+
+    .fn <- function(date){
+      date > hard_date
+    }
+
+    out <- list(name = "date_after_element",
+                func = .fn)
+
+    class(out) <- "date_after_element"
+
+    return(out)
+  }
 
   if(is.character(within_given)){
     within_given <- strings_to_date_functions(within_given)
@@ -47,7 +61,21 @@ after <- function(x, within_given, ...){
   out
 }
 
-before <- function(x, within_given, ...){
+before <- function(x, within_given = NULL){
+
+  if(is.Date(x)){
+
+    .fn <- function(date){
+      date < hard_date
+    }
+
+    out <- list(name = "date_before_element",
+                func = .fn)
+
+    class(out) <- "date_before_element"
+
+    return(out)
+  }
 
   if(is.character(within_given)){
     within_given <- strings_to_date_functions(within_given)
@@ -78,30 +106,30 @@ before <- function(x, within_given, ...){
   out
 }
 
-after_date <- function(hard_date){
+# after_date <- function(hard_date){
+#
+#   .fn <- function(date){
+#     date > hard_date
+#   }
+#
+#   out <- list(name = "after_date_element",
+#               func = .fn)
+#
+#   class(out) <- "after_date_element"
+#
+#   out
+# }
 
-  .fn <- function(date){
-    date > hard_date
-  }
-
-  out <- list(name = "after_date_element",
-              func = .fn)
-
-  class(out) <- "after_date_element"
-
-  out
-}
-
-before_date <- function(hard_date){
-
-  .fn <- function(date){
-    date < hard_date
-  }
-
-  out <- list(name = "before_date_element",
-              func = .fn)
-
-  class(out) <- "before_date_element"
-
-  out
-}
+# before_date <- function(hard_date){
+#
+#   .fn <- function(date){
+#     date < hard_date
+#   }
+#
+#   out <- list(name = "before_date_element",
+#               func = .fn)
+#
+#   class(out) <- "before_date_element"
+#
+#   out
+# }
