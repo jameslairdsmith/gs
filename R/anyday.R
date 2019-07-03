@@ -1,7 +1,8 @@
 anyday <- function(){
 
   .fn <- function(date){
-    date <- TRUE
+
+    rep(TRUE, length(date))
   }
 
   out <- list(name = "anyday_element",
