@@ -2,5 +2,3 @@
 
 export(in_month)
 export(test_date)
-importFrom(lubridate,month)
-importFrom(magrittr,"%>%")

@@ -2,33 +2,57 @@
 % Please edit documentation in R/month.R
 \name{in_month}
 \alias{in_month}
-\title{Create a month schedule}
+\title{Specify the months of a schedule}
 \usage{
 in_month(...)
 }
 \arguments{
-\item{...}{months in which the schedule occurs.}
+\item{...}{months in which the schedule occurs. These can be the
+months' names (eg. "January"), abbreviations (eg. "Jan") or integers (eg. 1)}
 }
 \value{
-A month date element
+A schedule of events occuring in the months specified.
 }
 \description{
-Allows users to create an abstract object representing all dates taking
-place within a
-specific month. Users can specify which month using:
-}
-\details{
-1) The month name (eg. "January"),
-2) The month's abbreviation (eg. "Jan") or
-3) the month number within the year (eg. 1).
+Creates a schedule of events occuring in specified months.
 }
 \examples{
-library(magrittr)
-library(lubridate)
+my_dates <- c(as.Date("2000-01-01"),
+              as.Date("2000-02-01"),
+              as.Date("2000-03-01"),
+              as.Date("2000-04-01"))
 
-January <- in_month("Jan")
+in_january <- in_month("January")
 
-test_date(dmy("31/01/1990"), January)
+my_dates
+test_date(my_dates, in_january)
+
+in_february <- in_month("Feb")
+
+my_dates
+test_date(my_dates, in_february)
+
+in_march <- in_month(3)
+
+my_dates
+test_date(my_dates, in_march)
+
+in_jan_or_feb <- in_month("Jan", "Feb")
+
+my_dates
+test_date(my_dates, in_jan_or_feb)
+
+## You can even mix your month specs.
+
+in_jan_feb_mar <- in_month("January", "Feb", 3)
+
+my_dates
+test_date(my_dates, in_jan_feb_mar)
+
+## invalid inputs will produce an immediate error
+\dontrun{
+in_january <- in_month("Janu")
+in_january <- in_month(13)}
 }
 \keyword{date,}
 \keyword{month,}
