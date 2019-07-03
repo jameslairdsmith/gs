@@ -105,31 +105,3 @@ before <- function(x, within_given = NULL){
 
   out
 }
-
-# after_date <- function(hard_date){
-#
-#   .fn <- function(date){
-#     date > hard_date
-#   }
-#
-#   out <- list(name = "after_date_element",
-#               func = .fn)
-#
-#   class(out) <- "after_date_element"
-#
-#   out
-# }
-
-# before_date <- function(hard_date){
-#
-#   .fn <- function(date){
-#     date < hard_date
-#   }
-#
-#   out <- list(name = "before_date_element",
-#               func = .fn)
-#
-#   class(out) <- "before_date_element"
-#
-#   out
-# }
