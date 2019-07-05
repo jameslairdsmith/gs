@@ -90,13 +90,22 @@
     
     
 <p>First we will load the necessary packages.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#library(scheduler)</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lubridate)</a>
-<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'lubridate'</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5"><span class="co">#&gt; The following object is masked from 'package:base':</span></a>
-<a class="sourceLine" id="cb1-6" data-line-number="6"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co">#&gt;     date</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co">#devtools::install_github("jameslairdsmith/scheduler")</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scheduler)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lubridate)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Attaching package: 'lubridate'</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; The following object is masked from 'package:base':</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt;     date</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Jan"</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function (date) </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; {</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; &lt;environment: 0x7fddbe3c4ca0&gt;</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; attr(,"class")</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
