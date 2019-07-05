@@ -1,13 +1,11 @@
 anyday <- function(){
 
-  .fn <- function(date){
+  out <- function(date){
 
     rep(TRUE, length(date))
   }
 
-  out <- .fn
-
-  class(out) <- "anyday_element"
+  class(out) <- "schedule"
 
   out
 }

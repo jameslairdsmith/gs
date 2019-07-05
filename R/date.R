@@ -11,7 +11,7 @@ on_date <- function(...){
 
   out <- make_element(x, identity)
 
-  class(out) <- "date_element"
+  class(out) <- "schedule"
 
   out
 }
@@ -20,13 +20,11 @@ after <- function(x, within_given = NULL){
 
   if(is.Date(x)){
 
-    .fn <- function(date){
+    out <- function(date){
       date > x
     }
 
-    out <- .fn
-
-    class(out) <- "date_after_element"
+    class(out) <- "schedule"
 
     return(out)
   }
@@ -35,7 +33,7 @@ after <- function(x, within_given = NULL){
     within_given <- strings_to_date_functions(within_given)
   }
 
-  .fn <- function(date){
+  out <- function(date){
 
     date_vec_changing <- date
     applicable <- within_given(date_vec_changing) == within_given(date_vec_changing - days(1))
@@ -52,9 +50,7 @@ after <- function(x, within_given = NULL){
     out_vec
   }
 
-  out <- .fn
-
-  class(out) <- "date_after_element"
+  class(out) <- "schedule"
 
   out
 }
@@ -63,13 +59,11 @@ before <- function(x, within_given = NULL){
 
   if(is.Date(x)){
 
-    .fn <- function(date){
+    out <- function(date){
       date < x
     }
 
-    out <- .fn
-
-    class(out) <- "date_before_element"
+    class(out) <- "schedule"
 
     return(out)
   }
@@ -78,7 +72,7 @@ before <- function(x, within_given = NULL){
     within_given <- strings_to_date_functions(within_given)
   }
 
-  .fn <- function(date){
+  out <- function(date){
 
     date_vec_changing <- date
     applicable <- within_given(date_vec_changing) == within_given(date_vec_changing + days(1))
@@ -95,9 +89,7 @@ before <- function(x, within_given = NULL){
     out_vec
   }
 
-  out <- .fn
-
-  class(out) <- "date_after_element"
+  class(out) <- "schedule"
 
   out
 }

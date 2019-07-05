@@ -1,12 +1,10 @@
 make_element <- function(x, .f, ...){
 
-  .fn <- function(date){
+  out <- function(date){
     .f(date, ...) == x
   }
 
-  out <- .fn
-
-  class(out) <- "date_element"
+  class(out) <- "schedule"
 
   out
 }

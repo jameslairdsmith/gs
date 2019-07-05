@@ -5,7 +5,7 @@ on_nth <- function(n, x, within_given, ...){
   }
 
   if(n > 0){
-  .fn <- function(date){
+  out <- function(date){
     date_vec_changing <- date
     nth <- n
     applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing - days(1))
@@ -36,7 +36,7 @@ on_nth <- function(n, x, within_given, ...){
   }}
 
   if(n < 0){
-    .fn <- function(date){
+    out <- function(date){
     date_vec_changing <- date
     nth <- abs(n)
     applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing + days(1))
@@ -63,11 +63,9 @@ on_nth <- function(n, x, within_given, ...){
     meets_both_criteria <- is_proper_value & has_correct_next_occurances
 
     meets_both_criteria
-  }}
+    }}
 
-  out <- .fn
-
-  class(out) <- "nth_date_element"
+  class(out) <- "schedule"
 
   out
 }
