@@ -17,3 +17,26 @@ schedule <- function(x, from, to, during = NULL, ...){
 
   date_seq[test_date(date_seq, x)]
 }
+
+schedule_hours <- function(x, from, to, during = NULL, ...){
+
+  if(!is.null(during)){
+    from <- lubridate::make_date(year = during)
+    to <- lubridate::make_date(year = during, month = 12, day = 31)
+  }
+
+  if(is.numeric(from)){
+    from <- lubridate::make_date(year = from)
+  }
+
+  if(is.numeric(to)){
+    to <- lubridate::make_date(year = to, month = 12, day = 31)
+  }
+
+  to <- as_datetime(to)
+  from <- as_datetime(from)
+
+  datetime_seq <- seq.POSIXt(from = from, to = to, by = "1 hour")
+
+  datetime_seq[test_date(datetime_seq, x)]
+}
