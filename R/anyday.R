@@ -5,8 +5,7 @@ anyday <- function(){
     rep(TRUE, length(date))
   }
 
-  out <- list(name = "anyday_element",
-              func = .fn)
+  out <- .fn
 
   class(out) <- "anyday_element"
 

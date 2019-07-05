@@ -65,8 +65,7 @@ on_nth <- function(n, x, within_given, ...){
     meets_both_criteria
   }}
 
-  out <- list(name = "nth_date_element",
-              func = .fn)
+  out <- .fn
 
   class(out) <- "nth_date_element"
 

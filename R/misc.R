@@ -79,6 +79,7 @@ strings_to_date_functions <- function(str){
 }
 
 check_vec_loop <- function(vec, func, ...){
+
   if(length(vec) > 1){
 
     my_schedule <- func(vec[1], ...)
