@@ -18,6 +18,9 @@ schedule <- function(x, from, to, during = NULL, ...){
   date_seq[test_date(date_seq, x)]
 }
 
+
+## This needs tests
+
 schedule_hours <- function(x, from, to, during = NULL, ...){
 
   if(!is.null(during)){
