@@ -1,3 +1,6 @@
+#'  @import magrittr
+#'  @importFrom magrittr %>%
+
 get_month_names <- function(){
   readr::locale() %>%
     magrittr::use_series(date_names) %>%

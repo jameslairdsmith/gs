@@ -18,6 +18,7 @@ Suggests:
     rmarkdown
 Imports: 
     purrr,
-    lubridate
+    lubridate,
+    magrittr
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
