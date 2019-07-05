@@ -21,3 +21,7 @@ check_vec_loop <- function(vec, func, ...){
     my_schedule
   }
 }
+
+get_attribute_names <- function(obj){
+  names(attributes(obj))
+}

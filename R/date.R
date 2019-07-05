@@ -26,6 +26,8 @@ after <- function(x, within_given = NULL){
 
     class(out) <- "schedule"
 
+    attr(out, "earliest_date") <- x
+
     return(out)
   }
 
@@ -64,6 +66,8 @@ before <- function(x, within_given = NULL){
     }
 
     class(out) <- "schedule"
+
+    attr(out, "latest_date") <- x
 
     return(out)
   }

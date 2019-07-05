@@ -22,6 +22,19 @@ only_occuring <- function(elem_1, elem_2){
 
   class(out) <- "schedule"
 
+  if("latest_date" %in% get_attribute_names(elem_1)){
+    attr(out, "latest_date") <- attr(elem_1, "latest_date")
+  }
+  if("earliest_date" %in% get_attribute_names(elem_1)){
+    attr(out, "earliest_date") <- attr(elem_1, "earliest_date")
+  }
+  if("latest_date" %in% get_attribute_names(elem_2)){
+    attr(out, "latest_date") <- attr(elem_2, "latest_date")
+  }
+  if("earliest_date" %in% get_attribute_names(elem_2)){
+    attr(out, "earliest_date") <- attr(elem_2, "earliest_date")
+  }
+
   out
 }
 

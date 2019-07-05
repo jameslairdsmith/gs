@@ -1,5 +1,13 @@
 schedule <- function(x, from, to, during = NULL, ...){
 
+  if("earliest_date" %in% get_attribute_names(x)){
+    from <- attr(x, "earliest_date")
+  }
+
+  if("latest_date" %in% get_attribute_names(x)){
+    to <- attr(x, "latest_date")
+  }
+
   if(!is.null(during)){
     from <- lubridate::make_date(year = during)
     to <- lubridate::make_date(year = during, month = 12, day = 31)
