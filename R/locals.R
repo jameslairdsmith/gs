@@ -1,17 +1,11 @@
-#' @import magrittr readr
-#' @importFrom magrittr %>%
+#' @import readr
 
 get_month_names <- function(){
-  # readr::locale() %>%
-  #   magrittr::use_series(date_names) %>%
-  #   magrittr::use_series(mon)
+
   locale()$date_names$mon
 }
 
 get_month_abbr_names <- function(){
-  # readr::locale() %>%
-  #   magrittr::use_series(date_names) %>%
-  #   magrittr::use_series(mon_ab)
   locale()$date_names$mon_ab
 }
 
@@ -22,16 +16,12 @@ get_all_month_specs <- function(){
 }
 
 get_day_names <- function(){
-  # readr::locale() %>%
-  #   magrittr::use_series(date_names) %>%
-  #   magrittr::use_series(day)
+
   locale()$date_names$day
 }
 
 get_day_abbr_names <- function(){
-  # readr::locale() %>%
-  #   magrittr::use_series(date_names) %>%
-  #   magrittr::use_series(day_ab)
+
   locale()$date_names$day_ab
 }
 
