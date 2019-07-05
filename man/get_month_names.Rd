@@ -3,11 +3,11 @@
 \name{get_month_names}
 \alias{get_month_names}
 \title{@import magrittr
- @importFrom magrittr %>%}
+ @importFrom magrittr "%>%"}
 \usage{
 get_month_names()
 }
 \description{
 @import magrittr
- @importFrom magrittr %>%
+ @importFrom magrittr "%>%"
 }
