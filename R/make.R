@@ -4,8 +4,7 @@ make_element <- function(x, .f, ...){
     .f(date, ...) == x
   }
 
-  out <- list(name = "date_test",
-              func = .fn)
+  out <- .fn
 
   class(out) <- "date_element"
 

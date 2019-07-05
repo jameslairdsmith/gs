@@ -28,16 +28,6 @@ schedule_periodically <- function(period_func,
   sort(result)
 }
 
-# if(!is.null(skips)){
-#
-#   vec <- vector(mode = "logical", length = skips)
-#
-#
-#   vec[length(vec)] <- TRUE
-#
-#   sort(result)[vec]
-# }
-
 schedule_annually <- function(starting, ending, years, inclusive = TRUE){
   schedule_periodically(lubridate::years, starting, ending, years, inclusive)
 }

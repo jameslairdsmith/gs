@@ -24,8 +24,7 @@ after <- function(x, within_given = NULL){
       date > x
     }
 
-    out <- list(name = "date_after_element",
-                func = .fn)
+    out <- .fn
 
     class(out) <- "date_after_element"
 
@@ -53,8 +52,7 @@ after <- function(x, within_given = NULL){
     out_vec
   }
 
-  out <- list(name = "date_after_element",
-              func = .fn)
+  out <- .fn
 
   class(out) <- "date_after_element"
 
@@ -69,8 +67,7 @@ before <- function(x, within_given = NULL){
       date < x
     }
 
-    out <- list(name = "date_before_element",
-                func = .fn)
+    out <- .fn
 
     class(out) <- "date_before_element"
 
@@ -98,8 +95,7 @@ before <- function(x, within_given = NULL){
     out_vec
   }
 
-  out <- list(name = "date_after_element",
-              func = .fn)
+  out <- .fn
 
   class(out) <- "date_after_element"
 
