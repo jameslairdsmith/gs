@@ -26,6 +26,8 @@ in_january <- in_month("January")
 
 my_dates
 test_date(my_dates, in_january)
+# This is the same as:
+in_january(my_dates)
 
 in_february <- in_month("Feb")
 
