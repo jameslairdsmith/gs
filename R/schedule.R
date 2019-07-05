@@ -1,3 +1,5 @@
+## Consider how this should work with also_occuring() functions.
+
 schedule <- function(x, from, to, during = NULL, ...){
 
   if("earliest_date" %in% get_attribute_names(x)){
