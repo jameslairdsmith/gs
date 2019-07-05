@@ -78,6 +78,18 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/intro.html">Introduction</a>
+    </li>
+  </ul>
+</li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
@@ -135,21 +147,21 @@ months' names (eg. "January"), abbreviations (eg. "Jan") or integers (eg. 1)</p>
 
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>)
 
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'>test_date</span>(<span class='no'>my_dates</span>, <span class='no'>in_january</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_january</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
 <span class='no'>in_february</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Feb"</span>)
 
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'>test_date</span>(<span class='no'>my_dates</span>, <span class='no'>in_february</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_february</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
 <span class='no'>in_march</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>3</span>)
 
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'>test_date</span>(<span class='no'>my_dates</span>, <span class='no'>in_march</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_march</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
 <span class='no'>in_jan_or_feb</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>)
 
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'>test_date</span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_or_feb</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_or_feb</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
 <span class='co'>## You can even mix your month specs.</span>
 
 <span class='no'>in_jan_feb_mar</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>, <span class='st'>"Feb"</span>, <span class='fl'>3</span>)
 
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'>test_date</span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_feb_mar</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_feb_mar</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error
 </div><span class='co'># NOT RUN {</span>
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Janu"</span>)

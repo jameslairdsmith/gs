@@ -4,7 +4,7 @@
 \alias{test_date}
 \title{Test whether a date falls on a schedule.}
 \usage{
-test_date(date, x, ...)
+test_date(date, func, ...)
 }
 \arguments{
 \item{date}{A date object}
