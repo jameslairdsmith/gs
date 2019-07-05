@@ -2,3 +2,6 @@
 
 export(in_month)
 export(test_date)
+import(magrittr)
+import(readr)
+importFrom(magrittr,"%>%")

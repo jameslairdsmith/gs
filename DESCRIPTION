@@ -19,6 +19,7 @@ Suggests:
 Imports: 
     purrr,
     lubridate,
+    readr,
     magrittr
 RoxygenNote: 6.1.0
 VignetteBuilder: knitr
