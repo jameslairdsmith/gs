@@ -1,3 +1,5 @@
+# function may need a better name.
+
 anyday <- function(){
 
   out <- function(date){
