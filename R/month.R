@@ -12,34 +12,23 @@
 #'               as.Date("2000-03-01"),
 #'               as.Date("2000-04-01"))
 #'
-#' in_january <- in_month("January")
-#'
 #' my_dates
-#' test_date(my_dates, in_january)
-#' # This is the same as:
+#'
+#' in_january <- in_month("January")
 #' in_january(my_dates)
 #'
 #' in_february <- in_month("Feb")
-#'
-#' my_dates
-#' test_date(my_dates, in_february)
+#' in_february(my_dates)
 #'
 #' in_march <- in_month(3)
-#'
-#' my_dates
-#' test_date(my_dates, in_march)
+#' in_march(my_dates)
 #'
 #' in_jan_or_feb <- in_month("Jan", "Feb")
-#'
-#' my_dates
-#' test_date(my_dates, in_jan_or_feb)
+#' in_jan_or_feb(my_dates)
 #'
 #' ## You can even mix your month specs.
-#'
 #' in_jan_feb_mar <- in_month("January", "Feb", 3)
-#'
-#' my_dates
-#' test_date(my_dates, in_jan_feb_mar)
+#' in_jan_feb_mar(my_dates)
 #'
 #' ## invalid inputs will produce an immediate error
 #' \dontrun{

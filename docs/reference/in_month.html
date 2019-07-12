@@ -145,24 +145,18 @@ months' names (eg. "January"), abbreviations (eg. "Jan") or integers (eg. 1)</p>
               <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-03-01"</span>),
               <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-04-01"</span>))
 
+<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'>
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>)
-
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_january</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'><span class='co'># This is the same as:</span>
 <span class='fu'>in_january</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
 <span class='no'>in_february</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Feb"</span>)
-
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_february</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'>in_february</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
 <span class='no'>in_march</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>3</span>)
-
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_march</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
+<span class='fu'>in_march</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
 <span class='no'>in_jan_or_feb</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>)
-
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_or_feb</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'>in_jan_or_feb</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
 <span class='co'>## You can even mix your month specs.</span>
-
 <span class='no'>in_jan_feb_mar</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>, <span class='st'>"Feb"</span>, <span class='fl'>3</span>)
-
-<span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'><span class='fu'><a href='test_date.html'>test_date</a></span>(<span class='no'>my_dates</span>, <span class='no'>in_jan_feb_mar</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
+<span class='fu'>in_jan_feb_mar</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error
 </div><span class='co'># NOT RUN {</span>
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Janu"</span>)
