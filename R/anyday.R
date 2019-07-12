@@ -1,6 +1,3 @@
-# function may need a better name.
-# TODO
-
 anyday <- function(){
 
   out <- function(date){
