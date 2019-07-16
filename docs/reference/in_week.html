@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the months of a schedule — in_month • scheduler</title>
+<title>Specify the weeks of a schedule — in_week • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,12 @@
 
 
 
-<meta property="og:title" content="Specify the months of a schedule — in_month" />
+<meta property="og:title" content="Specify the weeks of a schedule — in_week" />
 
-<meta property="og:description" content="Creates a schedule of events occuring in the months specified." />
+<meta property="og:description" content="week() returns the number of complete seven day periods
+that have occurred between the date and January 1st, plus one.
+The isoweek() function returns the week as it would appear in the ISO 8601
+system, which uses a reoccurring leap week." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -111,36 +114,40 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Specify the months of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/month.R'><code>R/month.R</code></a></small>
-    <div class="hidden name"><code>in_month.Rd</code></div>
+    <h1>Specify the weeks of a schedule</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/week.R'><code>R/week.R</code></a></small>
+    <div class="hidden name"><code>in_week.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occuring in the months specified.</p>
+    <p><code>week()</code> returns the number of complete seven day periods
+that have occurred between the date and January 1st, plus one.</p>
+<p>The <code>isoweek()</code> function returns the week as it would appear in the ISO 8601
+system, which uses a reoccurring leap week.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>in_month</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>in_week</span>(<span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='fu'>in_isoweek</span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>a character or numeric vector of month elements.</p></td>
+      <td><p>a numeric vector of week elements.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events occuring in the months specified.</p>
+    <p>A schedule of events occuring in the weeks specified.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Months can be specified using their names (eg. "January"),
-abbreviations (eg. "Jan") or integers (eg. 1).</p>
+    <p>Creates a schedule of events occuring in the weeks specified.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -150,21 +157,21 @@ abbreviations (eg. "Jan") or integers (eg. 1).</p>
               <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-04-01"</span>))
 
 <span class='no'>my_dates</span></div><div class='output co'>#&gt; [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01"</div><div class='input'>
-<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>)
+<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"January"</span>)
 <span class='fu'>in_january</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>in_february</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Feb"</span>)
+<span class='no'>in_february</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Feb"</span>)
 <span class='fu'>in_february</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='no'>in_march</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>3</span>)
+<span class='no'>in_march</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='fl'>3</span>)
 <span class='fu'>in_march</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
-<span class='no'>in_jan_or_feb</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>)
+<span class='no'>in_jan_or_feb</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>)
 <span class='fu'>in_jan_or_feb</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
 <span class='co'>## You can even mix your month specs.</span>
-<span class='no'>in_jan_feb_mar</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>, <span class='st'>"Feb"</span>, <span class='fl'>3</span>)
+<span class='no'>in_jan_feb_mar</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"January"</span>, <span class='st'>"Feb"</span>, <span class='fl'>3</span>)
 <span class='fu'>in_jan_feb_mar</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error
 </div><span class='co'># NOT RUN {</span>
-<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Janu"</span>)
-<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>13</span>)
+<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Janu"</span>)
+<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='fl'>13</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

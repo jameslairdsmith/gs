@@ -1,9 +1,12 @@
 #' Specify the months of a schedule
 #'
-#' Creates a schedule of events occuring in specified months.
+#' Creates a schedule of events occuring in the months specified.
 #'
-#' @param ... months in which the schedule occurs. These can be the
-#' months' names (eg. "January"), abbreviations (eg. "Jan") or integers (eg. 1)
+#' Months can be specified using their names (eg. "January"),
+#' abbreviations (eg. "Jan") or integers (eg. 1).
+#'
+#' @param ... a character or numeric vector of month elements.
+#'
 #' @keywords month, date, scedule
 #' @return A schedule of events occuring in the months specified.
 #' @examples
