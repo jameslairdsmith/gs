@@ -2,7 +2,7 @@
 #'
 #' Creates a schedule of events occuring in the weeks specified.
 #'
-#' @description `week()` returns the number of complete seven day periods
+#' @description `in_week()` returns the number of complete seven day periods
 #' that have occurred between the date and January 1st, plus one.
 #'
 #' @param ... a numeric vector of week elements.
@@ -43,7 +43,7 @@ in_week <- function(x, ...){
   make_element(x, lubridate::week, ...)
 }
 
-#' @description The `isoweek()` function returns the week as it would appear in the ISO 8601
+#' @description The `in_isoweek()` function returns the week as it would appear in the ISO 8601
 #'   system, which uses a reoccurring leap week.
 #' @rdname in_week
 #' @export

@@ -16,10 +16,10 @@ in_isoweek(x, ...)
 A schedule of events occuring in the weeks specified.
 }
 \description{
-\code{week()} returns the number of complete seven day periods
+\code{in_week()} returns the number of complete seven day periods
 that have occurred between the date and January 1st, plus one.
 
-The \code{isoweek()} function returns the week as it would appear in the ISO 8601
+The \code{in_isoweek()} function returns the week as it would appear in the ISO 8601
 system, which uses a reoccurring leap week.
 }
 \details{
