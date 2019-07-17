@@ -2,12 +2,7 @@ on_mday <- function(...){
 
   x <- unlist(list(...))
 
-  if(length(x) > 1){
-
-    my_schedule <- check_vec_loop(x, on_mday)
-
-    return(my_schedule)
-  }
+  if(length(x) > 1) return(check_vec_loop(x, on_mday))
 
   make_element(x, lubridate::mday)
 }
@@ -16,12 +11,7 @@ on_yday <- function(...){
 
   x <- unlist(list(...))
 
-  if(length(x) > 1){
-
-    my_schedule <- check_vec_loop(x, on_yday)
-
-    return(my_schedule)
-  }
+  if(length(x) > 1) return(check_vec_loop(x, on_yday))
 
   make_element(x, lubridate::yday)
 }
@@ -30,12 +20,7 @@ on_qday <- function(...){
 
   x <- unlist(list(...))
 
-  if(length(x) > 1){
-
-    my_schedule <- check_vec_loop(x, on_qday)
-
-    return(my_schedule)
-  }
+  if(length(x) > 1) return(check_vec_loop(x, on_qday))
 
   make_element(x, lubridate::qday)
 }
@@ -44,12 +29,7 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 
   x <- unlist(list(...))
 
-  if(length(x) > 1){
-
-    my_schedule <- check_vec_loop(x, on_wday, week_start = week_start)
-
-    return(my_schedule)
-  }
+  if(length(x) > 1) return(check_vec_loop(x, on_wday, week_start = week_start))
 
   if(!(x %in% get_all_day_specs())){
     stop("x is not a legitimate wday name")}
@@ -68,6 +48,10 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 
 }
 
+on_weekend <- function(){
+  on_wday("Sat", "Sun")
+}
+
 on_wday_label_abbr <- function(x, ...){
   lubridate::wday(x, label = T, abbr = T, ...)
 }
@@ -76,6 +60,4 @@ on_wday_label_full <- function(x, ...){
   lubridate::wday(x, label = T, abbr = F, ...)
 }
 
-on_weekend <- function(){
-  on_wday("Sat", "Sun")
-}
+

@@ -2,12 +2,7 @@ on_date <- function(...){
 
   x <- unlist(list(...))
 
-  if(length(x) > 1){
-
-    my_schedule <- check_vec_loop(x, on_date)
-
-    return(my_schedule)
-  }
+  if(length(x) > 1) return(check_vec_loop(x, on_date))
 
   out <- make_element(x, identity)
 
