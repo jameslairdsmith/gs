@@ -5,9 +5,9 @@
 \alias{in_isoweek}
 \title{Specify the weeks of a schedule}
 \usage{
-in_week(x, ...)
+in_week(...)
 
-in_isoweek(x, ...)
+in_isoweek(...)
 }
 \arguments{
 \item{...}{a numeric vector of week elements.}
