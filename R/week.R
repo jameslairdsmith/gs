@@ -39,8 +39,14 @@
 #' in_january <- in_month(13)}
 #' @export
 
-in_week <- function(x, ...){
-  make_element(x, lubridate::week, ...)
+in_week <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1) return(check_vec_loop(x, in_week))
+
+  make_element(x, lubridate::week)
+
 }
 
 #' @description The `in_isoweek()` function returns the week as it would appear in the ISO 8601
@@ -48,10 +54,20 @@ in_week <- function(x, ...){
 #' @rdname in_week
 #' @export
 
-in_isoweek <- function(x, ...){
-  make_element(x, lubridate::isoweek, ...)
+in_isoweek <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1) return(check_vec_loop(x, in_isoweek))
+
+  make_element(x, lubridate::isoweek)
 }
 
-in_epiweek <- function(x, ...){
-  make_element(x, lubridate::epiweek, ...)
+in_epiweek <- function(...){
+
+  x <- unlist(list(...))
+
+  if(length(x) > 1) return(check_vec_loop(x, in_epiweek))
+
+  make_element(x, lubridate::epiweek)
 }
