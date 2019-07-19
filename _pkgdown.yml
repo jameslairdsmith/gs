@@ -1,6 +1,19 @@
 template:
   params:
     bootswatch: spacelab
+navbar:
+  structure:
+    left:  [home, intro, reference]
+    right: [github]
+  components:
+    home:
+      text: " Home"
+    intro:
+      text: Intro
+      href: articles/intro.html
+    reference:
+      text: Reference
+
 reference:
   - title: "Basic schedules"
     desc: "The buildings blocks of schedules."

@@ -24,7 +24,7 @@ making them difficult to conceptualise, use and program with.
 
 `scheduler` is an R package the goal of which is to make dealing with
 these schedules a little easier. It does this by providing a set of simple
-to understand functions and a flexible framework for using them together. 
+to understand functions and a flexible framework for combining them. 
 Together these allow users to compose more complex schedules from simple and 
 intutive buildings blocks.
 
@@ -38,3 +38,11 @@ downloaded from Github:
 devtools::install_github("jameslairdsmith/scheduler")
 ```
 
+Feedback, bug report and suggestions are most welcome and can be made in the 
+[issues tab](https://github.com/jameslairdsmith/scheduler/issues) of the Github
+repo.
+
+## Getting started
+
+If you have not used `scheduler` before, the best place to get started is the
+introductory vignette.
