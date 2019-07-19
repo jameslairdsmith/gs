@@ -38,4 +38,5 @@ the Github repo.
 ## Getting started
 
 If you have not used `scheduler` before, the best place to get started
-is the introductory vignette.
+is the introductory
+[vignette](https://jameslairdsmith.github.io/scheduler/articles/intro.html).
