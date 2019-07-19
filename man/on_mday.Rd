@@ -16,15 +16,18 @@ on_qday(...)
 
 on_wday(..., week_start = getOption("lubridate.week.start", 7))
 
-on_weekend()
+on_weekend(date_vec = NULL)
 }
 \arguments{
-\item{...}{A numeric vector of day elements. In the case of \code{on_wday} the
+\item{...}{A numeric vector of day specifications. In the case of \code{on_wday} the
 elements can also be characters (see details below).}
 
 \item{week_start}{If using the \code{on_wday} function with numeric day elements,
 you can specify which ISO convention is used; 1 means Monday,
-7 means Sunday (default)
+7 means Sunday (default).}
+
+\item{date_vec}{Optional. A vector of dates to test for whether they are on
+the weekend. If missing, will simply return a schedule of weekend days.
 
 You can use \code{lubridate}'s global option
 \code{lubridate.week.start} to set this parameter globally.}
@@ -82,13 +85,38 @@ see the \emph{Arguments} section above.)
 }
 }
 
-Users can specify multiple day elements in a single call. For example
-\code{on_mday(1, 3)} produces a schedule of dates occuring on the 1st and 3rd
-days of every month. Likewise \code{on_wday("Tue", "Thu")} produces a schedule
-of events occuring every week on both Tuesdays and Thursdays.
+All functions accept multiple day elements in a single call. For example
+\code{on_mday(7, 9)} produces a schedule of dates occuring on the 7th and 9th
+days of every month. Likewise \code{on_mday(1:5)} produces a schedule of dates
+occuring on the first five days of every month. Similarly
+\code{on_wday("Tue", "Thu")} produces a schedule of events occuring every
+week on both Tuesdays and Thursdays.
 
 \code{on_weekend()} is a convenience function for
 \code{on_wday("Sat", "Sun")}
+}
+\examples{
+
+my_dates <- seq.Date(from = as.Date("2000-01-01"),
+                     to = as.Date("2000-12-01"),
+                     by = "1 month")
+my_dates
+
+on_first_day_of_month <- on_mday(1)
+on_first_day_of_month(my_dates)
+
+on_first_day_of_year <- on_yday(1)
+on_first_day_of_year(my_dates)
+
+on_first_day_of_quarter <- on_qday(1)
+on_first_day_of_quarter(my_dates)
+
+on_tuesday <- on_wday("Tue")
+on_tuesday(my_dates)
+
+on_weekend(my_dates)
+
+
 }
 \keyword{date,}
 \keyword{month,}
