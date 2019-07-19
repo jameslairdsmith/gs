@@ -26,7 +26,7 @@ elements can also be characters (see details below).}
 you can specify which ISO convention is used; 1 means Monday,
 7 means Sunday (default).}
 
-\item{date_vec}{Optional. A vector of dates to test for whether they are on
+\item{date_vec}{Optionally, a vector of dates to test for whether they are on
 the weekend. If missing, will simply return a schedule of weekend days.
 
 You can use \code{lubridate}'s global option
@@ -36,7 +36,10 @@ You can use \code{lubridate}'s global option
 A schedule of events occuring on the day types specified.
 }
 \description{
-Creates a schedule of events occuring on the types of days specified.
+Creates a schedule of events occuring on specified days of certain periods.
+
+The type of period (week, month, quarter, year) is determined by the
+function used.
 }
 \details{
 \itemize{
@@ -115,6 +118,11 @@ on_tuesday <- on_wday("Tue")
 on_tuesday(my_dates)
 
 on_weekend(my_dates)
+
+## Invalid inputs will produce an immediate error:
+\dontrun{
+on_mday(32)
+on_wday(8)}
 
 
 }
