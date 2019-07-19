@@ -1,7 +1,10 @@
 #' Specify the days of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring on the types of days specified.
+#' Creates a schedule of events occuring on specified days of certain periods.
+#'
+#' The type of period (week, month, quarter, year) is determined by the
+#' function used.
 #'
 #' @details
 #' * `on_mday` creates a schedule where the events occur only on the specified
@@ -49,7 +52,7 @@
 #' @param week_start If using the `on_wday` function with numeric day elements,
 #' you can specify which ISO convention is used; 1 means Monday,
 #' 7 means Sunday (default).
-#' @param date_vec Optional. A vector of dates to test for whether they are on
+#' @param date_vec Optionally, a vector of dates to test for whether they are on
 #' the weekend. If missing, will simply return a schedule of weekend days.
 #'
 #' You can use `lubridate`'s global option
@@ -78,6 +81,11 @@
 #'
 #' on_weekend(my_dates)
 #'
+#' ## Invalid inputs will produce an immediate error:
+#' \dontrun{
+#' on_mday(32)
+#' on_wday(8)}
+#'
 #'
 #' @export
 
@@ -86,6 +94,10 @@ on_mday <- function(...){
   x <- unlist(list(...))
 
   if(length(x) > 1) return(check_vec_loop(x, on_mday))
+
+  if(!(x%%1==0)) stop("Month days can only be whole numbers")
+  if(x > 31) stop("Month days cannot be greater than 31")
+  if(x < 1) stop("Month days cannot be zero or negative")
 
   make_element(x, lubridate::mday)
 }
@@ -99,6 +111,10 @@ on_yday <- function(...){
 
   if(length(x) > 1) return(check_vec_loop(x, on_yday))
 
+  if(!(x%%1==0)) stop("Year days can only be whole numbers")
+  if(x > 366) stop("Year days cannot be greater than 366")
+  if(x < 1) stop("Year days cannot be zero or negative")
+
   make_element(x, lubridate::yday)
 }
 
@@ -110,6 +126,10 @@ on_qday <- function(...){
   x <- unlist(list(...))
 
   if(length(x) > 1) return(check_vec_loop(x, on_qday))
+
+  if(!(x%%1==0)) stop("Quarter days can only be whole numbers")
+  if(x > 92) stop("Quarter days cannot be greater than 92")
+  if(x < 1) stop("Quarter days cannot be zero or negative")
 
   make_element(x, lubridate::qday)
 }
@@ -124,7 +144,7 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
   if(length(x) > 1) return(check_vec_loop(x, on_wday, week_start = week_start))
 
   if(!(x %in% get_all_day_specs())){
-    stop("x is not a legitimate wday name")}
+    stop("x is not a legitimate wday spec")}
 
   if(x %in% 1:7){
     partial_wday <- purrr::partial(lubridate::wday, week_start = week_start)
