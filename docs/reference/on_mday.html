@@ -132,6 +132,8 @@
 
 <span class='fu'>on_yday</span>(<span class='no'>...</span>)
 
+<span class='fu'>on_qday</span>(<span class='no'>...</span>)
+
 <span class='fu'>on_wday</span>(<span class='no'>...</span>, <span class='kw'>week_start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"lubridate.week.start"</span>, <span class='fl'>7</span>))
 
 <span class='fu'>on_weekend</span>()</pre>
@@ -141,13 +143,16 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>...</th>
-      <td><p>a numeric vector of day elements. In the case of <code>on_wday</code> the
+      <td><p>A numeric vector of day elements. In the case of <code>on_wday</code> the
 elements can also be characters (see details below).</p></td>
     </tr>
     <tr>
       <th>week_start</th>
-      <td><p>You can use <code>lubridate</code>'s global option <code>lubridate.week.start</code> to set this
-parameter globally</p></td>
+      <td><p>If using the <code>on_wday</code> function with numeric day elements,
+you can specify which ISO convention is used; 1 means Monday,
+7 means Sunday (default)</p>
+<p>You can use <code>lubridate</code>'s global option
+<code>lubridate.week.start</code> to set this parameter globally.</p></td>
     </tr>
     </table>
     
@@ -157,7 +162,49 @@ parameter globally</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>on_weekend()</code> is a convenience function for
+    <ul>
+<li><p><code>on_mday</code> creates a schedule where the events occur only on the specified
+days of the month. Eg. <code>on_mday(1)</code> for schedules with events occuring on
+the first day of every month. <code>on_mday(31)</code> for schedules with events
+occuring on the 31st day of every month (where that exists).</p></li>
+<li><p><code>on_mday</code> for days of the month. Eg:</p><ul>
+<li><p><code>on_mday(1)</code> for the 1st day of each month.</p></li>
+<li><p><code>on_mday(15)</code> for the 15th day of each month.</p></li>
+<li><p><code>on_mday(31)</code> for the 31st day of each month (where that exists).</p></li>
+</ul></li>
+<li><p><code>on_yday</code> for days of the year. Eg:</p><ul>
+<li><p><code>on_yday(1)</code> for the 1st day of each year.</p></li>
+<li><p><code>on_yday(300)</code> for the 300th day of each year.</p></li>
+<li><p><code>on_yday(366)</code> for the 366th day of each year (where that exists).</p></li>
+</ul></li>
+<li><p><code>on_qday</code> for days in the quarter. Eg:</p><ul>
+<li><p><code>on_qday(1)</code> for the 1st day of every quarter.</p></li>
+<li><p><code>on_qday(45)</code> for the 45th day of every quarter.</p></li>
+<li><p><code>on_qday(92)</code> for the 92nd day of every quarter (where that exists).</p></li>
+</ul></li>
+<li><p><code>on_wday</code> for days of the week.</p><ul>
+<li><p>These can be specified using numbers (where by default 1 is Sunday,
+see the <em>Arguments</em> section above.)</p><ul>
+<li><p><code>on_wday(1)</code> for Sundays.</p></li>
+<li><p><code>on_wday(7)</code> for Saturdays.</p></li>
+</ul></li>
+<li><p>Or using weekday names:</p><ul>
+<li><p><code>on_wday("Sunday")</code> for Sundays.</p></li>
+<li><p><code>on_wday("Saturday")</code> for Saturdays.</p></li>
+<li><p><code>on_wday("Wednesday")</code> for Wednesdays.</p></li>
+</ul></li>
+<li><p>Or their abbreviations:</p><ul>
+<li><p><code>on_wday("Sun")</code> for Sundays.</p></li>
+<li><p><code>on_wday("Sat")</code> for Saturdays.</p></li>
+<li><p><code>on_wday("Wed")</code> for Wednesdays.</p></li>
+</ul></li>
+</ul></li>
+</ul>
+    <p>Users can specify multiple day elements in a single call. For example
+<code>on_mday(1, 3)</code> produces a schedule of dates occuring on the 1st and 3rd
+days of every month. Likewise <code>on_wday("Tue", "Thu")</code> produces a schedule
+of events occuring every week on both Tuesdays and Thursdays.</p>
+<p><code>on_weekend()</code> is a convenience function for
 <code>on_wday("Sat", "Sun")</code></p>
     
 

@@ -3,6 +3,7 @@
 \name{on_mday}
 \alias{on_mday}
 \alias{on_yday}
+\alias{on_qday}
 \alias{on_wday}
 \alias{on_weekend}
 \title{Specify the days of a schedule}
@@ -11,16 +12,22 @@ on_mday(...)
 
 on_yday(...)
 
+on_qday(...)
+
 on_wday(..., week_start = getOption("lubridate.week.start", 7))
 
 on_weekend()
 }
 \arguments{
-\item{...}{a numeric vector of day elements. In the case of \code{on_wday} the
+\item{...}{A numeric vector of day elements. In the case of \code{on_wday} the
 elements can also be characters (see details below).}
 
-\item{week_start}{You can use \code{lubridate}'s global option \code{lubridate.week.start} to set this
-parameter globally}
+\item{week_start}{If using the \code{on_wday} function with numeric day elements,
+you can specify which ISO convention is used; 1 means Monday,
+7 means Sunday (default)
+
+You can use \code{lubridate}'s global option
+\code{lubridate.week.start} to set this parameter globally.}
 }
 \value{
 A schedule of events occuring on the day types specified.
@@ -29,6 +36,57 @@ A schedule of events occuring on the day types specified.
 Creates a schedule of events occuring on the types of days specified.
 }
 \details{
+\itemize{
+\item \code{on_mday} creates a schedule where the events occur only on the specified
+days of the month. Eg. \code{on_mday(1)} for schedules with events occuring on
+the first day of every month. \code{on_mday(31)} for schedules with events
+occuring on the 31st day of every month (where that exists).
+\item \code{on_mday} for days of the month. Eg:
+\itemize{
+\item \code{on_mday(1)} for the 1st day of each month.
+\item \code{on_mday(15)} for the 15th day of each month.
+\item \code{on_mday(31)} for the 31st day of each month (where that exists).
+}
+\item \code{on_yday} for days of the year. Eg:
+\itemize{
+\item \code{on_yday(1)} for the 1st day of each year.
+\item \code{on_yday(300)} for the 300th day of each year.
+\item \code{on_yday(366)} for the 366th day of each year (where that exists).
+}
+\item \code{on_qday} for days in the quarter. Eg:
+\itemize{
+\item \code{on_qday(1)} for the 1st day of every quarter.
+\item \code{on_qday(45)} for the 45th day of every quarter.
+\item \code{on_qday(92)} for the 92nd day of every quarter (where that exists).
+}
+\item \code{on_wday} for days of the week.
+\itemize{
+\item These can be specified using numbers (where by default 1 is Sunday,
+see the \emph{Arguments} section above.)
+\itemize{
+\item \code{on_wday(1)} for Sundays.
+\item \code{on_wday(7)} for Saturdays.
+}
+\item Or using weekday names:
+\itemize{
+\item \code{on_wday("Sunday")} for Sundays.
+\item \code{on_wday("Saturday")} for Saturdays.
+\item \code{on_wday("Wednesday")} for Wednesdays.
+}
+\item Or their abbreviations:
+\itemize{
+\item \code{on_wday("Sun")} for Sundays.
+\item \code{on_wday("Sat")} for Saturdays.
+\item \code{on_wday("Wed")} for Wednesdays.
+}
+}
+}
+
+Users can specify multiple day elements in a single call. For example
+\code{on_mday(1, 3)} produces a schedule of dates occuring on the 1st and 3rd
+days of every month. Likewise \code{on_wday("Tue", "Thu")} produces a schedule
+of events occuring every week on both Tuesdays and Thursdays.
+
 \code{on_weekend()} is a convenience function for
 \code{on_wday("Sat", "Sun")}
 }
