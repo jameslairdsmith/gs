@@ -18,5 +18,6 @@ reference:
   - title: "Basic schedules"
     desc: "The buildings blocks of schedules."
     contents:
+      - on_mday
       - in_week
       - in_month

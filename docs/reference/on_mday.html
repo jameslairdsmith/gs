@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • scheduler</title>
+<title>Specify the days of a schedule — on_mday • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Specify the days of a schedule — on_mday" />
+
+<meta property="og:description" content="Creates a schedule of events occuring on the types of days specified." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,54 +115,63 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Specify the days of a schedule</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/day.R'><code>R/day.R</code></a></small>
+    <div class="hidden name"><code>on_mday.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Creates a schedule of events occuring on the types of days specified.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>on_mday</span>(<span class='no'>...</span>)
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-basic-schedules" class="hasAnchor"><a href="#section-basic-schedules" class="anchor"></a>Basic schedules</h2>
-          <p class="section-desc"><p>The buildings blocks of schedules.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="on_mday.html">on_mday()</a></code> <code><a href="on_mday.html">on_yday()</a></code> <code><a href="on_mday.html">on_wday()</a></code> <code><a href="on_mday.html">on_weekend()</a></code> </p>
-        </td>
-        <td><p>Specify the days of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_week.html">in_week()</a></code> <code><a href="in_week.html">in_isoweek()</a></code> </p>
-        </td>
-        <td><p>Specify the weeks of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_month.html">in_month()</a></code> </p>
-        </td>
-        <td><p>Specify the months of a schedule</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>on_yday</span>(<span class='no'>...</span>)
+
+<span class='fu'>on_wday</span>(<span class='no'>...</span>, <span class='kw'>week_start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"lubridate.week.start"</span>, <span class='fl'>7</span>))
+
+<span class='fu'>on_weekend</span>()</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>a numeric vector of day elements. In the case of <code>on_wday</code> the
+elements can also be characters (see details below).</p></td>
+    </tr>
+    <tr>
+      <th>week_start</th>
+      <td><p>You can use <code>lubridate</code>'s global option <code>lubridate.week.start</code> to set this
+parameter globally</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A schedule of events occuring on the day types specified.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>on_weekend()</code> is a convenience function for
+<code>on_wday("Sat", "Sun")</code></p>
+    
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-basic-schedules">Basic schedules</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
+
   </div>
 </div>
 
