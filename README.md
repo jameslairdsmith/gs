@@ -9,8 +9,6 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-## Overview
-
 Recurring calendar events are very common in everyday life. When they
 occur in regular or quasi-regular patterns they are called ‘schedules’.
 Schedules can and do take many forms. While some are straightforward,
