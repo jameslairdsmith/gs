@@ -19,6 +19,16 @@ test_that("on_yday function works with multiple inputs", {
   expect_false(test_date(dmy("03/01/2000"), first_or_second_day_of_year))
 })
 
+test_that("on_yday function errors on invalid input", {
+
+  expect_error(on_yday(367))
+  expect_error(on_yday(3678))
+  expect_error(on_yday(0))
+  expect_error(on_yday(1.5))
+  expect_error(on_yday(-1))
+  expect_error(on_yday(-365))
+})
+
 test_that("on_qday function works", {
 
   first_day_of_quarter <- on_qday(1)
@@ -26,6 +36,15 @@ test_that("on_qday function works", {
   expect_true(test_date(dmy("01/01/2000"), first_day_of_quarter))
   expect_true(test_date(dmy("01/04/2000"), first_day_of_quarter))
   expect_false(test_date(dmy("02/04/2000"), first_day_of_quarter))
+})
+
+test_that("on_qday function errors on invalid input", {
+
+  expect_error(on_qday(93))
+  expect_error(on_qday(0))
+  expect_error(on_qday(1.5))
+  expect_error(on_qday(-1))
+  expect_error(on_qday(-90))
 })
 
 test_that("on_qday function works with multiple inputs", {
@@ -49,6 +68,15 @@ test_that("on_mday function works", {
   expect_true(test_date(dmy("01/04/2000"), first_day_of_month))
   expect_false(test_date(dmy("02/04/2000"), first_day_of_month))
   expect_false(test_date(dmy("02/01/2000"), first_day_of_month))
+})
+
+test_that("on_mday function errors with invalid input", {
+
+  expect_error(on_mday(32))
+  expect_error(on_mday(0))
+  expect_error(on_mday(-1))
+  expect_error(on_mday(1.5))
+  expect_error(on_mday(-30))
 })
 
 test_that("on_mday function works with multiple inputs", {
