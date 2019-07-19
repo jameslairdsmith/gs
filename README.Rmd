@@ -14,15 +14,19 @@ knitr::opts_chunk$set(
 ```
 # scheduler
 
-Recurring calendar events are very common in everyday life. While some kinds are
-straightforward to deal with, others are difficult to conceptualise and therefore
-difficult to program with.
+Recurring calendar events are very common in everyday life. When they occur in
+regular or quasi-regular patterns they are called 'schedules'. Schedules can and
+do take many forms. While some are straightforward, others are complex 
+making them difficult to conceptualise, use and program with.
 
-The goal of `scheduler` is to make dealing with recurring calendar events a little
-easier by providing both a conceptual framework in which they can be constructed
-and tools that allow users to program with them.
+`scheduler` is an R package the goal of which is to make dealing with
+these schedules a little easier. It does this by providing a set of simple
+to understand functions and a flexible framework for using them together. 
+Together these allow users to compose more complex schedules from simple and 
+intutive buildings blocks.
 
-The package is in the early development stage and experimental. It can be 
+The package is in the early development stage and experimental. Users are 
+cautioned against relying on it for anything of importance. It can be 
 downloaded from Github:
 
 ```{r, eval = FALSE}
