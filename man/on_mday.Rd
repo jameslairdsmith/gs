@@ -36,17 +36,16 @@ You can use \code{lubridate}'s global option
 A schedule of events occuring on the day types specified.
 }
 \description{
-Creates a schedule of events occuring on specified days of certain periods.
+Creates a schedule of events occuring on the specified days of certain
+periods.
 
 The type of period (week, month, quarter, year) is determined by the
 function used.
 }
 \details{
+Each function creates a schedule where the events occur only on the specified
+days within the given period:
 \itemize{
-\item \code{on_mday} creates a schedule where the events occur only on the specified
-days of the month. Eg. \code{on_mday(1)} for schedules with events occuring on
-the first day of every month. \code{on_mday(31)} for schedules with events
-occuring on the 31st day of every month (where that exists).
 \item \code{on_mday} for days of the month. Eg:
 \itemize{
 \item \code{on_mday(1)} for the 1st day of each month.

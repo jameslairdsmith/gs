@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Specify the days of a schedule — on_mday" />
 
-<meta property="og:description" content="Creates a schedule of events occuring on specified days of certain periods.
+<meta property="og:description" content="Creates a schedule of events occuring on the specified days of certain
+periods.
 The type of period (week, month, quarter, year) is determined by the
 function used." />
 <meta name="twitter:card" content="summary" />
@@ -126,7 +127,8 @@ function used." />
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occuring on specified days of certain periods.</p>
+    <p>Creates a schedule of events occuring on the specified days of certain
+periods.</p>
 <p>The type of period (week, month, quarter, year) is determined by the
 function used.</p>
     
@@ -171,11 +173,8 @@ the weekend. If missing, will simply return a schedule of weekend days.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <ul>
-<li><p><code>on_mday</code> creates a schedule where the events occur only on the specified
-days of the month. Eg. <code>on_mday(1)</code> for schedules with events occuring on
-the first day of every month. <code>on_mday(31)</code> for schedules with events
-occuring on the 31st day of every month (where that exists).</p></li>
+    <p>Each function creates a schedule where the events occur only on the specified
+days within the given period:</p><ul>
 <li><p><code>on_mday</code> for days of the month. Eg:</p><ul>
 <li><p><code>on_mday(1)</code> for the 1st day of each month.</p></li>
 <li><p><code>on_mday(15)</code> for the 15th day of each month.</p></li>

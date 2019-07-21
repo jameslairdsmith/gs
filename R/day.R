@@ -1,16 +1,15 @@
 #' Specify the days of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring on specified days of certain periods.
+#' Creates a schedule of events occuring on the specified days of certain
+#' periods.
 #'
 #' The type of period (week, month, quarter, year) is determined by the
 #' function used.
 #'
 #' @details
-#' * `on_mday` creates a schedule where the events occur only on the specified
-#' days of the month. Eg. `on_mday(1)` for schedules with events occuring on
-#' the first day of every month. `on_mday(31)` for schedules with events
-#' occuring on the 31st day of every month (where that exists).
+#' Each function creates a schedule where the events occur only on the specified
+#' days within the given period:
 #' * `on_mday` for days of the month. Eg:
 #'     - `on_mday(1)` for the 1st day of each month.
 #'     - `on_mday(15)` for the 15th day of each month.
