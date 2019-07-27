@@ -57,7 +57,7 @@
 #' You can use `lubridate`'s global option
 #' `lubridate.week.start` to set this parameter globally.
 #'
-#' @keywords month, date, scedule
+#' @keywords month, day, date, schedule
 #' @return A schedule of events occuring on the day types specified.
 #' @examples
 #'

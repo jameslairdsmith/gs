@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • scheduler</title>
+<title>Specify the dates of a schedule — on_date • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Specify the dates of a schedule — on_date" />
+
+<meta property="og:description" content="Creates a schedule of events occuring on the dates specified." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -112,75 +115,60 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Specify the dates of a schedule</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/date.R'><code>R/date.R</code></a></small>
+    <div class="hidden name"><code>on_date.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Creates a schedule of events occuring on the dates specified.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-basic-schedules" class="hasAnchor"><a href="#section-basic-schedules" class="anchor"></a>Basic schedules</h2>
-          <p class="section-desc"><p>The buildings blocks of schedules.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="on_date.html">on_date()</a></code> </p>
-        </td>
-        <td><p>Specify the dates of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="on_mday.html">on_mday()</a></code> <code><a href="on_mday.html">on_yday()</a></code> <code><a href="on_mday.html">on_qday()</a></code> <code><a href="on_mday.html">on_wday()</a></code> <code><a href="on_mday.html">on_weekend()</a></code> </p>
-        </td>
-        <td><p>Specify the days of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_week.html">in_week()</a></code> <code><a href="in_week.html">in_isoweek()</a></code> </p>
-        </td>
-        <td><p>Specify the weeks of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_month.html">in_month()</a></code> </p>
-        </td>
-        <td><p>Specify the months of a schedule</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-compose-schedules" class="hasAnchor"><a href="#section-compose-schedules" class="anchor"></a>Compose schedules</h2>
-          <p class="section-desc"><p>Weave schedules together.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="after.html">after()</a></code> <code><a href="after.html">before()</a></code> </p>
-        </td>
-        <td><p>Create a schedule of events occuring before or after other events</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>on_date</span>(<span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>A vector of dates.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>A schedule of events occuring on the dates specified.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This function is best used when making changes to other schedules where
+those changes fall on defined dates.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='no'>on_first_day_millennium</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))
+<span class='no'>on_first_or_second_day_millennium</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
+                                             <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))
+
+<span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-03"</span>))</div><div class='output co'>#&gt; [1] FALSE</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-basic-schedules">Basic schedules</a></li>
-      <li><a href="#section-compose-schedules">Compose schedules</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 

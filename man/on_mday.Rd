@@ -126,5 +126,6 @@ on_wday(8)}
 
 }
 \keyword{date,}
+\keyword{day,}
 \keyword{month,}
-\keyword{scedule}
+\keyword{schedule}

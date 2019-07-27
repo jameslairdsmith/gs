@@ -18,6 +18,12 @@ reference:
   - title: "Basic schedules"
     desc: "The buildings blocks of schedules."
     contents:
+      - on_date
       - on_mday
       - in_week
       - in_month
+  - title: "Compose schedules"
+    desc: "Weave schedules together."
+    contents:
+      - after
+
