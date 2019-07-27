@@ -22,6 +22,7 @@ reference:
       - on_mday
       - in_week
       - in_month
+      - in_quarter
   - title: "Compose schedules"
     desc: "Weave schedules together."
     contents:
