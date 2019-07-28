@@ -92,7 +92,39 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scheduler)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(lubridate))</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scheduler))</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/message">suppressPackageStartupMessages</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr))</a></code></pre></div>
+<p>The first step is to create the accessor function. This is function whcih takes a date or dates as input and returns the type of period the date or dates occur in.</p>
+<p>You will already be familiure with accessor functions from lubridate, even if you haven’t called them that.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">my_dates &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq.Date">seq.Date</a></span>(<span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2018-01-01"</span>),</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">                     <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2019-12-01"</span>),</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">                     <span class="dt">by =</span> <span class="st">"1 month"</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span>(my_dates)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10 11 12  1  2  3  4  5  6  7  8  9 10 11</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; [24] 12</span></a></code></pre></div>
+<p>Now we need a custom period.</p>
+<p>Let us use the terms of Oxford University.</p>
+<p>I recommend using the case_when() function from <code>{dplyr}</code>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">oxford_terms &lt;-<span class="st"> </span><span class="cf">function</span>(date_vector){</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">  <span class="kw"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span>(</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">    date_vector <span class="op">&gt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"07/10/2018"</span>) <span class="op">&amp;</span><span class="st"> </span>date_vector <span class="op">&lt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"01/12/2018"</span>) <span class="op">~</span><span class="st"> "Michaelmas 2018"</span>,</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4">    date_vector <span class="op">&gt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"13/01/2019"</span>) <span class="op">&amp;</span><span class="st"> </span>date_vector <span class="op">&lt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"09/03/2019"</span>) <span class="op">~</span><span class="st"> "Hilary 2019"</span>,</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">    date_vector <span class="op">&gt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"28/04/2019"</span>) <span class="op">&amp;</span><span class="st"> </span>date_vector <span class="op">&lt;=</span><span class="st"> </span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/ymd.html">dmy</a></span>(<span class="st">"22/06/2019"</span>) <span class="op">~</span><span class="st"> "Trinity 2019"</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">  )</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">}</a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw">oxford_terms</span>(my_dates)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt;  [1] NA                NA                NA               </span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;  [4] NA                NA                NA               </span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;  [7] NA                NA                NA               </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; [10] NA                "Michaelmas 2018" "Michaelmas 2018"</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; [13] NA                "Hilary 2019"     "Hilary 2019"    </span></a>
+<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt; [16] NA                "Trinity 2019"    "Trinity 2019"   </span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="co">#&gt; [19] NA                NA                NA               </span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17"><span class="co">#&gt; [22] NA                NA                NA</span></a></code></pre></div>
+<p>Now plug into another function.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
