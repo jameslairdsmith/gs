@@ -3,7 +3,7 @@ template:
     bootswatch: spacelab
 navbar:
   structure:
-    left:  [home, intro, reference]
+    left:  [home, intro, my_articles, reference]
     right: [github]
   components:
     home:
@@ -11,6 +11,12 @@ navbar:
     intro:
       text: Intro
       href: articles/intro.html
+    articles: ~
+    my_articles:
+      text: Articles
+      menu:
+      - text: Using custom periods
+        href: articles/using-custom-periods.html
     reference:
       text: Reference
 
