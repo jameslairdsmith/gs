@@ -10,14 +10,16 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning =  FALSE,
+  message = FALSE
 )
 ```
 
 ```{r setup}
-suppressPackageStartupMessages(library(lubridate))
-suppressPackageStartupMessages(library(scheduler))
-suppressPackageStartupMessages(library(dplyr))
+library(lubridate)
+library(scheduler)
+library(dplyr)
 ```
 
 The first step is to create the accessor function. This is function whcih
