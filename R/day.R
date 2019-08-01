@@ -44,7 +44,8 @@
 #'  week on both Tuesdays and Thursdays.
 #'
 #' `on_weekend()` is a convenience function for
-#' `on_wday("Sat", "Sun")`
+#' `on_wday("Sat", "Sun")`. `on_weekday()` is a convenience function for
+#' `not_occuring(on_wday("Sat", "Sun"))`.
 #'
 #' @param ... A numeric vector of day specifications. In the case of `on_wday` the
 #' elements can also be characters (see details below).
@@ -78,7 +79,11 @@
 #' on_tuesday <- on_wday("Tue")
 #' on_tuesday(my_dates)
 #'
+#' on_tuesday_or_thursday <- on_wday("Tue", "Thu")
+#' on_tuesday_or_thursday(my_dates)
+#'
 #' on_weekend(my_dates)
+#' on_weekday(my_dates)
 #'
 #' ## Invalid inputs will produce an immediate error:
 #' \dontrun{
@@ -162,7 +167,20 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 #' @export
 
 on_weekend <- function(date_vec = NULL){
+
   out_func <- on_wday("Sat", "Sun")
+
+  if(!missing(date_vec)) return(out_func(date_vec))
+
+  out_func
+}
+
+#' @rdname on_mday
+#' @export
+
+on_weekday <- function(date_vec = NULL){
+
+  out_func <- not_occuring(on_wday("Sat", "Sun"))
 
   if(!missing(date_vec)) return(out_func(date_vec))
 

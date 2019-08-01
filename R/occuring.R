@@ -1,3 +1,4 @@
+#' @export
 also_occuring <- function(elem_1, elem_2){
 
   envoke_list <- list(elem_2, elem_1)
@@ -11,6 +12,8 @@ also_occuring <- function(elem_1, elem_2){
   out
 
 }
+
+#' @export
 
 only_occuring <- function(elem_1, elem_2){
 
@@ -38,6 +41,7 @@ only_occuring <- function(elem_1, elem_2){
   out
 }
 
+#' @export
 not_occuring <- function(elem_1, elem_2 = NULL){
 
   if(is.null(elem_2)){

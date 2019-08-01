@@ -6,6 +6,7 @@
 \alias{on_qday}
 \alias{on_wday}
 \alias{on_weekend}
+\alias{on_weekday}
 \title{Specify the days of a schedule}
 \usage{
 on_mday(...)
@@ -17,6 +18,8 @@ on_qday(...)
 on_wday(..., week_start = getOption("lubridate.week.start", 7))
 
 on_weekend(date_vec = NULL)
+
+on_weekday(date_vec = NULL)
 }
 \arguments{
 \item{...}{A numeric vector of day specifications. In the case of \code{on_wday} the
@@ -95,7 +98,8 @@ occuring on the first five days of every month. Similarly
 week on both Tuesdays and Thursdays.
 
 \code{on_weekend()} is a convenience function for
-\code{on_wday("Sat", "Sun")}
+\code{on_wday("Sat", "Sun")}. \code{on_weekday()} is a convenience function for
+\code{not_occuring(on_wday("Sat", "Sun"))}.
 }
 \examples{
 
@@ -116,7 +120,11 @@ on_first_day_of_quarter(my_dates)
 on_tuesday <- on_wday("Tue")
 on_tuesday(my_dates)
 
+on_tuesday_or_thursday <- on_wday("Tue", "Thu")
+on_tuesday_or_thursday(my_dates)
+
 on_weekend(my_dates)
+on_weekday(my_dates)
 
 ## Invalid inputs will produce an immediate error:
 \dontrun{

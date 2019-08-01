@@ -12,14 +12,16 @@ before(x, within_given = NULL)
 \arguments{
 \item{x}{Either a date object or a schedule.}
 
-\item{within_given}{Required when}
+\item{within_given}{A date accessor function. Required only when \code{x} is a
+schedule. Puts a limit on how far into the future the schedule will
+extend. Used to avoid an infinite cycle.}
 }
 \value{
 A schedule of events occuring after or before the events specified.
 }
 \description{
 Creates a schedule of events occuring before or after a certain date or
-another scheduled event within a certain period.
+another scheduled event within a period.
 }
 \details{
 When \code{x} is a date.
@@ -29,8 +31,11 @@ When \code{x} is a schedule...
 When \code{x} is a date, it saves having to...
 }
 \examples{
-x <- 1
-x
+on_christmas <- on_mday(25) \%>\% only_occuring(in_month("Dec"))
+
+after_christmas <- after(on_christmas, within_given = lubridate::year)
+
+schedule(after_christmas, during = 2000)
 }
 \keyword{after,}
 \keyword{before,}

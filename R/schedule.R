@@ -1,4 +1,4 @@
-## Consider how this should work with also_occuring() functions.
+#' @export
 
 schedule <- function(x, from, to, during = NULL, ...){
 
