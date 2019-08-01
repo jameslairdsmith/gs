@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a schedule of events occuring before or after other events — after • scheduler</title>
+<title>Specify the start and end of a schedule — after • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,7 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Create a schedule of events occuring before or after other events — after" />
+<meta property="og:title" content="Specify the start and end of a schedule — after" />
 
 <meta property="og:description" content="Creates a schedule of events occuring before or after a certain date or
 another scheduled event within a period." />
@@ -118,7 +118,7 @@ another scheduled event within a period." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a schedule of events occuring before or after other events</h1>
+    <h1>Specify the start and end of a schedule</h1>
     <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/direction.R'><code>R/direction.R</code></a></small>
     <div class="hidden name"><code>after.Rd</code></div>
     </div>
@@ -165,8 +165,9 @@ extend. Used to avoid an infinite cycle.</p></td>
 
 <span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>on_christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'>schedule</span>(<span class='no'>after_christmas</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt; [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
-#&gt; [6] "2000-12-31"</div></pre>
+<span class='fu'>schedule</span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+#&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
+#&gt; [11] "2001-12-30" "2001-12-31"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

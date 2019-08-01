@@ -3,7 +3,7 @@
 \name{after}
 \alias{after}
 \alias{before}
-\title{Create a schedule of events occuring before or after other events}
+\title{Specify the start and end of a schedule}
 \usage{
 after(x, within_given = NULL)
 
@@ -35,7 +35,7 @@ on_christmas <- on_mday(25) \%>\% only_occuring(in_month("Dec"))
 
 after_christmas <- after(on_christmas, within_given = lubridate::year)
 
-schedule(after_christmas, during = 2000)
+schedule(after_christmas, from = 2000, to = 2001)
 }
 \keyword{after,}
 \keyword{before,}

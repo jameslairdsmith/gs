@@ -1,4 +1,4 @@
-#' Create a schedule of events occuring before or after other events
+#' Specify the start and end of a schedule
 #'
 #' @description
 #' Creates a schedule of events occuring before or after a certain date or
@@ -23,7 +23,7 @@
 #'
 #' after_christmas <- after(on_christmas, within_given = lubridate::year)
 #'
-#' schedule(after_christmas, during = 2000)
+#' schedule(after_christmas, from = 2000, to = 2001)
 #' @export
 
 after <- function(x, within_given = NULL){
