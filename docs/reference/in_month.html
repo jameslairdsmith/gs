@@ -164,13 +164,13 @@ abbreviations (eg. "Jan") or integers (eg. 1).</p>
 <span class='fu'>in_march</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
 <span class='no'>in_jan_or_feb</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Feb"</span>)
 <span class='fu'>in_jan_or_feb</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE</div><div class='input'>
-<span class='co'>## You can even mix your month specs.</span>
+<span class='co'>## You can even mix your month specs, although I don't recommend it</span>
 <span class='no'>in_jan_feb_mar</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"January"</span>, <span class='st'>"Feb"</span>, <span class='fl'>3</span>)
 <span class='fu'>in_jan_feb_mar</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error
 </div><span class='co'># NOT RUN {</span>
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Janu"</span>)
-<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>13</span>)
+<span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='fl'>0</span>)
 <span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

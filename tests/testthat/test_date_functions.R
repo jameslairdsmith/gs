@@ -131,4 +131,20 @@ test_that("before() function works on a date value",{
 
 })
 
+test_that("in_between() function works on schedules",{
+
+  on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
+  on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+
+  in_between_christmas_and_new_years <-
+         in_between(on_christmas,
+                    on_new_years_eve,
+                    within_given = lubridate::year)
+
+  res <- schedule(in_between_christmas_and_new_years, from = 2000, to = 2001)
+
+  exected_result <- seq.Date()
+
+})
+
 

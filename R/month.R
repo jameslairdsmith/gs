@@ -29,14 +29,14 @@
 #' in_jan_or_feb <- in_month("Jan", "Feb")
 #' in_jan_or_feb(my_dates)
 #'
-#' ## You can even mix your month specs.
+#' ## You can even mix your month specs, although I don't recommend it
 #' in_jan_feb_mar <- in_month("January", "Feb", 3)
 #' in_jan_feb_mar(my_dates)
 #'
 #' ## invalid inputs will produce an immediate error
 #' \dontrun{
 #' in_january <- in_month("Janu")
-#' in_january <- in_month(13)}
+#' in_january <- in_month(0)}
 #' @export
 
 
