@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Creates a schedule of events occuring before or after a certain date or
-#' another scheduled event within a period.
+#' scheduled event.
 #'
 #' @details
 #' When `x` is a date.
@@ -15,6 +15,7 @@
 #' @param within_given A date accessor function. Required only when `x` is a
 #'  schedule. Puts a limit on how far into the future the schedule will
 #'  extend. Used to avoid an infinite cycle.
+#' @param start_date,end_date The start end end event of the schedule.
 #'
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring after or before the events specified.
@@ -24,6 +25,16 @@
 #' after_christmas <- after(on_christmas, within_given = lubridate::year)
 #'
 #' schedule(after_christmas, from = 2000, to = 2001)
+#'
+#' on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+#'
+#' in_between_christmas_and_new_years <-
+#'     in_between(on_christmas,
+#'                on_new_years_eve,
+#'                within_given = lubridate::year)
+#'
+#' schedule(in_between_christmas_and_new_years, from = 2000, to = 2001)
+#'
 #' @export
 
 after <- function(x, within_given = NULL){
@@ -72,7 +83,7 @@ after <- function(x, within_given = NULL){
 
 before <- function(x, within_given = NULL){
 
-  if(is.Date(x)){
+  if(lubridate::is.Date(x)){
 
     out <- function(date){
       date < x
@@ -109,4 +120,21 @@ before <- function(x, within_given = NULL){
   class(out) <- "schedule"
 
   out
+}
+
+#' @rdname after
+#' @export
+
+in_between <- function(start_event, end_event, within_given = NULL){
+
+  if(is.numeric(start_event)){
+    start_event <- lubridate::make_date(year = start_event)
+  }
+
+  if(is.numeric(end_event)){
+    end_event <- lubridate::make_date(year = end_event, month = 12, day = 31)
+  }
+
+  only_occuring(after(start_event, within_given = within_given),
+                before(end_event, within_given = within_given))
 }
