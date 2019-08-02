@@ -141,9 +141,13 @@ test_that("in_between() function works on schedules",{
                     on_new_years_eve,
                     within_given = lubridate::year)
 
-  res <- schedule(in_between_christmas_and_new_years, from = 2000, to = 2001)
+  result <- schedule(in_between_christmas_and_new_years, from = 2000, to = 2000)
 
-  exected_result <- seq.Date()
+  exected_result <- seq.Date(from = ymd("2000-12-26"),
+                             to = ymd("2000-12-30"),
+                             by = "1 day")
+
+  expect_equal(result, exected_result)
 
 })
 
