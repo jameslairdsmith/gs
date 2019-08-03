@@ -44,15 +44,7 @@ in_month <- function(...){
 
    x <- unlist(list(...))
 
-   if(length(x) > 1){
-
-      my_schedule <- in_month(x[1])
-
-      for(i in 2:length(x)){
-         my_schedule <- also_occuring(my_schedule, in_month(x[i]))
-      }
-      return(my_schedule)
-   }
+   if(length(x) > 1) return(check_vec_loop(x, in_month))
 
    if(!(x %in% get_all_month_specs())){
       stop("x is not a legitimate month name")}
