@@ -17,6 +17,8 @@ navbar:
       menu:
       - text: Using custom periods
         href: articles/using-custom-periods.html
+      - text: Understanding schedule limits
+        href: articles/understanding-schedule-limits.html
     reference:
       text: Reference
 

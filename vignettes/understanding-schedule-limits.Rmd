@@ -1,0 +1,43 @@
+---
+title: "understanding-schedule-limits"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{understanding-schedule-limits}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Once you have created a schedule object with your desired specifications, 
+`scheduler` allows you to retrieve the dates which fall on that schedule. This
+is done using the `schedule_*()` family of functions. 
+
+Under normal circumstances this process should be seamless and intuitive, but
+for those looking for a deeper understanding of how it works. To do so, you
+need first to load the package:
+
+```{r setup}
+library(scheduler)
+```
+
+
+The nature of recurring calendar events is that there are a theoretically 
+infinite number of possible occurrences. If you ask `scheduler` to retrieve
+for you all the occurrences of Christmas, you will see that it refuses to do so:
+
+```{r}
+on_mday(25) %>% 
+  only_occuring(in_month("Dec")) %>% 
+  schedule()
+```
+
+This is possible because `scheduler` knows the number of possible Christmases
+is infinite and that it cannot produce for you the complete set. To make your
+request possible, you must place some limit on which Christmases you wish to
+schedule.
