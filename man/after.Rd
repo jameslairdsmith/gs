@@ -36,12 +36,11 @@ When \code{x} is a date, it saves having to...
 }
 \examples{
 on_christmas <- on_mday(25) \%>\% only_occuring(in_month("Dec"))
+on_new_years_eve <- on_mday(31) \%>\% only_occuring(in_month("Dec"))
 
 after_christmas <- after(on_christmas, within_given = lubridate::year)
 
 schedule(after_christmas, from = 2000, to = 2001)
-
-on_new_years_eve <- on_mday(31) \%>\% only_occuring(in_month("Dec"))
 
 in_between_christmas_and_new_years_eve <-
     in_between(on_christmas,
