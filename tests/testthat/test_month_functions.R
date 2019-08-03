@@ -30,6 +30,27 @@ test_that("in_month function works with two numbers", {
   expect_true(test_date(dmy("13/08/1990"), in_july_or_aug))
   expect_false(test_date(dmy("12/06/1990"), in_july_or_aug))
   expect_false(test_date(dmy("13/06/1990"), in_july_or_aug))
+
+  result <- schedule(in_july_or_aug, during = 2000)
+  expected_result <- seq.Date(from = dmy("01/07/2000"),
+                               to = dmy("31/08/2000"),
+                               by = "1 day")
+
+  expect_equal(result, expected_result)
+
+})
+
+test_that("in_month function works with two numbers, one in Feb", {
+
+  in_feb_march <- in_month(2, 3)
+
+  result <- schedule(in_feb_march, during = 2001)
+  expected_result <- seq.Date(from = dmy("01/02/2001"),
+                              to = dmy("31/03/2001"),
+                              by = "1 day")
+
+  expect_equal(result, expected_result)
+
 })
 
 test_that("in_month function works with string numbers", {
