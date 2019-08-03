@@ -1,5 +1,5 @@
 ---
-title: "understanding-schedule-limits"
+title: "Understanding schedule limits"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{understanding-schedule-limits}
@@ -24,6 +24,7 @@ need first to load the package:
 
 ```{r setup}
 library(scheduler)
+library(magrittr)
 ```
 
 
@@ -31,13 +32,47 @@ The nature of recurring calendar events is that there are a theoretically
 infinite number of possible occurrences. If you ask `scheduler` to retrieve
 for you all the occurrences of Christmas, you will see that it refuses to do so:
 
-```{r}
-on_mday(25) %>% 
+```{r eval=FALSE}
+on_mday(25) %>%
   only_occuring(in_month("Dec")) %>% 
   schedule()
+#> Error in seq.Date(from = from, to = to, by = "1 day"): 'from' must be a "Date" object
 ```
 
 This is possible because `scheduler` knows the number of possible Christmases
 is infinite and that it cannot produce for you the complete set. To make your
 request possible, you must place some limit on which Christmases you wish to
 schedule.
+
+The `schedule()` funcion provides you a way to do that. It has arguments `from`
+and `to`, which allow you to specify the start and end dates of the schedule.
+So if you wanted to retrieve the first five Christmases of this millenium, you
+could do so as follows:
+
+```{r}
+on_mday(25) %>% 
+  only_occuring(in_month("Dec")) %>% 
+  schedule(from = as.Date("2000-01-01"), to = as.Date("2004-12-31"))
+```
+
+To be more succinct, the `schedule()` function will also accept numeric years
+for these arguments. This is a convenient way of specifying from the start of
+the first year to the end of the last year (equivalent to the code directly
+above):
+
+```{r}
+on_mday(25) %>% 
+  only_occuring(in_month("Dec")) %>% 
+  schedule(from = 2000, to = 2004)
+```
+
+If you only interested in events occuring during a single calendar year, you
+can also use the during function, which creates date limits from the start of 
+the specified year to the end:
+
+```{r}
+on_mday(25) %>% 
+  only_occuring(in_month("Dec")) %>% 
+  schedule(during = 2000)
+```
+
