@@ -30,6 +30,8 @@ scheduled event.
 \details{
 When \code{x} is a date.
 
+When \code{x} is a year.
+
 When \code{x} is a schedule...
 
 When \code{x} is a date, it saves having to...

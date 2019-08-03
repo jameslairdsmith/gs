@@ -7,6 +7,8 @@
 #' @details
 #' When `x` is a date.
 #'
+#' When `x` is a year.
+#'
 #' When `x` is a schedule...
 #'
 #' When `x` is a date, it saves having to...
