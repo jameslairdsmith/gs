@@ -4,7 +4,6 @@
 \alias{after}
 \alias{before}
 \alias{in_between}
-\alias{during}
 \title{Specify the start and end of a schedule}
 \usage{
 after(start_event, within_given = NULL)
@@ -12,8 +11,6 @@ after(start_event, within_given = NULL)
 before(end_event, within_given = NULL)
 
 in_between(start_event, end_event, within_given = NULL)
-
-during(year)
 }
 \arguments{
 \item{start_event, end_event}{The start and/or end events of the schedule.
@@ -40,12 +37,6 @@ When \code{x} is a year.
 When \code{x} is a schedule...
 
 When \code{x} is a date, it saves having to...
-
-\code{during()} is a convenience function for when events occur only within a
-given year, inclusive of the first and last days.
-Eg. for a schedule of events occuring only in the year 2000,
-\code{during(2000)} can be used instead of
-\code{in_between(as.Date("1999-12-31"), as.Date("2001-01-01"))}.
 }
 \examples{
 on_christmas <- on_mday(25) \%>\% only_occuring(in_month("Dec"))

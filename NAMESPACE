@@ -3,7 +3,6 @@
 export(after)
 export(also_occuring)
 export(before)
-export(during)
 export(in_between)
 export(in_isoweek)
 export(in_month)
