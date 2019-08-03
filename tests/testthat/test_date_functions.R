@@ -120,7 +120,7 @@ test_that("before() function works with string value for within_given", {
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = "month")))
 })
 
-test_that("before() function works on a date value",{
+test_that("before() function works on a date value", {
 
   my_birthday <- dmy("12/07/1990")
 
@@ -131,7 +131,7 @@ test_that("before() function works on a date value",{
 
 })
 
-test_that("in_between() function works on schedules",{
+test_that("in_between() function works on schedules", {
 
   on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
   on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))

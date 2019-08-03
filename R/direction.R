@@ -1,7 +1,7 @@
 #' Specify the start and end of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring before or after a certain date or
+#' Creates a schedule of events occuring before and/or after a certain date or
 #' scheduled event.
 #'
 #' @details
@@ -11,14 +11,14 @@
 #'
 #' When `x` is a date, it saves having to...
 #'
-#' @param x Either a date object or a schedule.
-#' @param within_given A date accessor function. Required only when `x` is a
-#'  schedule. Puts a limit on how far into the future the schedule will
-#'  extend. Used to avoid an infinite cycle.
-#' @param start_date,end_date The start end end event of the schedule.
+#' @param start_event,end_event The start and/or end events of the schedule.
+#' For each can be either be a date object or a schedule.
+#' @param within_given A date accessor function. Required only when either
+#' `start_date` or `end_date` are schedules. Puts a limit on how far into the
+#'  future the schedule will extend. Used to avoid an infinite cycle.
 #'
 #' @keywords after, before, date, schedule
-#' @return A schedule of events occuring after or before the events specified.
+#' @return A schedule of events occuring before and/or after the events specified.
 #' @examples
 #' on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
 #'
@@ -28,16 +28,18 @@
 #'
 #' on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
 #'
-#' in_between_christmas_and_new_years <-
+#' in_between_christmas_and_new_years_eve <-
 #'     in_between(on_christmas,
 #'                on_new_years_eve,
 #'                within_given = lubridate::year)
 #'
-#' schedule(in_between_christmas_and_new_years, from = 2000, to = 2001)
+#' schedule(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
 #'
 #' @export
 
-after <- function(x, within_given = NULL){
+after <- function(start_event, within_given = NULL){
+
+  x <- start_event
 
   if(lubridate::is.Date(x)){
 
@@ -59,16 +61,16 @@ after <- function(x, within_given = NULL){
   out <- function(date){
 
     date_vec_changing <- date
-    applicable <- within_given(date_vec_changing) == within_given(date_vec_changing - lubridate::days(1))
+    applicable <- within_given(date_vec_changing) == within_given(date)
     out_vec <- vector(length = length(date))
 
     while(any(applicable)){
 
       date_vec_changing[applicable] <- date_vec_changing[applicable] - lubridate::days(1)
-      applicable <- within_given(date_vec_changing) == within_given(date_vec_changing - lubridate::days(1))
+      applicable <- within_given(date_vec_changing) == within_given(date)
 
       meet_criteria <- test_date(date_vec_changing, x)
-      out_vec[meet_criteria] <- TRUE
+      out_vec[meet_criteria & applicable] <- TRUE
     }
     out_vec
   }
@@ -81,7 +83,9 @@ after <- function(x, within_given = NULL){
 #' @rdname after
 #' @export
 
-before <- function(x, within_given = NULL){
+before <- function(end_event, within_given = NULL){
+
+  x <- end_event
 
   if(lubridate::is.Date(x)){
 
@@ -103,16 +107,16 @@ before <- function(x, within_given = NULL){
   out <- function(date){
 
     date_vec_changing <- date
-    applicable <- within_given(date_vec_changing) == within_given(date_vec_changing + lubridate::days(1))
+    applicable <- within_given(date_vec_changing) == within_given(date)
     out_vec <- vector(length = length(date))
 
     while(any(applicable)){
 
       date_vec_changing[applicable] <- date_vec_changing[applicable] + lubridate::days(1)
-      applicable <- within_given(date_vec_changing) == within_given(date_vec_changing + lubridate::days(1))
+      applicable <- within_given(date_vec_changing) == within_given(date)
 
       meet_criteria <- test_date(date_vec_changing, x)
-      out_vec[meet_criteria] <- TRUE
+      out_vec[meet_criteria & applicable] <- TRUE
     }
     out_vec
   }

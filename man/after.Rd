@@ -6,26 +6,25 @@
 \alias{in_between}
 \title{Specify the start and end of a schedule}
 \usage{
-after(x, within_given = NULL)
+after(start_event, within_given = NULL)
 
-before(x, within_given = NULL)
+before(end_event, within_given = NULL)
 
 in_between(start_event, end_event, within_given = NULL)
 }
 \arguments{
-\item{x}{Either a date object or a schedule.}
+\item{start_event, end_event}{The start and/or end events of the schedule.
+For each can be either be a date object or a schedule.}
 
-\item{within_given}{A date accessor function. Required only when \code{x} is a
-schedule. Puts a limit on how far into the future the schedule will
-extend. Used to avoid an infinite cycle.}
-
-\item{start_date, end_date}{The start end end event of the schedule.}
+\item{within_given}{A date accessor function. Required only when either
+\code{start_date} or \code{end_date} are schedules. Puts a limit on how far into the
+future the schedule will extend. Used to avoid an infinite cycle.}
 }
 \value{
-A schedule of events occuring after or before the events specified.
+A schedule of events occuring before and/or after the events specified.
 }
 \description{
-Creates a schedule of events occuring before or after a certain date or
+Creates a schedule of events occuring before and/or after a certain date or
 scheduled event.
 }
 \details{
@@ -44,12 +43,12 @@ schedule(after_christmas, from = 2000, to = 2001)
 
 on_new_years_eve <- on_mday(31) \%>\% only_occuring(in_month("Dec"))
 
-in_between_christmas_and_new_years <-
+in_between_christmas_and_new_years_eve <-
     in_between(on_christmas,
                on_new_years_eve,
                within_given = lubridate::year)
 
-schedule(in_between_christmas_and_new_years, from = 2000, to = 2001)
+schedule(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
 
 }
 \keyword{after,}
