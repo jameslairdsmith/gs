@@ -36,7 +36,7 @@ You can use \code{lubridate}'s global option
 \code{lubridate.week.start} to set this parameter globally.}
 }
 \value{
-A schedule of events occuring on the day types specified.
+A schedule of events occuring on the day type(s) specified.
 }
 \description{
 Creates a schedule of events occuring on the specified days of certain

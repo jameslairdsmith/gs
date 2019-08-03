@@ -5,9 +5,9 @@
 #' Months can be specified using their names (eg. "January"),
 #' abbreviations (eg. "Jan") or integers (eg. 1).
 #'
-#' @param ... a character or numeric vector of month elements.
+#' @param ... A character or numeric vector of month elements.
 #'
-#' @keywords month, date, scedule
+#' @keywords month, date, schedule
 #' @return A schedule of events occuring in the months specified.
 #' @examples
 #' my_dates <- c(as.Date("2000-01-01"),

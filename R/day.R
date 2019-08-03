@@ -59,7 +59,7 @@
 #' `lubridate.week.start` to set this parameter globally.
 #'
 #' @keywords month, day, date, schedule
-#' @return A schedule of events occuring on the day types specified.
+#' @return A schedule of events occuring on the day type(s) specified.
 #' @examples
 #'
 #' my_dates <- seq.Date(from = as.Date("2000-01-01"),

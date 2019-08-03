@@ -7,7 +7,7 @@
 in_month(...)
 }
 \arguments{
-\item{...}{a character or numeric vector of month elements.}
+\item{...}{A character or numeric vector of month elements.}
 }
 \value{
 A schedule of events occuring in the months specified.
@@ -50,4 +50,4 @@ in_january <- in_month(0)}
 }
 \keyword{date,}
 \keyword{month,}
-\keyword{scedule}
+\keyword{schedule}
