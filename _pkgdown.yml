@@ -29,6 +29,7 @@ reference:
       - in_week
       - in_month
       - in_quarter
+      - in_year
   - title: "Limit schedules"
     desc: "Place limits on how far schedules extend"
     contents:
