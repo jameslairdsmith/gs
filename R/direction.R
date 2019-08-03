@@ -7,8 +7,6 @@
 #' @details
 #' When `x` is a date.
 #'
-#' When `x` is a year.
-#'
 #' When `x` is a schedule...
 #'
 #' When `x` is a date, it saves having to...
@@ -18,7 +16,6 @@
 #' @param within_given A date accessor function. Required only when either
 #' `start_date` or `end_date` are schedules. Puts a limit on how far into the
 #'  future the schedule will extend. Used to avoid an infinite cycle.
-#' @param year The year in which the events occcur.
 #'
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring before and/or after the events specified.
@@ -133,14 +130,6 @@ before <- function(end_event, within_given = NULL){
 #' @export
 
 in_between <- function(start_event, end_event, within_given = NULL){
-
-  if(is.numeric(start_event)){
-    start_event <- lubridate::make_date(year = start_event)
-  }
-
-  if(is.numeric(end_event)){
-    end_event <- lubridate::make_date(year = end_event, month = 12, day = 31)
-  }
 
   only_occuring(after(start_event, within_given = within_given),
                 before(end_event, within_given = within_given))

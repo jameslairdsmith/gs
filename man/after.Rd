@@ -19,8 +19,6 @@ For each can be either be a date object or a schedule.}
 \item{within_given}{A date accessor function. Required only when either
 \code{start_date} or \code{end_date} are schedules. Puts a limit on how far into the
 future the schedule will extend. Used to avoid an infinite cycle.}
-
-\item{year}{The year in which the events occcur.}
 }
 \value{
 A schedule of events occuring before and/or after the events specified.
@@ -31,8 +29,6 @@ scheduled event.
 }
 \details{
 When \code{x} is a date.
-
-When \code{x} is a year.
 
 When \code{x} is a schedule...
 
