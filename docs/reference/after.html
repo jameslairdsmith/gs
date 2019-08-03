@@ -134,7 +134,9 @@ scheduled event.</p>
 
 <span class='fu'>before</span>(<span class='no'>end_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>in_between</span>(<span class='no'>start_event</span>, <span class='no'>end_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>in_between</span>(<span class='no'>start_event</span>, <span class='no'>end_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+
+<span class='fu'>during</span>(<span class='no'>year</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -150,6 +152,10 @@ For each can be either be a date object or a schedule.</p></td>
 <code>start_date</code> or <code>end_date</code> are schedules. Puts a limit on how far into the
 future the schedule will extend. Used to avoid an infinite cycle.</p></td>
     </tr>
+    <tr>
+      <th>year</th>
+      <td><p>The year in which the events occcur.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -162,6 +168,11 @@ future the schedule will extend. Used to avoid an infinite cycle.</p></td>
 <p>When <code>x</code> is a year.</p>
 <p>When <code>x</code> is a schedule...</p>
 <p>When <code>x</code> is a date, it saves having to...</p>
+<p><code>during()</code> is a convenience function for when events occur only within a
+given year, inclusive of the first and last days.
+Eg. for a schedule of events occuring only in the year 2000,
+<code>during(2000)</code> can be used instead of
+<code>in_between(as.Date("1999-12-31"), as.Date("2001-01-01"))</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

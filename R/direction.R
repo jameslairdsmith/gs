@@ -13,11 +13,18 @@
 #'
 #' When `x` is a date, it saves having to...
 #'
+#' `during()` is a convenience function for when events occur only within a
+#' given year, inclusive of the first and last days.
+#' Eg. for a schedule of events occuring only in the year 2000,
+#' `during(2000)` can be used instead of
+#' `in_between(as.Date("1999-12-31"), as.Date("2001-01-01"))`.
+#'
 #' @param start_event,end_event The start and/or end events of the schedule.
 #' For each can be either be a date object or a schedule.
 #' @param within_given A date accessor function. Required only when either
 #' `start_date` or `end_date` are schedules. Puts a limit on how far into the
 #'  future the schedule will extend. Used to avoid an infinite cycle.
+#' @param year The year in which the events occcur.
 #'
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring before and/or after the events specified.
@@ -143,4 +150,17 @@ in_between <- function(start_event, end_event, within_given = NULL){
 
   only_occuring(after(start_event, within_given = within_given),
                 before(end_event, within_given = within_given))
+}
+
+#' @rdname after
+#' @export
+
+during <- function(year){
+
+  start_event <- lubridate::make_date(year = year)
+  end_event <- lubridate::make_date(year = year, month = 12, day = 31)
+
+  only_occuring(after(start_event),
+                before(end_event))
+
 }
