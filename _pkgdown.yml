@@ -30,6 +30,10 @@ reference:
       - in_month
       - in_quarter
       - in_year
+  - title: "Compose schedules"
+    desc: "Combine schedules together."
+  - title: "Use schedules"
+    desc: "Make use of schedules."
   - title: "Limit schedules"
     desc: "Place limits on how far schedules extend"
     contents:
