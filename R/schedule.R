@@ -1,6 +1,6 @@
 #' @export
 
-schedule <- function(x, from, to, during = NULL, ...){
+schedule <- function(x, from = NULL, to = NULL, during = NULL, ...){
 
   if("earliest_date" %in% get_attribute_names(x)){
     from <- attr(x, "earliest_date")
