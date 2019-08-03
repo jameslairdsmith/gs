@@ -29,8 +29,8 @@ reference:
       - in_week
       - in_month
       - in_quarter
-  - title: "Compose schedules"
-    desc: "Weave schedules together."
+  - title: "Limit schedules"
+    desc: "Place limits on how far schedules extend"
     contents:
       - after
 

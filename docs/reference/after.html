@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Specify the start and end of a schedule — after" />
 
-<meta property="og:description" content="Creates a schedule of events occuring before or after a certain date or
+<meta property="og:description" content="Creates a schedule of events occuring before and/or after a certain date or
 scheduled event." />
 <meta name="twitter:card" content="summary" />
 
@@ -125,14 +125,14 @@ scheduled event." />
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occuring before or after a certain date or
+    <p>Creates a schedule of events occuring before and/or after a certain date or
 scheduled event.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>after</span>(<span class='no'>x</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>after</span>(<span class='no'>start_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>before</span>(<span class='no'>x</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>before</span>(<span class='no'>end_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='fu'>in_between</span>(<span class='no'>start_event</span>, <span class='no'>end_event</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -140,24 +140,21 @@ scheduled event.</p>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Either a date object or a schedule.</p></td>
+      <th>start_event, end_event</th>
+      <td><p>The start and/or end events of the schedule.
+For each can be either be a date object or a schedule.</p></td>
     </tr>
     <tr>
       <th>within_given</th>
-      <td><p>A date accessor function. Required only when <code>x</code> is a
-schedule. Puts a limit on how far into the future the schedule will
-extend. Used to avoid an infinite cycle.</p></td>
-    </tr>
-    <tr>
-      <th>start_date, end_date</th>
-      <td><p>The start end end event of the schedule.</p></td>
+      <td><p>A date accessor function. Required only when either
+<code>start_date</code> or <code>end_date</code> are schedules. Puts a limit on how far into the
+future the schedule will extend. Used to avoid an infinite cycle.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events occuring after or before the events specified.</p>
+    <p>A schedule of events occuring before and/or after the events specified.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -176,14 +173,13 @@ extend. Used to avoid an infinite cycle.</p></td>
 #&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
 <span class='no'>on_new_years_eve</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>) <span class='kw'>%&gt;%</span> <span class='fu'>only_occuring</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 
-<span class='no'>in_between_christmas_and_new_years</span> <span class='kw'>&lt;-</span>
+<span class='no'>in_between_christmas_and_new_years_eve</span> <span class='kw'>&lt;-</span>
     <span class='fu'>in_between</span>(<span class='no'>on_christmas</span>,
                <span class='no'>on_new_years_eve</span>,
                <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'>schedule</span>(<span class='no'>in_between_christmas_and_new_years</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
-#&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
-#&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+#&gt;  [6] "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29" "2001-12-30"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
