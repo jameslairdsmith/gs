@@ -1,3 +1,29 @@
+#' Weave schedules together
+#'
+#' @description
+#' Joins schedules together.
+#'
+#' @details
+#' Details ...
+#' @examples
+#' on_christmas <- only_occuring(on_mday(25), in_month("Dec"))
+#'
+#' on_christmas(as.Date("2000-12-25"))
+#' on_christmas(as.Date("2000-12-26"))
+#'
+#' schedule(on_christmas, from = 2000, to = 2001)
+#'
+#' on_new_years_day <- on_yday(1)
+#'
+#' on_public_holidays <- also_occuring(on_new_years_day, on_christmas)
+#'
+#' on_public_holidays(as.Date("2000-12-25"))
+#' on_public_holidays(as.Date("2000-12-27"))
+#' on_public_holidays(as.Date("2001-01-01"))
+#'
+#' schedule(on_public_holidays, from = 2000, to = 2001)
+#'
+#'
 #' @export
 also_occuring <- function(elem_1, elem_2){
 
@@ -13,6 +39,7 @@ also_occuring <- function(elem_1, elem_2){
 
 }
 
+#' @rdname also_occuring
 #' @export
 
 only_occuring <- function(elem_1, elem_2){
@@ -52,7 +79,9 @@ only_occuring <- function(elem_1, elem_2){
   out
 }
 
+#' @rdname also_occuring
 #' @export
+
 not_occuring <- function(elem_1, elem_2 = NULL){
 
   if(is.null(elem_2)){
