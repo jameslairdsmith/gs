@@ -141,7 +141,7 @@
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_year.html">in_year</a></span>(<span class="dv">2000</span>, <span class="dv">2004</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25" "2004-12-25"</span></a></code></pre></div>
-<p>Finally I could do the same thing when looking at a range of years:</p>
+<p>Finally you could do the same thing when looking at a range of years:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">on_christmas <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_year.html">in_year</a></span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2004</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
@@ -150,6 +150,11 @@
 <div id="before-after-and-in_between-limits-" class="section level3">
 <h3 class="hasAnchor">
 <a href="#before-after-and-in_between-limits-" class="anchor"></a><code><a href="../reference/after.html">before()</a></code>, <code><a href="../reference/after.html">after()</a></code> and <code><a href="../reference/after.html">in_between()</a></code> limits.</h3>
+</div>
+<div id="on_date-limits" class="section level3">
+<h3 class="hasAnchor">
+<a href="#on_date-limits" class="anchor"></a><code><a href="../reference/on_date.html">on_date()</a></code> limits</h3>
+<p>For completeness it is worth noting that the <code><a href="../reference/on_date.html">on_date()</a></code> function also encodes limits on a schedule. In practice, this is less useful than the other functions for this purpose as <code><a href="../reference/on_date.html">on_date()</a></code> is typically only used for supplementing or reducing a schedule to include or abandon certain defined dates. Users should be able to ignore this feature without it being intrusive.</p>
 </div>
 </div>
 <div id="inheriting-limits" class="section level2">
