@@ -1,4 +1,4 @@
-#' Specify the quarters or semester of a schedule
+#' Specify the quarter(s) of a schedule
 #'
 #' @description
 #' Creates a schedule of events occuring in the quarters or semester specified.

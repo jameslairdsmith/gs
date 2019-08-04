@@ -3,7 +3,7 @@
 \name{in_quarter}
 \alias{in_quarter}
 \alias{in_semester}
-\title{Specify the quarters or semester of a schedule}
+\title{Specify the quarter(s) of a schedule}
 \usage{
 in_quarter(..., fiscal_start = 1)
 
