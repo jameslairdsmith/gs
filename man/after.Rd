@@ -4,6 +4,8 @@
 \alias{after}
 \alias{before}
 \alias{in_between}
+\alias{on_or_after}
+\alias{on_or_before}
 \title{Specify the start and end of a schedule}
 \usage{
 after(start_event, within_given = NULL)
@@ -11,6 +13,10 @@ after(start_event, within_given = NULL)
 before(end_event, within_given = NULL)
 
 in_between(start_event, end_event, within_given = NULL)
+
+on_or_after(start_event, within_given = NULL)
+
+on_or_before(end_event, within_given = NULL)
 }
 \arguments{
 \item{start_event, end_event}{The start and/or end events of the schedule.

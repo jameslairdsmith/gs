@@ -151,4 +151,82 @@ test_that("in_between() function works on schedules", {
 
 })
 
+test_that("on_or_after() and on_or_before() functions work on schedules", {
+
+  on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
+  on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+
+  on_and_between_christmas_and_new_years_eve <-
+    on_or_after(on_christmas, within_given = lubridate::year) %>%
+    only_occuring(on_or_before(on_new_years_eve, within_given = lubridate::year))
+
+
+  result <- schedule(on_and_between_christmas_and_new_years_eve, from = 2000, to = 2000)
+
+  exected_result <- seq.Date(from = ymd("2000-12-25"),
+                             to = ymd("2000-12-31"),
+                             by = "1 day")
+
+  expect_equal(result, exected_result)
+
+})
+
+test_that("after() and before() functions work on date values when scheduled", {
+
+  my_result <-
+    after(dmy("05/01/2000")) %>%
+    only_occuring(before(dmy("10/01/2000"))) %>%
+    schedule(during = 2000)
+
+  expected_result <- seq.Date(from = dmy("06/01/2000"),
+                              to = dmy("09/01/2000"),
+                              by = "1 day")
+
+  expect_equal(my_result, expected_result)
+
+})
+
+test_that("on_or_after() and on_or_before() functions work on date values when scheduled", {
+
+  my_result <-
+    on_or_after(dmy("05/01/2000")) %>%
+    only_occuring(on_or_before(dmy("10/01/2000"))) %>%
+    schedule(during = 2000)
+
+  expected_result <- seq.Date(from = dmy("05/01/2000"),
+                              to = dmy("10/01/2000"),
+                              by = "1 day")
+
+  expect_equal(my_result, expected_result)
+})
+
+test_that("after() and before() functions inherit limits", {
+
+  my_result <-
+    after(dmy("05/01/2000")) %>%
+    only_occuring(before(dmy("10/01/2000"))) %>%
+    schedule()
+
+  expected_result <- seq.Date(from = dmy("06/01/2000"),
+                              to = dmy("09/01/2000"),
+                              by = "1 day")
+
+  expect_equal(my_result, expected_result)
+
+})
+
+test_that("on_or_after() and on_or_before() functions inherit limits", {
+
+  my_result <-
+    on_or_after(dmy("05/01/2000")) %>%
+    only_occuring(on_or_before(dmy("10/01/2000"))) %>%
+    schedule()
+
+  expected_result <- seq.Date(from = dmy("05/01/2000"),
+                              to = dmy("10/01/2000"),
+                              by = "1 day")
+
+  expect_equal(my_result, expected_result)
+})
+
 

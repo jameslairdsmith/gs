@@ -48,7 +48,7 @@ after <- function(start_event, within_given = NULL){
 
     class(out) <- "schedule"
 
-    attr(out, "earliest_date") <- x
+    attr(out, "earliest_date") <- x +lubridate::days(1)
 
     return(out)
   }
@@ -94,7 +94,7 @@ before <- function(end_event, within_given = NULL){
 
     class(out) <- "schedule"
 
-    attr(out, "latest_date") <- x
+    attr(out, "latest_date") <- x - lubridate::days(1)
 
     return(out)
   }
@@ -132,4 +132,50 @@ in_between <- function(start_event, end_event, within_given = NULL){
 
   only_occuring(after(start_event, within_given = within_given),
                 before(end_event, within_given = within_given))
+}
+
+#' @rdname after
+#' @export
+
+on_or_after <- function(start_event, within_given = NULL){
+
+  x <- start_event
+
+  if(lubridate::is.Date(x)){
+
+    out <- function(date){
+      date >= x
+    }
+
+    class(out) <- "schedule"
+
+    attr(out, "earliest_date") <- x
+
+    return(out)
+  }
+
+  also_occuring(start_event, after(start_event, within_given = within_given))
+}
+
+#' @rdname after
+#' @export
+
+on_or_before <- function(end_event, within_given = NULL){
+
+  x <- end_event
+
+  if(lubridate::is.Date(x)){
+
+    out <- function(date){
+      date <= x
+    }
+
+    class(out) <- "schedule"
+
+    attr(out, "latest_date") <- x
+
+    return(out)
+  }
+
+  also_occuring(end_event, before(end_event, within_given = within_given))
 }
