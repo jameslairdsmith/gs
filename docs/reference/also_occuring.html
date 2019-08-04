@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • scheduler</title>
+<title>Weave schedules together — also_occuring • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Weave schedules together — also_occuring" />
+
+<meta property="og:description" content="Joins schedules together." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +52,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -115,102 +118,53 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Weave schedules together</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/occuring.R'><code>R/occuring.R</code></a></small>
+    <div class="hidden name"><code>also_occuring.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Joins schedules together.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>also_occuring</span>(<span class='no'>elem_1</span>, <span class='no'>elem_2</span>)
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-basic-schedules" class="hasAnchor"><a href="#section-basic-schedules" class="anchor"></a>Basic schedules</h2>
-          <p class="section-desc"><p>The buildings blocks of schedules.</p></p>
-        </th>
-      </tr>
-      <tr>
+<span class='fu'>only_occuring</span>(<span class='no'>elem_1</span>, <span class='no'>elem_2</span>)
+
+<span class='fu'>not_occuring</span>(<span class='no'>elem_1</span>, <span class='kw'>elem_2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
         
-        <td>
-          <p><code><a href="on_date.html">on_date()</a></code> </p>
-        </td>
-        <td><p>Specify the date(s) of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="on_mday.html">on_mday()</a></code> <code><a href="on_mday.html">on_yday()</a></code> <code><a href="on_mday.html">on_qday()</a></code> <code><a href="on_mday.html">on_wday()</a></code> <code><a href="on_mday.html">on_weekend()</a></code> <code><a href="on_mday.html">on_weekday()</a></code> </p>
-        </td>
-        <td><p>Specify the day(s) of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_week.html">in_week()</a></code> <code><a href="in_week.html">in_isoweek()</a></code> <code><a href="in_week.html">in_epiweek()</a></code> </p>
-        </td>
-        <td><p>Specify the week(s) of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_month.html">in_month()</a></code> </p>
-        </td>
-        <td><p>Specify the month(s) of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_quarter.html">in_quarter()</a></code> <code><a href="in_quarter.html">in_semester()</a></code> </p>
-        </td>
-        <td><p>Specify the quarter(s) of a schedule</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="in_year.html">in_year()</a></code> </p>
-        </td>
-        <td><p>Specify the year(s) of a schedule</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-compose-schedules" class="hasAnchor"><a href="#section-compose-schedules" class="anchor"></a>Compose schedules</h2>
-          <p class="section-desc"><p>Combine schedules together to create more complex ones.</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="also_occuring.html">also_occuring()</a></code> <code><a href="also_occuring.html">only_occuring()</a></code> <code><a href="also_occuring.html">not_occuring()</a></code> </p>
-        </td>
-        <td><p>Weave schedules together</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-limit-schedules" class="hasAnchor"><a href="#section-limit-schedules" class="anchor"></a>Limit schedules</h2>
-          <p class="section-desc"><p>Place limits on how far schedules extend</p></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="after.html">after()</a></code> <code><a href="after.html">before()</a></code> <code><a href="after.html">in_between()</a></code> <code><a href="after.html">on_or_after()</a></code> <code><a href="after.html">on_or_before()</a></code> </p>
-        </td>
-        <td><p>Specify the start and end of a schedule</p></td>
-      </tr>
-    </tbody>
-    </table>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Details ...</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occuring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+
+<span class='fu'>on_christmas</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-25"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_christmas</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-26"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25"</div><div class='input'>
+<span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
+
+<span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occuring</span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
+
+<span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-25"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-27"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2001-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt; [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25"</div><div class='input'>
+
+</div></pre>
   </div>
-
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-basic-schedules">Basic schedules</a></li>
-      <li><a href="#section-compose-schedules">Compose schedules</a></li>
-      <li><a href="#section-limit-schedules">Limit schedules</a></li>
+      
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
