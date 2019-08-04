@@ -7,6 +7,10 @@
 #' This function is best used when making changes to other schedules where
 #' those changes fall on defined dates.
 #'
+#' The function also encodes schedule limits in the output. For more
+#' details see the [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' on understanding schedule limits.
+#'
 #' @param ... A vector of dates.
 #'
 #' @keywords date, schedule

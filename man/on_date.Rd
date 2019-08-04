@@ -18,6 +18,10 @@ Creates a schedule of events occuring on the dates specified.
 \details{
 This function is best used when making changes to other schedules where
 those changes fall on defined dates.
+
+The function also encodes schedule limits in the output. For more
+details see the \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+on understanding schedule limits.
 }
 \examples{
 
