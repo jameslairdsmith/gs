@@ -14,6 +14,18 @@ test_that("in_week functions works", {
   expect_false(test_date(dmy("20/07/1990"), twenty_eight_week_of_year))
 })
 
+test_that("in_week() functions error on invalid input", {
+  expect_error(in_week(0))
+  expect_error(in_week(54))
+  expect_error(in_week(1.5))
+  expect_error(in_isoweek(0))
+  expect_error(in_isoweek(54))
+  expect_error(in_isoweek(1.5))
+  expect_error(in_epiweek(0))
+  expect_error(in_epiweek(54))
+  expect_error(in_epiweek(1.5))
+})
+
 test_that("in_week functions works with multiple inputs", {
 
   first_or_second_week_of_year <- in_week(1, 2)
