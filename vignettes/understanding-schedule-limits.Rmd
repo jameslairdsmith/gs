@@ -123,4 +123,13 @@ on_christmas %>%
 
 ### `before()`, `after()` and `in_between()` limits.
 
+### `on_date()` limits
+
+For completeness it is worth noting that the `on_date()` function also encodes
+limits on a schedule. In practice, this is less useful than the other 
+functions for this purpose as `on_date()` is typically only used for 
+supplementing or reducing a schedule to include or abandon certain defined 
+dates. Users should be able to ignore this feature without it being 
+intrusive.
+
 ## Inheriting limits

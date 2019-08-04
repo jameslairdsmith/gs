@@ -34,5 +34,9 @@ on_date <- function(...){
 
   class(out) <- "schedule"
 
+  attr(out, "earliest_date") <- lubridate::as_date(x)
+
+  attr(out, "latest_date") <- lubridate::as_date(x)
+
   out
 }

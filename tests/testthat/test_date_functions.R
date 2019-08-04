@@ -10,6 +10,24 @@ test_that("on_date() function works", {
   expect_false(test_date(dmy("12/07/2019"), on_date(my_birthday)))
 })
 
+test_that("on_date() function works with schedule", {
+
+  my_birthday <- dmy("12/07/1990")
+
+  on_my_birthday <- on_date(my_birthday)
+
+  expect_equal(my_birthday, schedule(on_my_birthday, during = 1990))
+})
+
+test_that("on_date() function encodes start and end dates", {
+
+  my_birthday <- dmy("12/07/1990")
+
+  on_my_birthday <- on_date(my_birthday)
+
+  expect_equal(my_birthday, schedule(on_my_birthday))
+})
+
 test_that("on_date() function works with multiple inputs", {
 
   my_birthday <- dmy("12/07/1990")
