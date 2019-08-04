@@ -7,7 +7,7 @@
 \alias{on_wday}
 \alias{on_weekend}
 \alias{on_weekday}
-\title{Specify the days of a schedule}
+\title{Specify the day(s) of a schedule}
 \usage{
 on_mday(...)
 

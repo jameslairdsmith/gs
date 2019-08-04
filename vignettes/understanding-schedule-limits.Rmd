@@ -113,7 +113,7 @@ on_christmas %>%
   schedule()
 ```
 
-Finally I could do the same thing when looking at a range of years:
+Finally you could do the same thing when looking at a range of years:
 
 ```{r}
 on_christmas %>% 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/date.R
 \name{on_date}
 \alias{on_date}
-\title{Specify the dates of a schedule}
+\title{Specify the date(s) of a schedule}
 \usage{
 on_date(...)
 }

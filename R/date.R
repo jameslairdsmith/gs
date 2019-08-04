@@ -1,4 +1,4 @@
-#' Specify the dates of a schedule
+#' Specify the date(s) of a schedule
 #'
 #' @description
 #' Creates a schedule of events occuring on the dates specified.
