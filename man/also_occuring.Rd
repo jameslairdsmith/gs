@@ -6,35 +6,61 @@
 \alias{not_occuring}
 \title{Weave schedules together}
 \usage{
-also_occuring(elem_1, elem_2)
+also_occuring(x, y)
 
-only_occuring(elem_1, elem_2)
+only_occuring(x, y)
 
-not_occuring(elem_1, elem_2 = NULL)
+not_occuring(x, y = NULL)
+}
+\arguments{
+\item{x, y}{Schedules to weave together.}
+}
+\value{
+A schedule of events determined by the input schedules and rules
+of the function used.
 }
 \description{
-Joins schedules together.
+These functions combine schedules by taking two of them as inputs and
+returning a single combined schedule as output.
 }
 \details{
-Details ...
+\code{also_occuring()} returns a schedule of events which includes all those
+present in the first schedule (\code{x}) and all those present in the second
+schedule (\code{y}). The results is the \strong{union} of the two schedules.
+
+\code{only_occuring()} returns a schedule of events which includes only those
+present in both the first schedule (\code{x}) and in the second schedule
+(\code{y}). The result is the \strong{intersection} of the two schedules.
+
+\code{not_occuring()} can accept either one or who schedules as input(s):
+\itemize{
+\item When a single schedule is used, the function returns a schedule of all
+events that do not fall on on the input schedule. The result is the
+\strong{negation} of the schedule. For example, the negation of all weekdays
+would be a schedule of all weekend days.
+\item When two schedules are used, the function returns the first schedule but
+with the events of the second schedule stripped away. This works to remove
+the events of the second schedule from the first.
+\itemize{
+\item This means that \code{not_occuring(x, y)} is the equivalent of
+\code{only_occuring(x, not_occuring(y))}
+}
+}
 }
 \examples{
 on_christmas <- only_occuring(on_mday(25), in_month("Dec"))
 
-on_christmas(as.Date("2000-12-25"))
-on_christmas(as.Date("2000-12-26"))
-
-schedule(on_christmas, from = 2000, to = 2001)
+schedule(on_christmas, from = 2000, to = 2004)
 
 on_new_years_day <- on_yday(1)
 
 on_public_holidays <- also_occuring(on_new_years_day, on_christmas)
 
-on_public_holidays(as.Date("2000-12-25"))
-on_public_holidays(as.Date("2000-12-27"))
-on_public_holidays(as.Date("2001-01-01"))
+schedule(on_public_holidays, from = 2000, to = 2004)
 
-schedule(on_public_holidays, from = 2000, to = 2001)
+weekday_public_holidays <- only_occuring(on_public_holidays,
+                                         not_occuring(on_wday("Sat", "Sun")))
 
+schedule(weekday_public_holidays, from = 2000, to = 2004)
 
 }

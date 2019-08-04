@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Weave schedules together — also_occuring" />
 
-<meta property="og:description" content="Joins schedules together." />
+<meta property="og:description" content="These functions combine schedules by taking two of them as inputs and
+returning a single combined schedule as output." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -127,39 +128,77 @@
 
     <div class="ref-description">
     
-    <p>Joins schedules together.</p>
+    <p>These functions combine schedules by taking two of them as inputs and
+returning a single combined schedule as output.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>also_occuring</span>(<span class='no'>elem_1</span>, <span class='no'>elem_2</span>)
+    <pre class="usage"><span class='fu'>also_occuring</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
-<span class='fu'>only_occuring</span>(<span class='no'>elem_1</span>, <span class='no'>elem_2</span>)
+<span class='fu'>only_occuring</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
-<span class='fu'>not_occuring</span>(<span class='no'>elem_1</span>, <span class='kw'>elem_2</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-        
+<span class='fu'>not_occuring</span>(<span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x, y</th>
+      <td><p>Schedules to weave together.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A schedule of events determined by the input schedules and rules
+of the function used.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Details ...</p>
+    <p><code>also_occuring()</code> returns a schedule of events which includes all those
+present in the first schedule (<code>x</code>) and all those present in the second
+schedule (<code>y</code>). The results is the <strong>union</strong> of the two schedules.</p>
+<p><code>only_occuring()</code> returns a schedule of events which includes only those
+present in both the first schedule (<code>x</code>) and in the second schedule
+(<code>y</code>). The result is the <strong>intersection</strong> of the two schedules.</p>
+<p><code>not_occuring()</code> can accept either one or who schedules as input(s):</p><ul>
+<li><p>When a single schedule is used, the function returns a schedule of all
+events that do not fall on on the input schedule. The result is the
+<strong>negation</strong> of the schedule. For example, the negation of all weekdays
+would be a schedule of all weekend days.</p></li>
+<li><p>When two schedules are used, the function returns the first schedule but
+with the events of the second schedule stripped away. This works to remove
+the events of the second schedule from the first.</p><ul>
+<li><p>This means that <code>not_occuring(x, y)</code> is the equivalent of
+<code>only_occuring(x, not_occuring(y))</code></p></li>
+</ul></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occuring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 
-<span class='fu'>on_christmas</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-25"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_christmas</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-26"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
-<span class='fu'>schedule</span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25"</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</div><div class='input'>
 <span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
 
 <span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occuring</span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
 
-<span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-25"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-27"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>on_public_holidays</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2001-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'>schedule</span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt; [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25"</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"
+#&gt;  [6] "2002-12-25" "2003-01-01" "2003-12-25" "2004-01-01" "2004-12-25"</div><div class='input'>
+<span class='no'>weekday_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occuring</span>(<span class='no'>on_public_holidays</span>,
+                                         <span class='fu'>not_occuring</span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>, <span class='st'>"Sun"</span>)))
 
+<span class='fu'>schedule</span>(<span class='no'>weekday_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01" "2002-12-25"
+#&gt; [6] "2003-01-01" "2003-12-25" "2004-01-01"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
