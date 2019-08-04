@@ -96,33 +96,79 @@
     
     
 <p>Once you have created a schedule object with your desired specifications, <code>scheduler</code> allows you to retrieve the dates which fall on that schedule. This is done using the <code>schedule_*()</code> family of functions.</p>
-<p>Under normal circumstances this process should be seamless and intuitive, but for those looking for a deeper understanding of how it works. To do so, you need first to load the package:</p>
+<p>Under normal circumstances this process should be seamless and intuitive when following the documentation. But for those looking for a deeper understanding of how these dates are generated, this vigette will provide an explanation and walkthrough.</p>
+<p>To perform the operations yourself, you first need to load these packages:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(scheduler)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)</a></code></pre></div>
-<p>The nature of recurring calendar events is that there are a theoretically infinite number of possible occurrences. If you ask <code>scheduler</code> to retrieve for you all the occurrences of Christmas, you will see that it refuses to do so:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; Error in seq.Date(from = from, to = to, by = "1 day"): 'from' must be a "Date" object</span></a></code></pre></div>
-<p>This is possible because <code>scheduler</code> knows the number of possible Christmases is infinite and that it cannot produce for you the complete set. To make your request possible, you must place some limit on which Christmases you wish to schedule.</p>
-<p>The <code>schedule()</code> funcion provides you a way to do that. It has arguments <code>from</code> and <code>to</code>, which allow you to specify the start and end dates of the schedule. So if you wanted to retrieve the first five Christmases of this millenium, you could do so as follows:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>(<span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2000-01-01"</span>), <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2004-12-31"</span>))</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
+<div id="infinite-events" class="section level2">
+<h2 class="hasAnchor">
+<a href="#infinite-events" class="anchor"></a>Infinite events</h2>
+<p>Some recurring calendar events are a theoretically infinite in number. For example how many Christmases will there be in the future?</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">on_christmas &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>))</a></code></pre></div>
+<p>If you ask <code>scheduler</code> to retrieve for you all the occurrences of Christmas, you will find that it refuses to do so:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">schedule</span>(on_christmas)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; Error in seq.Date(from = from, to = to, by = "1 day"): 'from' must be a "Date" object</span></a></code></pre></div>
+<p>This is possible because <code>scheduler</code> knows the number of possible Christmases is infinite and that it cannot produce for you the complete set. To make your request possible, you must place some limits on which Christmases you wish to schedule.</p>
+</div>
+<div id="explicit-limits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#explicit-limits" class="anchor"></a>Explicit limits</h2>
+<p>The <code>schedule()</code> funcion provides you a way to do that. It has arguments <code>from</code> and <code>to</code>, which allow you to specify the start and end dates of the schedule. So if you wanted to retrieve the dates for Christmases between 2000 and 2004 you could do so as follows:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">schedule</span>(on_christmas, <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2000-01-01"</span>), <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2004-12-31"</span>))</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
 <p>To be more succinct, the <code>schedule()</code> function will also accept numeric years for these arguments. This is a convenient way of specifying from the start of the first year to the end of the last year (equivalent to the code directly above):</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>(<span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
-<p>If you only interested in events occuring during a single calendar year, you can also use the during function, which creates date limits from the start of the specified year to the end:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>(<span class="dt">during =</span> <span class="dv">2000</span>)</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25"</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">schedule</span>(on_christmas, <span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
+<p>If you only interested in events occuring during a single calendar year, you can also use the <code>during =</code> argument, which creates date limits from the start to the end of the year specified:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">schedule</span>(on_christmas, <span class="dt">during =</span> <span class="dv">2000</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt; [1] "2000-12-25"</span></a></code></pre></div>
+</div>
+<div id="implicit-limits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#implicit-limits" class="anchor"></a>Implicit limits</h2>
+<p>Specifying limits in the <code>schedule()</code> function isn’t always necessary however. Where possible <code>scheduler</code> will detect there to be a finite set of possible events in your schedule and compute them for you. This happens variously when using the functions <code><a href="../reference/in_year.html">in_year()</a></code>, <code><a href="../reference/after.html">before()</a></code>, <code><a href="../reference/after.html">after()</a></code> and <code><a href="../reference/after.html">in_between()</a></code>. All these functions can place implicit limits on a schedule and thus save you having to place explicit limits on it.</p>
+<div id="in_year-limits" class="section level3">
+<h3 class="hasAnchor">
+<a href="#in_year-limits" class="anchor"></a><code><a href="../reference/in_year.html">in_year()</a></code> limits</h3>
+<p>If you specify the years of a schedule using the <code><a href="../reference/in_year.html">in_year()</a></code> function, <code>scheduler</code> will infer the start and end dates from that.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">on_christmas <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_year.html">in_year</a></span>(<span class="dv">2000</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25"</span></a></code></pre></div>
+<p>Notice I did not have to specify <code>to =</code> and <code>from =</code> limits in the <code>schedule()</code> function for this to work. The <code>schedule()</code> function automatically detected the limits of the schedule and used them appropriately.</p>
+<p>I could do the same thing if looking at the occurance of Chrismas in more than one year:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">on_christmas <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_year.html">in_year</a></span>(<span class="dv">2000</span>, <span class="dv">2004</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25" "2004-12-25"</span></a></code></pre></div>
+<p>Finally I could do the same thing when looking at a range of years:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">on_christmas <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">only_occuring</span>(<span class="kw"><a href="../reference/in_year.html">in_year</a></span>(<span class="dv">2000</span><span class="op">:</span><span class="dv">2004</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="st">  </span><span class="kw">schedule</span>()</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
+</div>
+<div id="before-after-and-in_between-limits-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#before-after-and-in_between-limits-" class="anchor"></a><code><a href="../reference/after.html">before()</a></code>, <code><a href="../reference/after.html">after()</a></code> and <code><a href="../reference/after.html">in_between()</a></code> limits.</h3>
+</div>
+</div>
+<div id="inheriting-limits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#inheriting-limits" class="anchor"></a>Inheriting limits</h2>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#infinite-events">Infinite events</a></li>
+      <li><a href="#explicit-limits">Explicit limits</a></li>
+      <li><a href="#implicit-limits">Implicit limits</a></li>
+      <li><a href="#inheriting-limits">Inheriting limits</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
