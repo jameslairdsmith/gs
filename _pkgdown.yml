@@ -36,6 +36,7 @@ reference:
     desc: "Combine schedules together to create more complex ones."
     contents:
       - also_occuring
+      - not_occuring
   - title: "Use schedules"
     desc: "Make use of schedules."
   - title: "Limit schedules"

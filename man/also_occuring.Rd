@@ -3,14 +3,11 @@
 \name{also_occuring}
 \alias{also_occuring}
 \alias{only_occuring}
-\alias{not_occuring}
 \title{Weave schedules together}
 \usage{
 also_occuring(x, y)
 
 only_occuring(x, y)
-
-not_occuring(x, y = NULL)
 }
 \arguments{
 \item{x, y}{Schedules to weave together.}
@@ -31,21 +28,6 @@ schedule (\code{y}). The results is the \strong{union} of the two schedules.
 \code{only_occuring()} returns a schedule of events which includes only those
 present in both the first schedule (\code{x}) and in the second schedule
 (\code{y}). The result is the \strong{intersection} of the two schedules.
-
-\code{not_occuring()} can accept either one or who schedules as input(s):
-\itemize{
-\item When a single schedule is used, the function returns a schedule of all
-events that do not fall on on the input schedule. The result is the
-\strong{negation} of the schedule. For example, the negation of all weekdays
-would be a schedule of all weekend days.
-\item When two schedules are used, the function returns the first schedule but
-with the events of the second schedule stripped away. This works to remove
-the events of the second schedule from the first.
-\itemize{
-\item This means that \code{not_occuring(x, y)} is the equivalent of
-\code{only_occuring(x, not_occuring(y))}
-}
-}
 }
 \examples{
 on_christmas <- only_occuring(on_mday(25), in_month("Dec"))
@@ -57,10 +39,4 @@ on_new_years_day <- on_yday(1)
 on_public_holidays <- also_occuring(on_new_years_day, on_christmas)
 
 schedule(on_public_holidays, from = 2000, to = 2004)
-
-weekday_public_holidays <- only_occuring(on_public_holidays,
-                                         not_occuring(on_wday("Sat", "Sun")))
-
-schedule(weekday_public_holidays, from = 2000, to = 2004)
-
 }
