@@ -1,5 +1,5 @@
 ---
-title: "Introduction"
+title: "Working with recurring calendar events in R"
 author: "James Laird-Smith"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -16,19 +16,47 @@ knitr::opts_chunk$set(
 )
 ```
 
-First we will load the necessary packages.
+Recurring calendar events are very common in everyday life. Some are simple
+and therefore easy to program with. Others however are not and are difficult
+to understand and exceeding difficult to program with.
+
+The objective of `scheduler` is to make working with these recurring calendar
+events a little easier. By providing an intutive set of building blocks and a
+means of combining them together, users will be able to create and use 
+schedules of arbitrary complexity.
+
+To start with, we will need to laod the following packages:
 
 ```{r}
-#devtools::install_github("jameslairdsmith/scheduler")
-```
-
-
-```{r}
-library(scheduler)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
 library(lubridate)
+library(scheduler)
+library(magrittr)
 ```
+
+`scheduler` builds atop the `lubridate` package, which provides various 
+accessor functions for different elements of a date. For example, if I wanted
+to know which day in a year a particlar date fell upon, lubridate provides a
+function to access it, called `yday()`:
 
 ```{r}
-in_month("Jan")
+lubridate::yday(as.Date("2000-01-01"))
+lubridate::yday(as.Date("2000-12-31"))
 ```
 
+`lubridate` provides a whole set of these accessor functions. For example, 
+`mday()` to access the day of the month a date falls on, `wday()` for the day
+of the week, `month()` for the month of the date, `year()` for the year of 
+the date etc.
+
+```{r}
+first_day_millenium <- as.Date("2000-01-01")
+
+lubridate::mday(first_day_millenium)
+lubridate::wday(first_day_millenium)
+lubridate::month(first_day_millenium)
+```
+
+`scheduler` fufils a different purpose, but uses the same naming scheme.
+Whereas `lubridate` provides accessors to elements of a particualr date, the
+purpose of `scheduler` is to let you specify the element of the schedule.
