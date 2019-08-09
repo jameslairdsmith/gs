@@ -1,5 +1,5 @@
 ---
-title: "Working with recurring calendar events in R"
+title: "Work with recurring calendar events in R"
 author: "James Laird-Smith"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -9,10 +9,12 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  warning =  FALSE,
+  message = FALSE
 )
 ```
 
@@ -27,8 +29,7 @@ schedules of arbitrary complexity.
 
 To start with, we will need to laod the following packages:
 
-```{r}
-knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```{r setup}
 library(lubridate)
 library(scheduler)
 library(magrittr)

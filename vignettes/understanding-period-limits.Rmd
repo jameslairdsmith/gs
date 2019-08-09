@@ -1,8 +1,8 @@
 ---
-title: "Using custom periods"
+title: "Understanding period limits"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{using-custom-periods}
+  %\VignetteIndexEntry{understanding-period-limits}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
