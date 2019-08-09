@@ -1,3 +1,16 @@
+#' Get the events of a schedule
+#'
+#' Get the events from a schedule object.
+#'
+#' @param ... A numeric vector of year elements.
+#'
+#' @keywords schedule
+#' @return A date vector
+#' @details R
+#' @examples
+#' on_first_day_month <- on_mday(1)
+#'
+#' schedule(on_first_day_month, during = 2000)
 #' @export
 
 schedule <- function(x, from = NULL, to = NULL, during = NULL, ...){
@@ -28,8 +41,8 @@ schedule <- function(x, from = NULL, to = NULL, during = NULL, ...){
   date_seq[test_date(date_seq, x)]
 }
 
-
-## This needs tests
+#' @rdname schedule
+#' @export
 
 schedule_hours <- function(x, from, to, during = NULL, ...){
 

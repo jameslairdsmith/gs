@@ -9,7 +9,7 @@
 #' @rdname test_date
 #' @export
 
-test_date <- function(date, func, ...){
+test_date <- function(date, schedule, ...){
 
-  func(date)
+  schedule(date)
 }

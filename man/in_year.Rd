@@ -2,9 +2,15 @@
 % Please edit documentation in R/year.R
 \name{in_year}
 \alias{in_year}
+\alias{in_isoyear}
+\alias{in_epiyear}
 \title{Specify the year(s) of a schedule}
 \usage{
 in_year(...)
+
+in_isoyear(...)
+
+in_epiyear(...)
 }
 \arguments{
 \item{...}{A numeric vector of year elements.}

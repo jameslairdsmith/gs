@@ -57,6 +57,9 @@ in_year <- function(...){
   output
 }
 
+#' @rdname in_year
+#' @export
+
 in_isoyear <- function(...){
 
   x <- unlist(list(...))
@@ -65,6 +68,9 @@ in_isoyear <- function(...){
 
   make_element(x, lubridate::isoyear)
 }
+
+#' @rdname in_year
+#' @export
 
 in_epiyear <- function(...){
 

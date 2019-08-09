@@ -13,12 +13,12 @@ navbar:
       href: articles/intro.html
     articles: ~
     my_articles:
-      text: Articles
+      text: "Articles"
       menu:
-      - text: Using custom periods
-        href: articles/using-custom-periods.html
       - text: Understanding schedule limits
         href: articles/understanding-schedule-limits.html
+      - text: Understanding period limits
+        href: articles/understanding-period-limits.html
     reference:
       text: Reference
 
@@ -39,8 +39,15 @@ reference:
       - not_occuring
   - title: "Use schedules"
     desc: "Make use of schedules."
+    contents:
+      - test_date
+      - schedule
   - title: "Limit schedules"
-    desc: "Place limits on how far schedules extend"
+    desc: "Place limits on how far schedules extend."
     contents:
       - after
+  - title: "Miscellaneous schedules"
+    desc: "Extra schedules."
+    contents:
+      - on_nth
 
