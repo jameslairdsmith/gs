@@ -90,10 +90,10 @@ scheduled event." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/using-custom-periods.html">Using custom periods</a>
+      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
     </li>
     <li>
-      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
+      <a href="../articles/understanding-period-limits.html">Understanding period limits</a>
     </li>
   </ul>
 </li>
@@ -176,7 +176,7 @@ future the schedule will extend. Used to avoid an infinite cycle.</p></td>
 
 <span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>on_christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'>schedule</span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
 #&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
 <span class='no'>in_between_christmas_and_new_years_eve</span> <span class='kw'>&lt;-</span>
@@ -184,7 +184,7 @@ future the schedule will extend. Used to avoid an infinite cycle.</p></td>
                <span class='no'>on_new_years_eve</span>,
                <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'>schedule</span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29" "2001-12-30"</div><div class='input'>
 </div></pre>
   </div>

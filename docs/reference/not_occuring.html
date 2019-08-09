@@ -90,10 +90,10 @@ returning a single combined schedule as output." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/using-custom-periods.html">Using custom periods</a>
+      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
     </li>
     <li>
-      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
+      <a href="../articles/understanding-period-limits.html">Understanding period limits</a>
     </li>
   </ul>
 </li>
@@ -171,12 +171,12 @@ the events of the second schedule from the first.</p><ul>
 
 <span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occuring.html'>also_occuring</a></span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
 
-<span class='fu'>schedule</span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"
 #&gt;  [6] "2002-12-25" "2003-01-01" "2003-12-25" "2004-01-01" "2004-12-25"</div><div class='input'>
 <span class='no'>weekday_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occuring.html'>only_occuring</a></span>(<span class='no'>on_public_holidays</span>,
                                          <span class='fu'>not_occuring</span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>, <span class='st'>"Sun"</span>)))
 
-<span class='fu'>schedule</span>(<span class='no'>weekday_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01" "2002-12-25"
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>weekday_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01" "2002-12-25"
 #&gt; [6] "2003-01-01" "2003-12-25" "2004-01-01"</div><div class='input'>
 </div></pre>
   </div>

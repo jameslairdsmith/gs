@@ -86,10 +86,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/using-custom-periods.html">Using custom periods</a>
+      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
     </li>
     <li>
-      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
+      <a href="../articles/understanding-period-limits.html">Understanding period limits</a>
     </li>
   </ul>
 </li>
@@ -168,7 +168,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="in_year.html">in_year()</a></code> </p>
+          <p><code><a href="in_year.html">in_year()</a></code> <code><a href="in_year.html">in_isoyear()</a></code> <code><a href="in_year.html">in_epiyear()</a></code> </p>
         </td>
         <td><p>Specify the year(s) of a schedule</p></td>
       </tr>
@@ -195,8 +195,28 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
+          <h2 id="section-use-schedules" class="hasAnchor"><a href="#section-use-schedules" class="anchor"></a>Use schedules</h2>
+          <p class="section-desc"><p>Make use of schedules.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="test_date.html">test_date()</a></code> </p>
+        </td>
+        <td><p>Test whether a date falls on a schedule.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="schedule.html">schedule()</a></code> <code><a href="schedule.html">schedule_hours()</a></code> </p>
+        </td>
+        <td><p>Get the events of a schedule</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
           <h2 id="section-limit-schedules" class="hasAnchor"><a href="#section-limit-schedules" class="anchor"></a>Limit schedules</h2>
-          <p class="section-desc"><p>Place limits on how far schedules extend</p></p>
+          <p class="section-desc"><p>Place limits on how far schedules extend.</p></p>
         </th>
       </tr>
       <tr>
@@ -205,6 +225,20 @@
           <p><code><a href="after.html">after()</a></code> <code><a href="after.html">before()</a></code> <code><a href="after.html">in_between()</a></code> <code><a href="after.html">on_or_after()</a></code> <code><a href="after.html">on_or_before()</a></code> </p>
         </td>
         <td><p>Specify the start and end of a schedule</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-miscellaneous-schedules" class="hasAnchor"><a href="#section-miscellaneous-schedules" class="anchor"></a>Miscellaneous schedules</h2>
+          <p class="section-desc"><p>Extra schedules.</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="on_nth.html">on_nth()</a></code> <code><a href="on_nth.html">on_first()</a></code> <code><a href="on_nth.html">on_second()</a></code> <code><a href="on_nth.html">on_third()</a></code> <code><a href="on_nth.html">on_fourth()</a></code> <code><a href="on_nth.html">on_last()</a></code> </p>
+        </td>
+        <td><p>Schedule the nth events within a period</p></td>
       </tr>
     </tbody>
     </table>
@@ -215,7 +249,9 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#section-basic-schedules">Basic schedules</a></li>
       <li><a href="#section-compose-schedules">Compose schedules</a></li>
+      <li><a href="#section-use-schedules">Use schedules</a></li>
       <li><a href="#section-limit-schedules">Limit schedules</a></li>
+      <li><a href="#section-miscellaneous-schedules">Miscellaneous schedules</a></li>
     </ul>
   </div>
 </div>

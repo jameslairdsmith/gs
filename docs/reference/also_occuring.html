@@ -90,10 +90,10 @@ returning a single combined schedule as output." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/using-custom-periods.html">Using custom periods</a>
+      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
     </li>
     <li>
-      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
+      <a href="../articles/understanding-period-limits.html">Understanding period limits</a>
     </li>
   </ul>
 </li>
@@ -164,12 +164,12 @@ present in both the first schedule (<code>x</code>) and in the second schedule
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occuring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 
-<span class='fu'>schedule</span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</div><div class='input'>
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</div><div class='input'>
 <span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
 
 <span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occuring</span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
 
-<span class='fu'>schedule</span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>on_public_holidays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"
 #&gt;  [6] "2002-12-25" "2003-01-01" "2003-12-25" "2004-01-01" "2004-12-25"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
