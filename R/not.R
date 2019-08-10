@@ -16,27 +16,27 @@
 #' * When two schedules are used, the function returns the first schedule but
 #'  with the events of the second schedule stripped away. This works to remove
 #'  the events of the second schedule from the first.
-#'    - This means that `not_occuring(x, y)` is the equivalent of
-#'      `only_occuring(x, not_occuring(y))`
+#'    - This means that `not_occurring(x, y)` is the equivalent of
+#'      `only_occurring(x, not_occurring(y))`
 #'
 #' @return A schedule of events determined by the input schedules and rules
 #' of the function used.
 #' @examples
-#' on_christmas <- only_occuring(on_mday(25), in_month("Dec"))
+#' on_christmas <- only_occurring(on_mday(25), in_month("Dec"))
 #' on_new_years_day <- on_yday(1)
 #'
-#' on_public_holidays <- also_occuring(on_new_years_day, on_christmas)
+#' on_public_holidays <- also_occurring(on_new_years_day, on_christmas)
 #'
 #' schedule(on_public_holidays, from = 2000, to = 2004)
 #'
-#' weekday_public_holidays <- only_occuring(on_public_holidays,
-#'                                          not_occuring(on_wday("Sat", "Sun")))
+#' weekday_public_holidays <- only_occurring(on_public_holidays,
+#'                                          not_occurring(on_wday("Sat", "Sun")))
 #'
 #' schedule(weekday_public_holidays, from = 2000, to = 2004)
 #'
 #' @export
 
-not_occuring <- function(x, y = NULL){
+not_occurring <- function(x, y = NULL){
 
   elem_1 <- x
   elem_2 <- y
@@ -59,6 +59,6 @@ not_occuring <- function(x, y = NULL){
 
     class(out) <- c("schedule")
 
-    elem_1 %>% only_occuring(out)
+    elem_1 %>% only_occurring(out)
   }
 }

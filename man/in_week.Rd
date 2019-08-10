@@ -16,10 +16,10 @@ in_epiweek(...)
 \item{...}{a numeric vector of week specifications.}
 }
 \value{
-A schedule of events occuring in the weeks specified.
+A schedule of events occurring in the weeks specified.
 }
 \description{
-Creates a schedule of events occuring in the weeks specified.
+Creates a schedule of events occurring in the weeks specified.
 }
 \details{
 The type of week is determined by the function used. These week types are

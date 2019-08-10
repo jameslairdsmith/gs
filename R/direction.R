@@ -20,8 +20,8 @@
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring before and/or after the events specified.
 #' @examples
-#' on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
-#' on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+#' on_christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
+#' on_new_years_eve <- on_mday(31) %>% only_occurring(in_month("Dec"))
 #'
 #' after_christmas <- after(on_christmas, within_given = lubridate::year)
 #'
@@ -130,7 +130,7 @@ before <- function(end_event, within_given = NULL){
 
 in_between <- function(start_event, end_event, within_given = NULL){
 
-  only_occuring(after(start_event, within_given = within_given),
+  only_occurring(after(start_event, within_given = within_given),
                 before(end_event, within_given = within_given))
 }
 
@@ -154,7 +154,7 @@ on_or_after <- function(start_event, within_given = NULL){
     return(out)
   }
 
-  also_occuring(start_event, after(start_event, within_given = within_given))
+  also_occurring(start_event, after(start_event, within_given = within_given))
 }
 
 #' @rdname after
@@ -177,5 +177,5 @@ on_or_before <- function(end_event, within_given = NULL){
     return(out)
   }
 
-  also_occuring(end_event, before(end_event, within_given = within_given))
+  also_occurring(end_event, before(end_event, within_given = within_given))
 }

@@ -26,7 +26,7 @@ therefore difficult to conceptualise, use, and program with.
 these schedules a little easier. It does this by providing a set of simple
 to understand functions and a flexible framework for combining them. 
 Together these allow users to compose more complex schedules from simple and 
-intutive buildings blocks.
+intuitive buildings blocks.
 
 ## Installation
 

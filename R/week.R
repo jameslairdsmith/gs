@@ -2,7 +2,7 @@
 #'
 #' @description
 #'
-#' Creates a schedule of events occuring in the weeks specified.
+#' Creates a schedule of events occurring in the weeks specified.
 #'
 #' @details
 #'
@@ -15,7 +15,7 @@
 #' @param ... a numeric vector of week specifications.
 #'
 #' @keywords week, date, scedule
-#' @return A schedule of events occuring in the weeks specified.
+#' @return A schedule of events occurring in the weeks specified.
 #' @examples
 #' my_dates <- seq.Date(from = as.Date("2000-01-01"),
 #'                      to = as.Date("2000-02-01"),

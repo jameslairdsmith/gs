@@ -16,7 +16,7 @@ check_vec_loop <- function(vec, func, ...){
     my_schedule <- func(vec[1], ...)
 
     for(i in 2:length(vec)){
-      my_schedule <- also_occuring(my_schedule, func(vec[i], ...))
+      my_schedule <- also_occurring(my_schedule, func(vec[i], ...))
     }
     my_schedule
   }

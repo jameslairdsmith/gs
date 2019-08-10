@@ -69,7 +69,7 @@ test_that("`on_nth` function works as part of a schedule", {
   Thursday <- on_wday("Thu")
   second_thursday_of_july <-
     on_nth(2, Thursday, within_given = lubridate::month) %>%
-    only_occuring(in_month("Jul"))
+    only_occurring(in_month("Jul"))
 
   expect_true(test_date(dmy("12/07/1990"), second_thursday_of_july))
   expect_false(test_date(dmy("05/07/1990"), second_thursday_of_july))

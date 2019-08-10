@@ -35,8 +35,8 @@ reference:
   - title: "Compose schedules"
     desc: "Combine schedules together to create more complex ones."
     contents:
-      - also_occuring
-      - not_occuring
+      - also_occurring
+      - not_occurring
   - title: "Use schedules"
     desc: "Make use of schedules."
     contents:

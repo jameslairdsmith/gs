@@ -1,11 +1,11 @@
 #' Specify the year(s) of a schedule
 #'
-#' Creates a schedule of events occuring in the year(s) specified.
+#' Creates a schedule of events occurring in the year(s) specified.
 #'
 #' @param ... A numeric vector of year elements.
 #'
 #' @keywords year, date, schedule
-#' @return A schedule of events occuring in the year(s) specified.
+#' @return A schedule of events occurring in the year(s) specified.
 #' @details The `in_year()` function will retain information on the limits of
 #' a schedule. If a schedule occurs only within a specified year or years, we
 #' can infer the start date and end date of the schedule as being the first

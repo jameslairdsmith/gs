@@ -1,6 +1,6 @@
 #' Specify the month(s) of a schedule
 #'
-#' Creates a schedule of events occuring in the months specified.
+#' Creates a schedule of events occurring in the months specified.
 #'
 #' Months can be specified using their names (eg. "January"),
 #' abbreviations (eg. "Jan") or integers (eg. 1).
@@ -8,7 +8,7 @@
 #' @param ... A character or numeric vector of month elements.
 #'
 #' @keywords month, date, schedule
-#' @return A schedule of events occuring in the months specified.
+#' @return A schedule of events occurring in the months specified.
 #' @examples
 #' my_dates <- c(as.Date("2000-01-01"),
 #'               as.Date("2000-02-01"),

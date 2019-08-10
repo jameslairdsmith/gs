@@ -1,7 +1,7 @@
 #' Specify the quarter(s) of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring in the quarters or semester specified.
+#' Creates a schedule of events occurring in the quarters or semester specified.
 #'
 #' @param ...  A numeric vector of quarter specifications.
 #' @param x Numeric specifying which semester the events occur in (1 or 2).
@@ -9,7 +9,7 @@
 #' Defaults to 1 (January).
 #'
 #' @keywords semester, quarter, date, schedule
-#' @return A schedule of events occuring in the quarters or semester specified.
+#' @return A schedule of events occurring in the quarters or semester specified.
 #' @examples
 #'  my_dates <- seq.Date(from = as.Date("2000-01-01"),
 #'                      to = as.Date("2000-12-01"),

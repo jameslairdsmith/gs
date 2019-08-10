@@ -10,10 +10,10 @@ in_month(...)
 \item{...}{A character or numeric vector of month elements.}
 }
 \value{
-A schedule of events occuring in the months specified.
+A schedule of events occurring in the months specified.
 }
 \description{
-Creates a schedule of events occuring in the months specified.
+Creates a schedule of events occurring in the months specified.
 }
 \details{
 Months can be specified using their names (eg. "January"),

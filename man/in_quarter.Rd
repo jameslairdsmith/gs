@@ -18,10 +18,10 @@ Defaults to 1 (January).}
 \item{x}{Numeric specifying which semester the events occur in (1 or 2).}
 }
 \value{
-A schedule of events occuring in the quarters or semester specified.
+A schedule of events occurring in the quarters or semester specified.
 }
 \description{
-Creates a schedule of events occuring in the quarters or semester specified.
+Creates a schedule of events occurring in the quarters or semester specified.
 }
 \examples{
  my_dates <- seq.Date(from = as.Date("2000-01-01"),

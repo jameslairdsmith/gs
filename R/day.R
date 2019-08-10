@@ -59,7 +59,7 @@
 #' `lubridate.week.start` to set this parameter globally.
 #'
 #' @keywords month, day, date, schedule
-#' @return A schedule of events occuring on the day type(s) specified.
+#' @return A schedule of events occurring on the day type(s) specified.
 #' @examples
 #'
 #' my_dates <- seq.Date(from = as.Date("2000-01-01"),
@@ -180,7 +180,7 @@ on_weekend <- function(date_vec = NULL){
 
 on_weekday <- function(date_vec = NULL){
 
-  out_func <- not_occuring(on_wday("Sat", "Sun"))
+  out_func <- not_occurring(on_wday("Sat", "Sun"))
 
   if(!missing(date_vec)) return(out_func(date_vec))
 

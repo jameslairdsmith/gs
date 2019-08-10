@@ -16,10 +16,10 @@ in_epiyear(...)
 \item{...}{A numeric vector of year elements.}
 }
 \value{
-A schedule of events occuring in the year(s) specified.
+A schedule of events occurring in the year(s) specified.
 }
 \description{
-Creates a schedule of events occuring in the year(s) specified.
+Creates a schedule of events occurring in the year(s) specified.
 }
 \details{
 The \code{in_year()} function will retain information on the limits of

@@ -49,7 +49,7 @@ test_that("on_date() function works with multiple inputs", {
 
 test_that("after() function works", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expect_true(test_date(dmy("20/07/2019"), after(my_birthday, within_given = lubridate::month)))
   expect_false(test_date(dmy("07/07/2019"), after(my_birthday, within_given = lubridate::month)))
@@ -57,7 +57,7 @@ test_that("after() function works", {
 
 test_that("after() function works with string for within_given", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expect_true(test_date(dmy("20/07/2019"), after(my_birthday, within_given = "month")))
   expect_false(test_date(dmy("07/07/2019"), after(my_birthday, within_given = "month")))
@@ -65,7 +65,7 @@ test_that("after() function works with string for within_given", {
 
 test_that("after() function works on a vector", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expected_result <- c(F, F, F, T, T)
   days_around_birthday <- seq.Date(from = dmy("10/07/1990"), to = dmy("14/07/1990"), by = "1 day")
@@ -77,7 +77,7 @@ test_that("after() function works on a vector", {
 
 test_that("after() function works on a long vector", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expected_result <- seq.Date(from = dmy("13/07/1990"), to = dmy("31/07/1990"), by = "1 day")
   days_in_1990 <- seq.Date(from = dmy("01/01/1990"), to = dmy("31/12/1990"), by = "1 day")
@@ -100,7 +100,7 @@ test_that("after() function works on a date value",{
 
 test_that("before() function works", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expect_false(test_date(dmy("20/07/2019"), before(my_birthday, within_given = lubridate::month)))
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = lubridate::month)))
@@ -108,7 +108,7 @@ test_that("before() function works", {
 
 test_that("before() function works on a vector", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expected_result <- c(T, T, F, F, F)
   days_around_birthday <- seq.Date(from = dmy("10/07/1990"), to = dmy("14/07/1990"), by = "1 day")
@@ -120,7 +120,7 @@ test_that("before() function works on a vector", {
 
 test_that("before() function works on a long vector", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expected_result <- seq.Date(from = dmy("01/07/1990"), to = dmy("11/07/1990"), by = "1 day")
   days_in_1990 <- seq.Date(from = dmy("01/01/1990"), to = dmy("31/12/1990"), by = "1 day")
@@ -132,7 +132,7 @@ test_that("before() function works on a long vector", {
 
 test_that("before() function works with string value for within_given", {
 
-  my_birthday <- on_mday(12) %>% only_occuring(in_month("Jul"))
+  my_birthday <- on_mday(12) %>% only_occurring(in_month("Jul"))
 
   expect_false(test_date(dmy("20/07/2019"), before(my_birthday, within_given = "month")))
   expect_true(test_date(dmy("07/07/2019"), before(my_birthday, within_given = "month")))
@@ -151,8 +151,8 @@ test_that("before() function works on a date value", {
 
 test_that("in_between() function works on schedules", {
 
-  on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
-  on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+  on_christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
+  on_new_years_eve <- on_mday(31) %>% only_occurring(in_month("Dec"))
 
   in_between_christmas_and_new_years <-
          in_between(on_christmas,
@@ -171,12 +171,12 @@ test_that("in_between() function works on schedules", {
 
 test_that("on_or_after() and on_or_before() functions work on schedules", {
 
-  on_christmas <- on_mday(25) %>% only_occuring(in_month("Dec"))
-  on_new_years_eve <- on_mday(31) %>% only_occuring(in_month("Dec"))
+  on_christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
+  on_new_years_eve <- on_mday(31) %>% only_occurring(in_month("Dec"))
 
   on_and_between_christmas_and_new_years_eve <-
     on_or_after(on_christmas, within_given = lubridate::year) %>%
-    only_occuring(on_or_before(on_new_years_eve, within_given = lubridate::year))
+    only_occurring(on_or_before(on_new_years_eve, within_given = lubridate::year))
 
 
   result <- schedule(on_and_between_christmas_and_new_years_eve, from = 2000, to = 2000)
@@ -193,7 +193,7 @@ test_that("after() and before() functions work on date values when scheduled", {
 
   my_result <-
     after(dmy("05/01/2000")) %>%
-    only_occuring(before(dmy("10/01/2000"))) %>%
+    only_occurring(before(dmy("10/01/2000"))) %>%
     schedule(during = 2000)
 
   expected_result <- seq.Date(from = dmy("06/01/2000"),
@@ -208,7 +208,7 @@ test_that("on_or_after() and on_or_before() functions work on date values when s
 
   my_result <-
     on_or_after(dmy("05/01/2000")) %>%
-    only_occuring(on_or_before(dmy("10/01/2000"))) %>%
+    only_occurring(on_or_before(dmy("10/01/2000"))) %>%
     schedule(during = 2000)
 
   expected_result <- seq.Date(from = dmy("05/01/2000"),
@@ -222,7 +222,7 @@ test_that("after() and before() functions inherit limits", {
 
   my_result <-
     after(dmy("05/01/2000")) %>%
-    only_occuring(before(dmy("10/01/2000"))) %>%
+    only_occurring(before(dmy("10/01/2000"))) %>%
     schedule()
 
   expected_result <- seq.Date(from = dmy("06/01/2000"),
@@ -237,7 +237,7 @@ test_that("on_or_after() and on_or_before() functions inherit limits", {
 
   my_result <-
     on_or_after(dmy("05/01/2000")) %>%
-    only_occuring(on_or_before(dmy("10/01/2000"))) %>%
+    only_occurring(on_or_before(dmy("10/01/2000"))) %>%
     schedule()
 
   expected_result <- seq.Date(from = dmy("05/01/2000"),

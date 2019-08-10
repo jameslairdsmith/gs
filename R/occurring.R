@@ -8,28 +8,28 @@
 #' @param x,y Schedules to weave together.
 #'
 #' @details
-#' `also_occuring()` returns a schedule of events which includes all those
+#' `also_occurring()` returns a schedule of events which includes all those
 #' present in the first schedule (`x`) and all those present in the second
 #' schedule (`y`). The results is the **union** of the two schedules.
 #'
-#' `only_occuring()` returns a schedule of events which includes only those
+#' `only_occurring()` returns a schedule of events which includes only those
 #' present in both the first schedule (`x`) and in the second schedule
 #' (`y`). The result is the **intersection** of the two schedules.
 #'
 #' @return A schedule of events determined by the input schedules and rules
 #' of the function used.
 #' @examples
-#' on_christmas <- only_occuring(on_mday(25), in_month("Dec"))
+#' on_christmas <- only_occurring(on_mday(25), in_month("Dec"))
 #'
 #' schedule(on_christmas, from = 2000, to = 2004)
 #'
 #' on_new_years_day <- on_yday(1)
 #'
-#' on_public_holidays <- also_occuring(on_new_years_day, on_christmas)
+#' on_public_holidays <- also_occurring(on_new_years_day, on_christmas)
 #'
 #' schedule(on_public_holidays, from = 2000, to = 2004)
 #' @export
-also_occuring <- function(x, y){
+also_occurring <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
@@ -46,10 +46,10 @@ also_occuring <- function(x, y){
 
 }
 
-#' @rdname also_occuring
+#' @rdname also_occurring
 #' @export
 
-only_occuring <- function(x, y){
+only_occurring <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
