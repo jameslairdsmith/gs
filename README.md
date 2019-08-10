@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# scheduler
+# scheduler <a href='https://jameslairdsmith.github.io/scheduler'><img src='man/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -9,16 +9,20 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-Recurring calendar events are very common in everyday life. When they
-occur in regular or quasi-regular patterns they are called ‘schedules’.
-Schedules take many forms. While some are straightforward, others are
-complex and therefore difficult to conceptualise, use, and program with.
+A schedule is a set of calendar events recurring in a pattern.
+`scheduler` is an R package for working with schedules.
 
-`scheduler` is an R package the goal of which is to make working with
-these schedules a little easier. It does this by providing a set of
-simple to understand functions and a flexible framework for combining
-them. Together these allow users to compose more complex schedules from
-simple and intutive buildings blocks.
+Schedules can be frustrating to create, especially when the pattern of
+events is irregular. `scheduler` overcomes this by providing a set of
+simple to understand functions for making schedules along with functions
+for combining them into more complex ones.
+
+The `scheduler` grammar is both flexible and declarative. The
+flexibility allows users to compose arbitrarily complex schedules from
+simple and intuitive buildings blocks. Because the grammar is
+declarative, the user need not concearn themselves with the details of
+how a particular schedule is created, rather they can specify the rules
+of a schedule and allow `scheduler` to implement it for them.
 
 ## Installation
 
@@ -30,9 +34,9 @@ be downloaded from Github:
 devtools::install_github("jameslairdsmith/scheduler")
 ```
 
-Feedback, bug report and suggestions are most welcome and can be made in
-the [issues tab](https://github.com/jameslairdsmith/scheduler/issues) of
-the Github repo.
+Feedback, bug report and suggestions are welcome and can be made in the
+[issues tab](https://github.com/jameslairdsmith/scheduler/issues) of the
+Github repo.
 
 ## Getting started
 
