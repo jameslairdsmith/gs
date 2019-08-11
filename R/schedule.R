@@ -18,8 +18,6 @@ schedule <- function(x, from = NULL, to = NULL, during = NULL, every = "day",...
   from <- get_from(x = x, from = from, during = during)
   to <- get_to(x = x, to = to, during = during)
 
-  #date_seq <- seq.Date(from = from, to = to, by = every)
-
   date_seq <- make_period_seq(start = from, end = to, period_unit = every)
 
   date_seq[test_date(date_seq, x)]
@@ -38,24 +36,14 @@ schedule_days <- function(x, from = NULL, to = NULL, during = NULL, ...){
 
 schedule_hours <- function(x, from = NULL, to = NULL, during = NULL, ...){
 
-  from <- get_from(x = x, from = from, during = during)
-  to <- get_to(x = x, to = to, during = during)
-
-  #to <- as_datetime(to)
-  #from <- as_datetime(from)
-
-  #datetime_seq <- seq.POSIXt(from = from, to = to, by = "1 hour")
-
-  datetime_seq <- make_period_seq(start = from, end = to, period_unit = "hour")
-
-  datetime_seq[test_date(datetime_seq, x)]
+  schedule(x = x, from = from, to = to, during = during, every = "hour", ...)
 }
 
 make_period_seq <- function(start, end, period_unit = "days"){
 
   one_period <- lubridate::period(num = 1, units = period_unit)
 
-  my_interval <- interval(start - one_period , end + lubridate::days(1))
+  my_interval <- lubridate::interval(start - one_period , end + lubridate::days(1))
   num_periods <- (my_interval / one_period) - 2
 
   start + 0:num_periods * one_period
