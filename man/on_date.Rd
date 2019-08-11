@@ -10,15 +10,15 @@ on_date(...)
 \item{...}{A vector of dates.}
 }
 \value{
-A schedule of events occuring on the dates specified.
+A schedule of events occurring on the dates specified.
 }
 \description{
-Creates a schedule of events occuring on the dates specified.
-}
-\details{
+Creates a schedule of events occurring on the dates specified.
+
 This function is best used when making changes to other schedules where
 those changes fall on defined dates.
-
+}
+\details{
 The function also encodes schedule limits in the output. For more
 details see the \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
@@ -34,6 +34,13 @@ on_first_day_millennium(as.Date("2000-01-02"))
 on_first_or_second_day_millennium(as.Date("2000-01-01"))
 on_first_or_second_day_millennium(as.Date("2000-01-02"))
 on_first_or_second_day_millennium(as.Date("2000-01-03"))
+
+on_regular_paydays <- on_mday(25)
+on_bonus_payday <- on_date(as.Date("2000-12-20"))
+
+on_paydays <- on_regular_paydays \%>\% also_occurring(on_bonus_payday)
+
+schedule(on_paydays, during = 2000)
 }
 \keyword{date,}
 \keyword{schedule}

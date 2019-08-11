@@ -1,12 +1,12 @@
 #' Specify the date(s) of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring on the dates specified.
+#' Creates a schedule of events occurring on the dates specified.
 #'
-#' @details
 #' This function is best used when making changes to other schedules where
 #' those changes fall on defined dates.
 #'
+#' @details
 #' The function also encodes schedule limits in the output. For more
 #' details see the [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
@@ -14,7 +14,7 @@
 #' @param ... A vector of dates.
 #'
 #' @keywords date, schedule
-#' @return A schedule of events occuring on the dates specified.
+#' @return A schedule of events occurring on the dates specified.
 #' @examples
 #'
 #' on_first_day_millennium <- on_date(as.Date("2000-01-01"))
@@ -26,6 +26,13 @@
 #' on_first_or_second_day_millennium(as.Date("2000-01-01"))
 #' on_first_or_second_day_millennium(as.Date("2000-01-02"))
 #' on_first_or_second_day_millennium(as.Date("2000-01-03"))
+#'
+#' on_regular_paydays <- on_mday(25)
+#' on_bonus_payday <- on_date(as.Date("2000-12-20"))
+#'
+#' on_paydays <- on_regular_paydays %>% also_occurring(on_bonus_payday)
+#'
+#' schedule(on_paydays, during = 2000)
 #' @export
 
 on_date <- function(...){
