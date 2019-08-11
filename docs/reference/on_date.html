@@ -34,7 +34,9 @@
   
 <meta property="og:title" content="Specify the date(s) of a schedule — on_date" />
 
-<meta property="og:description" content="Creates a schedule of events occuring on the dates specified." />
+<meta property="og:description" content="Creates a schedule of events occurring on the dates specified.
+This function is best used when making changes to other schedules where
+those changes fall on defined dates." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -129,7 +131,9 @@
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occuring on the dates specified.</p>
+    <p>Creates a schedule of events occurring on the dates specified.</p>
+<p>This function is best used when making changes to other schedules where
+those changes fall on defined dates.</p>
     
     </div>
 
@@ -146,13 +150,11 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events occuring on the dates specified.</p>
+    <p>A schedule of events occurring on the dates specified.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function is best used when making changes to other schedules where
-those changes fall on defined dates.</p>
-<p>The function also encodes schedule limits in the output. For more
+    <p>The function also encodes schedule limits in the output. For more
 details see the <a href='https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html'>vignette</a>
 on understanding schedule limits.</p>
     
@@ -163,7 +165,15 @@ on understanding schedule limits.</p>
 <span class='no'>on_first_or_second_day_millennium</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
                                              <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))
 
-<span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-03"</span>))</div><div class='output co'>#&gt; [1] FALSE</div></pre>
+<span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>on_first_or_second_day_millennium</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-03"</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='no'>on_regular_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>)
+<span class='no'>on_bonus_payday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-20"</span>))
+
+<span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='no'>on_regular_paydays</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='also_occurring.html'>also_occurring</a></span>(<span class='no'>on_bonus_payday</span>)
+
+<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
+#&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
+#&gt; [11] "2000-11-25" "2000-12-20" "2000-12-25"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
