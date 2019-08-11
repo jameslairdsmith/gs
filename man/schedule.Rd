@@ -6,7 +6,7 @@
 \alias{schedule_hours}
 \title{Get the events of a schedule}
 \usage{
-schedule(x, from = NULL, to = NULL, during = NULL, every = "1 day",
+schedule(x, from = NULL, to = NULL, during = NULL, every = "day",
   ...)
 
 schedule_days(x, from = NULL, to = NULL, during = NULL, ...)

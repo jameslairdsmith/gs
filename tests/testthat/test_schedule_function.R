@@ -45,9 +45,11 @@ test_that("schedule_hours() function works", {
 
   one <- christmas %>% schedule_hours(during = 2000)
 
-  two <- seq.Date(from = dmy("25/12/2000"),
-                  to = dmy("25/12/2000"),
+  two <- seq.POSIXt(from = as_datetime(dmy("25/12/2000")),
+                  to = as_datetime(dmy("26/12/2000")),
                   by = "1 hour")
 
-  expect_identical(one, two)
+  two <- two[mday(two)==25]
+
+  expect_equal(one, two)
 })
