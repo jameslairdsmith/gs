@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# scheduler <a href='https://jameslairdsmith.github.io/scheduler'><img src='man/figures/logo.png' align="right" height="139" /></a>
+# scheduler <a href='https://jameslairdsmith.github.io/scheduler'><img src='reference/figures/logo.png' align="right" height="139" /></a>
 
 <!-- badges: start -->
 
@@ -9,13 +9,13 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-A schedule is a set of calendar events recurring in a pattern.
-`scheduler` is an R package for working with schedules.
+`scheduler` is an R package for working with recurring calendar events.
+When a set of these events recur in a pattern, we call it a ‘schedule’.
 
-Schedules can be frustrating to create, especially when the pattern of
-events is irregular. `scheduler` overcomes this by providing a set of
-simple to understand functions for making schedules along with functions
-for combining them into more complex ones.
+Schedules can sometimes be frustrating to create, especially when the
+pattern of events is irregular. `scheduler` overcomes this by providing
+a set of simple to understand functions for making schedules along with
+functions for combining them into more complex ones.
 
 The `scheduler` grammar is both flexible and declarative. The
 flexibility allows users to compose arbitrarily complex schedules from
@@ -43,3 +43,29 @@ Github repo.
 If you have not used `scheduler` before, the best place to get started
 is the introductory
 [vignette](https://jameslairdsmith.github.io/scheduler/articles/intro.html).
+
+## Acknowledgements
+
+I would like to extend an enormous thank you to the
+[authors](https://lubridate.tidyverse.org/authors.html) of and
+[contributors](https://github.com/tidyverse/lubridate/graphs/contributors)
+to the `lubridate` package. `scheduler` relies on `lubridate` for much
+of its functionality and builds explicitly on its syntax.
+
+I would also like to thank [Martin Fowler](https://martinfowler.com/),
+whose writing\[1\] on this topic helped guide my thinking in a number of
+important ways.
+
+Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who
+in their paper\[2\] on `lubridate` pointed me in Fowler’s direction:
+
+> In particular, we hope to create methods for R that work with
+> reoccurring temporal date patterns, which were introduced by Fowler
+> (1997).
+
+1.  Fowler, M. (1997). “Recurring events for calendars.” \<URL:
+    <https://martinfowler.com/apsupp/recurring.pdf>\>.
+
+2.  Grolemund G, Wickham H (2011). “Dates and Times Made Easy with
+    lubridate.” *Journal of Statistical Software*, *40*(3), 1-25. \<URL:
+    <http://www.jstatsoft.org/v40/i03/>\>.

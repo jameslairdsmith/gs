@@ -96,8 +96,8 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>A schedule is a set of calendar events recurring in a pattern. <code>scheduler</code> is an R package for working with schedules.</p>
-<p>Schedules can be frustrating to create, especially when the pattern of events is irregular. <code>scheduler</code> overcomes this by providing a set of simple to understand functions for making schedules along with functions for combining them into more complex ones.</p>
+<p><code>scheduler</code> is an R package for working with recurring calendar events. When a set of these events recur in a pattern, we call it a ‘schedule’.</p>
+<p>Schedules can sometimes be frustrating to create, especially when the pattern of events is irregular. <code>scheduler</code> overcomes this by providing a set of simple to understand functions for making schedules along with functions for combining them into more complex ones.</p>
 <p>The <code>scheduler</code> grammar is both flexible and declarative. The flexibility allows users to compose arbitrarily complex schedules from simple and intuitive buildings blocks. Because the grammar is declarative, the user need not concearn themselves with the details of how a particular schedule is created, rather they can specify the rules of a schedule and allow <code>scheduler</code> to implement it for them.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -111,6 +111,23 @@
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>If you have not used <code>scheduler</code> before, the best place to get started is the introductory <a href="https://jameslairdsmith.github.io/scheduler/articles/intro.html">vignette</a>.</p>
 </div>
+<div id="acknowledgements" class="section level2">
+<h2 class="hasAnchor">
+<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
+<p>I would like to extend an enormous thank you to the <a href="https://lubridate.tidyverse.org/authors.html">authors</a> of and <a href="https://github.com/tidyverse/lubridate/graphs/contributors">contributors</a> to the <code>lubridate</code> package. <code>scheduler</code> relies on <code>lubridate</code> for much of its functionality and builds explicitly on its syntax.</p>
+<p>I would also like to thank <a href="https://martinfowler.com/">Martin Fowler</a>, whose writing<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on this topic helped guide my thinking in a number of important ways.</p>
+<p>Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who in their paper<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> on <code>lubridate</code> pointed me in Fowler’s direction:</p>
+<blockquote>
+<p>In particular, we hope to create methods for R that work with reoccurring temporal date patterns, which were introduced by Fowler (1997).</p>
+</blockquote>
+</div>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Fowler, M. (1997). “Recurring events for calendars.” &lt;URL: <a href="https://martinfowler.com/apsupp/recurring.pdf" class="uri">https://martinfowler.com/apsupp/recurring.pdf</a>&gt;.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Grolemund G, Wickham H (2011). “Dates and Times Made Easy with lubridate.” <em>Journal of Statistical Software</em>, <em>40</em>(3), 1-25. &lt;URL: <a href="http://www.jstatsoft.org/v40/i03/" class="uri">http://www.jstatsoft.org/v40/i03/</a>&gt;.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
 </div>
   </div>
 
