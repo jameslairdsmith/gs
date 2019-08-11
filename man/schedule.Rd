@@ -11,7 +11,7 @@ schedule(x, from = NULL, to = NULL, during = NULL, every = "1 day",
 
 schedule_days(x, from = NULL, to = NULL, during = NULL, ...)
 
-schedule_hours(x, from, to, during = NULL, ...)
+schedule_hours(x, from = NULL, to = NULL, during = NULL, ...)
 }
 \arguments{
 \item{...}{A numeric vector of year elements.}
