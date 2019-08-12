@@ -41,7 +41,7 @@ reference:
   - title: "Use schedules"
     desc: "Make use of schedules."
     contents:
-      - test_date
+      - is_occurring
       - schedule
   - title: "Limit schedules"
     desc: "Place limits on how far schedules extend."

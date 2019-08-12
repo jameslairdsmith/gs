@@ -9,10 +9,8 @@ test_date(date, schedule, ...)
 \arguments{
 \item{date}{A date object}
 
-\item{x}{A schedule object}
+\item{schedule}{A schedule object}
 }
 \description{
-Used to test.
+Deprecated. Instead use \code{is_occurring()}.
 }
-\keyword{date,}
-\keyword{schedule}

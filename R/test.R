@@ -1,13 +1,9 @@
 #' Test whether a date falls on a schedule.
 #'
-#' Used to test.
+#' Deprecated. Instead use `is_occurring()`.
 #'
 #' @param date A date object
-#' @param x A schedule object
-#' @keywords date, schedule
-#'
-#' @rdname test_date
-#' @export
+#' @param schedule A schedule object
 
 test_date <- function(date, schedule, ...){
 
