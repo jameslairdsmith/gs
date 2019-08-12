@@ -16,23 +16,23 @@
 #' @keywords date, schedule
 #' @return A schedule of events occurring on the dates specified.
 #' @examples
+#' my_dates <- seq.Date(as.Date("2000-01-01"),
+#'                      as.Date("2000-01-05"),
+#'                      "1 day")
 #'
 #' on_first_day_millennium <- on_date(as.Date("2000-01-01"))
 #' on_first_or_second_day_millennium <- on_date(as.Date("2000-01-01"),
 #'                                              as.Date("2000-01-02"))
 #'
-#' on_first_day_millennium(as.Date("2000-01-01"))
-#' on_first_day_millennium(as.Date("2000-01-02"))
-#' on_first_or_second_day_millennium(as.Date("2000-01-01"))
-#' on_first_or_second_day_millennium(as.Date("2000-01-02"))
-#' on_first_or_second_day_millennium(as.Date("2000-01-03"))
+#' is_occurring(my_dates, on_first_day_millennium)
+#' is_occurring(my_dates, on_first_or_second_day_millennium)
 #'
 #' on_regular_paydays <- on_mday(25)
 #' on_bonus_payday <- on_date(as.Date("2000-12-20"))
 #'
 #' on_paydays <- on_regular_paydays %>% also_occurring(on_bonus_payday)
 #'
-#' schedule(on_paydays, during = 2000)
+#' schedule_days(on_paydays, during = 2000)
 #' @export
 
 on_date <- function(...){
