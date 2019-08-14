@@ -38,7 +38,7 @@ is_occurring(my_dates, on_first_or_second_day_millennium)
 on_regular_paydays <- on_mday(25)
 on_bonus_payday <- on_date(as.Date("2000-12-20"))
 
-on_paydays <- on_regular_paydays \%>\% also_occurring(on_bonus_payday)
+on_paydays <- also_occurring(on_bonus_payday, on_regular_paydays)
 
 schedule_days(on_paydays, during = 2000)
 }

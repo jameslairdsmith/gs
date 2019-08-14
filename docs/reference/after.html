@@ -35,7 +35,7 @@
 <meta property="og:title" content="Specify the start and end of a schedule — after" />
 
 <meta property="og:description" content="Creates a schedule of events occuring before and/or after a certain date or
-scheduled event." />
+other scheduled event." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -131,7 +131,7 @@ scheduled event." />
     <div class="ref-description">
     
     <p>Creates a schedule of events occuring before and/or after a certain date or
-scheduled event.</p>
+other scheduled event.</p>
     
     </div>
 
@@ -151,13 +151,19 @@ scheduled event.</p>
     <tr>
       <th>start_event, end_event</th>
       <td><p>The start and/or end events of the schedule.
-For each can be either be a date object or a schedule.</p></td>
+Can be either:</p><ul>
+<li><p>A date-time object or</p></li>
+<li><p>A schedule.</p></li>
+</ul></td>
     </tr>
     <tr>
       <th>within_given</th>
-      <td><p>A date accessor function. Required only when either
-<code>start_date</code> or <code>end_date</code> are schedules. Puts a limit on how far into the
-future the schedule will extend. Used to avoid an infinite cycle.</p></td>
+      <td><p>Required only when either <code>start_date</code> or <code>end_date</code>
+is a schedule. Can be either:</p><ul>
+<li><p>A string shortcut for a period type: either "day", "week", "month",
+"quarter" or "year". Or,</p></li>
+<li><p>A date accessor function. Eg. <code><a href='http://lubridate.tidyverse.org/reference/day.html'>lubridate::day()</a></code>.</p></li>
+</ul></td>
     </tr>
     </table>
     
@@ -167,26 +173,27 @@ future the schedule will extend. Used to avoid an infinite cycle.</p></td>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>When <code>x</code> is a date.</p>
-<p>When <code>x</code> is a schedule...</p>
-<p>When <code>x</code> is a date, it saves having to...</p>
+    <p>When <code>start_date</code> and/or <code>end_date</code> are date-time objects they place fixed
+lower and upper limits on the resulting schedule; for more details see the
+<a href='https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html'>vignette</a>
+on understanding schedule limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
-<span class='no'>on_new_years_eve</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+    <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>))
+<span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>))
 
-<span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>on_christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
+<span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
 #&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
 <span class='no'>in_between_christmas_and_new_years_eve</span> <span class='kw'>&lt;-</span>
-    <span class='fu'>in_between</span>(<span class='no'>on_christmas</span>,
-               <span class='no'>on_new_years_eve</span>,
+    <span class='fu'>in_between</span>(<span class='no'>christmas</span>,
+               <span class='no'>new_years_eve</span>,
                <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29" "2001-12-30"</div><div class='input'>
 </div></pre>
   </div>

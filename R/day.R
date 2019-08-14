@@ -25,8 +25,8 @@
 #' * `on_wday` for days of the week.
 #'     - These can be specified using numbers (where by default 1 is Sunday,
 #'     see the *Arguments* section above.)
-#'         - `on_wday(1)` for Sundays.
-#'         - `on_wday(7)` for Saturdays.
+#'         - `on_wday(1)` for Sundays (by default).
+#'         - `on_wday(7)` for Saturdays (by default).
 #'     - Or using weekday names:
 #'         - `on_wday("Sunday")` for Sundays.
 #'         - `on_wday("Saturday")` for Saturdays.

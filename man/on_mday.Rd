@@ -72,8 +72,8 @@ days within the given period:
 \item These can be specified using numbers (where by default 1 is Sunday,
 see the \emph{Arguments} section above.)
 \itemize{
-\item \code{on_wday(1)} for Sundays.
-\item \code{on_wday(7)} for Saturdays.
+\item \code{on_wday(1)} for Sundays (by default).
+\item \code{on_wday(7)} for Saturdays (by default).
 }
 \item Or using weekday names:
 \itemize{

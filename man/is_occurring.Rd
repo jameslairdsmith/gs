@@ -18,10 +18,13 @@ A logical.
 Tests whether a date falls on a schedule.
 }
 \examples{
+my_dates <- seq.Date(from = as.Date("2000-01-01"),
+                     to = as.Date("2000-01-10"),
+                     by = "1 day")
+
 on_saturdays <- on_wday("Sat")
 
-is_occurring(as.Date("2000-01-01"), on_saturdays)
-is_occurring(as.Date("2000-01-02"), on_saturdays)
+is_occurring(my_dates, on_saturdays)
 }
 \keyword{date,}
 \keyword{schedule}

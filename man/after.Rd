@@ -20,40 +20,47 @@ on_or_before(end_event, within_given = NULL)
 }
 \arguments{
 \item{start_event, end_event}{The start and/or end events of the schedule.
-For each can be either be a date object or a schedule.}
+Can be either:
+\itemize{
+\item A date-time object or
+\item A schedule.
+}}
 
-\item{within_given}{A date accessor function. Required only when either
-\code{start_date} or \code{end_date} are schedules. Puts a limit on how far into the
-future the schedule will extend. Used to avoid an infinite cycle.}
+\item{within_given}{Required only when either \code{start_date} or \code{end_date}
+is a schedule. Can be either:
+\itemize{
+\item A string shortcut for a period type: either "day", "week", "month",
+"quarter" or "year". Or,
+\item A date accessor function. Eg. \code{lubridate::day()}.
+}}
 }
 \value{
 A schedule of events occuring before and/or after the events specified.
 }
 \description{
 Creates a schedule of events occuring before and/or after a certain date or
-scheduled event.
+other scheduled event.
 }
 \details{
-When \code{x} is a date.
-
-When \code{x} is a schedule...
-
-When \code{x} is a date, it saves having to...
+When \code{start_date} and/or \code{end_date} are date-time objects they place fixed
+lower and upper limits on the resulting schedule; for more details see the
+\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+on understanding schedule limits.
 }
 \examples{
-on_christmas <- on_mday(25) \%>\% only_occurring(in_month("Dec"))
-on_new_years_eve <- on_mday(31) \%>\% only_occurring(in_month("Dec"))
+christmas <-  only_occurring(in_month("Dec"), on_mday(25))
+new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
 
-after_christmas <- after(on_christmas, within_given = lubridate::year)
+after_christmas <- after(christmas, within_given = lubridate::year)
 
-schedule(after_christmas, from = 2000, to = 2001)
+schedule_days(after_christmas, from = 2000, to = 2001)
 
 in_between_christmas_and_new_years_eve <-
-    in_between(on_christmas,
-               on_new_years_eve,
+    in_between(christmas,
+               new_years_eve,
                within_given = lubridate::year)
 
-schedule(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
+schedule_days(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
 
 }
 \keyword{after,}

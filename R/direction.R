@@ -2,37 +2,41 @@
 #'
 #' @description
 #' Creates a schedule of events occuring before and/or after a certain date or
-#' scheduled event.
+#' other scheduled event.
 #'
 #' @details
-#' When `x` is a date.
-#'
-#' When `x` is a schedule...
-#'
-#' When `x` is a date, it saves having to...
+#' When `start_date` and/or `end_date` are date-time objects they place fixed
+#' lower and upper limits on the resulting schedule; for more details see the
+#' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' on understanding schedule limits.
 #'
 #' @param start_event,end_event The start and/or end events of the schedule.
-#' For each can be either be a date object or a schedule.
-#' @param within_given A date accessor function. Required only when either
-#' `start_date` or `end_date` are schedules. Puts a limit on how far into the
-#'  future the schedule will extend. Used to avoid an infinite cycle.
+#' Can be either:
+#' * A date-time object or
+#' * A schedule.
+#'
+#' @param within_given Required only when either `start_date` or `end_date`
+#' is a schedule. Can be either:
+#'  * A string shortcut for a period type: either "day", "week", "month",
+#'    "quarter" or "year". Or,
+#'  * A date accessor function. Eg. `lubridate::day()`.
 #'
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring before and/or after the events specified.
 #' @examples
-#' on_christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
-#' on_new_years_eve <- on_mday(31) %>% only_occurring(in_month("Dec"))
+#' christmas <-  only_occurring(in_month("Dec"), on_mday(25))
+#' new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
 #'
-#' after_christmas <- after(on_christmas, within_given = lubridate::year)
+#' after_christmas <- after(christmas, within_given = lubridate::year)
 #'
-#' schedule(after_christmas, from = 2000, to = 2001)
+#' schedule_days(after_christmas, from = 2000, to = 2001)
 #'
 #' in_between_christmas_and_new_years_eve <-
-#'     in_between(on_christmas,
-#'                on_new_years_eve,
+#'     in_between(christmas,
+#'                new_years_eve,
 #'                within_given = lubridate::year)
 #'
-#' schedule(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
+#' schedule_days(in_between_christmas_and_new_years_eve, from = 2000, to = 2001)
 #'
 #' @export
 
