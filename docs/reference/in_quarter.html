@@ -146,8 +146,8 @@
     </tr>
     <tr>
       <th>fiscal_start</th>
-      <td><p>Numeric indicating the starting month of a fiscal year.
-Defaults to 1 (January).</p></td>
+      <td><p>For fiscal quarters, a numeric indicating the starting
+month of a fiscal year. Defaults to 1 (January).</p></td>
     </tr>
     <tr>
       <th>x</th>
@@ -157,7 +157,7 @@ Defaults to 1 (January).</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events occurring in the quarters or semester specified.</p>
+    <p>A schedule object.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -165,17 +165,11 @@ Defaults to 1 (January).</p></td>
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 month"</span>)
 
-<span class='no'>in_q1</span> <span class='kw'>&lt;-</span> <span class='fu'>in_quarter</span>(<span class='fl'>1</span>)
-<span class='no'>in_fiscal_q1</span> <span class='kw'>&lt;-</span> <span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='kw'>fiscal_start</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-
-<span class='fu'>in_q1</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'>in_fiscal_q1</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>in_q1_or_q2</span> <span class='kw'>&lt;-</span> <span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>2</span>)
-<span class='no'>in_fiscal_q1_or_q2</span> <span class='kw'>&lt;-</span> <span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='kw'>fiscal_start</span> <span class='kw'>=</span> <span class='fl'>2</span>)
-
-<span class='fu'>in_q1_or_q2</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'>in_fiscal_q1_or_q2</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>in_second_semester</span> <span class='kw'>&lt;-</span> <span class='fu'>in_semester</span>(<span class='fl'>2</span>)
-
-<span class='fu'>in_second_semester</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</div></pre>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_quarter</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_quarter</span>(<span class='fl'>1</span>:<span class='fl'>3</span>))</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='kw'>fiscal_start</span> <span class='kw'>=</span> <span class='fl'>2</span>))</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_semester</span>(<span class='fl'>2</span>))</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

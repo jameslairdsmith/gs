@@ -2,32 +2,47 @@
 #'
 #' @description
 #'
-#' These functions combine schedules by taking two of them as inputs and
-#' returning a single combined schedule as output.
-#'
-#' @param x,y Schedules to weave together.
+#' Functions to combine schedules using set operations.
 #'
 #' @details
-#' `also_occurring()` returns a schedule of events which includes all those
+#' * `also_occurring()` returns a schedule of events which includes all those
 #' present in the first schedule (`x`) and all those present in the second
-#' schedule (`y`). The results is the **union** of the two schedules.
-#'
-#' `only_occurring()` returns a schedule of events which includes only those
+#' schedule (`y`). The resulting output is the **union** of the two schedules.
+#' * `only_occurring()` returns a schedule of events which includes only those
 #' present in both the first schedule (`x`) and in the second schedule
-#' (`y`). The result is the **intersection** of the two schedules.
+#' (`y`). The resulting output is the **intersection** of the two schedules.
 #'
-#' @return A schedule of events determined by the input schedules and rules
-#' of the function used.
+#' @param x,y Schedule objects.
+#'
+#' @details
+#' Each function call is limited to two schedules. But more complex schedules
+#' can be made by building schedules on top of one another. This process is
+#' greatly eased by using the pipe operator (`%>%`) from the `magrittr`
+#' package (see *Examples*).
+#'
+#' Behind the scenes, both function outputs inherit the schedule limits from
+#' their inputs. For more
+#' details see the [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' on understanding schedule limits.
+#'
+#' @return A schedule object.
 #' @examples
 #' on_christmas <- only_occurring(on_mday(25), in_month("Dec"))
 #'
-#' schedule(on_christmas, from = 2000, to = 2004)
+#' schedule_days(on_christmas, from = 2000, to = 2004)
 #'
 #' on_new_years_day <- on_yday(1)
 #'
-#' on_public_holidays <- also_occurring(on_new_years_day, on_christmas)
+#' on_boxing_day <-
+#'    on_mday(26) %>%
+#'    only_occurring(in_month("Dec"))
 #'
-#' schedule(on_public_holidays, from = 2000, to = 2004)
+#' on_public_holiday <-
+#'    on_new_years_day %>%
+#'    also_occurring(on_christmas) %>%
+#'    also_occurring(on_boxing_day)
+#'
+#' schedule_days(on_public_holiday, from = 2000, to = 2004)
 #' @export
 also_occurring <- function(x, y){
 

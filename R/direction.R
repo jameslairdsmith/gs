@@ -1,14 +1,24 @@
 #' Specify the start and end of a schedule
 #'
 #' @description
-#' Creates a schedule of events occuring before and/or after a certain date or
-#' other scheduled event.
+#' Creates a schedule of events occuring before or after either a certain
+#' date or another scheduled event.
 #'
 #' @details
-#' When `start_date` and/or `end_date` are date-time objects they place fixed
+#' When `start_event` and/or `end_event` are date-time objects they place fixed
 #' lower and upper limits on the resulting schedule; for more details see the
 #' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
+#'
+#' When `start_event` and/or `end_event` are schedules they are likely to come
+#' around every year.  To have any events which can occur 'before' or 'after'
+#' them, they need a limit specified by the `within_given` argument. This can
+#'  either be date accessor function like `lubridate::month()` or
+#'  `lubridate::year()` or the provided character shortcuts
+#'  `"day"`, `"week"`, `"month"`, `"quarter"` or `"year"`. For more details
+#'  see the
+#' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-period-limits.html)
+#' on understanding period limits.
 #'
 #' @param start_event,end_event The start and/or end events of the schedule.
 #' Can be either:
@@ -17,9 +27,9 @@
 #'
 #' @param within_given Required only when either `start_date` or `end_date`
 #' is a schedule. Can be either:
-#'  * A string shortcut for a period type: either "day", "week", "month",
-#'    "quarter" or "year". Or,
-#'  * A date accessor function. Eg. `lubridate::day()`.
+#'  * A string shortcut for a period type: either `"day"`, `"week"`, `"month"`,
+#'    `"quarter"` or `"year"`. Or,
+#'  * A date accessor function. Eg. `lubridate::month()`.
 #'
 #' @keywords after, before, date, schedule
 #' @return A schedule of events occuring before and/or after the events specified.
@@ -27,7 +37,7 @@
 #' christmas <-  only_occurring(in_month("Dec"), on_mday(25))
 #' new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
 #'
-#' after_christmas <- after(christmas, within_given = lubridate::year)
+#' after_christmas <- after(christmas, within_given = "year")
 #'
 #' schedule_days(after_christmas, from = 2000, to = 2001)
 #'

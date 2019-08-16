@@ -29,29 +29,39 @@ Can be either:
 \item{within_given}{Required only when either \code{start_date} or \code{end_date}
 is a schedule. Can be either:
 \itemize{
-\item A string shortcut for a period type: either "day", "week", "month",
-"quarter" or "year". Or,
-\item A date accessor function. Eg. \code{lubridate::day()}.
+\item A string shortcut for a period type: either \code{"day"}, \code{"week"}, \code{"month"},
+\code{"quarter"} or \code{"year"}. Or,
+\item A date accessor function. Eg. \code{lubridate::month()}.
 }}
 }
 \value{
 A schedule of events occuring before and/or after the events specified.
 }
 \description{
-Creates a schedule of events occuring before and/or after a certain date or
-other scheduled event.
+Creates a schedule of events occuring before or after either a certain
+date or another scheduled event.
 }
 \details{
-When \code{start_date} and/or \code{end_date} are date-time objects they place fixed
+When \code{start_event} and/or \code{end_event} are date-time objects they place fixed
 lower and upper limits on the resulting schedule; for more details see the
 \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
+
+When \code{start_event} and/or \code{end_event} are schedules they are likely to come
+around every year.  To have any events which can occur 'before' or 'after'
+them, they need a limit specified by the \code{within_given} argument. This can
+either be date accessor function like \code{lubridate::month()} or
+\code{lubridate::year()} or the provided character shortcuts
+\code{"day"}, \code{"week"}, \code{"month"}, \code{"quarter"} or \code{"year"}. For more details
+see the
+\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-period-limits.html}{vignette}
+on understanding period limits.
 }
 \examples{
 christmas <-  only_occurring(in_month("Dec"), on_mday(25))
 new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
 
-after_christmas <- after(christmas, within_given = lubridate::year)
+after_christmas <- after(christmas, within_given = "year")
 
 schedule_days(after_christmas, from = 2000, to = 2001)
 

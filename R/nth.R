@@ -1,25 +1,50 @@
-#' Schedule the nth events within a period
+#' Schedule the nth events of a period
 #'
 #' @description
 #'
-#' Get the nth event of a certain type within a given period.
+#' Given a schedule of events, create a new schedule of only the nth occurrences
+#'  within a given period.
 #'
-#' @param x,y Schedules to weave together.
+#' @param n A single integer specifying which event to select. A negative
+#' integer will select the nth last event  (i.e. `-1L` will select the
+#' last event of the period, `-2L` will return the second last etc).
+#' @param x A schedule from which to select events.
+#' @param within_given A period from within which to select events. Can be
+#' either:
+#'  * A string shortcut for a period type: either `"day"`, `"week"`, `"month"`,
+#'    `"quarter"` or `"year"`. Or,
+#'  * A date accessor function. Eg. `lubridate::month()`.
 #'
 #' @details
-#' R
+#' Convenience functions are provided for the first, second, third, fourth and
+#' last events of a given period.
 #'
-#' @return A schedule of events.
+#' All functions accept arbitrarily complex schedules. For example, if you
+#' wanted a schedule of events occurring on the 12th either Tuesday or Thursday
+#' of the quarter you would use:
+#' `on_nth(12, on_wday("Tue", "Thu"), within_given = "quarter")`.
+#'
+#' @return A schedule object.
 #' @examples
-#' on_tuesday <- on_wday("Tue")
+#' tuesday <- on_wday("Tue")
 #'
-#' on_fourth_tuesday <- on_nth(4, on_tuesday, within_given = "month")
+#' second_tuesday_month <- on_second(tuesday, within_given = "month")
+#' schedule_days(second_tuesday_month, during = 2000)
 #'
-#' schedule(on_fourth_tuesday, during = 2000)
+#' last_tuesday_year <- on_last(tuesday, within_given = "year")
+#' schedule_days(last_tuesday_year, during = 2000)
+#'
+#' tenth_tuesday_quarter <- on_nth(10, tuesday, within_given = "quarter")
+#' schedule_days(tenth_tuesday_quarter, during = 2000)
+#'
+#' tues_or_thurs <- on_wday("Tue", "Thu")
+#'
+#' tenth_tues_or_thurs_quarter <- on_nth(10, tues_or_thurs, within_given = "quarter")
+#' schedule_days(tenth_tues_or_thurs_quarter, during = 2000)
 #'
 #' @export
 
-on_nth <- function(n, x, within_given, ...){
+on_nth <- function(n, x, within_given){
 
   if(is.character(within_given)){
     within_given <- strings_to_date_functions(within_given)
@@ -94,34 +119,34 @@ on_nth <- function(n, x, within_given, ...){
 #' @rdname on_nth
 #' @export
 
-on_first <- function(x, within_given, ...){
-  on_nth(1, x, within_given, ...)
+on_first <- function(x, within_given){
+  on_nth(1, x, within_given)
 }
 
 #' @rdname on_nth
 #' @export
 
-on_second <- function(x, within_given, ...){
-  on_nth(2, x, within_given, ...)
+on_second <- function(x, within_given){
+  on_nth(2, x, within_given)
 }
 
 #' @rdname on_nth
 #' @export
 
-on_third <- function(x, within_given, ...){
-  on_nth(3, x, within_given, ...)
+on_third <- function(x, within_given){
+  on_nth(3, x, within_given)
 }
 
 #' @rdname on_nth
 #' @export
 
-on_fourth <- function(x, within_given, ...){
-  on_nth(4, x, within_given, ...)
+on_fourth <- function(x, within_given){
+  on_nth(4, x, within_given)
 }
 
 #' @rdname on_nth
 #' @export
 
-on_last <- function(x, within_given, ...){
-  on_nth(-1, x, within_given, ...)
+on_last <- function(x, within_given){
+  on_nth(-1, x, within_given)
 }

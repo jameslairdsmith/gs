@@ -15,11 +15,10 @@ A schedule of events occurring on the dates specified.
 \description{
 Creates a schedule of events occurring on the dates specified.
 
-This function is best used when making changes to other schedules where
-those changes fall on defined dates.
+This function is best used when making ad-hoc changes to other schedules.
 }
 \details{
-The function also encodes schedule limits in the output. For more
+The function encodes limits in the output schedule. For more
 details see the \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
 }

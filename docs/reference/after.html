@@ -34,8 +34,8 @@
   
 <meta property="og:title" content="Specify the start and end of a schedule — after" />
 
-<meta property="og:description" content="Creates a schedule of events occuring before and/or after a certain date or
-other scheduled event." />
+<meta property="og:description" content="Creates a schedule of events occuring before or after either a certain
+date or another scheduled event." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -130,8 +130,8 @@ other scheduled event." />
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occuring before and/or after a certain date or
-other scheduled event.</p>
+    <p>Creates a schedule of events occuring before or after either a certain
+date or another scheduled event.</p>
     
     </div>
 
@@ -160,9 +160,9 @@ Can be either:</p><ul>
       <th>within_given</th>
       <td><p>Required only when either <code>start_date</code> or <code>end_date</code>
 is a schedule. Can be either:</p><ul>
-<li><p>A string shortcut for a period type: either "day", "week", "month",
-"quarter" or "year". Or,</p></li>
-<li><p>A date accessor function. Eg. <code><a href='http://lubridate.tidyverse.org/reference/day.html'>lubridate::day()</a></code>.</p></li>
+<li><p>A string shortcut for a period type: either <code>"day"</code>, <code>"week"</code>, <code>"month"</code>,
+<code>"quarter"</code> or <code>"year"</code>. Or,</p></li>
+<li><p>A date accessor function. Eg. <code><a href='http://lubridate.tidyverse.org/reference/month.html'>lubridate::month()</a></code>.</p></li>
 </ul></td>
     </tr>
     </table>
@@ -173,17 +173,26 @@ is a schedule. Can be either:</p><ul>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>When <code>start_date</code> and/or <code>end_date</code> are date-time objects they place fixed
+    <p>When <code>start_event</code> and/or <code>end_event</code> are date-time objects they place fixed
 lower and upper limits on the resulting schedule; for more details see the
 <a href='https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html'>vignette</a>
 on understanding schedule limits.</p>
+<p>When <code>start_event</code> and/or <code>end_event</code> are schedules they are likely to come
+around every year.  To have any events which can occur 'before' or 'after'
+them, they need a limit specified by the <code>within_given</code> argument. This can
+either be date accessor function like <code><a href='http://lubridate.tidyverse.org/reference/month.html'>lubridate::month()</a></code> or
+<code><a href='http://lubridate.tidyverse.org/reference/year.html'>lubridate::year()</a></code> or the provided character shortcuts
+<code>"day"</code>, <code>"week"</code>, <code>"month"</code>, <code>"quarter"</code> or <code>"year"</code>. For more details
+see the
+<a href='https://jameslairdsmith.github.io/scheduler/articles/understanding-period-limits.html'>vignette</a>
+on understanding period limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>))
 <span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>))
 
-<span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
+<span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
 
 <span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"

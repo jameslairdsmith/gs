@@ -18,26 +18,27 @@ Creates a schedule of events occurring in the months specified.
 \details{
 Months can be specified using their names (eg. "January"),
 abbreviations (eg. "Jan") or integers (eg. 1).
+
+Multiple months can be specified in the same function call. For example:
+\code{in_month(1, 3)} produces a schedule of events occurring in January and
+March. The same thing is achieved by \code{in_month("Jan", "Mar")}.
+Similarly \code{in_month(1:3)} produces a schedule of events occurring in
+January, February and March.
 }
 \examples{
-my_dates <- c(as.Date("2000-01-01"),
-              as.Date("2000-02-01"),
-              as.Date("2000-03-01"),
-              as.Date("2000-04-01"))
+my_dates <- seq.Date(as.Date("2000-01-01"),
+                     as.Date("2000-04-01"),
+                     by = "1 month")
 
-my_dates
+is_occurring(my_dates, in_month("January"))
 
-in_january <- in_month("January")
-in_january(my_dates)
+is_occurring(my_dates, in_month("Feb"))
 
-in_february <- in_month("Feb")
-in_february(my_dates)
+is_occurring(my_dates, in_month(3))
 
-in_march <- in_month(3)
-in_march(my_dates)
+is_occurring(my_dates, in_month("Jan", "Mar"))
 
-in_jan_or_feb <- in_month("Jan", "Feb")
-in_jan_or_feb(my_dates)
+is_occurring(my_dates, in_month(1:3))
 
 ## invalid inputs will produce an immediate error
 \dontrun{

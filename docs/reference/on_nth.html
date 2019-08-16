@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Schedule the nth events within a period — on_nth • scheduler</title>
+<title>Schedule the nth events of a period — on_nth • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Schedule the nth events within a period — on_nth" />
+<meta property="og:title" content="Schedule the nth events of a period — on_nth" />
 
-<meta property="og:description" content="Get the nth event of a certain type within a given period." />
+<meta property="og:description" content="Given a schedule of events, create a new schedule of only the nth occurrences
+within a given period." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -122,55 +123,83 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Schedule the nth events within a period</h1>
+    <h1>Schedule the nth events of a period</h1>
     <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/nth.R'><code>R/nth.R</code></a></small>
     <div class="hidden name"><code>on_nth.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Get the nth event of a certain type within a given period.</p>
+    <p>Given a schedule of events, create a new schedule of only the nth occurrences
+within a given period.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>on_nth</span>(<span class='no'>n</span>, <span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>on_nth</span>(<span class='no'>n</span>, <span class='no'>x</span>, <span class='no'>within_given</span>)
 
-<span class='fu'>on_first</span>(<span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)
+<span class='fu'>on_first</span>(<span class='no'>x</span>, <span class='no'>within_given</span>)
 
-<span class='fu'>on_second</span>(<span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)
+<span class='fu'>on_second</span>(<span class='no'>x</span>, <span class='no'>within_given</span>)
 
-<span class='fu'>on_third</span>(<span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)
+<span class='fu'>on_third</span>(<span class='no'>x</span>, <span class='no'>within_given</span>)
 
-<span class='fu'>on_fourth</span>(<span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)
+<span class='fu'>on_fourth</span>(<span class='no'>x</span>, <span class='no'>within_given</span>)
 
-<span class='fu'>on_last</span>(<span class='no'>x</span>, <span class='no'>within_given</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>on_last</span>(<span class='no'>x</span>, <span class='no'>within_given</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x, y</th>
-      <td><p>Schedules to weave together.</p></td>
+      <th>n</th>
+      <td><p>A single integer specifying which event to select. A negative
+integer will select the nth last event  (i.e. <code>-1L</code> will select the
+last event of the period, <code>-2L</code> will return the second last etc).</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>A schedule from which to select events.</p></td>
+    </tr>
+    <tr>
+      <th>within_given</th>
+      <td><p>A period from within which to select events. Can be
+either:</p><ul>
+<li><p>A string shortcut for a period type: either <code>"day"</code>, <code>"week"</code>, <code>"month"</code>,
+<code>"quarter"</code> or <code>"year"</code>. Or,</p></li>
+<li><p>A date accessor function. Eg. <code><a href='http://lubridate.tidyverse.org/reference/month.html'>lubridate::month()</a></code>.</p></li>
+</ul></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events.</p>
+    <p>A schedule object.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>R</p>
+    <p>Convenience functions are provided for the first, second, third, fourth and
+last events of a given period.</p>
+<p>All functions accept arbitrarily complex schedules. For example, if you
+wanted a schedule of events occurring on the 12th either Tuesday or Thursday
+of the quarter you would use:
+<code>on_nth(12, on_wday("Tue", "Thu"), within_given = "quarter")</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>on_tuesday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Tue"</span>)
+    <pre class="examples"><div class='input'><span class='no'>tuesday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Tue"</span>)
 
-<span class='no'>on_fourth_tuesday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_nth</span>(<span class='fl'>4</span>, <span class='no'>on_tuesday</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"month"</span>)
+<span class='no'>second_tuesday_month</span> <span class='kw'>&lt;-</span> <span class='fu'>on_second</span>(<span class='no'>tuesday</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"month"</span>)
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>second_tuesday_month</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-11" "2000-02-08" "2000-03-14" "2000-04-11" "2000-05-09"
+#&gt;  [6] "2000-06-13" "2000-07-11" "2000-08-08" "2000-09-12" "2000-10-10"
+#&gt; [11] "2000-11-14" "2000-12-12"</div><div class='input'>
+<span class='no'>last_tuesday_year</span> <span class='kw'>&lt;-</span> <span class='fu'>on_last</span>(<span class='no'>tuesday</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>last_tuesday_year</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt; [1] "2000-12-26"</div><div class='input'>
+<span class='no'>tenth_tuesday_quarter</span> <span class='kw'>&lt;-</span> <span class='fu'>on_nth</span>(<span class='fl'>10</span>, <span class='no'>tuesday</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"quarter"</span>)
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>tenth_tuesday_quarter</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt; [1] "2000-03-07" "2000-06-06" "2000-09-05" "2000-12-05"</div><div class='input'>
+<span class='no'>tues_or_thurs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Tue"</span>, <span class='st'>"Thu"</span>)
 
-<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='no'>on_fourth_tuesday</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-22" "2000-03-28" "2000-04-25" "2000-05-23"
-#&gt;  [6] "2000-06-27" "2000-07-25" "2000-08-22" "2000-09-26" "2000-10-24"
-#&gt; [11] "2000-11-28" "2000-12-26"</div><div class='input'>
+<span class='no'>tenth_tues_or_thurs_quarter</span> <span class='kw'>&lt;-</span> <span class='fu'>on_nth</span>(<span class='fl'>10</span>, <span class='no'>tues_or_thurs</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"quarter"</span>)
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>tenth_tues_or_thurs_quarter</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt; [1] "2000-02-03" "2000-05-04" "2000-08-03" "2000-11-02"</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

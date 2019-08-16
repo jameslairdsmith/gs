@@ -7,37 +7,66 @@
 \alias{on_third}
 \alias{on_fourth}
 \alias{on_last}
-\title{Schedule the nth events within a period}
+\title{Schedule the nth events of a period}
 \usage{
-on_nth(n, x, within_given, ...)
+on_nth(n, x, within_given)
 
-on_first(x, within_given, ...)
+on_first(x, within_given)
 
-on_second(x, within_given, ...)
+on_second(x, within_given)
 
-on_third(x, within_given, ...)
+on_third(x, within_given)
 
-on_fourth(x, within_given, ...)
+on_fourth(x, within_given)
 
-on_last(x, within_given, ...)
+on_last(x, within_given)
 }
 \arguments{
-\item{x, y}{Schedules to weave together.}
+\item{n}{A single integer specifying which event to select. A negative
+integer will select the nth last event  (i.e. \code{-1L} will select the
+last event of the period, \code{-2L} will return the second last etc).}
+
+\item{x}{A schedule from which to select events.}
+
+\item{within_given}{A period from within which to select events. Can be
+either:
+\itemize{
+\item A string shortcut for a period type: either \code{"day"}, \code{"week"}, \code{"month"},
+\code{"quarter"} or \code{"year"}. Or,
+\item A date accessor function. Eg. \code{lubridate::month()}.
+}}
 }
 \value{
-A schedule of events.
+A schedule object.
 }
 \description{
-Get the nth event of a certain type within a given period.
+Given a schedule of events, create a new schedule of only the nth occurrences
+within a given period.
 }
 \details{
-R
+Convenience functions are provided for the first, second, third, fourth and
+last events of a given period.
+
+All functions accept arbitrarily complex schedules. For example, if you
+wanted a schedule of events occurring on the 12th either Tuesday or Thursday
+of the quarter you would use:
+\code{on_nth(12, on_wday("Tue", "Thu"), within_given = "quarter")}.
 }
 \examples{
-on_tuesday <- on_wday("Tue")
+tuesday <- on_wday("Tue")
 
-on_fourth_tuesday <- on_nth(4, on_tuesday, within_given = "month")
+second_tuesday_month <- on_second(tuesday, within_given = "month")
+schedule_days(second_tuesday_month, during = 2000)
 
-schedule(on_fourth_tuesday, during = 2000)
+last_tuesday_year <- on_last(tuesday, within_given = "year")
+schedule_days(last_tuesday_year, during = 2000)
+
+tenth_tuesday_quarter <- on_nth(10, tuesday, within_given = "quarter")
+schedule_days(tenth_tuesday_quarter, during = 2000)
+
+tues_or_thurs <- on_wday("Tue", "Thu")
+
+tenth_tues_or_thurs_quarter <- on_nth(10, tues_or_thurs, within_given = "quarter")
+schedule_days(tenth_tues_or_thurs_quarter, during = 2000)
 
 }

@@ -12,13 +12,13 @@ in_semester(x)
 \arguments{
 \item{...}{A numeric vector of quarter specifications.}
 
-\item{fiscal_start}{Numeric indicating the starting month of a fiscal year.
-Defaults to 1 (January).}
+\item{fiscal_start}{For fiscal quarters, a numeric indicating the starting
+month of a fiscal year. Defaults to 1 (January).}
 
 \item{x}{Numeric specifying which semester the events occur in (1 or 2).}
 }
 \value{
-A schedule of events occurring in the quarters or semester specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occurring in the quarters or semester specified.
@@ -28,21 +28,15 @@ Creates a schedule of events occurring in the quarters or semester specified.
                      to = as.Date("2000-12-01"),
                      by = "1 month")
 
-in_q1 <- in_quarter(1)
-in_fiscal_q1 <- in_quarter(1, fiscal_start = 2)
+is_occurring(my_dates, in_quarter(1))
 
-in_q1(my_dates)
-in_fiscal_q1(my_dates)
+is_occurring(my_dates, in_quarter(1, 3))
 
-in_q1_or_q2 <- in_quarter(1, 2)
-in_fiscal_q1_or_q2 <- in_quarter(1, 2, fiscal_start = 2)
+is_occurring(my_dates, in_quarter(1:3))
 
-in_q1_or_q2(my_dates)
-in_fiscal_q1_or_q2(my_dates)
+is_occurring(my_dates, in_quarter(1, 3, fiscal_start = 2))
 
-in_second_semester <- in_semester(2)
-
-in_second_semester(my_dates)
+is_occurring(my_dates, in_semester(2))
 }
 \keyword{date,}
 \keyword{quarter,}

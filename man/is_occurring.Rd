@@ -12,19 +12,22 @@ is_occurring(date, schedule)
 \item{schedule}{A schedule object}
 }
 \value{
-A logical.
+TRUE or FALSE depending on whether the date falls on the schedule.
 }
 \description{
-Tests whether a date falls on a schedule.
+Does a date fall on a schedule?
 }
 \examples{
 my_dates <- seq.Date(from = as.Date("2000-01-01"),
                      to = as.Date("2000-01-10"),
                      by = "1 day")
 
-on_saturdays <- on_wday("Sat")
+on_saturday <- on_wday("Sat")
+on_sunday <- on_wday("Sun")
 
-is_occurring(my_dates, on_saturdays)
+is_occurring(my_dates, on_saturday)
+is_occurring(my_dates, on_sunday)
+is_occurring(my_dates, on_weekend())
 }
 \keyword{date,}
 \keyword{schedule}

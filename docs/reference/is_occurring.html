@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Does a date fall on a schedule? — is_occurring" />
 
-<meta property="og:description" content="Tests whether a date falls on a schedule." />
+<meta property="og:description" content="Does a date fall on a schedule?" />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -129,7 +129,7 @@
 
     <div class="ref-description">
     
-    <p>Tests whether a date falls on a schedule.</p>
+    <p>Does a date fall on a schedule?</p>
     
     </div>
 
@@ -150,7 +150,7 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A logical.</p>
+    <p>TRUE or FALSE depending on whether the date falls on the schedule.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -158,9 +158,10 @@
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-10"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 day"</span>)
 
-<span class='no'>on_saturdays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)
+<span class='no'>on_saturday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)
+<span class='no'>on_sunday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sun"</span>)
 
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='no'>on_saturdays</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div></pre>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='no'>on_saturday</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='no'>on_sunday</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'><a href='on_mday.html'>on_weekend</a></span>())</div><div class='output co'>#&gt;  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

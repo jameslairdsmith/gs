@@ -5,7 +5,7 @@
 #' periods.
 #'
 #' The type of period (week, month, quarter, year) is determined by the
-#' function used.
+#' function used (see *Details* section).
 #'
 #' @details
 #' Each function creates a schedule where the events occur only on the specified
@@ -53,12 +53,10 @@
 #' you can specify which ISO convention is used; 1 means Monday,
 #' 7 means Sunday (default).
 #' @param date_vec Optionally, a vector of dates to test for whether they are on
-#' the weekend. If missing, will simply return a schedule of weekend days.
+#' a weekend or weekday. If missing, will simply return a schedule of weekend
+#' days or weekdays.
 #'
-#' You can use `lubridate`'s global option
-#' `lubridate.week.start` to set this parameter globally.
-#'
-#' @keywords month, day, date, schedule
+#' @keywords month, week, day, date, schedule
 #' @return A schedule of events occurring on the day type(s) specified.
 #' @examples
 #'
@@ -68,19 +66,19 @@
 #' my_dates
 #'
 #' on_first_day_of_month <- on_mday(1)
-#' on_first_day_of_month(my_dates)
+#' is_occurring(my_dates, on_first_day_of_month)
 #'
 #' on_first_day_of_year <- on_yday(1)
-#' on_first_day_of_year(my_dates)
+#' is_occurring(my_dates, on_first_day_of_year)
 #'
 #' on_first_day_of_quarter <- on_qday(1)
-#' on_first_day_of_quarter(my_dates)
+#' is_occurring(my_dates, on_first_day_of_quarter)
 #'
 #' on_tuesday <- on_wday("Tue")
-#' on_tuesday(my_dates)
+#' is_occurring(my_dates, on_tuesday)
 #'
 #' on_tuesday_or_thursday <- on_wday("Tue", "Thu")
-#' on_tuesday_or_thursday(my_dates)
+#' is_occurring(my_dates, on_tuesday_or_thursday)
 #'
 #' on_weekend(my_dates)
 #' on_weekday(my_dates)
@@ -131,7 +129,7 @@ on_qday <- function(...){
 
   if(length(x) > 1) return(check_vec_loop(x, on_qday))
 
-  if(!(x%%1==0)) stop("Quarter days can only be whole numbers")
+  if(!is_whole_number(x)) stop("Quarter days can only be whole numbers")
   if(x > 92) stop("Quarter days cannot be greater than 92")
   if(x < 1) stop("Quarter days cannot be zero or negative")
 

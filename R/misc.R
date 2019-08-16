@@ -5,8 +5,8 @@ strings_to_date_functions <- function(str){
     str == "week" ~ quote(lubridate::week),
     str == "month" ~ quote(lubridate::month),
     str == "quarter" ~ quote(lubridate::quarter),
-    str == "year" ~ quote(lubridate::year),
-    str == "semester" ~ quote(lubridate::semester)
+    str == "semester" ~ quote(lubridate::semester),
+    str == "year" ~ quote(lubridate::year)
   )
   eval(.f)
 }
@@ -26,4 +26,8 @@ check_vec_loop <- function(vec, func, ...){
 
 get_attribute_names <- function(obj){
   names(attributes(obj))
+}
+
+is_whole_number <- function(x){
+  (x%%1==0)
 }

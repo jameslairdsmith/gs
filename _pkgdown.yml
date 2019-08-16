@@ -34,7 +34,7 @@ reference:
       - in_quarter
       - in_year
   - title: "Compose schedules"
-    desc: "Combine schedules together to create more complex ones."
+    desc: "Combine schedules using set operations."
     contents:
       - also_occurring
       - not_occurring

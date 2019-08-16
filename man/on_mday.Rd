@@ -30,10 +30,8 @@ you can specify which ISO convention is used; 1 means Monday,
 7 means Sunday (default).}
 
 \item{date_vec}{Optionally, a vector of dates to test for whether they are on
-the weekend. If missing, will simply return a schedule of weekend days.
-
-You can use \code{lubridate}'s global option
-\code{lubridate.week.start} to set this parameter globally.}
+a weekend or weekday. If missing, will simply return a schedule of weekend
+days or weekdays.}
 }
 \value{
 A schedule of events occurring on the day type(s) specified.
@@ -43,7 +41,7 @@ Creates a schedule of events occuring on the specified days of certain
 periods.
 
 The type of period (week, month, quarter, year) is determined by the
-function used.
+function used (see \emph{Details} section).
 }
 \details{
 Each function creates a schedule where the events occur only on the specified
@@ -109,19 +107,19 @@ my_dates <- seq.Date(from = as.Date("2000-01-01"),
 my_dates
 
 on_first_day_of_month <- on_mday(1)
-on_first_day_of_month(my_dates)
+is_occurring(my_dates, on_first_day_of_month)
 
 on_first_day_of_year <- on_yday(1)
-on_first_day_of_year(my_dates)
+is_occurring(my_dates, on_first_day_of_year)
 
 on_first_day_of_quarter <- on_qday(1)
-on_first_day_of_quarter(my_dates)
+is_occurring(my_dates, on_first_day_of_quarter)
 
 on_tuesday <- on_wday("Tue")
-on_tuesday(my_dates)
+is_occurring(my_dates, on_tuesday)
 
 on_tuesday_or_thursday <- on_wday("Tue", "Thu")
-on_tuesday_or_thursday(my_dates)
+is_occurring(my_dates, on_tuesday_or_thursday)
 
 on_weekend(my_dates)
 on_weekday(my_dates)
@@ -137,3 +135,4 @@ on_wday(8)}
 \keyword{day,}
 \keyword{month,}
 \keyword{schedule}
+\keyword{week,}

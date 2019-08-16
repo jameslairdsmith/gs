@@ -2,10 +2,10 @@
 #'
 #' @description
 #'
-#' These functions combine schedules by taking two of them as inputs and
-#' returning a single combined schedule as output.
+#' Create a schedule of events occurring only when the specified events do
+#' not occur.
 #'
-#' @param x,y Schedules to weave together.
+#' @param x,y Schedule objects.
 #'
 #' @details
 #' `not_occuring()` can accept either one or two schedules as input(s):
@@ -16,24 +16,31 @@
 #' * When two schedules are used, the function returns the first schedule but
 #'  with the events of the second schedule stripped away. This works to remove
 #'  the events of the second schedule from the first.
-#'    - This means that `not_occurring(x, y)` is the equivalent of
-#'      `only_occurring(x, not_occurring(y))`
+#'    - This means that `not_occurring(a, b)` is the equivalent of
+#'      `only_occurring(a, not_occurring(b))`
+#'    - This usage works best when composing with the pipe (`%>%`) operator.
 #'
-#' @return A schedule of events determined by the input schedules and rules
-#' of the function used.
+#' @return A schedule of events occurring only when the specified events do
+#' not occur.
 #' @examples
+#' my_dates <- seq.Date(as.Date("1999-01-01"),
+#'                      as.Date("1999-01-10"),
+#'                      by = "1 day")
+#'
+#' is_occurring(my_dates, in_month("Jan"))
+#' is_occurring(my_dates, not_occurring(in_month("Jan")))
+#' is_occurring(my_dates, on_wday("Sat"))
+#' is_occurring(my_dates, not_occurring(on_wday("Sat")))
+#'
 #' on_christmas <- only_occurring(on_mday(25), in_month("Dec"))
 #' on_new_years_day <- on_yday(1)
-#'
 #' on_public_holidays <- also_occurring(on_new_years_day, on_christmas)
 #'
-#' schedule(on_public_holidays, from = 2000, to = 2004)
+#' on_business_days <-
+#'   not_occurring(on_weekend()) %>%
+#'   not_occurring(on_public_holidays)
 #'
-#' weekday_public_holidays <- only_occurring(on_public_holidays,
-#'                                          not_occurring(on_wday("Sat", "Sun")))
-#'
-#' schedule(weekday_public_holidays, from = 2000, to = 2004)
-#'
+#' is_occurring(my_dates, on_business_days)
 #' @export
 
 not_occurring <- function(x, y = NULL){
