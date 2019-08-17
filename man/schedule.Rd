@@ -48,9 +48,10 @@ events).
 \item A numeric year.
 \itemize{
 \item In the case of \code{from}, a numeric year translates to the
-start date of the year eg. \code{2000} translates to \code{as.Date(2000-01-01)}.
-\item In the case of \code{to} it translates to the end of the year eg. \code{2001}
-translates to \code{as.Date(2001-12-31)}.
+start date of the year eg. \code{from = 2000} translates to
+\code{as.Date(2000-01-01)}.
+\item In the case of \code{to} it translates to the end of the year eg.
+\code{to = 2001} translates to \code{as.Date(2001-12-31)}.
 }
 }
 \item \code{during} is a shortcut for when setting a single year limit. Eg.
