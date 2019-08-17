@@ -80,10 +80,6 @@ schedule <- function(x,
   date_seq[test_date(date_seq, x)]
 }
 
-
-
-
-
 #' @rdname schedule
 #' @export
 
@@ -92,10 +88,6 @@ schedule_days <- function(x, from = NULL, to = NULL, during = NULL){
   schedule(x = x, from = from, to = to, during = during, period_type = "day")
 }
 
-
-
-
-
 #' @rdname schedule
 #' @export
 
@@ -103,7 +95,6 @@ schedule_hours <- function(x, from = NULL, to = NULL, during = NULL){
 
   schedule(x = x, from = from, to = to, during = during, period_type = "hour")
 }
-
 
 
 
