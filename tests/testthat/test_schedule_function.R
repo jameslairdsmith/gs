@@ -1,6 +1,8 @@
 context("test_schedule_function")
 
-test_that("schedule function works", {
+library(lubridate)
+
+test_that("schedule() function works", {
 
   christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
 
@@ -12,7 +14,7 @@ test_that("schedule function works", {
 })
 
 
-test_that("schedule function works with year abbreviations", {
+test_that("schedule() function works with year abbreviations", {
 
   christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
 
