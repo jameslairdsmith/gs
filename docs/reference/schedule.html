@@ -34,7 +34,7 @@
   
 <meta property="og:title" content="Get the events of a schedule — schedule" />
 
-<meta property="og:description" content="Get the events from a schedule object." />
+<meta property="og:description" content="Get the event dates or datetimes from a schedule." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -129,41 +129,142 @@
 
     <div class="ref-description">
     
-    <p>Get the events from a schedule object.</p>
+    <p>Get the event dates or datetimes from a schedule.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>schedule</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>every</span> <span class='kw'>=</span> <span class='st'>"day"</span>,
-  <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>schedule</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>period_type</span> <span class='kw'>=</span> <span class='st'>"day"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 
-<span class='fu'>schedule_days</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+<span class='fu'>schedule_days</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>schedule_hours</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>schedule_hours</span>(<span class='no'>x</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>A numeric vector of year elements.</p></td>
+      <th>x</th>
+      <td><p>A schedule object.</p></td>
+    </tr>
+    <tr>
+      <th>from, to, during</th>
+      <td><p>The limits to place on the output (see <em>Details</em>).</p></td>
+    </tr>
+    <tr>
+      <th>period_type</th>
+      <td><p>The period type of the output. Eg. "day" (the deafult),
+"hour" etc. Can be any unit accepted by <code><a href='http://lubridate.tidyverse.org/reference/period.html'>lubridate::period()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>The increment of the period type. Eg. for events occurring every
+half-hour the <code>period_type</code> should "minute" and <code>n</code> should be set to
+<code>30</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A date vector</p>
+    <p>A date or datetime object.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>R</p>
+    <p><code>schedule_days()</code> is a convenience function for <code>schedule()</code> where
+<code>period_type</code> is pre-filled as "day". Likewise for <code>schedule_hours()</code>,
+where <code>period_type</code> is pre-filled as "hour". These functions are
+recommended as they cover the most common use cases.</p>
+<p>The <code>from</code> and <code>to</code> arguments set limits on the output.
+They are only required when the schedule <code>x</code> doesn't
+have implicit limits (and therefore has an infinite number of possible
+events).</p><ul>
+<li><p><code>from</code> and <code>to</code> can each be either:</p><ul>
+<li><p>a single date or datetime value or,</p></li>
+<li><p>A numeric year.</p><ul>
+<li><p>In the case of <code>from</code>, a numeric year translates to the
+start date of the year eg. <code>2000</code> translates to <code><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date(2000-01-01)</a></code>.</p></li>
+<li><p>In the case of <code>to</code> it translates to the end of the year eg. <code>2001</code>
+translates to <code><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date(2001-12-31)</a></code>.</p></li>
+</ul></li>
+</ul></li>
+<li><p><code>during</code> is a shortcut for when setting a single year limit. Eg.
+<code>during = 2000</code> is the equivalent of setting <code>from = as.Date(2000-01-01)</code>
+and <code>to = as.Date(2000-12-31)</code>.</p></li>
+</ul>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>on_first_day_month</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>1</span>)
+    <pre class="examples"><div class='input'><span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>)
 
-<span class='fu'>schedule</span>(<span class='no'>on_first_day_month</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01" "2000-05-01"
-#&gt;  [6] "2000-06-01" "2000-07-01" "2000-08-01" "2000-09-01" "2000-10-01"
-#&gt; [11] "2000-11-01" "2000-12-01"</div></pre>
+<span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>,
+              <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-06-01"</span>),
+              <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-01"</span>))</div><div class='output co'>#&gt; [1] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
+#&gt; [6] "2000-11-25"</div><div class='input'>
+<span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
+#&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
+#&gt; [11] "2000-11-25" "2000-12-25" "2001-01-25" "2001-02-25" "2001-03-25"
+#&gt; [16] "2001-04-25" "2001-05-25" "2001-06-25" "2001-07-25" "2001-08-25"
+#&gt; [21] "2001-09-25" "2001-10-25" "2001-11-25" "2001-12-25"</div><div class='input'>
+<span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
+#&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
+#&gt; [11] "2000-11-25" "2000-12-25"</div><div class='input'>
+<span class='no'>on_jan_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='no'>on_paydays</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))
+
+<span class='fu'>schedule_hours</span>(<span class='no'>on_jan_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25 00:00:00 UTC" "2000-01-25 01:00:00 UTC"
+#&gt;  [3] "2000-01-25 02:00:00 UTC" "2000-01-25 03:00:00 UTC"
+#&gt;  [5] "2000-01-25 04:00:00 UTC" "2000-01-25 05:00:00 UTC"
+#&gt;  [7] "2000-01-25 06:00:00 UTC" "2000-01-25 07:00:00 UTC"
+#&gt;  [9] "2000-01-25 08:00:00 UTC" "2000-01-25 09:00:00 UTC"
+#&gt; [11] "2000-01-25 10:00:00 UTC" "2000-01-25 11:00:00 UTC"
+#&gt; [13] "2000-01-25 12:00:00 UTC" "2000-01-25 13:00:00 UTC"
+#&gt; [15] "2000-01-25 14:00:00 UTC" "2000-01-25 15:00:00 UTC"
+#&gt; [17] "2000-01-25 16:00:00 UTC" "2000-01-25 17:00:00 UTC"
+#&gt; [19] "2000-01-25 18:00:00 UTC" "2000-01-25 19:00:00 UTC"
+#&gt; [21] "2000-01-25 20:00:00 UTC" "2000-01-25 21:00:00 UTC"
+#&gt; [23] "2000-01-25 22:00:00 UTC" "2000-01-25 23:00:00 UTC"</div><div class='input'>
+<span class='no'>on_jan_payday_2002</span> <span class='kw'>&lt;-</span>
+   <span class='no'>on_paydays</span> <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)) <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='also_occurring.html'>only_occurring</a></span>(<span class='fu'><a href='in_year.html'>in_year</a></span>(<span class='fl'>2002</span>))
+
+<span class='co'>## No limits required</span>
+
+<span class='fu'>schedule_days</span>(<span class='no'>on_jan_payday_2002</span>)</div><div class='output co'>#&gt; [1] "2002-01-25"</div><div class='input'><span class='fu'>schedule_hours</span>(<span class='no'>on_jan_payday_2002</span>)</div><div class='output co'>#&gt;  [1] "2002-01-25 00:00:00 UTC" "2002-01-25 01:00:00 UTC"
+#&gt;  [3] "2002-01-25 02:00:00 UTC" "2002-01-25 03:00:00 UTC"
+#&gt;  [5] "2002-01-25 04:00:00 UTC" "2002-01-25 05:00:00 UTC"
+#&gt;  [7] "2002-01-25 06:00:00 UTC" "2002-01-25 07:00:00 UTC"
+#&gt;  [9] "2002-01-25 08:00:00 UTC" "2002-01-25 09:00:00 UTC"
+#&gt; [11] "2002-01-25 10:00:00 UTC" "2002-01-25 11:00:00 UTC"
+#&gt; [13] "2002-01-25 12:00:00 UTC" "2002-01-25 13:00:00 UTC"
+#&gt; [15] "2002-01-25 14:00:00 UTC" "2002-01-25 15:00:00 UTC"
+#&gt; [17] "2002-01-25 16:00:00 UTC" "2002-01-25 17:00:00 UTC"
+#&gt; [19] "2002-01-25 18:00:00 UTC" "2002-01-25 19:00:00 UTC"
+#&gt; [21] "2002-01-25 20:00:00 UTC" "2002-01-25 21:00:00 UTC"
+#&gt; [23] "2002-01-25 22:00:00 UTC" "2002-01-25 23:00:00 UTC"</div><div class='input'>
+<span class='fu'>schedule</span>(<span class='no'>on_jan_payday_2002</span>, <span class='kw'>period_type</span> <span class='kw'>=</span> <span class='st'>"minute"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>30</span>)</div><div class='output co'>#&gt;  [1] "2002-01-25 00:00:00 UTC" "2002-01-25 00:30:00 UTC"
+#&gt;  [3] "2002-01-25 01:00:00 UTC" "2002-01-25 01:30:00 UTC"
+#&gt;  [5] "2002-01-25 02:00:00 UTC" "2002-01-25 02:30:00 UTC"
+#&gt;  [7] "2002-01-25 03:00:00 UTC" "2002-01-25 03:30:00 UTC"
+#&gt;  [9] "2002-01-25 04:00:00 UTC" "2002-01-25 04:30:00 UTC"
+#&gt; [11] "2002-01-25 05:00:00 UTC" "2002-01-25 05:30:00 UTC"
+#&gt; [13] "2002-01-25 06:00:00 UTC" "2002-01-25 06:30:00 UTC"
+#&gt; [15] "2002-01-25 07:00:00 UTC" "2002-01-25 07:30:00 UTC"
+#&gt; [17] "2002-01-25 08:00:00 UTC" "2002-01-25 08:30:00 UTC"
+#&gt; [19] "2002-01-25 09:00:00 UTC" "2002-01-25 09:30:00 UTC"
+#&gt; [21] "2002-01-25 10:00:00 UTC" "2002-01-25 10:30:00 UTC"
+#&gt; [23] "2002-01-25 11:00:00 UTC" "2002-01-25 11:30:00 UTC"
+#&gt; [25] "2002-01-25 12:00:00 UTC" "2002-01-25 12:30:00 UTC"
+#&gt; [27] "2002-01-25 13:00:00 UTC" "2002-01-25 13:30:00 UTC"
+#&gt; [29] "2002-01-25 14:00:00 UTC" "2002-01-25 14:30:00 UTC"
+#&gt; [31] "2002-01-25 15:00:00 UTC" "2002-01-25 15:30:00 UTC"
+#&gt; [33] "2002-01-25 16:00:00 UTC" "2002-01-25 16:30:00 UTC"
+#&gt; [35] "2002-01-25 17:00:00 UTC" "2002-01-25 17:30:00 UTC"
+#&gt; [37] "2002-01-25 18:00:00 UTC" "2002-01-25 18:30:00 UTC"
+#&gt; [39] "2002-01-25 19:00:00 UTC" "2002-01-25 19:30:00 UTC"
+#&gt; [41] "2002-01-25 20:00:00 UTC" "2002-01-25 20:30:00 UTC"
+#&gt; [43] "2002-01-25 21:00:00 UTC" "2002-01-25 21:30:00 UTC"
+#&gt; [45] "2002-01-25 22:00:00 UTC" "2002-01-25 22:30:00 UTC"
+#&gt; [47] "2002-01-25 23:00:00 UTC" "2002-01-25 23:30:00 UTC"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -31,7 +31,8 @@ test_that("schedule function works when specifying only before() and after()", {
                          to = dmy("30/07/1990"),
                          by = "1 day")
 
-  before_and_after <- after(dmy("01/07/1990")) %>%
+  before_and_after <-
+    after(dmy("01/07/1990")) %>%
     only_occurring(before(dmy("31/07/1990")))
 
   expect_true("earliest_date" %in% get_attribute_names(before_and_after))

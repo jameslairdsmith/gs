@@ -6,28 +6,83 @@
 \alias{schedule_hours}
 \title{Get the events of a schedule}
 \usage{
-schedule(x, from = NULL, to = NULL, during = NULL, every = "day",
-  ...)
+schedule(x, from = NULL, to = NULL, during = NULL,
+  period_type = "day", n = 1)
 
-schedule_days(x, from = NULL, to = NULL, during = NULL, ...)
+schedule_days(x, from = NULL, to = NULL, during = NULL)
 
-schedule_hours(x, from = NULL, to = NULL, during = NULL, ...)
+schedule_hours(x, from = NULL, to = NULL, during = NULL)
 }
 \arguments{
-\item{...}{A numeric vector of year elements.}
+\item{x}{A schedule object.}
+
+\item{from, to, during}{The limits to place on the output (see \emph{Details}).}
+
+\item{period_type}{The period type of the output. Eg. "day" (the deafult),
+"hour" etc. Can be any unit accepted by \code{lubridate::period()}.}
+
+\item{n}{The increment of the period type. Eg. for events occurring every
+half-hour the \code{period_type} should "minute" and \code{n} should be set to
+\code{30}.}
 }
 \value{
-A date vector
+A date or datetime object.
 }
 \description{
-Get the events from a schedule object.
+Get the event dates or datetimes from a schedule.
 }
 \details{
-R
+\code{schedule_days()} is a convenience function for \code{schedule()} where
+\code{period_type} is pre-filled as "day". Likewise for \code{schedule_hours()},
+where \code{period_type} is pre-filled as "hour". These functions are
+recommended as they cover the most common use cases.
+
+The \code{from} and \code{to} arguments set limits on the output.
+They are only required when the schedule \code{x} doesn't
+have implicit limits (and therefore has an infinite number of possible
+events).
+\itemize{
+\item \code{from} and \code{to} can each be either:
+\itemize{
+\item a single date or datetime value or,
+\item A numeric year.
+\itemize{
+\item In the case of \code{from}, a numeric year translates to the
+start date of the year eg. \code{2000} translates to \code{as.Date(2000-01-01)}.
+\item In the case of \code{to} it translates to the end of the year eg. \code{2001}
+translates to \code{as.Date(2001-12-31)}.
+}
+}
+\item \code{during} is a shortcut for when setting a single year limit. Eg.
+\code{during = 2000} is the equivalent of setting \code{from = as.Date(2000-01-01)}
+and \code{to = as.Date(2000-12-31)}.
+}
 }
 \examples{
-on_first_day_month <- on_mday(1)
+on_paydays <- on_mday(25)
 
-schedule(on_first_day_month, during = 2000)
+schedule_days(on_paydays,
+              from = as.Date("2000-06-01"),
+              to = as.Date("2000-12-01"))
+
+schedule_days(on_paydays, from = 2000, to = 2001)
+
+schedule_days(on_paydays, during = 2000)
+
+on_jan_paydays <- only_occurring(on_paydays, in_month("Jan"))
+
+schedule_hours(on_jan_paydays, during = 2000)
+
+on_jan_payday_2002 <-
+   on_paydays \%>\%
+   only_occurring(in_month("Jan")) \%>\%
+   only_occurring(in_year(2002))
+
+## No limits required
+
+schedule_days(on_jan_payday_2002)
+schedule_hours(on_jan_payday_2002)
+
+schedule(on_jan_payday_2002, period_type = "minute", n = 30)
 }
 \keyword{schedule}
