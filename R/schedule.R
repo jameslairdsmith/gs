@@ -27,12 +27,12 @@
 #'    + A numeric year.
 #'       - In the case of `from`, a numeric year translates to the
 #'         start date of the year eg. `from = 2000` translates to
-#'         `as.Date(2000-01-01)`.
+#'         `as.Date("2000-01-01")`.
 #'       - In the case of `to` it translates to the end of the year eg.
-#'         `to = 2001` translates to `as.Date(2001-12-31)`.
+#'         `to = 2001` translates to `as.Date("2001-12-31")`.
 #' * `during` is a shortcut for when setting a single year limit. Eg.
-#'   `during = 2000` is the equivalent of setting `from = as.Date(2000-01-01)`
-#'   and `to = as.Date(2000-12-31)`.
+#'   `during = 2000` is the equivalent of setting `from = as.Date("2000-01-01")`
+#'   and `to = as.Date("2000-12-31")`.
 #'
 #' @examples
 #' on_paydays <- on_mday(25)
