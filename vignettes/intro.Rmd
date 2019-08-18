@@ -18,46 +18,126 @@ knitr::opts_chunk$set(
 )
 ```
 
-Recurring calendar events are very common in everyday life. Some are simple
-and therefore easy to program with. Others however are not and are difficult
-to understand and exceeding difficult to program with.
+Recurring calendar events are very common in everyday life.  When a set of 
+these events recur in a pattern, we call it a 'schedule'. While some 
+schedules are simple, others can be difficult to work with. This is 
+especially true when the pattern of events is irregular. The objective of 
+`scheduler` is  to make working with schedules easier.
 
-The objective of `scheduler` is to make working with these recurring calendar
-events a little easier. By providing an intutive set of building blocks and a
-means of combining them together, users will be able to create and use 
-schedules of arbitrary complexity.
-
-To start with, we will need to laod the following packages:
+To start with, we will import the package:
 
 ```{r setup}
-library(lubridate)
 library(scheduler)
-library(magrittr)
 ```
 
-`scheduler` builds atop the `lubridate` package, which provides various 
-accessor functions for different elements of a date. For example, if I wanted
-to know which day in a year a particlar date fell upon, lubridate provides a
-function to access it, called `yday()`:
+`scheduler` builds atop the `lubridate` package and is designed for use
+alongside it. For this reason, it is imported automatically when `scheduler` is
+imported. When a `lubridate` function is used in this vignette, I will 
+prefix it with `lubridate::` to make it clear where the function comes from. 
+Users can happily ignore this in their own code.
+
+# Creating a schedule
+
+In this section we will create a schedule of events occurring every year 
+on New Year's Day (January 1st). This simple example which teach you the 
+basics of schedules so that you can build-up to more involved examples later
+on.
+
+Ask yourself, what is uniquely special about New Year's Day (from a calendar 
+perspective)? It occurs on the first day of the month, but so do many other 
+days. It occurs in January, but so do many other days. You would be right to
+say that New Year's Day always occurs on the first day of the year. It is 
+the only day that does so.
+
+`scheduler` provides a function to create schedules where the events occur
+only on certain days of the year. The function is called `on_yday()` and it 
+accepts numeric input depending on which day of the year you wish to schedule
+events for. `on_yday(2)` would be the second day of the year, 
+for example. But in our case we wish to create a schedule of events occurring 
+on only the first day of every year:
 
 ```{r}
-lubridate::yday(as.Date("2000-01-01"))
-lubridate::yday(as.Date("2000-12-31"))
+on_yday(1)
 ```
 
-`lubridate` provides a whole set of these accessor functions. For example, 
-`mday()` to access the day of the month a date falls on, `wday()` for the day
-of the week, `month()` for the month of the date, `year()` for the year of 
-the date etc.
+You can think of this schedule as encompassing all the possible occurrences of
+New Year's Day throughout time.
+
+By itself, this isn't that useful. What will help make it more useful is that 
+we can make this schedule an object like so:
 
 ```{r}
-first_day_millenium <- as.Date("2000-01-01")
-
-lubridate::mday(first_day_millenium)
-lubridate::wday(first_day_millenium)
-lubridate::month(first_day_millenium)
+on_new_years_day <- on_yday(1)
 ```
 
-`scheduler` fufils a different purpose, but uses the same naming scheme.
-Whereas `lubridate` provides accessors to elements of a particualr date, the
-purpose of `scheduler` is to let you specify the element of the schedule.
+We now have the `on_new_years_day` object that we can put to use.
+
+# Using schedules
+
+## Testing for events
+
+The first thing we can use schedules for is to find out whether certain dates
+fall on them or not. Lets create a set of dates using base R:
+
+```{r}
+my_dates <- seq.Date(from = as.Date("2001-01-01"),
+                     to = as.Date("2001-01-10"),
+                     by = "1 day")
+
+my_dates
+```
+
+We can then use the `is_occurring()` function to find out which of these dates
+falls on New Year's Day:
+
+```{r}
+is_occurring(my_dates, on_new_years_day)
+```
+
+We can see from this that only the first of our dates fall on New Year's Day.
+
+## Getting events
+
+We can also get the events of a schedule using the `schedule_days()` function,
+which accepts a schedule object as its first argument.
+
+One snag with doing this however is that the total number of New Year's Days is 
+theoretically infinite. So if we try and run `schedule_days(on_new_years_day)`
+we will get an error. What we can do is place date limits on the 
+resulting output using the `from` and `to` arguments:
+
+```{r}
+schedule_days(on_new_years_day, 
+              from = as.Date("2001-01-01"), 
+              to = as.Date("2001-01-10"))
+```
+
+This gives us all the occurrences of New Year's Day within the boundaries we
+have specified. Let's expand these bounderies so we get more occurrances of
+New Year's Day. Here I extend the bounderies from the start of 1995 to the 
+end of 2005.
+
+```{r}
+schedule_days(on_new_years_day, 
+              from = as.Date("1995-01-01"), 
+              to = as.Date("2005-12-31"))
+```
+
+Because this is a little cumbersom to write, `schedule_days()` allows you to
+abbreviate `to` and `from` to only the numeric years you wish to use as 
+bounderies. These go from the start of the `from` year to the end of the `to`
+year. That means this code is equivalent to what we just ran:
+
+```{r}
+schedule_days(on_new_years_day, from = 1995, to = 2005)
+```
+
+If the events we want only occur in a single year, we can use the `during`
+argument as a further numeric shortcut, which is the equivalent of setting `to`
+and `from` to the start and end of the target year:
+
+```{r}
+schedule_days(on_new_years_day, during = 2005)
+```
+
+
