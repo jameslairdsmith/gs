@@ -81,8 +81,6 @@
 #' \dontrun{
 #' on_mday(32)
 #' on_wday(8)}
-#'
-#'
 #' @export
 
 on_mday <- function(...){

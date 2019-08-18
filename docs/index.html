@@ -96,15 +96,14 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>scheduler</code> is an R package for working with recurring calendar events. When a set of these events recur in a pattern, we call it a ‘schedule’.</p>
-<p>Schedules can sometimes be frustrating to create, especially when the pattern of events is irregular. <code>scheduler</code> overcomes this by providing a set of simple to understand functions for making schedules along with functions for combining them into more complex ones.</p>
-<p>The <code>scheduler</code> grammar is both flexible and declarative. The flexibility allows users to compose arbitrarily complex schedules from simple and intuitive buildings blocks. Because the grammar is declarative, the user need not concearn themselves with the details of how a particular schedule is created, rather they can specify the rules of a schedule and allow <code>scheduler</code> to implement it for them.</p>
+<p><code>scheduler</code> is a grammar of recurring calendar events, implemented in an R package. It enables users to easily create and work with schedules, even in cases when the pattern of events is irregular. <code>scheduler</code> does this by providing a set of simple to understand functions for making schedules along with functions for combining them to form more complex ones.</p>
+<p>The <code>scheduler</code> grammar is both flexible and declarative. The flexibility allows users to compose arbitrarily complex schedules from simple and intuitive buildings blocks. Because the grammar is declarative, the user need not concern themselves with the details of how a particular schedule works, rather they can specify what they want from a schedule and let <code>scheduler</code> implement it for them.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>The package is in the early development stage and experimental. Users are cautioned against relying on it for anything of importance. It can be downloaded from Github:</p>
+<p>The package is currently experimental. Users are cautioned against relying on it for anything of importance. It can be downloaded from Github:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jameslairdsmith/scheduler"</span>)</a></code></pre></div>
-<p>Feedback, bug report and suggestions are welcome and can be made in the <a href="https://github.com/jameslairdsmith/scheduler/issues">issues tab</a> of the Github repo.</p>
+<p>Feedback, contributions, bug report and suggestions are welcome and can be made in the <a href="https://github.com/jameslairdsmith/scheduler/issues">issues tab</a> of the Github repo.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
@@ -116,7 +115,7 @@
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h2>
 <p>I would like to extend an enormous thank you to the <a href="https://lubridate.tidyverse.org/authors.html">authors</a> of and <a href="https://github.com/tidyverse/lubridate/graphs/contributors">contributors</a> to the <code>lubridate</code> package. <code>scheduler</code> relies on <code>lubridate</code> for much of its functionality and builds explicitly on its syntax.</p>
 <p>I would also like to thank <a href="https://martinfowler.com/">Martin Fowler</a>, whose writing<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on this topic helped guide my thinking in a number of important ways.</p>
-<p>Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who in their paper<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> on <code>lubridate</code> pointed me in Fowler’s direction:</p>
+<p>Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who in their paper<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> on <code>lubridate</code> inspired me to create <code>scheduler</code> and pointed me in Fowler’s direction:</p>
 <blockquote>
 <p>In particular, we hope to create methods for R that work with reoccurring temporal date patterns, which were introduced by Fowler (1997).</p>
 </blockquote>

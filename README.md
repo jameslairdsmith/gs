@@ -9,34 +9,34 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-`scheduler` is an R package for working with recurring calendar events.
-When a set of these events recur in a pattern, we call it a ‘schedule’.
-
-Schedules can sometimes be frustrating to create, especially when the
-pattern of events is irregular. `scheduler` overcomes this by providing
-a set of simple to understand functions for making schedules along with
-functions for combining them into more complex ones.
+`scheduler` is a grammar of recurring calendar events, implemented in an
+R package. It enables users to easily create and work with schedules,
+even in cases when the pattern of events is irregular. `scheduler` does
+this by providing a set of simple to understand functions for making
+schedules along with functions for combining them to form more complex
+ones.
 
 The `scheduler` grammar is both flexible and declarative. The
 flexibility allows users to compose arbitrarily complex schedules from
 simple and intuitive buildings blocks. Because the grammar is
-declarative, the user need not concearn themselves with the details of
-how a particular schedule is created, rather they can specify the rules
-of a schedule and allow `scheduler` to implement it for them.
+declarative, the user need not concern themselves with the details of
+how a particular schedule works, rather they can specify what they want
+from a schedule and let `scheduler` implement it for them.
 
 ## Installation
 
-The package is in the early development stage and experimental. Users
-are cautioned against relying on it for anything of importance. It can
-be downloaded from Github:
+The package is currently experimental. Users are cautioned against
+relying on it for anything of importance. It can be downloaded from
+Github:
 
 ``` r
 devtools::install_github("jameslairdsmith/scheduler")
 ```
 
-Feedback, bug report and suggestions are welcome and can be made in the
-[issues tab](https://github.com/jameslairdsmith/scheduler/issues) of the
-Github repo.
+Feedback, contributions, bug report and suggestions are welcome and can
+be made in the [issues
+tab](https://github.com/jameslairdsmith/scheduler/issues) of the Github
+repo.
 
 ## Getting started
 
@@ -57,7 +57,8 @@ whose writing\[1\] on this topic helped guide my thinking in a number of
 important ways.
 
 Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who
-in their paper\[2\] on `lubridate` pointed me in Fowler’s direction:
+in their paper\[2\] on `lubridate` inspired me to create `scheduler` and
+pointed me in Fowler’s direction:
 
 > In particular, we hope to create methods for R that work with
 > reoccurring temporal date patterns, which were introduced by Fowler

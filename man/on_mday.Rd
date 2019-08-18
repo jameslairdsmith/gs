@@ -122,8 +122,6 @@ on_weekday(my_dates)
 \dontrun{
 on_mday(32)
 on_wday(8)}
-
-
 }
 \keyword{date,}
 \keyword{day,}
