@@ -23,7 +23,7 @@ on_weekday(date_vec = NULL)
 }
 \arguments{
 \item{...}{A numeric vector of day specifications. In the case of \code{on_wday} the
-elements can also be characters (see details below).}
+elements can also be characters (see \emph{Details} section below).}
 
 \item{week_start}{If using the \code{on_wday} function with numeric day elements,
 you can specify which ISO convention is used; 1 means Monday,
@@ -34,7 +34,7 @@ a weekend or weekday. If missing, will simply return a schedule of weekend
 days or weekdays.}
 }
 \value{
-A schedule of events occurring on the day type(s) specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occuring on the specified days of certain
@@ -104,22 +104,16 @@ week on both Tuesdays and Thursdays.
 my_dates <- seq.Date(from = as.Date("2000-01-01"),
                      to = as.Date("2000-12-01"),
                      by = "1 month")
-my_dates
 
-on_first_day_of_month <- on_mday(1)
-is_occurring(my_dates, on_first_day_of_month)
+is_occurring(my_dates, on_mday(1))
 
-on_first_day_of_year <- on_yday(1)
-is_occurring(my_dates, on_first_day_of_year)
+is_occurring(my_dates, on_yday(1))
 
-on_first_day_of_quarter <- on_qday(1)
-is_occurring(my_dates, on_first_day_of_quarter)
+is_occurring(my_dates, on_qday(1))
 
-on_tuesday <- on_wday("Tue")
-is_occurring(my_dates, on_tuesday)
+is_occurring(my_dates, on_wday("Tue"))
 
-on_tuesday_or_thursday <- on_wday("Tue", "Thu")
-is_occurring(my_dates, on_tuesday_or_thursday)
+is_occurring(my_dates, on_wday("Tue", "Thu"))
 
 on_weekend(my_dates)
 on_weekday(my_dates)

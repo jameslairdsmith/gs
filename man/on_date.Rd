@@ -10,7 +10,7 @@ on_date(...)
 \item{...}{A vector of dates.}
 }
 \value{
-A schedule of events occurring on the dates specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occurring on the dates specified.

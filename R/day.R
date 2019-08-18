@@ -48,7 +48,7 @@
 #' `not_occuring(on_wday("Sat", "Sun"))`.
 #'
 #' @param ... A numeric vector of day specifications. In the case of `on_wday` the
-#' elements can also be characters (see details below).
+#' elements can also be characters (see *Details* section below).
 #' @param week_start If using the `on_wday` function with numeric day elements,
 #' you can specify which ISO convention is used; 1 means Monday,
 #' 7 means Sunday (default).
@@ -57,28 +57,22 @@
 #' days or weekdays.
 #'
 #' @keywords month, week, day, date, schedule
-#' @return A schedule of events occurring on the day type(s) specified.
+#' @return A schedule object.
 #' @examples
 #'
 #' my_dates <- seq.Date(from = as.Date("2000-01-01"),
 #'                      to = as.Date("2000-12-01"),
 #'                      by = "1 month")
-#' my_dates
 #'
-#' on_first_day_of_month <- on_mday(1)
-#' is_occurring(my_dates, on_first_day_of_month)
+#' is_occurring(my_dates, on_mday(1))
 #'
-#' on_first_day_of_year <- on_yday(1)
-#' is_occurring(my_dates, on_first_day_of_year)
+#' is_occurring(my_dates, on_yday(1))
 #'
-#' on_first_day_of_quarter <- on_qday(1)
-#' is_occurring(my_dates, on_first_day_of_quarter)
+#' is_occurring(my_dates, on_qday(1))
 #'
-#' on_tuesday <- on_wday("Tue")
-#' is_occurring(my_dates, on_tuesday)
+#' is_occurring(my_dates, on_wday("Tue"))
 #'
-#' on_tuesday_or_thursday <- on_wday("Tue", "Thu")
-#' is_occurring(my_dates, on_tuesday_or_thursday)
+#' is_occurring(my_dates, on_wday("Tue", "Thu"))
 #'
 #' on_weekend(my_dates)
 #' on_weekday(my_dates)

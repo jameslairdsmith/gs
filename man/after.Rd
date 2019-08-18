@@ -35,7 +35,7 @@ is a schedule. Can be either:
 }}
 }
 \value{
-A schedule of events occuring before and/or after the events specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occuring before or after either a certain

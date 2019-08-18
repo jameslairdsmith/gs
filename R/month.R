@@ -14,7 +14,7 @@
 #' @param ... A character or numeric vector of month elements.
 #'
 #' @keywords month, date, schedule
-#' @return A schedule of events occurring in the months specified.
+#' @return A schedule object.
 #' @examples
 #' my_dates <- seq.Date(as.Date("2000-01-01"),
 #'                      as.Date("2000-04-01"),

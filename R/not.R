@@ -20,8 +20,7 @@
 #'      `only_occurring(a, not_occurring(b))`
 #'    - This usage works best when composing with the pipe (`%>%`) operator.
 #'
-#' @return A schedule of events occurring only when the specified events do
-#' not occur.
+#' @return A schedule object.
 #' @examples
 #' my_dates <- seq.Date(as.Date("1999-01-01"),
 #'                      as.Date("1999-01-10"),

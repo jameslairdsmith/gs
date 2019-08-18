@@ -10,8 +10,7 @@ not_occurring(x, y = NULL)
 \item{x, y}{Schedule objects.}
 }
 \value{
-A schedule of events occurring only when the specified events do
-not occur.
+A schedule object.
 }
 \description{
 Create a schedule of events occurring only when the specified events do

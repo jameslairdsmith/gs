@@ -32,7 +32,7 @@
 #'  * A date accessor function. Eg. `lubridate::month()`.
 #'
 #' @keywords after, before, date, schedule
-#' @return A schedule of events occuring before and/or after the events specified.
+#' @return A schedule object.
 #' @examples
 #' christmas <-  only_occurring(in_month("Dec"), on_mday(25))
 #' new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))

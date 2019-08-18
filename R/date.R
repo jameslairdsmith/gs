@@ -13,7 +13,7 @@
 #' @param ... A vector of dates.
 #'
 #' @keywords date, schedule
-#' @return A schedule of events occurring on the dates specified.
+#' @return A schedule object.
 #' @examples
 #' my_dates <- seq.Date(as.Date("2000-01-01"),
 #'                      as.Date("2000-01-05"),

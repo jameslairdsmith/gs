@@ -157,7 +157,7 @@ function used (see <em>Details</em> section).</p>
     <tr>
       <th>...</th>
       <td><p>A numeric vector of day specifications. In the case of <code>on_wday</code> the
-elements can also be characters (see details below).</p></td>
+elements can also be characters (see <em>Details</em> section below).</p></td>
     </tr>
     <tr>
       <th>week_start</th>
@@ -175,7 +175,7 @@ days or weekdays.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule of events occurring on the day type(s) specified.</p>
+    <p>A schedule object.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -230,19 +230,12 @@ week on both Tuesdays and Thursdays.</p>
 <span class='no'>my_dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq.Date'>seq.Date</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 month"</span>)
-<span class='no'>my_dates</span></div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-02-01" "2000-03-01" "2000-04-01" "2000-05-01"
-#&gt;  [6] "2000-06-01" "2000-07-01" "2000-08-01" "2000-09-01" "2000-10-01"
-#&gt; [11] "2000-11-01" "2000-12-01"</div><div class='input'>
-<span class='no'>on_first_day_of_month</span> <span class='kw'>&lt;-</span> <span class='fu'>on_mday</span>(<span class='fl'>1</span>)
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='no'>on_first_day_of_month</span>)</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'>
-<span class='no'>on_first_day_of_year</span> <span class='kw'>&lt;-</span> <span class='fu'>on_yday</span>(<span class='fl'>1</span>)
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='no'>on_first_day_of_year</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>on_first_day_of_quarter</span> <span class='kw'>&lt;-</span> <span class='fu'>on_qday</span>(<span class='fl'>1</span>)
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='no'>on_first_day_of_quarter</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='no'>on_tuesday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>)
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='no'>on_tuesday</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>on_tuesday_or_thursday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>, <span class='st'>"Thu"</span>)
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='no'>on_tuesday_or_thursday</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
+
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>on_mday</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>on_yday</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>on_qday</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>))</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>, <span class='st'>"Thu"</span>))</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
 <span class='fu'>on_weekend</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>on_weekday</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE</div><div class='input'>
 ## Invalid inputs will produce an immediate error:
 </div><span class='co'># NOT RUN {</span>
