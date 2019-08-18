@@ -13,18 +13,18 @@ in_isoweek(...)
 in_epiweek(...)
 }
 \arguments{
-\item{...}{a numeric vector of week specifications.}
+\item{...}{a numeric vector of weeks.}
 }
 \value{
-A schedule of events occurring in the weeks specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occurring in the weeks specified.
 }
 \details{
 The type of week is determined by the function used. These week types are
-built atop their definitions from the \code{lubridate} package, which are quoted
-here:
+built atop their \link[lubridate:week]{definitions} in the \code{lubridate}
+package, which are quoted here:
 \itemize{
 \item \code{week()} returns the number of complete seven day periods that have
 occurred between the date and January 1st, plus one.
@@ -46,19 +46,14 @@ which is the same as isoweek.
 my_dates <- seq.Date(from = as.Date("2000-01-01"),
                      to = as.Date("2000-02-01"),
                      by = "1 week")
-my_dates
 
-in_first_week_year <- in_week(1)
-in_first_week_year(my_dates)
+is_occurring(my_dates, in_week(1))
 
-in_first_or_third_week_year <- in_week(1, 3)
-in_first_or_third_week_year(my_dates)
+is_occurring(my_dates, in_week(1, 3))
 
-in_first_three_weeks_year <- in_week(1:3)
-in_first_three_weeks_year(my_dates)
+is_occurring(my_dates, in_week(1:3))
 
-in_first_isoweek_year <- in_isoweek(1)
-in_first_isoweek_year(my_dates)
+is_occurring(my_dates, in_isoweek(1))
 
 ## invalid inputs will produce an immediate error:
 \dontrun{

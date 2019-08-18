@@ -13,37 +13,45 @@ in_isoyear(...)
 in_epiyear(...)
 }
 \arguments{
-\item{...}{A numeric vector of year elements.}
+\item{...}{A numeric vector of years.}
 }
 \value{
-A schedule of events occurring in the year(s) specified.
+A schedule object.
 }
 \description{
 Creates a schedule of events occurring in the year(s) specified.
 }
 \details{
-The \code{in_year()} function will retain information on the limits of
-a schedule. If a schedule occurs only within a specified year or years, we
-can infer the start date and end date of the schedule as being the first
-day of a earliest year and the last day of the latest year respectively.
-This means we do not need to specify these limits when passing the schedule
-on to the \code{schedule()} function (see last of the examples below).
+The type of year is determined by the function used. These year types are
+built atop their \link[lubridate:year]{definitions} in the \code{lubridate}
+package, where \code{year()} is the commonly understood definition of
+a year. The other definitions from the \code{lubridate} package are quoted here:
+\itemize{
+\item \code{isoyear()} returns years according to the ISO 8601 week calendar.
+\item \code{epiyear()} returns years according to the epidemilogical week calendars.
+}
+
+The \code{in_year()} function will encode limits on the output schedule.
+For more details see the
+\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+on understanding schedule limits.
 }
 \examples{
 my_dates <- seq(from = as.Date("2000-01-01"),
-                to = as.Date("2004-01-01"),
+                to = as.Date("2005-01-01"),
                 by = "1 year")
 
-in_2000 <- in_year(2000)
-in_2000(my_dates)
+is_occurring(my_dates, in_year(2000))
 
-in_2000_or_2001 <- in_year(2000, 2001)
-in_2000_or_2001(my_dates)
+is_occurring(my_dates, in_year(2000, 2002))
 
-in_2000_or_2001_or_2002 <- in_year(2000:2002)
-in_2000_or_2001_or_2002(my_dates)
+is_occurring(my_dates, in_year(2000:2002))
 
-head(schedule(in_2000), 20)
+is_occurring(my_dates, in_year(2000:2002, 2005))
+
+is_occurring(my_dates, in_isoyear(2004))
+
+head(schedule(in_year(2000), 20))
 }
 \keyword{date,}
 \keyword{schedule}

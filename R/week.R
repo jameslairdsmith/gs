@@ -7,32 +7,28 @@
 #' @details
 #'
 #' The type of week is determined by the function used. These week types are
-#' built atop their definitions from the `lubridate` package, which are quoted
-#' here:
+#' built atop their [definitions][lubridate::week()] in the `lubridate`
+#' package, which are quoted here:
+#'
 #' * `week()` returns the number of complete seven day periods that have
 #' occurred between the date and January 1st, plus one.
 #'
-#' @param ... a numeric vector of week specifications.
+#' @param ... a numeric vector of weeks.
 #'
 #' @keywords week, date, scedule
-#' @return A schedule of events occurring in the weeks specified.
+#' @return A schedule object.
 #' @examples
 #' my_dates <- seq.Date(from = as.Date("2000-01-01"),
 #'                      to = as.Date("2000-02-01"),
 #'                      by = "1 week")
-#' my_dates
 #'
-#' in_first_week_year <- in_week(1)
-#' in_first_week_year(my_dates)
+#' is_occurring(my_dates, in_week(1))
 #'
-#' in_first_or_third_week_year <- in_week(1, 3)
-#' in_first_or_third_week_year(my_dates)
+#' is_occurring(my_dates, in_week(1, 3))
 #'
-#' in_first_three_weeks_year <- in_week(1:3)
-#' in_first_three_weeks_year(my_dates)
+#' is_occurring(my_dates, in_week(1:3))
 #'
-#' in_first_isoweek_year <- in_isoweek(1)
-#' in_first_isoweek_year(my_dates)
+#' is_occurring(my_dates, in_isoweek(1))
 #'
 #' ## invalid inputs will produce an immediate error:
 #' \dontrun{
@@ -53,7 +49,8 @@ in_week <- function(...){
 
 }
 
-#' @details * `isoweek()` returns the week as it would appear in the ISO 8601
+#' @details
+#' * `isoweek()` returns the week as it would appear in the ISO 8601
 #' system, which uses a reoccurring leap week.
 #' @rdname in_week
 #' @export
@@ -69,7 +66,8 @@ in_isoweek <- function(...){
   make_element(x, lubridate::isoweek)
 }
 
-#' @details * `epiweek()` is the US CDC version of epidemiological week. It
+#' @details
+#' * `epiweek()` is the US CDC version of epidemiological week. It
 #' follows same rules as `isoweek()` but starts on Sunday. In other parts of
 #' the world the convention is to start epidemiological weeks on Monday,
 #' which is the same as isoweek.
