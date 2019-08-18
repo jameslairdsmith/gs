@@ -113,8 +113,8 @@ schedule_days(on_new_years_day,
 ```
 
 This gives us all the occurrences of New Year's Day within the boundaries we
-have specified. Let's expand these bounderies so we get more occurrances of
-New Year's Day. Here I extend the bounderies from the start of 1995 to the 
+have specified. Let's expand these boundaries so we get more occurrences of
+New Year's Day. Here I extend the boundaries from the start of 1995 to the 
 end of 2005.
 
 ```{r}
@@ -123,9 +123,9 @@ schedule_days(on_new_years_day,
               to = as.Date("2005-12-31"))
 ```
 
-Because this is a little cumbersom to write, `schedule_days()` allows you to
+Because this is a little cumbersome to write, `schedule_days()` allows you to
 abbreviate `to` and `from` to only the numeric years you wish to use as 
-bounderies. These go from the start of the `from` year to the end of the `to`
+boundaries. These go from the start of the `from` year to the end of the `to`
 year. That means this code is equivalent to what we just ran:
 
 ```{r}

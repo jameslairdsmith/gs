@@ -113,8 +113,8 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; {</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7fb3a17c69c8&gt;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7fb3a17c6418&gt;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7feb5fe489c8&gt;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7feb5fe48418&gt;</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; attr(,"class")</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
 <p>You can think of this schedule as encompassing all the possible occurrences of New Year’s Day throughout time.</p>
@@ -150,14 +150,14 @@
 <a class="sourceLine" id="cb6-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-01"</span>), </a>
 <a class="sourceLine" id="cb6-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-10"</span>))</a>
 <a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] "2001-01-01"</span></a></code></pre></div>
-<p>This gives us all the occurrences of New Year’s Day within the boundaries we have specified. Let’s expand these bounderies so we get more occurrances of New Year’s Day. Here I extend the bounderies from the start of 1995 to the end of 2005.</p>
+<p>This gives us all the occurrences of New Year’s Day within the boundaries we have specified. Let’s expand these boundaries so we get more occurrences of New Year’s Day. Here I extend the boundaries from the start of 1995 to the end of 2005.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, </a>
 <a class="sourceLine" id="cb7-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"1995-01-01"</span>), </a>
 <a class="sourceLine" id="cb7-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2005-12-31"</span>))</a>
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
 <a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; [11] "2005-01-01"</span></a></code></pre></div>
-<p>Because this is a little cumbersom to write, <code><a href="../reference/schedule.html">schedule_days()</a></code> allows you to abbreviate <code>to</code> and <code>from</code> to only the numeric years you wish to use as bounderies. These go from the start of the <code>from</code> year to the end of the <code>to</code> year. That means this code is equivalent to what we just ran:</p>
+<p>Because this is a little cumbersome to write, <code><a href="../reference/schedule.html">schedule_days()</a></code> allows you to abbreviate <code>to</code> and <code>from</code> to only the numeric years you wish to use as boundaries. These go from the start of the <code>from</code> year to the end of the <code>to</code> year. That means this code is equivalent to what we just ran:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, <span class="dt">from =</span> <span class="dv">1995</span>, <span class="dt">to =</span> <span class="dv">2005</span>)</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
