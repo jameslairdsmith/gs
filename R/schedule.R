@@ -4,7 +4,7 @@
 #'
 #' @param x A schedule object.
 #' @param from,to,during The limits to place on the output (see *Details*).
-#' @param period_type The period type of the output. Eg. "day" (the deafult),
+#' @param period_type The period type of the output. Eg. "day" (the default),
 #'  "hour" etc. Can be any unit accepted by `lubridate::period()`.
 #' @param n The increment of the period type. Eg. for events occurring every
 #'  half-hour the `period_type` should "minute" and `n` should be set to

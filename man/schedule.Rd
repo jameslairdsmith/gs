@@ -18,7 +18,7 @@ schedule_hours(x, from = NULL, to = NULL, during = NULL)
 
 \item{from, to, during}{The limits to place on the output (see \emph{Details}).}
 
-\item{period_type}{The period type of the output. Eg. "day" (the deafult),
+\item{period_type}{The period type of the output. Eg. "day" (the default),
 "hour" etc. Can be any unit accepted by \code{lubridate::period()}.}
 
 \item{n}{The increment of the period type. Eg. for events occurring every
