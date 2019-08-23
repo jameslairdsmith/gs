@@ -177,10 +177,10 @@ which is the same as isoweek.</p></li>
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-02-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 week"</span>)
 
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>:<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='is_occurring.html'>is_occurring</a></span>(<span class='no'>my_dates</span>, <span class='fu'>in_isoweek</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>, <span class='fl'>3</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_week</span>(<span class='fl'>1</span>:<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_isoweek</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error:
 </div><span class='co'># NOT RUN {</span>
 <span class='fu'>in_week</span>(<span class='fl'>0</span>)

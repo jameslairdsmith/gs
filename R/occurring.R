@@ -44,7 +44,7 @@
 #'
 #' schedule_days(on_public_holiday, from = 2000, to = 2004)
 #' @export
-also_occurring <- function(x, y){
+also_occur <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
@@ -61,10 +61,10 @@ also_occurring <- function(x, y){
 
 }
 
-#' @rdname also_occurring
+#' @rdname also_occur
 #' @export
 
-only_occurring <- function(x, y){
+only_occur <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
@@ -104,3 +104,16 @@ only_occurring <- function(x, y){
   out
 }
 
+#' @export
+
+also_occurring <- function(...){
+
+  also_occur(...)
+}
+
+#' @export
+
+only_occurring <- function(...){
+
+  only_occur(...)
+}

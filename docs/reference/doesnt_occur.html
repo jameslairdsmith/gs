@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the year(s) of a schedule — in_year • scheduler</title>
+<title>Invert a schedule — doesnt_occur • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Specify the year(s) of a schedule — in_year" />
+<meta property="og:title" content="Invert a schedule — doesnt_occur" />
 
-<meta property="og:description" content="Creates a schedule of events occurring in the year(s) specified." />
+<meta property="og:description" content="Create a schedule of events occurring only when the specified events do
+not occur." />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -122,29 +123,26 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Specify the year(s) of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/year.R'><code>R/year.R</code></a></small>
-    <div class="hidden name"><code>in_year.Rd</code></div>
+    <h1>Invert a schedule</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/not.R'><code>R/not.R</code></a></small>
+    <div class="hidden name"><code>doesnt_occur.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occurring in the year(s) specified.</p>
+    <p>Create a schedule of events occurring only when the specified events do
+not occur.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>in_year</span>(<span class='no'>...</span>)
-
-<span class='fu'>in_isoyear</span>(<span class='no'>...</span>)
-
-<span class='fu'>in_epiyear</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>doesnt_occur</span>(<span class='no'>x</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>A numeric vector of years.</p></td>
+      <th>x, y</th>
+      <td><p>Schedule objects.</p></td>
     </tr>
     </table>
     
@@ -154,31 +152,36 @@
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The type of year is determined by the function used. These year types are
-built atop their <a href='http://lubridate.tidyverse.org/reference/year.html'>definitions</a> in the <code>lubridate</code>
-package, where <code>year()</code> is the commonly understood definition of
-a year. The other definitions from the <code>lubridate</code> package are quoted here:</p><ul>
-<li><p><code>isoyear()</code> returns years according to the ISO 8601 week calendar.</p></li>
-<li><p><code>epiyear()</code> returns years according to the epidemilogical week calendars.</p></li>
+    <p><code>doesnt_occur()</code> can accept either one or two schedules as input(s):</p><ul>
+<li><p>When a single schedule is used, the function returns a schedule of all
+events that do not fall on on the input schedule. The result is the
+<strong>negation</strong> of the schedule. For example, the negation of all weekdays
+would be a schedule of all weekend days.</p></li>
+<li><p>When two schedules are used, the function returns the first schedule but
+with the events of the second schedule stripped away. This works to remove
+the events of the second schedule from the first.</p><ul>
+<li><p>This means that <code>not_occurring(a, b)</code> is the equivalent of
+<code>only_occurring(a, not_occurring(b))</code></p></li>
+<li><p>This usage works best when composing with the pipe (<code>%&gt;%</code>) operator.</p></li>
+</ul></li>
 </ul>
-    <p>The <code>in_year()</code> function will encode limits on the output schedule.
-For more details see the
-<a href='https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html'>vignette</a>
-on understanding schedule limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>my_dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq'>seq</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
-                <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2005-01-01"</span>),
-                <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 year"</span>)
+    <pre class="examples"><div class='input'><span class='no'>my_dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq.Date'>seq.Date</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1999-01-01"</span>),
+                     <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1999-01-10"</span>),
+                     <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 day"</span>)
 
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_year</span>(<span class='fl'>2000</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_year</span>(<span class='fl'>2000</span>, <span class='fl'>2002</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_year</span>(<span class='fl'>2000</span>:<span class='fl'>2002</span>))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_year</span>(<span class='fl'>2000</span>:<span class='fl'>2002</span>, <span class='fl'>2005</span>))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE  TRUE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_isoyear</span>(<span class='fl'>2004</span>))</div><div class='output co'>#&gt; [1] FALSE FALSE FALSE FALSE  TRUE  TRUE</div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='fu'><a href='schedule.html'>schedule</a></span>(<span class='fu'>in_year</span>(<span class='fl'>2000</span>), <span class='fl'>20</span>))</div><div class='output co'>#&gt; [1] "2000-01-01" "2000-01-02" "2000-01-03" "2000-01-04" "2000-01-05"
-#&gt; [6] "2000-01-06"</div></pre>
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>not_occurring</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)))</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>))</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>not_occurring</span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)))</div><div class='output co'>#&gt;  [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</div><div class='input'>
+<span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occurring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+<span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
+<span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occurring</span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
+
+<span class='no'>on_business_days</span> <span class='kw'>&lt;-</span>
+  <span class='fu'>not_occurring</span>(<span class='fu'><a href='on_mday.html'>on_weekend</a></span>()) <span class='kw'>%&gt;%</span>
+  <span class='fu'>not_occurring</span>(<span class='no'>on_public_holidays</span>)
+
+<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='no'>on_business_days</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

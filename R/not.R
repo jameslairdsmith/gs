@@ -8,7 +8,7 @@
 #' @param x,y Schedule objects.
 #'
 #' @details
-#' `not_occuring()` can accept either one or two schedules as input(s):
+#' `doesnt_occur()` can accept either one or two schedules as input(s):
 #' * When a single schedule is used, the function returns a schedule of all
 #' events that do not fall on on the input schedule. The result is the
 #' **negation** of the schedule. For example, the negation of all weekdays
@@ -42,7 +42,7 @@
 #' is_occurring(my_dates, on_business_days)
 #' @export
 
-not_occurring <- function(x, y = NULL){
+doesnt_occur <- function(x, y = NULL){
 
   elem_1 <- x
   elem_2 <- y
@@ -67,4 +67,11 @@ not_occurring <- function(x, y = NULL){
 
     elem_1 %>% only_occurring(out)
   }
+}
+
+#' @export
+
+not_occurring <- function(...){
+
+  doesnt_occur(...)
 }
