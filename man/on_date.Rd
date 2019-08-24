@@ -19,7 +19,7 @@ This function is best used when making ad-hoc changes to other schedules.
 }
 \details{
 The function encodes limits in the output schedule. For more
-details see the \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+details see the \href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
 }
 \examples{

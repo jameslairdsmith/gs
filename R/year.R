@@ -17,7 +17,7 @@
 #'
 #' The `in_year()` function will encode limits on the output schedule.
 #' For more details see the
-#' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
 #' @examples
 #' my_dates <- seq(from = as.Date("2000-01-01"),

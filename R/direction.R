@@ -7,7 +7,7 @@
 #' @details
 #' When `start_event` and/or `end_event` are date-time objects they place fixed
 #' lower and upper limits on the resulting schedule; for more details see the
-#' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
 #'
 #' When `start_event` and/or `end_event` are schedules they are likely to come
@@ -17,7 +17,7 @@
 #'  `lubridate::year()` or the provided character shortcuts
 #'  `"day"`, `"week"`, `"month"`, `"quarter"` or `"year"`. For more details
 #'  see the
-#' [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-period-limits.html)
+#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-period-limits.html)
 #' on understanding period limits.
 #'
 #' @param start_event,end_event The start and/or end events of the schedule.

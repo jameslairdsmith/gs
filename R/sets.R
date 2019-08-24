@@ -22,7 +22,7 @@
 #'
 #' Behind the scenes, both function outputs inherit the schedule limits from
 #' their inputs. For more
-#' details see the [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' details see the [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
 #'
 #' @return A schedule object.

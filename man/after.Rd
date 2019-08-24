@@ -44,7 +44,7 @@ date or another scheduled event.
 \details{
 When \code{start_event} and/or \code{end_event} are date-time objects they place fixed
 lower and upper limits on the resulting schedule; for more details see the
-\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+\href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
 
 When \code{start_event} and/or \code{end_event} are schedules they are likely to come
@@ -54,7 +54,7 @@ either be date accessor function like \code{lubridate::month()} or
 \code{lubridate::year()} or the provided character shortcuts
 \code{"day"}, \code{"week"}, \code{"month"}, \code{"quarter"} or \code{"year"}. For more details
 see the
-\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-period-limits.html}{vignette}
+\href{https://jameslairdsmith.github.io/gs/articles/understanding-period-limits.html}{vignette}
 on understanding period limits.
 }
 \examples{

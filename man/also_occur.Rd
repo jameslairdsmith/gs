@@ -35,7 +35,7 @@ package (see \emph{Examples}).
 
 Behind the scenes, both function outputs inherit the schedule limits from
 their inputs. For more
-details see the \href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+details see the \href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
 }
 \examples{

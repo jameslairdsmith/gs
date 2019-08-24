@@ -33,7 +33,7 @@ a year. The other definitions from the \code{lubridate} package are quoted here:
 
 The \code{in_year()} function will encode limits on the output schedule.
 For more details see the
-\href{https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html}{vignette}
+\href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
 on understanding schedule limits.
 }
 \examples{
