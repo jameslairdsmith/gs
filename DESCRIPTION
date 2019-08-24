@@ -1,5 +1,5 @@
 Package: gs
-Title: Make recurring calendar events a little easier
+Title: A grammar of recurring calendar events.
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "James",
@@ -7,7 +7,7 @@ Authors@R:
            comment = c(ORCID = "0000-0003-1175-4046"),
            role = c("aut", "cre"),
            email = "jameslairdsmith@gmail.com")
-Description: What the package does (one paragraph).
+Description: A grammar of recurring calendar events.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
