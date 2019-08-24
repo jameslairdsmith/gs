@@ -22,13 +22,13 @@
 #'                      to = as.Date("2000-02-01"),
 #'                      by = "1 week")
 #'
-#' is_occurring(my_dates, in_week(1))
+#' happen(in_week(1), my_dates)
 #'
-#' is_occurring(my_dates, in_week(1, 3))
+#' happen(in_week(1, 3), my_dates)
 #'
-#' is_occurring(my_dates, in_week(1:3))
+#' happen(in_week(1:3), my_dates)
 #'
-#' is_occurring(my_dates, in_isoweek(1))
+#' happen(in_isoweek(1), my_dates)
 #'
 #' ## invalid inputs will produce an immediate error:
 #' \dontrun{

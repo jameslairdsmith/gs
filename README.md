@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# scheduler <a href='https://jameslairdsmith.github.io/scheduler'><img src='reference/figures/logo.png' align="right" height="139" /></a>
+# gs <a href='https://jameslairdsmith.github.io/scheduler'><img src='reference/figures/logo.png' align="right" height="144" /></a>
 
 <!-- badges: start -->
 
@@ -9,19 +9,18 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
 
-`scheduler` is a grammar of recurring calendar events, implemented in an
-R package. It enables users to easily create and work with schedules,
-even in cases when the pattern of events is irregular. `scheduler` does
-this by providing a set of simple to understand functions for making
-schedules along with functions for combining them to form more complex
-ones.
+`gs` is a grammar of recurring calendar events, implemented as an R
+package. It enables users to easily create and work with schedules, even
+in cases when the pattern of events is irregular. `gs` does this by
+providing a set of simple to understand functions for making schedules
+along with functions for combining them to form more complex ones.
 
-The `scheduler` grammar is both flexible and declarative. The
-flexibility allows users to compose arbitrarily complex schedules from
-simple and intuitive buildings blocks. Because the grammar is
-declarative, the user need not concern themselves with the details of
-how a particular schedule works, rather they can specify what they want
-from a schedule and let `scheduler` implement it for them.
+The `gs` grammar is both flexible and declarative. The flexibility
+allows users to compose arbitrarily complex schedules from simple and
+intuitive buildings blocks. Because the grammar is declarative, the user
+need not concern themselves with the details of how a particular
+schedule works, rather they can specify what they want from a schedule
+and let `gs` implement it for them.
 
 ## Installation
 
@@ -40,8 +39,8 @@ repo.
 
 ## Getting started
 
-If you have not used `scheduler` before, the best place to get started
-is the introductory
+If you have not used `gs` before, the best place to get started is the
+introductory
 [vignette](https://jameslairdsmith.github.io/scheduler/articles/intro.html).
 
 ## Acknowledgements
@@ -49,15 +48,15 @@ is the introductory
 I would like to extend an enormous thank you to the
 [authors](https://lubridate.tidyverse.org/authors.html) of and
 [contributors](https://github.com/tidyverse/lubridate/graphs/contributors)
-to the `lubridate` package. `scheduler` relies on `lubridate` for much
-of its functionality and builds explicitly on its syntax.
+to the `lubridate` package. `gs` relies on `lubridate` for much of its
+functionality and builds explicitly on its syntax.
 
 I would also like to thank [Martin Fowler](https://martinfowler.com/),
 whose writing\[1\] on this topic helped guide my thinking in a number of
 important ways.
 
 Finally I’d also like to thank Garrett Grolemund and Hadley Wickham who
-in their paper\[2\] on `lubridate` inspired me to create `scheduler` and
+in their paper\[2\] on `lubridate` inspired me to create `gs` and
 pointed me in Fowler’s direction:
 
 > In particular, we hope to create methods for R that work with

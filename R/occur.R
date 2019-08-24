@@ -14,9 +14,16 @@
 #' on_saturday <- on_wday("Sat")
 #' on_sunday <- on_wday("Sun")
 #'
-#' occur(on_saturday, my_dates)
-#' occur(on_sunday, my_dates)
-#' occur(on_weekend(), my_dates)
+#' happen(on_saturday, my_dates)
+#' happen(on_sunday, my_dates)
+#' happen(on_weekend(), my_dates)
+#' @export
+
+happen <- function(schedule, date){
+
+  schedule(date)
+}
+
 #' @export
 
 occur <- function(schedule, date){

@@ -24,15 +24,15 @@
 #'                 to = as.Date("2005-01-01"),
 #'                 by = "1 year")
 #'
-#' is_occurring(my_dates, in_year(2000))
+#' happen(in_year(2000), my_dates)
 #'
-#' is_occurring(my_dates, in_year(2000, 2002))
+#' happen(in_year(2000, 2002), my_dates)
 #'
-#' is_occurring(my_dates, in_year(2000:2002))
+#' happen(in_year(2000:2002), my_dates)
 #'
-#' is_occurring(my_dates, in_year(2000:2002, 2005))
+#' happen(in_year(2000:2002, 2005), my_dates)
 #'
-#' is_occurring(my_dates, in_isoyear(2004))
+#' happen(in_isoyear(2004), my_dates)
 #'
 #' head(schedule(in_year(2000), 20))
 #' @export

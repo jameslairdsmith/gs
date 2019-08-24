@@ -31,13 +31,13 @@ on_first_day_millennium <- on_date(as.Date("2000-01-01"))
 on_first_or_second_day_millennium <- on_date(as.Date("2000-01-01"),
                                              as.Date("2000-01-02"))
 
-is_occurring(my_dates, on_first_day_millennium)
-is_occurring(my_dates, on_first_or_second_day_millennium)
+happen(on_first_day_millennium, my_dates)
+happen(on_first_or_second_day_millennium, my_dates)
 
 on_regular_paydays <- on_mday(25)
 on_bonus_payday <- on_date(as.Date("2000-12-20"))
 
-on_paydays <- also_occurring(on_bonus_payday, on_regular_paydays)
+on_paydays <- also_occur(on_bonus_payday, on_regular_paydays)
 
 schedule_days(on_paydays, during = 2000)
 }

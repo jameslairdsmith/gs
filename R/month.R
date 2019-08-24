@@ -20,15 +20,15 @@
 #'                      as.Date("2000-04-01"),
 #'                      by = "1 month")
 #'
-#' is_occurring(my_dates, in_month("January"))
+#' happen(in_month("January"), my_dates)
 #'
-#' is_occurring(my_dates, in_month("Feb"))
+#' happen(in_month("Feb"), my_dates)
 #'
-#' is_occurring(my_dates, in_month(3))
+#' happen(in_month(3), my_dates)
 #'
-#' is_occurring(my_dates, in_month("Jan", "Mar"))
+#' happen(in_month("Jan", "Mar"), my_dates)
 #'
-#' is_occurring(my_dates, in_month(1:3))
+#' happen(in_month(1:3), my_dates)
 #'
 #' ## invalid inputs will produce an immediate error
 #' \dontrun{

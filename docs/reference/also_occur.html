@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Weave schedules together</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/occurring.R'><code>R/occurring.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/sets.R'><code>R/sets.R</code></a></small>
     <div class="hidden name"><code>also_occur.Rd</code></div>
     </div>
 
@@ -153,10 +153,10 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <ul>
-<li><p><code>also_occurring()</code> returns a schedule of events which includes all those
+<li><p><code>also_occur()</code> returns a schedule of events which includes all those
 present in the first schedule (<code>x</code>) and all those present in the second
 schedule (<code>y</code>). The resulting output is the <strong>union</strong> of the two schedules.</p></li>
-<li><p><code>only_occurring()</code> returns a schedule of events which includes only those
+<li><p><code>only_occur()</code> returns a schedule of events which includes only those
 present in both the first schedule (<code>x</code>) and in the second schedule
 (<code>y</code>). The resulting output is the <strong>intersection</strong> of the two schedules.</p></li>
 </ul>
@@ -171,19 +171,19 @@ on understanding schedule limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occurring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+    <pre class="examples"><div class='input'><span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occur</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 
 <span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>on_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</div><div class='input'>
 <span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
 
 <span class='no'>on_boxing_day</span> <span class='kw'>&lt;-</span>
    <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>26</span>) <span class='kw'>%&gt;%</span>
-   <span class='fu'>only_occurring</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+   <span class='fu'>only_occur</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 
 <span class='no'>on_public_holiday</span> <span class='kw'>&lt;-</span>
    <span class='no'>on_new_years_day</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'>also_occurring</span>(<span class='no'>on_christmas</span>) <span class='kw'>%&gt;%</span>
-   <span class='fu'>also_occurring</span>(<span class='no'>on_boxing_day</span>)
+   <span class='fu'>also_occur</span>(<span class='no'>on_christmas</span>) <span class='kw'>%&gt;%</span>
+   <span class='fu'>also_occur</span>(<span class='no'>on_boxing_day</span>)
 
 <span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>on_public_holiday</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2004</span>)</div><div class='output co'>#&gt;  [1] "2000-01-01" "2000-12-25" "2000-12-26" "2001-01-01" "2001-12-25"
 #&gt;  [6] "2001-12-26" "2002-01-01" "2002-12-25" "2002-12-26" "2003-01-01"

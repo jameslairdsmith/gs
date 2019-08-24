@@ -13,6 +13,9 @@
     <loc>https://jameslairdsmith.github.io/scheduler//reference/doesnt_occur.html</loc>
   </url>
   <url>
+    <loc>https://jameslairdsmith.github.io/scheduler//reference/happen.html</loc>
+  </url>
+  <url>
     <loc>https://jameslairdsmith.github.io/scheduler//reference/in_month.html</loc>
   </url>
   <url>
@@ -23,9 +26,6 @@
   </url>
   <url>
     <loc>https://jameslairdsmith.github.io/scheduler//reference/in_year.html</loc>
-  </url>
-  <url>
-    <loc>https://jameslairdsmith.github.io/scheduler//reference/occur.html</loc>
   </url>
   <url>
     <loc>https://jameslairdsmith.github.io/scheduler//reference/on_date.html</loc>

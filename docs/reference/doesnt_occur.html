@@ -124,7 +124,7 @@ not occur." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Invert a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/not.R'><code>R/not.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/doesnt.R'><code>R/doesnt.R</code></a></small>
     <div class="hidden name"><code>doesnt_occur.Rd</code></div>
     </div>
 
@@ -160,8 +160,8 @@ would be a schedule of all weekend days.</p></li>
 <li><p>When two schedules are used, the function returns the first schedule but
 with the events of the second schedule stripped away. This works to remove
 the events of the second schedule from the first.</p><ul>
-<li><p>This means that <code>not_occurring(a, b)</code> is the equivalent of
-<code>only_occurring(a, not_occurring(b))</code></p></li>
+<li><p>This means that <code>doesnt_occur(a, b)</code> is the equivalent of
+<code>only_occurring(a, doesnt_occur(b))</code></p></li>
 <li><p>This usage works best when composing with the pipe (<code>%&gt;%</code>) operator.</p></li>
 </ul></li>
 </ul>
@@ -172,16 +172,16 @@ the events of the second schedule from the first.</p><ul>
                      <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"1999-01-10"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 day"</span>)
 
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>not_occurring</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)))</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>))</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>not_occurring</span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)))</div><div class='output co'>#&gt;  [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</div><div class='input'>
-<span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occurring</span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE TRUE</div><div class='input'><span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>doesnt_occur</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>), <span class='no'>my_dates</span>))</div><div class='output co'>#&gt; <span class='error'>Error in lubridate::month(x, label = TRUE, abbr = TRUE): argument "date" is missing, with no default</span></div><div class='input'><span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>doesnt_occur</span>(<span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE</div><div class='input'>
+<span class='no'>on_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>), <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>))
 <span class='no'>on_new_years_day</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_yday</a></span>(<span class='fl'>1</span>)
-<span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occurring</span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
+<span class='no'>on_public_holidays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occur.html'>also_occur</a></span>(<span class='no'>on_new_years_day</span>, <span class='no'>on_christmas</span>)
 
 <span class='no'>on_business_days</span> <span class='kw'>&lt;-</span>
-  <span class='fu'>not_occurring</span>(<span class='fu'><a href='on_mday.html'>on_weekend</a></span>()) <span class='kw'>%&gt;%</span>
-  <span class='fu'>not_occurring</span>(<span class='no'>on_public_holidays</span>)
+  <span class='fu'>doesnt_occur</span>(<span class='fu'><a href='on_mday.html'>on_weekend</a></span>()) <span class='kw'>%&gt;%</span>
+  <span class='fu'>doesnt_occur</span>(<span class='no'>on_public_holidays</span>)
 
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='no'>on_business_days</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE</div></pre>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='no'>on_business_days</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

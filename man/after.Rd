@@ -58,8 +58,8 @@ see the
 on understanding period limits.
 }
 \examples{
-christmas <-  only_occurring(in_month("Dec"), on_mday(25))
-new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
+christmas <-  only_occur(in_month("Dec"), on_mday(25))
+new_years_eve <-  only_occur(in_month("Dec"), on_mday(31))
 
 after_christmas <- after(christmas, within_given = "year")
 

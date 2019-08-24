@@ -209,7 +209,7 @@ and <code>to = as.Date("2000-12-31")</code>.</p></li>
 <span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
 #&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
 #&gt; [11] "2000-11-25" "2000-12-25"</div><div class='input'>
-<span class='no'>on_jan_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occurring</span>(<span class='no'>on_paydays</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))
+<span class='no'>on_jan_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='no'>on_paydays</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))
 
 <span class='fu'>schedule_hours</span>(<span class='no'>on_jan_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25 00:00:00 UTC" "2000-01-25 01:00:00 UTC"
 #&gt;  [3] "2000-01-25 02:00:00 UTC" "2000-01-25 03:00:00 UTC"
@@ -225,8 +225,8 @@ and <code>to = as.Date("2000-12-31")</code>.</p></li>
 #&gt; [23] "2000-01-25 22:00:00 UTC" "2000-01-25 23:00:00 UTC"</div><div class='input'>
 <span class='no'>on_jan_payday_2002</span> <span class='kw'>&lt;-</span>
    <span class='no'>on_paydays</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'>only_occurring</span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)) <span class='kw'>%&gt;%</span>
-   <span class='fu'>only_occurring</span>(<span class='fu'><a href='in_year.html'>in_year</a></span>(<span class='fl'>2002</span>))
+   <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)) <span class='kw'>%&gt;%</span>
+   <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_year.html'>in_year</a></span>(<span class='fl'>2002</span>))
 
 <span class='co'>## No limits required</span>
 

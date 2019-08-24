@@ -164,11 +164,11 @@ January, February and March.</p>
                      <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-04-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 month"</span>)
 
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_month</span>(<span class='st'>"January"</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_month</span>(<span class='st'>"Feb"</span>))</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_month</span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Mar"</span>))</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE</div><div class='input'>
-<span class='fu'>is_occurring</span>(<span class='no'>my_dates</span>, <span class='fu'>in_month</span>(<span class='fl'>1</span>:<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_month</span>(<span class='st'>"January"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_month</span>(<span class='st'>"Feb"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_month</span>(<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE FALSE  TRUE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_month</span>(<span class='st'>"Jan"</span>, <span class='st'>"Mar"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_month</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error
 </div><span class='co'># NOT RUN {</span>
 <span class='no'>in_january</span> <span class='kw'>&lt;-</span> <span class='fu'>in_month</span>(<span class='st'>"Janu"</span>)
