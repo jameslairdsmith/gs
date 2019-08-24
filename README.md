@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gs <a href='https://jameslairdsmith.github.io/gs'><img src='reference/figures/logo.png' align="right" height="144" /></a>
+# gs <a href='https://jameslairdsmith.github.io/gs'><img src='man/figures/logo.png' align="right" height="144" /></a>
 
 <!-- badges: start -->
 
@@ -63,7 +63,7 @@ pointed me in Fowler’s direction:
 > (1997).
 
 1.  Fowler, M. (1997). “Recurring events for calendars.” \<URL:
-    <https://martinfowler.com/apsupp/recurring.pdf>\>.
+    <https://tinyurl.com/yaqlbauj>\>.
 
 2.  Grolemund G, Wickham H (2011). “Dates and Times Made Easy with
     lubridate.” *Journal of Statistical Software*, *40*(3), 1-25. \<URL:
