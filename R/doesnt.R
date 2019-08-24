@@ -17,7 +17,7 @@
 #'  with the events of the second schedule stripped away. This works to remove
 #'  the events of the second schedule from the first.
 #'    - This means that `doesnt_occur(a, b)` is the equivalent of
-#'      `only_occurring(a, doesnt_occur(b))`
+#'      `only_occur(a, doesnt_occur(b))`
 #'    - This usage works best when composing with the pipe (`%>%`) operator.
 #'
 #' @return A schedule object.
@@ -65,7 +65,7 @@ doesnt_occur <- function(x, y = NULL){
 
     class(out) <- c("schedule")
 
-    elem_1 %>% only_occurring(out)
+    elem_1 %>% only_occur(out)
   }
 }
 
