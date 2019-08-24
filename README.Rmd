@@ -72,7 +72,7 @@ lubridate." _Journal of Statistical Software_, *40*(3), 1-25.
 <URL: http://www.jstatsoft.org/v40/i03/>.
 
 [^2]: Fowler, M. (1997). "Recurring events for calendars." 
-<URL: https://martinfowler.com/apsupp/recurring.pdf>.
+<URL: https://tinyurl.com/yaqlbauj>.
 
 [authors]: https://lubridate.tidyverse.org/authors.html
 [contributors]: https://github.com/tidyverse/lubridate/graphs/contributors
