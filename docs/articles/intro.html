@@ -89,7 +89,7 @@
       <h1>Work with recurring calendar events in R</h1>
                         <h4 class="author">James Laird-Smith</h4>
             
-            <h4 class="date">2019-08-22</h4>
+            <h4 class="date">2019-08-24</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jameslairdsmith/scheduler/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -113,8 +113,8 @@
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; {</span></a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7fe28169b7c8&gt;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7fe28169b218&gt;</span></a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7f9a1e8e9bd0&gt;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7f9a1e8e9620&gt;</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; attr(,"class")</span></a>
 <a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
 <p>You can think of this schedule as encompassing all the possible occurrences of New Year’s Day throughout time.</p>
@@ -136,8 +136,8 @@
 <a class="sourceLine" id="cb4-5" data-line-number="5">my_dates</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  [1] "2001-01-01" "2001-01-02" "2001-01-03" "2001-01-04" "2001-01-05"</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  [6] "2001-01-06" "2001-01-07" "2001-01-08" "2001-01-09" "2001-01-10"</span></a></code></pre></div>
-<p>We can then use the <code><a href="../reference/is_occurring.html">is_occurring()</a></code> function to find out which of these dates falls on New Year’s Day:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/is_occurring.html">is_occurring</a></span>(my_dates, on_new_years_day)</a>
+<p>We can then use the <code>is_occurring()</code> function to find out which of these dates falls on New Year’s Day:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">is_occurring</span>(my_dates, on_new_years_day)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a></code></pre></div>
 <p>We can see from this that only the first of our dates fall on New Year’s Day.</p>
 </div>

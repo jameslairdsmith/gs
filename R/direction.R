@@ -34,8 +34,8 @@
 #' @keywords after, before, date, schedule
 #' @return A schedule object.
 #' @examples
-#' christmas <-  only_occurring(in_month("Dec"), on_mday(25))
-#' new_years_eve <-  only_occurring(in_month("Dec"), on_mday(31))
+#' christmas <-  only_occur(in_month("Dec"), on_mday(25))
+#' new_years_eve <-  only_occur(in_month("Dec"), on_mday(31))
 #'
 #' after_christmas <- after(christmas, within_given = "year")
 #'
@@ -144,8 +144,8 @@ before <- function(end_event, within_given = NULL){
 
 in_between <- function(start_event, end_event, within_given = NULL){
 
-  only_occurring(after(start_event, within_given = within_given),
-                before(end_event, within_given = within_given))
+  only_occur(after(start_event, within_given = within_given),
+             before(end_event, within_given = within_given))
 }
 
 #' @rdname after
@@ -168,7 +168,7 @@ on_or_after <- function(start_event, within_given = NULL){
     return(out)
   }
 
-  also_occurring(start_event, after(start_event, within_given = within_given))
+  also_occur(start_event, after(start_event, within_given = within_given))
 }
 
 #' @rdname after
@@ -191,5 +191,5 @@ on_or_before <- function(end_event, within_given = NULL){
     return(out)
   }
 
-  also_occurring(end_event, before(end_event, within_given = within_given))
+  also_occur(end_event, before(end_event, within_given = within_given))
 }

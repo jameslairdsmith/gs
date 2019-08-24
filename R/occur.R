@@ -14,12 +14,12 @@
 #' on_saturday <- on_wday("Sat")
 #' on_sunday <- on_wday("Sun")
 #'
-#' is_occurring(my_dates, on_saturday)
-#' is_occurring(my_dates, on_sunday)
-#' is_occurring(my_dates, on_weekend())
+#' happen(on_saturday, my_dates)
+#' happen(on_sunday, my_dates)
+#' happen(on_weekend(), my_dates)
 #' @export
 
-is_occurring <- function(date, schedule){
+happen <- function(schedule, date){
 
   schedule(date)
 }

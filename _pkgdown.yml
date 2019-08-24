@@ -36,12 +36,12 @@ reference:
   - title: "Compose schedules"
     desc: "Combine schedules using set operations."
     contents:
-      - also_occurring
-      - not_occurring
+      - also_occur
+      - doesnt_occur
   - title: "Use schedules"
     desc: "Make use of schedules."
     contents:
-      - is_occurring
+      - happen
       - schedule
   - title: "Limit schedules"
     desc: "Place limits on how far schedules extend."

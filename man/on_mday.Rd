@@ -97,7 +97,7 @@ week on both Tuesdays and Thursdays.
 
 \code{on_weekend()} is a convenience function for
 \code{on_wday("Sat", "Sun")}. \code{on_weekday()} is a convenience function for
-\code{not_occuring(on_wday("Sat", "Sun"))}.
+\code{doesnt_occur(on_wday("Sat", "Sun"))}.
 }
 \examples{
 
@@ -105,15 +105,15 @@ my_dates <- seq.Date(from = as.Date("2000-01-01"),
                      to = as.Date("2000-12-01"),
                      by = "1 month")
 
-is_occurring(my_dates, on_mday(1))
+happen(on_mday(1), my_dates)
 
-is_occurring(my_dates, on_yday(1))
+happen(on_yday(1), my_dates)
 
-is_occurring(my_dates, on_qday(1))
+happen(on_qday(1), my_dates)
 
-is_occurring(my_dates, on_wday("Tue"))
+happen(on_wday("Tue"), my_dates)
 
-is_occurring(my_dates, on_wday("Tue", "Thu"))
+happen(on_wday("Tue", "Thu"), my_dates)
 
 on_weekend(my_dates)
 on_weekday(my_dates)

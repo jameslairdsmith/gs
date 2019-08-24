@@ -45,14 +45,14 @@
 #'
 #' schedule_days(on_paydays, during = 2000)
 #'
-#' on_jan_paydays <- only_occurring(on_paydays, in_month("Jan"))
+#' on_jan_paydays <- only_occur(on_paydays, in_month("Jan"))
 #'
 #' schedule_hours(on_jan_paydays, during = 2000)
 #'
 #' on_jan_payday_2002 <-
 #'    on_paydays %>%
-#'    only_occurring(in_month("Jan")) %>%
-#'    only_occurring(in_year(2002))
+#'    only_occur(in_month("Jan")) %>%
+#'    only_occur(in_year(2002))
 #'
 #' ## No limits required
 #'

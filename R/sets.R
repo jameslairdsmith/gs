@@ -5,10 +5,10 @@
 #' Functions to combine schedules using set operations.
 #'
 #' @details
-#' * `also_occurring()` returns a schedule of events which includes all those
+#' * `also_occur()` returns a schedule of events which includes all those
 #' present in the first schedule (`x`) and all those present in the second
 #' schedule (`y`). The resulting output is the **union** of the two schedules.
-#' * `only_occurring()` returns a schedule of events which includes only those
+#' * `only_occur()` returns a schedule of events which includes only those
 #' present in both the first schedule (`x`) and in the second schedule
 #' (`y`). The resulting output is the **intersection** of the two schedules.
 #'
@@ -27,7 +27,7 @@
 #'
 #' @return A schedule object.
 #' @examples
-#' on_christmas <- only_occurring(on_mday(25), in_month("Dec"))
+#' on_christmas <- only_occur(on_mday(25), in_month("Dec"))
 #'
 #' schedule_days(on_christmas, from = 2000, to = 2004)
 #'
@@ -35,16 +35,16 @@
 #'
 #' on_boxing_day <-
 #'    on_mday(26) %>%
-#'    only_occurring(in_month("Dec"))
+#'    only_occur(in_month("Dec"))
 #'
 #' on_public_holiday <-
 #'    on_new_years_day %>%
-#'    also_occurring(on_christmas) %>%
-#'    also_occurring(on_boxing_day)
+#'    also_occur(on_christmas) %>%
+#'    also_occur(on_boxing_day)
 #'
 #' schedule_days(on_public_holiday, from = 2000, to = 2004)
 #' @export
-also_occurring <- function(x, y){
+also_occur <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
@@ -61,10 +61,10 @@ also_occurring <- function(x, y){
 
 }
 
-#' @rdname also_occurring
+#' @rdname also_occur
 #' @export
 
-only_occurring <- function(x, y){
+only_occur <- function(x, y){
 
   elem_1 <- x
   elem_2 <- y
@@ -103,4 +103,3 @@ only_occurring <- function(x, y){
 
   out
 }
-

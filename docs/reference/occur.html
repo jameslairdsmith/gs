@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the week(s) of a schedule — in_week • scheduler</title>
+<title>Does a date fall on a schedule? — occur • scheduler</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Specify the week(s) of a schedule — in_week" />
+<meta property="og:title" content="Does a date fall on a schedule? — occur" />
 
-<meta property="og:description" content="Creates a schedule of events occurring in the weeks specified." />
+<meta property="og:description" content="Does a date fall on a schedule?" />
 
 <meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -122,71 +122,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Specify the week(s) of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/week.R'><code>R/week.R</code></a></small>
-    <div class="hidden name"><code>in_week.Rd</code></div>
+    <h1>Does a date fall on a schedule?</h1>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/is.R'><code>R/is.R</code></a></small>
+    <div class="hidden name"><code>occur.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Creates a schedule of events occurring in the weeks specified.</p>
+    <p>Does a date fall on a schedule?</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>in_week</span>(<span class='no'>...</span>)
-
-<span class='fu'>in_isoweek</span>(<span class='no'>...</span>)
-
-<span class='fu'>in_epiweek</span>(<span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>occur</span>(<span class='no'>schedule</span>, <span class='no'>date</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
-      <td><p>a numeric vector of weeks.</p></td>
+      <th>schedule</th>
+      <td><p>A schedule object</p></td>
+    </tr>
+    <tr>
+      <th>date</th>
+      <td><p>a date-time object</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A schedule object.</p>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The type of week is determined by the function used. These week types are
-built atop their <a href='http://lubridate.tidyverse.org/reference/week.html'>definitions</a> in the <code>lubridate</code>
-package, which are quoted here:</p><ul>
-<li><p><code>week()</code> returns the number of complete seven day periods that have
-occurred between the date and January 1st, plus one.</p></li>
-</ul>
-    <ul>
-<li><p><code>isoweek()</code> returns the week as it would appear in the ISO 8601
-system, which uses a reoccurring leap week.</p></li>
-</ul>
-    <ul>
-<li><p><code>epiweek()</code> is the US CDC version of epidemiological week. It
-follows same rules as <code>isoweek()</code> but starts on Sunday. In other parts of
-the world the convention is to start epidemiological weeks on Monday,
-which is the same as isoweek.</p></li>
-</ul>
+    <p>TRUE or FALSE depending on whether the date falls on the schedule.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>my_dates</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/seq.Date'>seq.Date</a></span>(<span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
-                     <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-02-01"</span>),
-                     <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 week"</span>)
+                     <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-10"</span>),
+                     <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 day"</span>)
 
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_isoweek</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
-## invalid inputs will produce an immediate error:
-</div><span class='co'># NOT RUN {</span>
-<span class='fu'>in_week</span>(<span class='fl'>0</span>)
-<span class='fu'>in_week</span>(<span class='fl'>54</span>)
-<span class='fu'>in_week</span>(<span class='fl'>1.5</span>)
-<span class='co'># }</span></pre>
+<span class='no'>on_saturday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)
+<span class='no'>on_sunday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sun"</span>)
+
+<span class='fu'>occur</span>(<span class='no'>on_saturday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>occur</span>(<span class='no'>on_sunday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>occur</span>(<span class='fu'><a href='on_mday.html'>on_weekend</a></span>(), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -194,8 +169,6 @@ which is the same as isoweek.</p></li>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#details">Details</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
