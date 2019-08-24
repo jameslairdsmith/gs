@@ -7,7 +7,7 @@
 #'
 #' @details
 #' The function encodes limits in the output schedule. For more
-#' details see the [vignette](https://jameslairdsmith.github.io/scheduler/articles/understanding-schedule-limits.html)
+#' details see the [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
 #' on understanding schedule limits.
 #'
 #' @param ... A vector of dates.
