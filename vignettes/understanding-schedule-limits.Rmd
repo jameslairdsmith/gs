@@ -28,7 +28,7 @@ walkthrough.
 To perform the operations yourself, you first need to load these packages:
 
 ```{r setup}
-library(scheduler)
+library(gs)
 library(magrittr)
 ```
 
@@ -38,7 +38,7 @@ Some recurring calendar events are a theoretically infinite in number. For
 example how many Christmases will there be in the future?
 
 ```{r}
-on_christmas <- on_mday(25) %>% only_occurring(in_month("Dec"))
+on_christmas <- on_mday(25) %>% only_occur(in_month("Dec"))
 ```
 
 If you ask `scheduler` to retrieve for you all the occurrences of Christmas, 
@@ -98,7 +98,7 @@ If you specify the years of a schedule using the `in_year()` function,
 
 ```{r}
 on_christmas %>% 
-  only_occurring(in_year(2000)) %>% 
+  only_occur(in_year(2000)) %>% 
   schedule()
 ```
 
@@ -111,7 +111,7 @@ more than one year:
 
 ```{r}
 on_christmas %>% 
-  only_occurring(in_year(2000, 2004)) %>% 
+  only_occur(in_year(2000, 2004)) %>% 
   schedule()
 ```
 
@@ -119,7 +119,7 @@ Finally you could do the same thing when looking at a range of years:
 
 ```{r}
 on_christmas %>% 
-  only_occurring(in_year(2000:2004)) %>% 
+  only_occur(in_year(2000:2004)) %>% 
   schedule()
 ```
 

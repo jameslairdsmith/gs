@@ -35,6 +35,8 @@
 <meta property="og:title" content="Specify the week(s) of a schedule — in_week" />
 
 <meta property="og:description" content="Creates a schedule of events occurring in the weeks specified." />
+
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -175,10 +177,10 @@ which is the same as isoweek.</p></li>
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-02-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 week"</span>)
 
-<span class='fu'>happen</span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>happen</span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'>happen</span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'>happen</span>(<span class='fu'>in_isoweek</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_week</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_isoweek</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1] FALSE  TRUE FALSE FALSE FALSE</div><div class='input'>
 ## invalid inputs will produce an immediate error:
 </div><span class='co'># NOT RUN {</span>
 <span class='fu'>in_week</span>(<span class='fl'>0</span>)

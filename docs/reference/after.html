@@ -36,6 +36,8 @@
 
 <meta property="og:description" content="Creates a schedule of events occuring before or after either a certain
 date or another scheduled event." />
+
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -187,12 +189,12 @@ on understanding period limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'>only_occur</span>(<span class='fu'>in_month</span>(<span class='st'>"Dec"</span>), <span class='fu'>on_mday</span>(<span class='fl'>25</span>))
-<span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'>only_occur</span>(<span class='fu'>in_month</span>(<span class='st'>"Dec"</span>), <span class='fu'>on_mday</span>(<span class='fl'>31</span>))
+    <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>))
+<span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>))
 
 <span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
 
-<span class='fu'>schedule_days</span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
 #&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
 <span class='no'>in_between_christmas_and_new_years_eve</span> <span class='kw'>&lt;-</span>
@@ -200,7 +202,7 @@ on understanding period limits.</p>
                <span class='no'>new_years_eve</span>,
                <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'>schedule_days</span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29" "2001-12-30"</div><div class='input'>
 </div></pre>
   </div>

@@ -35,6 +35,8 @@
 <meta property="og:title" content="Does a date fall on a schedule? — happen" />
 
 <meta property="og:description" content="Does a date fall on a schedule?" />
+
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -156,10 +158,10 @@
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-10"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 day"</span>)
 
-<span class='no'>on_saturday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_wday</span>(<span class='st'>"Sat"</span>)
-<span class='no'>on_sunday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_wday</span>(<span class='st'>"Sun"</span>)
+<span class='no'>on_saturday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sat"</span>)
+<span class='no'>on_sunday</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_wday</a></span>(<span class='st'>"Sun"</span>)
 
-<span class='fu'>happen</span>(<span class='no'>on_saturday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>happen</span>(<span class='no'>on_sunday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>happen</span>(<span class='fu'>on_weekend</span>(), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE</div></pre>
+<span class='fu'>happen</span>(<span class='no'>on_saturday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>happen</span>(<span class='no'>on_sunday</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE</div><div class='input'><span class='fu'>happen</span>(<span class='fu'><a href='on_mday.html'>on_weekend</a></span>(), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -27,7 +27,7 @@ especially true when the pattern of events is irregular. The objective of
 To start with, we will import the package:
 
 ```{r setup}
-library(scheduler)
+library(gs)
 ```
 
 `scheduler` builds atop the `lubridate` package and is designed for use
@@ -91,7 +91,7 @@ We can then use the `is_occurring()` function to find out which of these dates
 falls on New Year's Day:
 
 ```{r}
-is_occurring(my_dates, on_new_years_day)
+happen(on_new_years_day, my_dates)
 ```
 
 We can see from this that only the first of our dates fall on New Year's Day.
