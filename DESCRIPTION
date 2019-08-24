@@ -1,4 +1,4 @@
-Package: scheduler
+Package: gs
 Title: Make recurring calendar events a little easier
 Version: 0.0.0.9000
 Authors@R: 
@@ -11,8 +11,8 @@ Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/jameslairdsmith/scheduler
-BugReports: https://github.com/jameslairdsmith/scheduler/issues
+URL: https://github.com/jameslairdsmith/gs
+BugReports: https://github.com/jameslairdsmith/gs/issues
 Suggests: 
     testthat (>= 2.1.0),
     knitr,

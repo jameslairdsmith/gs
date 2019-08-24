@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the quarter(s) of a schedule — in_quarter • scheduler</title>
+<title>Specify the quarter(s) of a schedule — in_quarter • gs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
 
 <meta property="og:description" content="Creates a schedule of events occurring in the quarters or semester specified." />
 
-<meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +66,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">scheduler</a>
+        <a class="navbar-link" href="../index.html">gs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -105,7 +105,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jameslairdsmith/scheduler">
+  <a href="https://github.com/jameslairdsmith/gs">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Specify the quarter(s) of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/quarter.R'><code>R/quarter.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/gs/blob/master/R/quarter.R'><code>R/quarter.R</code></a></small>
     <div class="hidden name"><code>in_quarter.Rd</code></div>
     </div>
 
@@ -165,11 +165,11 @@ month of a fiscal year. Defaults to 1 (January).</p></td>
                      <span class='kw'>to</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-01"</span>),
                      <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"1 month"</span>)
 
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='kw'>fiscal_start</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>in_semester</span>(<span class='fl'>2</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</div></pre>
+<span class='fu'>happen</span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'>happen</span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'>happen</span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='fu'>happen</span>(<span class='fu'>in_quarter</span>(<span class='fl'>1</span>, <span class='fl'>3</span>, <span class='kw'>fiscal_start</span> <span class='kw'>=</span> <span class='fl'>2</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE  TRUE FALSE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE</div><div class='input'>
+<span class='fu'>happen</span>(<span class='fu'>in_semester</span>(<span class='fl'>2</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

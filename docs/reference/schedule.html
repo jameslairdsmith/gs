@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get the events of a schedule — schedule • scheduler</title>
+<title>Get the events of a schedule — schedule • gs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -36,7 +36,7 @@
 
 <meta property="og:description" content="Get the event dates or datetimes from a schedule." />
 
-<meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -66,7 +66,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">scheduler</a>
+        <a class="navbar-link" href="../index.html">gs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -105,7 +105,7 @@
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jameslairdsmith/scheduler">
+  <a href="https://github.com/jameslairdsmith/gs">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -123,7 +123,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the events of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/schedule.R'><code>R/schedule.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/gs/blob/master/R/schedule.R'><code>R/schedule.R</code></a></small>
     <div class="hidden name"><code>schedule.Rd</code></div>
     </div>
 
@@ -195,7 +195,7 @@ and <code>to = as.Date("2000-12-31")</code>.</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>)
+    <pre class="examples"><div class='input'><span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'>on_mday</span>(<span class='fl'>25</span>)
 
 <span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>,
               <span class='kw'>from</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-06-01"</span>),
@@ -209,7 +209,7 @@ and <code>to = as.Date("2000-12-31")</code>.</p></li>
 <span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
 #&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
 #&gt; [11] "2000-11-25" "2000-12-25"</div><div class='input'>
-<span class='no'>on_jan_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='no'>on_paydays</span>, <span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>))
+<span class='no'>on_jan_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'>only_occur</span>(<span class='no'>on_paydays</span>, <span class='fu'>in_month</span>(<span class='st'>"Jan"</span>))
 
 <span class='fu'>schedule_hours</span>(<span class='no'>on_jan_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25 00:00:00 UTC" "2000-01-25 01:00:00 UTC"
 #&gt;  [3] "2000-01-25 02:00:00 UTC" "2000-01-25 03:00:00 UTC"
@@ -225,8 +225,8 @@ and <code>to = as.Date("2000-12-31")</code>.</p></li>
 #&gt; [23] "2000-01-25 22:00:00 UTC" "2000-01-25 23:00:00 UTC"</div><div class='input'>
 <span class='no'>on_jan_payday_2002</span> <span class='kw'>&lt;-</span>
    <span class='no'>on_paydays</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Jan"</span>)) <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_year.html'>in_year</a></span>(<span class='fl'>2002</span>))
+   <span class='fu'>only_occur</span>(<span class='fu'>in_month</span>(<span class='st'>"Jan"</span>)) <span class='kw'>%&gt;%</span>
+   <span class='fu'>only_occur</span>(<span class='fu'>in_year</span>(<span class='fl'>2002</span>))
 
 <span class='co'>## No limits required</span>
 

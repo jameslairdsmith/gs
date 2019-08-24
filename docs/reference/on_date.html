@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the date(s) of a schedule — on_date • scheduler</title>
+<title>Specify the date(s) of a schedule — on_date • gs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
 <meta property="og:description" content="Creates a schedule of events occurring on the dates specified.
 This function is best used when making ad-hoc changes to other schedules." />
 
-<meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +67,7 @@ This function is best used when making ad-hoc changes to other schedules." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">scheduler</a>
+        <a class="navbar-link" href="../index.html">gs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -106,7 +106,7 @@ This function is best used when making ad-hoc changes to other schedules." />
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jameslairdsmith/scheduler">
+  <a href="https://github.com/jameslairdsmith/gs">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -124,7 +124,7 @@ This function is best used when making ad-hoc changes to other schedules." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Specify the date(s) of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/date.R'><code>R/date.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/gs/blob/master/R/date.R'><code>R/date.R</code></a></small>
     <div class="hidden name"><code>on_date.Rd</code></div>
     </div>
 
@@ -166,13 +166,13 @@ on understanding schedule limits.</p>
 <span class='no'>on_first_or_second_day_millennium</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-01"</span>),
                                              <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-01-02"</span>))
 
-<span class='fu'><a href='happen.html'>happen</a></span>(<span class='no'>on_first_day_millennium</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'><a href='happen.html'>happen</a></span>(<span class='no'>on_first_or_second_day_millennium</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
-<span class='no'>on_regular_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>)
+<span class='fu'>happen</span>(<span class='no'>on_first_day_millennium</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE FALSE FALSE FALSE</div><div class='input'><span class='fu'>happen</span>(<span class='no'>on_first_or_second_day_millennium</span>, <span class='no'>my_dates</span>)</div><div class='output co'>#&gt; [1]  TRUE  TRUE FALSE FALSE FALSE</div><div class='input'>
+<span class='no'>on_regular_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'>on_mday</span>(<span class='fl'>25</span>)
 <span class='no'>on_bonus_payday</span> <span class='kw'>&lt;-</span> <span class='fu'>on_date</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date</a></span>(<span class='st'>"2000-12-20"</span>))
 
-<span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='also_occur.html'>also_occur</a></span>(<span class='no'>on_bonus_payday</span>, <span class='no'>on_regular_paydays</span>)
+<span class='no'>on_paydays</span> <span class='kw'>&lt;-</span> <span class='fu'>also_occur</span>(<span class='no'>on_bonus_payday</span>, <span class='no'>on_regular_paydays</span>)
 
-<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
+<span class='fu'>schedule_days</span>(<span class='no'>on_paydays</span>, <span class='kw'>during</span> <span class='kw'>=</span> <span class='fl'>2000</span>)</div><div class='output co'>#&gt;  [1] "2000-01-25" "2000-02-25" "2000-03-25" "2000-04-25" "2000-05-25"
 #&gt;  [6] "2000-06-25" "2000-07-25" "2000-08-25" "2000-09-25" "2000-10-25"
 #&gt; [11] "2000-11-25" "2000-12-20" "2000-12-25"</div></pre>
   </div>

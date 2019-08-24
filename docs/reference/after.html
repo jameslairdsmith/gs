@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specify the start and end of a schedule — after • scheduler</title>
+<title>Specify the start and end of a schedule — after • gs</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -37,7 +37,7 @@
 <meta property="og:description" content="Creates a schedule of events occuring before or after either a certain
 date or another scheduled event." />
 
-<meta property="og:image" content="https://jameslairdsmith.github.io/scheduler/logo.png" />
+<meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -67,7 +67,7 @@ date or another scheduled event." />
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">scheduler</a>
+        <a class="navbar-link" href="../index.html">gs</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
@@ -106,7 +106,7 @@ date or another scheduled event." />
       
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/jameslairdsmith/scheduler">
+  <a href="https://github.com/jameslairdsmith/gs">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -124,7 +124,7 @@ date or another scheduled event." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Specify the start and end of a schedule</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/scheduler/blob/master/R/direction.R'><code>R/direction.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/jameslairdsmith/gs/blob/master/R/direction.R'><code>R/direction.R</code></a></small>
     <div class="hidden name"><code>after.Rd</code></div>
     </div>
 
@@ -189,12 +189,12 @@ on understanding period limits.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>25</span>))
-<span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'><a href='also_occur.html'>only_occur</a></span>(<span class='fu'><a href='in_month.html'>in_month</a></span>(<span class='st'>"Dec"</span>), <span class='fu'><a href='on_mday.html'>on_mday</a></span>(<span class='fl'>31</span>))
+    <pre class="examples"><div class='input'><span class='no'>christmas</span> <span class='kw'>&lt;-</span>  <span class='fu'>only_occur</span>(<span class='fu'>in_month</span>(<span class='st'>"Dec"</span>), <span class='fu'>on_mday</span>(<span class='fl'>25</span>))
+<span class='no'>new_years_eve</span> <span class='kw'>&lt;-</span>  <span class='fu'>only_occur</span>(<span class='fu'>in_month</span>(<span class='st'>"Dec"</span>), <span class='fu'>on_mday</span>(<span class='fl'>31</span>))
 
 <span class='no'>after_christmas</span> <span class='kw'>&lt;-</span> <span class='fu'>after</span>(<span class='no'>christmas</span>, <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='st'>"year"</span>)
 
-<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'>schedule_days</span>(<span class='no'>after_christmas</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2000-12-31" "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29"
 #&gt; [11] "2001-12-30" "2001-12-31"</div><div class='input'>
 <span class='no'>in_between_christmas_and_new_years_eve</span> <span class='kw'>&lt;-</span>
@@ -202,7 +202,7 @@ on understanding period limits.</p>
                <span class='no'>new_years_eve</span>,
                <span class='kw'>within_given</span> <span class='kw'>=</span> <span class='kw pkg'>lubridate</span><span class='kw ns'>::</span><span class='no'><a href='http://lubridate.tidyverse.org/reference/year.html'>year</a></span>)
 
-<span class='fu'><a href='schedule.html'>schedule_days</a></span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
+<span class='fu'>schedule_days</span>(<span class='no'>in_between_christmas_and_new_years_eve</span>, <span class='kw'>from</span> <span class='kw'>=</span> <span class='fl'>2000</span>, <span class='kw'>to</span> <span class='kw'>=</span> <span class='fl'>2001</span>)</div><div class='output co'>#&gt;  [1] "2000-12-26" "2000-12-27" "2000-12-28" "2000-12-29" "2000-12-30"
 #&gt;  [6] "2001-12-26" "2001-12-27" "2001-12-28" "2001-12-29" "2001-12-30"</div><div class='input'>
 </div></pre>
   </div>
