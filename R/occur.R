@@ -23,17 +23,3 @@ happen <- function(schedule, date){
 
   schedule(date)
 }
-
-#' @export
-
-occur <- function(schedule, date){
-
-  schedule(date)
-}
-
-#' @export
-
-is_occurring <- function(date, schedule){
-
-  schedule(date)
-}

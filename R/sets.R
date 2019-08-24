@@ -103,17 +103,3 @@ only_occur <- function(x, y){
 
   out
 }
-
-#' @export
-
-also_occurring <- function(...){
-
-  also_occur(...)
-}
-
-#' @export
-
-only_occurring <- function(...){
-
-  only_occur(...)
-}

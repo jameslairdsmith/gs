@@ -68,10 +68,3 @@ doesnt_occur <- function(x, y = NULL){
     elem_1 %>% only_occur(out)
   }
 }
-
-#' @export
-
-not_occurring <- function(...){
-
-  doesnt_occur(...)
-}
