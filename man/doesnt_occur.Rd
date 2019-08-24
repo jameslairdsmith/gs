@@ -28,7 +28,7 @@ with the events of the second schedule stripped away. This works to remove
 the events of the second schedule from the first.
 \itemize{
 \item This means that \code{doesnt_occur(a, b)} is the equivalent of
-\code{only_occurring(a, doesnt_occur(b))}
+\code{only_occur(a, doesnt_occur(b))}
 \item This usage works best when composing with the pipe (\code{\%>\%}) operator.
 }
 }
@@ -39,7 +39,7 @@ my_dates <- seq.Date(as.Date("1999-01-01"),
                      by = "1 day")
 
 happen(in_month("Jan"), my_dates)
-happen(doesnt_occur(in_month("Jan"), my_dates))
+happen(doesnt_occur(in_month("Jan")), my_dates)
 happen(on_wday("Sat"), my_dates)
 happen(doesnt_occur(on_wday("Sat")), my_dates)
 
