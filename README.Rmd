@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# gs <a href='https://jameslairdsmith.github.io/scheduler'><img src='reference/figures/logo.png' align="right" height="144" /></a>
+# gs <a href='https://jameslairdsmith.github.io/gs'><img src='reference/figures/logo.png' align="right" height="144" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -38,17 +38,17 @@ The package is currently experimental. Users are cautioned against relying on
 it for anything of importance. It can be downloaded from Github:
 
 ```{r, eval = FALSE}
-devtools::install_github("jameslairdsmith/scheduler")
+devtools::install_github("jameslairdsmith/gs")
 ```
 
 Feedback, contributions, bug report and suggestions are welcome and can be 
-made in the [issues tab](https://github.com/jameslairdsmith/scheduler/issues) 
+made in the [issues tab](https://github.com/jameslairdsmith/gs/issues) 
 of the Github repo.
 
 ## Getting started
 
 If you have not used `gs` before, the best place to get started is the
-introductory [vignette](https://jameslairdsmith.github.io/scheduler/articles/intro.html).
+introductory [vignette](https://jameslairdsmith.github.io/gs/articles/intro.html).
 
 ## Acknowledgements
 

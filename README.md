@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gs <a href='https://jameslairdsmith.github.io/scheduler'><img src='reference/figures/logo.png' align="right" height="144" /></a>
+# gs <a href='https://jameslairdsmith.github.io/gs'><img src='reference/figures/logo.png' align="right" height="144" /></a>
 
 <!-- badges: start -->
 
@@ -29,19 +29,18 @@ relying on it for anything of importance. It can be downloaded from
 Github:
 
 ``` r
-devtools::install_github("jameslairdsmith/scheduler")
+devtools::install_github("jameslairdsmith/gs")
 ```
 
 Feedback, contributions, bug report and suggestions are welcome and can
 be made in the [issues
-tab](https://github.com/jameslairdsmith/scheduler/issues) of the Github
-repo.
+tab](https://github.com/jameslairdsmith/gs/issues) of the Github repo.
 
 ## Getting started
 
 If you have not used `gs` before, the best place to get started is the
 introductory
-[vignette](https://jameslairdsmith.github.io/scheduler/articles/intro.html).
+[vignette](https://jameslairdsmith.github.io/gs/articles/intro.html).
 
 ## Acknowledgements
 
