@@ -101,73 +101,127 @@
 
     
     
-<p>Recurring calendar events are very common in everyday life. When a set of these events recur in a pattern, we call it a ‘schedule’. While some schedules are simple, others can be difficult to work with. This is especially true when the pattern of events is irregular. The objective of <code>scheduler</code> is to make working with schedules easier.</p>
-<p>To start with, we will import the package:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(gs)</a></code></pre></div>
-<p><code>scheduler</code> builds atop the <code>lubridate</code> package and is designed for use alongside it. For this reason, it is imported automatically when <code>scheduler</code> is imported. When a <code>lubridate</code> function is used in this vignette, I will prefix it with <code>lubridate::</code> to make it clear where the function comes from. Users can happily ignore this in their own code.</p>
+<p>Recurring calendar events are very common in everyday life. When a set of these events recur in a pattern, we call it a ‘schedule’. While some schedules are simple, others can be difficult to work with. This is especially true when the pattern of events is irregular. The objective of <code>scheduler</code> is to make working with schedules simpler.</p>
+<p>To start with, we will import <code>gs</code> along with the <code>magrittr</code> package, which will be useful later on.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(gs)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)</a></code></pre></div>
+<p><code>gs</code> builds atop the <code>lubridate</code> package and is designed for use alongside it. For this reason, it is imported automatically when <code>scheduler</code> is imported. When a <code>lubridate</code> function is used in this vignette, I will prefix it with <code>lubridate::</code> to make it clear where the function comes from. Users can happily ignore the package name when writing their own code.</p>
 <div id="creating-a-schedule" class="section level1">
 <h1 class="hasAnchor">
 <a href="#creating-a-schedule" class="anchor"></a>Creating a schedule</h1>
 <p>In this section we will create a schedule of events occurring every year on New Year’s Day (January 1st). This simple example which teach you the basics of schedules so that you can build-up to more involved examples later on.</p>
 <p>Ask yourself, what is uniquely special about New Year’s Day (from a calendar perspective)? It occurs on the first day of the month, but so do many other days. It occurs in January, but so do many other days. You would be right to say that New Year’s Day always occurs on the first day of the year. It is the only day that does so.</p>
-<p><code>scheduler</code> provides a function to create schedules where the events occur only on certain days of the year. The function is called <code><a href="../reference/on_mday.html">on_yday()</a></code> and it accepts numeric input depending on which day of the year you wish to schedule events for. <code><a href="../reference/on_mday.html">on_yday(2)</a></code> would be the second day of the year, for example. But in our case we wish to create a schedule of events occurring on only the first day of every year:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; function (date) </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="co">#&gt; {</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
-<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7ffebf60f790&gt;</span></a>
-<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7ffebf60f1e0&gt;</span></a>
-<a class="sourceLine" id="cb2-8" data-line-number="8"><span class="co">#&gt; attr(,"class")</span></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
-<p>You can think of this schedule as encompassing all the possible occurrences of New Year’s Day throughout time.</p>
-<p>By itself, this isn’t that useful. What will help make it more useful is that we can make this schedule an object like so:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">on_new_years_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a></code></pre></div>
-<p>We now have the <code>on_new_years_day</code> object that we can put to use.</p>
+<p><code>gs</code> provides a function to create schedules where the events occur only on certain days of the year. The function is called <code><a href="../reference/on_mday.html">on_yday()</a></code> and it accepts numeric input depending on which day of the year you wish to schedule events for. <code><a href="../reference/on_mday.html">on_yday(2)</a></code> would be the second day of the year, for example. But in our case we wish to create a schedule of events occurring on only the first day of every year.</p>
+<p>You may be familiure with the <code>yday()</code> function from the <code>lubridate</code> package. <code>lubridate</code> provides a set of accessor functions for getting the various properties from a date or date-time object. The <code>yday()</code> function returns whatever day of the year a date or datetime occurs on. For example:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">lubridate<span class="op">::</span><span class="kw"><a href="http://lubridate.tidyverse.org/reference/day.html">yday</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2000-01-01"</span>))</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
+<p>The equivalent function in <code>gs</code> is <code><a href="../reference/on_mday.html">on_yday()</a></code> and it does the opposite. Instead of the you providing a date and getting back the property of that date, you rather give it the property you want and it will return a schedule of events with that particular property. So if I wish to create a schedule of all the days occuring on the first day of the year, I would do so as follows:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function (date) </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; {</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7ff575fd8f80&gt;</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7ff575fd89d0&gt;</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; attr(,"class")</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
+<p>By itself, this isn’t that useful. What will help make it more so is that we can make this schedule an object like so:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">on_new_years_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a></code></pre></div>
+<p>We now have the <code>on_new_years_day</code> object that we can put to use. You can think of this schedule as encompassing all the possible occurrences of New Year’s Day throughout time. It is not limited to just one particular date or dates.</p>
 </div>
 <div id="using-schedules" class="section level1">
 <h1 class="hasAnchor">
 <a href="#using-schedules" class="anchor"></a>Using schedules</h1>
+<p>Now that we have a schedule object, we can begin using it.</p>
 <div id="testing-for-events" class="section level2">
 <h2 class="hasAnchor">
 <a href="#testing-for-events" class="anchor"></a>Testing for events</h2>
-<p>The first thing we can use schedules for is to find out whether certain dates fall on them or not. Lets create a set of dates using base R:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">my_dates &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq.Date">seq.Date</a></span>(<span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-01"</span>),</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2">                     <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-10"</span>),</a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">                     <span class="dt">by =</span> <span class="st">"1 day"</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">my_dates</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt;  [1] "2001-01-01" "2001-01-02" "2001-01-03" "2001-01-04" "2001-01-05"</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;  [6] "2001-01-06" "2001-01-07" "2001-01-08" "2001-01-09" "2001-01-10"</span></a></code></pre></div>
-<p>We can then use the <code>is_occurring()</code> function to find out which of these dates falls on New Year’s Day:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/happen.html">happen</a></span>(on_new_years_day, my_dates)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a></code></pre></div>
+<p>The first thing we can use schedules for is to find out whether certain dates fall on them or not. Lets create an arbitrary set of dates using base R:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">my_dates &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/seq.Date">seq.Date</a></span>(<span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-01"</span>),</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">                     <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-10"</span>),</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">                     <span class="dt">by =</span> <span class="st">"1 day"</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">my_dates</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt;  [1] "2001-01-01" "2001-01-02" "2001-01-03" "2001-01-04" "2001-01-05"</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt;  [6] "2001-01-06" "2001-01-07" "2001-01-08" "2001-01-09" "2001-01-10"</span></a></code></pre></div>
+<p>We can then use the <code><a href="../reference/happen.html">happen()</a></code> function to find out which of these dates falls on New Year’s Day. The function takes a schedule object as its first argument and a date or set of dates as the second argument. The idea is that the syntax is readable. We are asking for the events which ‘happen’, ‘on New Year’s day’ from ‘<code>my_dates</code>’:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/happen.html">happen</a></span>(on_new_years_day, my_dates)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a></code></pre></div>
 <p>We can see from this that only the first of our dates fall on New Year’s Day.</p>
+<p>You do not have to make the <code>on_new_years_day</code> schedule into an object if you don’t want to. We could have achieved the same result as follows:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/happen.html">happen</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>), my_dates)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="co">#&gt;  [1]  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE</span></a></code></pre></div>
+<p>But, for reasons that will become clear, it is much more useful to create schedules objects. Whenever you do so, I also reccommend starting them with the prefix ‘on_’ or ‘in_’. Among other things, this will also make the syntax natural and readable.</p>
 </div>
 <div id="getting-events" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-events" class="anchor"></a>Getting events</h2>
-<p>We can also get the events of a schedule using the <code><a href="../reference/schedule.html">schedule_days()</a></code> function, which accepts a schedule object as its first argument.</p>
+<p>The next useful thing we can do with a schedule object is get the events from it. This is done using the <code><a href="../reference/schedule.html">schedule_days()</a></code> function, which accepts a schedule as its first argument.</p>
 <p>One snag with doing this however is that the total number of New Year’s Days is theoretically infinite. So if we try and run <code><a href="../reference/schedule.html">schedule_days(on_new_years_day)</a></code> we will get an error. What we can do is place date limits on the resulting output using the <code>from</code> and <code>to</code> arguments:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, </a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-01"</span>), </a>
-<a class="sourceLine" id="cb6-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-10"</span>))</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [1] "2001-01-01"</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, </a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-01"</span>), </a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2001-01-10"</span>))</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [1] "2001-01-01"</span></a></code></pre></div>
 <p>This gives us all the occurrences of New Year’s Day within the boundaries we have specified. Let’s expand these boundaries so we get more occurrences of New Year’s Day. Here I extend the boundaries from the start of 1995 to the end of 2005.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, </a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"1995-01-01"</span>), </a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2005-12-31"</span>))</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; [11] "2005-01-01"</span></a></code></pre></div>
-<p>Because this is a little cumbersome to write, <code><a href="../reference/schedule.html">schedule_days()</a></code> allows you to abbreviate <code>to</code> and <code>from</code> to only the numeric years you wish to use as boundaries. These go from the start of the <code>from</code> year to the end of the <code>to</code> year. That means this code is equivalent to what we just ran:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, <span class="dt">from =</span> <span class="dv">1995</span>, <span class="dt">to =</span> <span class="dv">2005</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#&gt; [11] "2005-01-01"</span></a></code></pre></div>
-<p>If the events we want only occur in a single year, we can use the <code>during</code> argument as a further numeric shortcut, which is the equivalent of setting <code>to</code> and <code>from</code> to the start and end of the target year:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, <span class="dt">during =</span> <span class="dv">2005</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="co">#&gt; [1] "2005-01-01"</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, </a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">              <span class="dt">from =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"1995-01-01"</span>), </a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">              <span class="dt">to =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date</a></span>(<span class="st">"2005-12-31"</span>))</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; [11] "2005-01-01"</span></a></code></pre></div>
+<p>Because this is a little cumbersome to type, <code><a href="../reference/schedule.html">schedule_days()</a></code> allows you to abbreviate <code>to</code> and <code>from</code> to only the numeric years you wish to use as boundaries. These go from the start of the <code>from</code> year to the end of the <code>to</code> year. That means this code is equivalent to what we just ran:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, <span class="dt">from =</span> <span class="dv">1995</span>, <span class="dt">to =</span> <span class="dv">2005</span>)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt;  [1] "1995-01-01" "1996-01-01" "1997-01-01" "1998-01-01" "1999-01-01"</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"><span class="co">#&gt;  [6] "2000-01-01" "2001-01-01" "2002-01-01" "2003-01-01" "2004-01-01"</span></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#&gt; [11] "2005-01-01"</span></a></code></pre></div>
+<p>If the events we want only occur in a single year, we can use the <code>during</code> argument as a further numeric shortcut, which is the equivalent of setting <code>to</code> and <code>from</code> to the start and end of one particular year:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_new_years_day, <span class="dt">during =</span> <span class="dv">2005</span>)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="co">#&gt; [1] "2005-01-01"</span></a></code></pre></div>
+</div>
+</div>
+<div id="composing-schedules" class="section level1">
+<h1 class="hasAnchor">
+<a href="#composing-schedules" class="anchor"></a>Composing schedules</h1>
+<p>By itself, New Year’s Day isn’t that interesting (from a calendar perspective). We could have achieved the same thing using base R. The power of <code>gs</code> comes when dealing with more intricate schedules. For this, we need something more.</p>
+<div id="intersecting-schedules" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intersecting-schedules" class="anchor"></a>Intersecting schedules</h2>
+<p>Say that, instead of New Year’s Day, we were interested in Christmas day. Ask youself, what is uniquely special about Christmas day (from a calendar perspective)? You may think of using <code><a href="../reference/on_mday.html">on_yday()</a></code> again and say that Christmas occurs on the 359th day of the year and so create the schedule <code><a href="../reference/on_mday.html">on_yday(359)</a></code>. But this wouldn’t work because in a leap year Chrismas day is the 360th day of the year. The only way to do it is to create a schedule of events on December 25th.</p>
+<p><code>gs</code> provides some functions to help us along the way. We have the <code><a href="../reference/in_month.html">in_month()</a></code> function which creates a schedule of events in a given month. We could use that, but <code><a href="../reference/in_month.html">in_month(12)</a></code> would give us all the events in December and we are only interested in the 25th one. We could also use the <code><a href="../reference/on_mday.html">on_mday()</a></code> function. But <code><a href="../reference/on_mday.html">on_mday(25)</a></code> is going to give us a schedule of events occuring on the 25th of every month, not just Decmber.</p>
+<p>What we need is the <strong>intersection</strong> of these two schedules. For this purpose <code>gs</code> provides the <code><a href="../reference/also_occur.html">only_occur()</a></code> function, which accepts two schedules and returns a single schedule which is the intersection of the two inputs.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">on_christmas_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="dv">12</span>))</a></code></pre></div>
+<p>Again the syntax is designed to be readable. We are creating a schedule called <code>on_christmas_day</code> which ‘only occur’ on 25th day of the month and ‘only occur’ in the twelfth month of the year.</p>
+<p>Now that we have this new <code>on_christmas_day</code> object, we can do with it the same set of things we did with the <code>on_new_years_day</code> object. We can test if certain dates fall upon it with the <code><a href="../reference/happen.html">happen()</a></code> function. Or we can get the events from it using the <code><a href="../reference/schedule.html">schedule_days()</a></code> function:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_christmas_day, <span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="co">#&gt; [1] "2000-12-25" "2001-12-25" "2002-12-25" "2003-12-25" "2004-12-25"</span></a></code></pre></div>
+<p>If I wanted to create a schedule of Boxing Day days, the process is the same. Boxing day occurs on Dec 26th.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">on_boxing_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">26</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="dv">12</span>))</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_boxing_day, <span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#&gt; [1] "2000-12-26" "2001-12-26" "2002-12-26" "2003-12-26" "2004-12-26"</span></a></code></pre></div>
+</div>
+<div id="combining-schedules" class="section level2">
+<h2 class="hasAnchor">
+<a href="#combining-schedules" class="anchor"></a>Combining schedules</h2>
+<p>Sometimes, instead of finding the intersection between schedules, you will instead want to combine schedules. For example, now that we have the schedules for <code>on_new_years_day</code> and <code>on_christmas</code> say we wanted to create a schedule of public holidays. To do this, <code>gs</code> provides the <code><a href="../reference/also_occur.html">also_occur()</a></code> function which takes two schedules as inputs and returns a single unified schedule as its output.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">on_public_holidays &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_christmas_day, on_new_years_day)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_public_holidays, <span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4"><span class="co">#&gt;  [1] "2000-01-01" "2000-12-25" "2001-01-01" "2001-12-25" "2002-01-01"</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5"><span class="co">#&gt;  [6] "2002-12-25" "2003-01-01" "2003-12-25" "2004-01-01" "2004-12-25"</span></a></code></pre></div>
+<p>We now have a new schedule of public holidays available for use.</p>
+<p>One other thing to take note of is that the schedules we made use of in this step were themselves generated in earlier steps. This can be done an arbitrary number of times and allows huge flexibility when creating your own schedules.</p>
+<p>The syntax of the <code><a href="../reference/also_occur.html">also_occur()</a></code> and <code><a href="../reference/also_occur.html">only_occur()</a></code> functions also lend themselves to piping (<code>%&gt;%</code>) using the <code>magrittr</code> package. For example, if I also wanted to include Boxing Days in my public holiday schedule I could re-make it as follows:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">on_public_holidays &lt;-</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span>on_christmas_day <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_new_years_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_boxing_day)</a>
+<a class="sourceLine" id="cb16-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb16-6" data-line-number="6"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_public_holidays, <span class="dt">from =</span> <span class="dv">2000</span>, <span class="dt">to =</span> <span class="dv">2004</span>)</a>
+<a class="sourceLine" id="cb16-7" data-line-number="7"><span class="co">#&gt;  [1] "2000-01-01" "2000-12-25" "2000-12-26" "2001-01-01" "2001-12-25"</span></a>
+<a class="sourceLine" id="cb16-8" data-line-number="8"><span class="co">#&gt;  [6] "2001-12-26" "2002-01-01" "2002-12-25" "2002-12-26" "2003-01-01"</span></a>
+<a class="sourceLine" id="cb16-9" data-line-number="9"><span class="co">#&gt; [11] "2003-12-25" "2003-12-26" "2004-01-01" "2004-12-25" "2004-12-26"</span></a></code></pre></div>
+<p>Again the syntax is readable. We are creating a public holidays schedule, which occurs on Christmas day, and ‘also occur’ on New Year’s Day and ‘also occur’ on Boxing Day.</p>
 </div>
 </div>
   </div>
@@ -182,6 +236,12 @@
 <a href="#using-schedules">Using schedules</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#testing-for-events">Testing for events</a></li>
       <li><a href="#getting-events">Getting events</a></li>
+      </ul>
+</li>
+      <li>
+<a href="#composing-schedules">Composing schedules</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#intersecting-schedules">Intersecting schedules</a></li>
+      <li><a href="#combining-schedules">Combining schedules</a></li>
       </ul>
 </li>
       </ul>
