@@ -1,0 +1,139 @@
+---
+title: "Holiday examples"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gs)
+library(magrittr)
+```
+
+This is a work in progress compilation of the various public holidays. 
+
+Naturally I cannot ennumerate every public holiday in every country, but I 
+hope the following examples demonstrate the process well enough. Hopefully
+then users can fill in their own.
+
+# General
+
+```{r}
+on_new_years_day <- on_yday(1)
+on_christmas_day <- only_occur(on_mday(25), in_month("Dec"))
+on_boxing_day <- only_occur(on_mday(26), in_month("Dec"))
+```
+
+## Easter
+
+WIP
+
+# UK
+
+UK holidays vary by jurisdication. All the holidays are specified in the 
+below chunk and are then assembled in the following sections.
+
+```{r}
+on_second_jan <- on_yday(2)
+
+on_st_patricks_day <- only_occur(on_mday(17), in_month("Mar"))
+
+on_early_may_bank_holiday <- 
+  on_first(on_mday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("May"))
+
+## ^ This needs some adjustment
+
+on_liberation_day <- only_occur(on_mday(9), in_month("May"))
+
+on_spring_bank_holiday <-
+  on_last(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("May"))
+
+on_june_bank_holiday <- 
+  on_first(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("June"))
+
+on_senior_race_day <-
+  on_first(on_wday("Fri"), within_given = "month") %>% 
+  only_occur(in_month("June"))
+
+on_tynwald_day <- only_occur(on_mday(5), in_month("July"))
+  
+on_battle_of_the_boyne <- only_occur(on_mday(12), in_month("July"))
+
+```
+
+## England and Wales
+
+```{r}
+on_enland_wales_holidays <-
+  on_new_years_day %>% 
+  also_occur(on_early_may_bank_holiday)
+```
+
+## Scotland
+
+## Northern Ireland
+
+## Isle of Man
+
+## Jersey and Guernsey
+
+# United States Federal Holidays
+
+```{r}
+on_mlk_day <- 
+  on_third(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("Jan"))
+
+on_presidents_day <- 
+  on_third(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("Feb"))
+
+on_memorial_day <-
+  on_last(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("May"))
+
+on_us_independence_day <- only_occur(on_mday(4), in_month("July"))
+
+on_labor_day <-
+  on_first(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("Sep"))
+
+on_columbus_day <-
+  on_second(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("Oct"))
+
+on_veterans_day <- only_occur(on_mday(11), in_month("Nov"))
+
+on_us_thanksgiving <- 
+  on_fourth(on_wday("Thu"), within_given = "month") %>% 
+  only_occur(in_month("Nov"))
+```
+
+```{r}
+on_us_federal_holidays <-
+  on_new_years_day %>% 
+  also_occur(on_mlk_day) %>% 
+  also_occur(on_presidents_day) %>% 
+  also_occur(on_memorial_day) %>% 
+  also_occur(on_us_independence_day) %>% 
+  also_occur(on_labor_day) %>% 
+  also_occur(on_columbus_day) %>% 
+  also_occur(on_veterans_day) %>% 
+  also_occur(on_us_thanksgiving) %>% 
+  also_occur(on_christmas_day)
+```
+
+
+

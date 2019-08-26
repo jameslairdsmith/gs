@@ -20,6 +20,8 @@ navbar:
         href: articles/understanding-schedule-limits.html
       - text: Understanding period limits
         href: articles/understanding-period-limits.html
+      - text: Holiday examples
+        href: articles/holiday-examples.html
     reference:
       text: Reference
 
