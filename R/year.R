@@ -41,9 +41,12 @@ in_year <- function(...){
 
   x <- unlist(list(...))
 
+  years_chr_string <- stringr::str_c(x, collapse = ", ")
+  years_print_method <- stringr::str_c("- In years: ", years_chr_string)
+
   if(length(x) > 1){
 
-    final_output <- check_vec_loop(x, in_year)
+    final_output <- check_vec_loop(x, in_year, print_method = years_print_method)
 
     earliest_date <- lubridate::make_date(year = min(x), month = 1, day = 1)
     latest_date <- lubridate::make_date(year = max(x), month = 12, day = 31)
@@ -61,6 +64,8 @@ in_year <- function(...){
 
   attr(output, "earliest_date") <- earliest_date
   attr(output, "latest_date") <- latest_date
+
+  output$print_method <- years_print_method
 
   output
 }

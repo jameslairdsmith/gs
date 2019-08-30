@@ -15,5 +15,8 @@ make_element <- function(x, .f, ...){
 print.schedule <- function(x){
   cat("A schedule of events occuring:")
   cat("\n")
-  cat(x$print_method)
+  for(i in 1:length(x$print_method)){
+    cat(" ")
+    cat(x$print_method[i], sep = "\n   ")
+  }
 }
