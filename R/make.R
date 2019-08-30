@@ -10,3 +10,10 @@ make_element <- function(x, .f, ...){
 
   out
 }
+
+
+print.schedule <- function(x){
+  cat("A schedule of events occuring:")
+  cat("\n")
+  cat(x$print_method)
+}

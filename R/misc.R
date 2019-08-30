@@ -11,7 +11,7 @@ strings_to_date_functions <- function(str){
   eval(.f)
 }
 
-check_vec_loop <- function(vec, func, ...){
+check_vec_loop <- function(vec, func, ..., print_method = NULL){
 
   if(length(vec) > 1){
 
@@ -20,6 +20,11 @@ check_vec_loop <- function(vec, func, ...){
     for(i in 2:length(vec)){
       my_schedule <- also_occur(my_schedule, func(vec[i], ...))
     }
+
+    if(!is.null(print_method)){
+      my_schedule$print_method <- print_method
+    }
+
     my_schedule
   }
 }

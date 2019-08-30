@@ -41,7 +41,11 @@ in_month <- function(...){
 
    x <- unlist(list(...))
 
-   if(length(x) > 1) return(check_vec_loop(x, in_month))
+   sch_print_method <- make_month_schedule_description(x)
+
+   if(length(x) > 1) return(check_vec_loop(x,
+                                           in_month,
+                                           print_method = sch_print_method))
 
    if(!(x %in% get_all_month_specs())){
       stop("x is not a legitimate month name")}
@@ -55,9 +59,12 @@ in_month <- function(...){
    if(x %in% get_month_abbr_names()){
       appro_function <- in_month_label_abbr}
 
-   make_element(x, appro_function)
-}
+   out <- make_element(x, appro_function)
 
+   out$print_method <- sch_print_method
+
+   out
+}
 
 in_month_label_abbr <- function(x){
    lubridate::month(x, label = TRUE, abbr = TRUE)
@@ -71,7 +78,7 @@ iden_func <- function(...){
    return(list(...))
 }
 
-get_month_abbr_for_printing <- function(x){
+make_month_abbr_for_printing <- function(x){
 
    month_numbers <- as.character(1:12)
    month_names <- get_month_names()
@@ -94,6 +101,8 @@ get_month_abbr_for_printing <- function(x){
 }
 
 make_month_schedule_description <- function(x){
-   cat("In months: ")
-   cat(get_month_abbr_for_printing(x), sep = ", ")
+
+   my_sep_abbrs <- stringr::str_c(make_month_abbr_for_printing(x),
+                                  collapse = ", ")
+   stringr::str_c("- In months: ", my_sep_abbrs)
 }
