@@ -77,7 +77,7 @@ schedule <- function(x,
                               period_unit = period_type,
                               period_n = n)
 
-  date_seq[test_date(date_seq, x)]
+  date_seq[happen(x, date_seq)]
 }
 
 #' @rdname schedule

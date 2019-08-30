@@ -44,14 +44,16 @@
 
 doesnt_occur <- function(x, y = NULL){
 
-  elem_1 <- x
-  elem_2 <- y
+  elem_1 <- x$date_test
+  elem_2 <- y$date_test
 
   if(is.null(elem_2)){
 
-    out <- function(date){
+    date_test <- function(date){
       !elem_1(date)
     }
+
+    out <- list(date_test = date_test)
 
     class(out) <- c("schedule")
 
@@ -59,12 +61,14 @@ doesnt_occur <- function(x, y = NULL){
 
   } else {
 
-    out <- function(date){
+    date_test <- function(date){
       !elem_2(date)
     }
 
+    out <- list(date_test = date_test)
+
     class(out) <- c("schedule")
 
-    elem_1 %>% only_occur(out)
+    x %>% only_occur(out)
   }
 }

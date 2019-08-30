@@ -56,9 +56,11 @@ after <- function(start_event, within_given = NULL){
 
   if(lubridate::is.Date(x)){
 
-    out <- function(date){
+    date_test <- function(date){
       date > x
     }
+
+    out <- list(date_test = date_test)
 
     class(out) <- "schedule"
 
@@ -71,7 +73,7 @@ after <- function(start_event, within_given = NULL){
     within_given <- strings_to_date_functions(within_given)
   }
 
-  out <- function(date){
+  date_test <- function(date){
 
     date_vec_changing <- date
     applicable <- within_given(date_vec_changing) == within_given(date)
@@ -88,6 +90,8 @@ after <- function(start_event, within_given = NULL){
     out_vec
   }
 
+  out <- list(date_test = date_test)
+
   class(out) <- "schedule"
 
   out
@@ -102,9 +106,11 @@ before <- function(end_event, within_given = NULL){
 
   if(lubridate::is.Date(x)){
 
-    out <- function(date){
+    date_test <- function(date){
       date < x
     }
+
+    out <- list(date_test = date_test)
 
     class(out) <- "schedule"
 
@@ -117,7 +123,7 @@ before <- function(end_event, within_given = NULL){
     within_given <- strings_to_date_functions(within_given)
   }
 
-  out <- function(date){
+  date_test <- function(date){
 
     date_vec_changing <- date
     applicable <- within_given(date_vec_changing) == within_given(date)
@@ -133,6 +139,8 @@ before <- function(end_event, within_given = NULL){
     }
     out_vec
   }
+
+  out <- list(date_test = date_test)
 
   class(out) <- "schedule"
 
@@ -157,9 +165,11 @@ on_or_after <- function(start_event, within_given = NULL){
 
   if(lubridate::is.Date(x)){
 
-    out <- function(date){
+    date_test <- function(date){
       date >= x
     }
+
+    out <- list(date_test = date_test)
 
     class(out) <- "schedule"
 
@@ -180,9 +190,11 @@ on_or_before <- function(end_event, within_given = NULL){
 
   if(lubridate::is.Date(x)){
 
-    out <- function(date){
+    date_test <- function(date){
       date <= x
     }
+
+    out <- list(date_test = date_test)
 
     class(out) <- "schedule"
 

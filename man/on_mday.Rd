@@ -17,9 +17,9 @@ on_qday(...)
 
 on_wday(..., week_start = getOption("lubridate.week.start", 7))
 
-on_weekend(date_vec = NULL)
+on_weekend()
 
-on_weekday(date_vec = NULL)
+on_weekday()
 }
 \arguments{
 \item{...}{A numeric vector of day specifications. In the case of \code{on_wday} the
@@ -28,10 +28,6 @@ elements can also be characters (see \emph{Details} section below).}
 \item{week_start}{If using the \code{on_wday} function with numeric day elements,
 you can specify which ISO convention is used; 1 means Monday,
 7 means Sunday (default).}
-
-\item{date_vec}{Optionally, a vector of dates to test for whether they are on
-a weekend or weekday. If missing, will simply return a schedule of weekend
-days or weekdays.}
 }
 \value{
 A schedule object.
@@ -115,8 +111,8 @@ happen(on_wday("Tue"), my_dates)
 
 happen(on_wday("Tue", "Thu"), my_dates)
 
-on_weekend(my_dates)
-on_weekday(my_dates)
+happen(on_weekend(), my_dates)
+happen(on_weekday(), my_dates)
 
 ## Invalid inputs will produce an immediate error:
 \dontrun{

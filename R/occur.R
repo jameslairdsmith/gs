@@ -21,5 +21,5 @@
 
 happen <- function(schedule, date){
 
-  schedule(date)
+  schedule$date_test(date)
 }

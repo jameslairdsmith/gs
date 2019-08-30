@@ -52,9 +52,6 @@
 #' @param week_start If using the `on_wday` function with numeric day elements,
 #' you can specify which ISO convention is used; 1 means Monday,
 #' 7 means Sunday (default).
-#' @param date_vec Optionally, a vector of dates to test for whether they are on
-#' a weekend or weekday. If missing, will simply return a schedule of weekend
-#' days or weekdays.
 #'
 #' @keywords month, week, day, date, schedule
 #' @return A schedule object.
@@ -74,8 +71,8 @@
 #'
 #' happen(on_wday("Tue", "Thu"), my_dates)
 #'
-#' on_weekend(my_dates)
-#' on_weekday(my_dates)
+#' happen(on_weekend(), my_dates)
+#' happen(on_weekday(), my_dates)
 #'
 #' ## Invalid inputs will produce an immediate error:
 #' \dontrun{
@@ -156,11 +153,9 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 #' @rdname on_mday
 #' @export
 
-on_weekend <- function(date_vec = NULL){
+on_weekend <- function(){
 
   out_func <- on_wday("Sat", "Sun")
-
-  if(!missing(date_vec)) return(out_func(date_vec))
 
   out_func
 }
@@ -168,11 +163,9 @@ on_weekend <- function(date_vec = NULL){
 #' @rdname on_mday
 #' @export
 
-on_weekday <- function(date_vec = NULL){
+on_weekday <- function(){
 
-  out_func <- not_occurring(on_wday("Sat", "Sun"))
-
-  if(!missing(date_vec)) return(out_func(date_vec))
+  out_func <- doesnt_occur(on_wday("Sat", "Sun"))
 
   out_func
 }

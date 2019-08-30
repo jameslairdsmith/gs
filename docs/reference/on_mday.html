@@ -150,9 +150,9 @@ function used (see <em>Details</em> section).</p>
 
 <span class='fu'>on_wday</span>(<span class='no'>...</span>, <span class='kw'>week_start</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"lubridate.week.start"</span>, <span class='fl'>7</span>))
 
-<span class='fu'>on_weekend</span>(<span class='kw'>date_vec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'>on_weekend</span>()
 
-<span class='fu'>on_weekday</span>(<span class='kw'>date_vec</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>on_weekday</span>()</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,12 +167,6 @@ elements can also be characters (see <em>Details</em> section below).</p></td>
       <td><p>If using the <code>on_wday</code> function with numeric day elements,
 you can specify which ISO convention is used; 1 means Monday,
 7 means Sunday (default).</p></td>
-    </tr>
-    <tr>
-      <th>date_vec</th>
-      <td><p>Optionally, a vector of dates to test for whether they are on
-a weekend or weekday. If missing, will simply return a schedule of weekend
-days or weekdays.</p></td>
     </tr>
     </table>
     
@@ -239,7 +233,7 @@ week on both Tuesdays and Thursdays.</p>
 <span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>on_qday</span>(<span class='fl'>1</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'>
 <span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
 <span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>on_wday</span>(<span class='st'>"Tue"</span>, <span class='st'>"Thu"</span>), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE FALSE FALSE</div><div class='input'>
-<span class='fu'>on_weekend</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'>on_weekday</span>(<span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE</div><div class='input'>
+<span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>on_weekend</span>(), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE</div><div class='input'><span class='fu'><a href='happen.html'>happen</a></span>(<span class='fu'>on_weekday</span>(), <span class='no'>my_dates</span>)</div><div class='output co'>#&gt;  [1] FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE  TRUE</div><div class='input'>
 ## Invalid inputs will produce an immediate error:
 </div><span class='co'># NOT RUN {</span>
 <span class='fu'>on_mday</span>(<span class='fl'>32</span>)
