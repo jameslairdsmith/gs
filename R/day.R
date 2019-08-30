@@ -74,8 +74,8 @@
 #'
 #' happen(on_wday("Tue", "Thu"), my_dates)
 #'
-#' on_weekend(my_dates)
-#' on_weekday(my_dates)
+#' happen(on_weekend(), my_dates)
+#' happen(on_weekday(), my_dates)
 #'
 #' ## Invalid inputs will produce an immediate error:
 #' \dontrun{
@@ -156,11 +156,9 @@ on_wday <- function(..., week_start = getOption("lubridate.week.start", 7)){
 #' @rdname on_mday
 #' @export
 
-on_weekend <- function(date_vec = NULL){
+on_weekend <- function(){
 
   out_func <- on_wday("Sat", "Sun")
-
-  if(!missing(date_vec)) return(out_func(date_vec))
 
   out_func
 }
@@ -168,11 +166,9 @@ on_weekend <- function(date_vec = NULL){
 #' @rdname on_mday
 #' @export
 
-on_weekday <- function(date_vec = NULL){
+on_weekday <- function(){
 
-  out_func <- not_occurring(on_wday("Sat", "Sun"))
-
-  if(!missing(date_vec)) return(out_func(date_vec))
+  out_func <- doesnt_occur(on_wday("Sat", "Sun"))
 
   out_func
 }

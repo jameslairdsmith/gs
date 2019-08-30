@@ -69,6 +69,6 @@ doesnt_occur <- function(x, y = NULL){
 
     class(out) <- c("schedule")
 
-    elem_1 %>% only_occur(out)
+    x %>% only_occur(out)
   }
 }

@@ -201,3 +201,9 @@ test_that("on_weekend function works", {
   expect_true(test_date(dmy("21/07/1990"), on_weekend()))
   expect_true(test_date(dmy("22/07/1990"), on_weekend()))
 })
+
+test_that("on_weekday function works", {
+  expect_true(happen(on_weekday(), dmy("20/07/1990")))
+  expect_false(happen(on_weekday(), dmy("21/07/1990")))
+  expect_false(happen(on_weekday(), dmy("22/07/1990")))
+})

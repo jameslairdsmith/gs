@@ -17,9 +17,9 @@ on_qday(...)
 
 on_wday(..., week_start = getOption("lubridate.week.start", 7))
 
-on_weekend(date_vec = NULL)
+on_weekend()
 
-on_weekday(date_vec = NULL)
+on_weekday()
 }
 \arguments{
 \item{...}{A numeric vector of day specifications. In the case of \code{on_wday} the
@@ -115,8 +115,8 @@ happen(on_wday("Tue"), my_dates)
 
 happen(on_wday("Tue", "Thu"), my_dates)
 
-on_weekend(my_dates)
-on_weekday(my_dates)
+happen(on_weekend(), my_dates)
+happen(on_weekday(), my_dates)
 
 ## Invalid inputs will produce an immediate error:
 \dontrun{
