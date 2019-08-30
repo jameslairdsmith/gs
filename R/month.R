@@ -70,3 +70,30 @@ in_month_label_full <- function(x){
 iden_func <- function(...){
    return(list(...))
 }
+
+get_month_abbr_for_printing <- function(x){
+
+   month_numbers <- as.character(1:12)
+   month_names <- get_month_names()
+   month_abbr_names <- get_month_abbr_names()
+
+
+   possible_values <-
+      c(month_numbers,
+        month_names,
+        month_abbr_names)
+
+   compare_table <- data.frame(possible_values,
+                               month_abbr_names,
+                               stringsAsFactors = F,
+                               row.names = NULL)
+
+   my_abbrs <- unique(compare_table[possible_values %in% x, "month_abbr_names"])
+
+   as.character(sort(factor(my_abbrs, levels = month.abb)))
+}
+
+make_month_schedule_description <- function(x){
+   cat("In months: ")
+   cat(get_month_abbr_for_printing(x), sep = ", ")
+}
