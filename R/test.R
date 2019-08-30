@@ -1,4 +1,4 @@
 test_date <- function(date, schedule, ...){
 
-  schedule(date)
+  schedule$date_test(date)
 }

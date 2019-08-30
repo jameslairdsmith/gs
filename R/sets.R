@@ -46,14 +46,16 @@
 #' @export
 also_occur <- function(x, y){
 
-  elem_1 <- x
-  elem_2 <- y
+  elem_1 <- x$date_test
+  elem_2 <- y$date_test
 
   #envoke_list <- list(elem_2, elem_1)
 
-  out <- function(date){
+  date_test <- function(date){
     elem_1(date) | elem_2(date)
   }
+
+  out <- list(date_test = date_test)
 
   class(out) <- "schedule"
 
@@ -66,38 +68,40 @@ also_occur <- function(x, y){
 
 only_occur <- function(x, y){
 
-  elem_1 <- x
-  elem_2 <- y
+  elem_1 <- x$date_test
+  elem_2 <- y$date_test
 
   #envoke_list <- list(elem_2, elem_1)
 
-  out <- function(date){
+  date_test <- function(date){
     elem_1(date) & elem_2(date)
   }
 
+  out <- list(date_test = date_test)
+
   class(out) <- "schedule"
 
-  if("latest_date" %in% get_attribute_names(elem_1)){
-    attr(out, "latest_date") <- attr(elem_1, "latest_date")
+  if("latest_date" %in% get_attribute_names(x)){
+    attr(out, "latest_date") <- attr(x, "latest_date")
   }
-  if("earliest_date" %in% get_attribute_names(elem_1)){
-    attr(out, "earliest_date") <- attr(elem_1, "earliest_date")
+  if("earliest_date" %in% get_attribute_names(x)){
+    attr(out, "earliest_date") <- attr(x, "earliest_date")
   }
-  if("latest_date" %in% get_attribute_names(elem_2)){
-    attr(out, "latest_date") <- attr(elem_2, "latest_date")
+  if("latest_date" %in% get_attribute_names(y)){
+    attr(out, "latest_date") <- attr(y, "latest_date")
   }
-  if("earliest_date" %in% get_attribute_names(elem_2)){
-    attr(out, "earliest_date") <- attr(elem_2, "earliest_date")
+  if("earliest_date" %in% get_attribute_names(y)){
+    attr(out, "earliest_date") <- attr(y, "earliest_date")
   }
-  if("latest_date" %in% get_attribute_names(elem_1) &
-     "latest_date" %in% get_attribute_names(elem_2)){
-    attr(out, "latest_date") <- max(attr(elem_1, "latest_date"),
-                                    attr(elem_2, "latest_date"))
+  if("latest_date" %in% get_attribute_names(x) &
+     "latest_date" %in% get_attribute_names(y)){
+    attr(out, "latest_date") <- max(attr(x, "latest_date"),
+                                    attr(y, "latest_date"))
   }
-  if("earliest_date" %in% get_attribute_names(elem_1) &
-     "earliest_date" %in% get_attribute_names(elem_2)){
-    attr(out, "earliest_date") <- min(attr(elem_1, "earliest_date"),
-                                      attr(elem_2, "earliest_date"))
+  if("earliest_date" %in% get_attribute_names(x) &
+     "earliest_date" %in% get_attribute_names(y)){
+    attr(out, "earliest_date") <- min(attr(x, "earliest_date"),
+                                      attr(y, "earliest_date"))
   }
 
 

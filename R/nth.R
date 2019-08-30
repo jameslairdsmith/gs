@@ -51,7 +51,7 @@ on_nth <- function(n, x, within_given){
   }
 
   if(n > 0){
-  out <- function(date){
+  date_test <- function(date){
     date_vec_changing <- date
     nth <- n
     applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing - lubridate::days(1))
@@ -82,7 +82,7 @@ on_nth <- function(n, x, within_given){
   }}
 
   if(n < 0){
-    out <- function(date){
+    date_test <- function(date){
     date_vec_changing <- date
     nth <- abs(n)
     applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing + lubridate::days(1))
@@ -110,6 +110,8 @@ on_nth <- function(n, x, within_given){
 
     meets_both_criteria
     }}
+
+  out <- list(date_test = date_test)
 
   class(out) <- "schedule"
 
