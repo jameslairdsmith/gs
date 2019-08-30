@@ -28,10 +28,6 @@ elements can also be characters (see \emph{Details} section below).}
 \item{week_start}{If using the \code{on_wday} function with numeric day elements,
 you can specify which ISO convention is used; 1 means Monday,
 7 means Sunday (default).}
-
-\item{date_vec}{Optionally, a vector of dates to test for whether they are on
-a weekend or weekday. If missing, will simply return a schedule of weekend
-days or weekdays.}
 }
 \value{
 A schedule object.
