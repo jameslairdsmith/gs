@@ -69,7 +69,7 @@ rule of the holiday.
 
 The `gs` grammer is designed to be readable, so you should be able to see what
 the syntax is doing just by reading it. For example in the first chunk below
-we are creating a schedule of Martin Luther King days, which in the US occur 
+we are creating a schedule of Martin Luther King Jr. Days, which in the US occur 
 on the third Monday of January every year. To do this we find the intersection
 (using `only_occur()`) of all days which are the third (using `on_third()`) 
 Monday (using `on_wday("Mon")`) of every month with the schedule of days 
