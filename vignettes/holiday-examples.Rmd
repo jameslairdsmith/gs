@@ -59,7 +59,7 @@ schedule_days(on_easter_sunday(), from = 2010, to = 2020)
 ```
 
 There are also equivalent shortcut functions for `on_good_friday()` and
-`on_easter_monday()`.
+`on_easter_monday()` etc.
 
 # United States Federal Holidays
 
@@ -70,7 +70,7 @@ rule of the holiday.
 The `gs` grammer is designed to be readable, so you should be able to see what
 the syntax is doing just by reading it. For example in the first chunk below
 we are creating a schedule of Martin Luther King days, which in the US occur 
-on the third monday of January every year. To do this we find the intersection
+on the third Monday of January every year. To do this we find the intersection
 (using `only_occur()`) of all days which are the third (using `on_third()`) 
 Monday (using `on_wday("Mon")`) of every month with the schedule of days 
 occuring in Janurary (using `in_month("Jan")`). The other holidays can be 
@@ -124,7 +124,9 @@ on_us_federal_holidays <-
   also_occur(on_christmas_day)
 ```
 
-This schedule is then available for use.
+This schedule is then available for use. For example we can use the 
+`schedule_days()` function to retrieve for us the occurances of US federal
+holidays in 2019 and 2020.
 
 ```{r}
 schedule_days(on_us_federal_holidays, from = 2019, to = 2020)

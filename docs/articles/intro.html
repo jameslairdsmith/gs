@@ -117,14 +117,19 @@
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; [1] 1</span></a></code></pre></div>
 <p>The equivalent function in <code>gs</code> is <code><a href="../reference/on_mday.html">on_yday()</a></code> and it does the opposite. Instead of the you providing a date and getting back the property of that date, you rather give it the property you want and it will return a schedule of events with that particular property. So if I wish to create a schedule of all the days occuring on the first day of the year, I would do so as follows:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; function (date) </span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; {</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt;     .f(date, ...) == x</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; }</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; &lt;bytecode: 0x7fa22f6a4f90&gt;</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; &lt;environment: 0x7fa22f6a88f0&gt;</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; attr(,"class")</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; $date_test</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt; function (date) </span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; {</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt;     .f(date, ...) == x</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; }</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; &lt;bytecode: 0x7f842f2b3198&gt;</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; &lt;environment: 0x7f842f2b29f0&gt;</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; $n_terms</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; [1] 1</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; </span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt; attr(,"class")</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt; [1] "schedule"</span></a></code></pre></div>
 <p>By itself, this isn’t that useful. What will help make it more so is that we can make this schedule an object like so:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">on_new_years_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a></code></pre></div>
 <p>We now have the <code>on_new_years_day</code> object that we can put to use. You can think of this schedule as encompassing all the possible occurrences of New Year’s Day throughout time. It is not limited to just one particular date or dates.</p>

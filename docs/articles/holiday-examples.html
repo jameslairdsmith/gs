@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holiday examples • gs</title>
+<title>Holiday examples using <code>gs</code> • gs</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/spacelab/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
-<meta property="og:title" content="Holiday examples">
+<meta property="og:title" content="Holiday examples using &lt;code&gt;gs&lt;/code&gt;">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jameslairdsmith.github.io/gs/logo.png">
 <meta name="twitter:card" content="summary">
@@ -89,7 +89,8 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Holiday examples</h1>
+      <h1>Holiday examples using <code>gs</code>
+</h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/jameslairdsmith/gs/blob/master/vignettes/holiday-examples.Rmd"><code>vignettes/holiday-examples.Rmd</code></a></small>
@@ -101,116 +102,79 @@
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(gs)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)</a></code></pre></div>
-<p>This is a work in progress compilation of the various public holidays.</p>
-<p>Naturally I cannot ennumerate every public holiday in every country, but I hope the following examples demonstrate the process well enough. Hopefully then users can fill in their own.</p>
+<p>In this brief vignette I will give some examples to demonstrate how a set of national holidays can be put together using the <code>gs</code> grammar.</p>
+<p>Using the grammar this way means that we can avoid the hassle of ennumerating all the possible dates for national holidays and can rather rely on the pre-scripted logic to produce the apppriate dates for us when we request them.</p>
+<p>In the future I plan to release a package that will catalogue this holiday logic for a wide set of countries. The purpose of this vignette is only to provide some illustrative examples.</p>
+<p>If you haven’t heard of the <code>gs</code> package before or you are unsure what the grammar is, I recommend looking at the introductory vignette included in the package.</p>
 <div id="general" class="section level1">
 <h1 class="hasAnchor">
 <a href="#general" class="anchor"></a>General</h1>
+<p>There are certain holidays which are common in many countries. One advantage of the <code>gs</code> grammar is that the schedule objects only need to be created once and can be re-used as necessary when they are required.</p>
+<p>These common holidays are as follows:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">on_new_years_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">on_christmas_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">25</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>))</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">on_boxing_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">26</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Dec"</span>))</a></code></pre></div>
 <div id="easter" class="section level2">
 <h2 class="hasAnchor">
 <a href="#easter" class="anchor"></a>Easter</h2>
-<p>WIP</p>
-</div>
-</div>
-<div id="uk" class="section level1">
-<h1 class="hasAnchor">
-<a href="#uk" class="anchor"></a>UK</h1>
-<p>UK holidays vary by jurisdication. All the holidays are specified in the below chunk and are then assembled in the following sections.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">on_second_jan &lt;-<span class="st"> </span><span class="kw"><a href="../reference/on_mday.html">on_yday</a></span>(<span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">on_st_patricks_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">17</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Mar"</span>))</a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5">on_early_may_bank_holiday &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_first</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"May"</span>))</a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">## ^ This needs some adjustment</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">on_liberation_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">9</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"May"</span>))</a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">on_spring_bank_holiday &lt;-</a>
-<a class="sourceLine" id="cb3-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_last</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"May"</span>))</a>
-<a class="sourceLine" id="cb3-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">on_june_bank_holiday &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb3-18" data-line-number="18"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_first</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"June"</span>))</a>
-<a class="sourceLine" id="cb3-20" data-line-number="20"></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">on_senior_race_day &lt;-</a>
-<a class="sourceLine" id="cb3-22" data-line-number="22"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_first</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Fri"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"June"</span>))</a>
-<a class="sourceLine" id="cb3-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">on_tynwald_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">5</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"July"</span>))</a>
-<a class="sourceLine" id="cb3-26" data-line-number="26">  </a>
-<a class="sourceLine" id="cb3-27" data-line-number="27">on_battle_of_the_boyne &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">12</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"July"</span>))</a></code></pre></div>
-<div id="england-and-wales" class="section level2">
-<h2 class="hasAnchor">
-<a href="#england-and-wales" class="anchor"></a>England and Wales</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">on_enland_wales_holidays &lt;-</a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span>on_new_years_day <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_early_may_bank_holiday)</a></code></pre></div>
-</div>
-<div id="scotland" class="section level2">
-<h2 class="hasAnchor">
-<a href="#scotland" class="anchor"></a>Scotland</h2>
-</div>
-<div id="northern-ireland" class="section level2">
-<h2 class="hasAnchor">
-<a href="#northern-ireland" class="anchor"></a>Northern Ireland</h2>
-</div>
-<div id="isle-of-man" class="section level2">
-<h2 class="hasAnchor">
-<a href="#isle-of-man" class="anchor"></a>Isle of Man</h2>
-</div>
-<div id="jersey-and-guernsey" class="section level2">
-<h2 class="hasAnchor">
-<a href="#jersey-and-guernsey" class="anchor"></a>Jersey and Guernsey</h2>
+<p>The date of Easter is notoriously tricky to calculate. For this reason there is a shortcut function provided for it in <code>gs</code> called <code><a href="../reference/on_easter_sunday.html">on_easter_sunday()</a></code>. This shortcut relies on the algorithm provided in the <code>timeDate</code> package.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(<span class="kw"><a href="../reference/on_easter_sunday.html">on_easter_sunday</a></span>(), <span class="dt">from =</span> <span class="dv">2010</span>, <span class="dt">to =</span> <span class="dv">2020</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt;  [1] "2010-04-04" "2011-04-24" "2012-04-08" "2013-03-31" "2014-04-20"</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;  [6] "2015-04-05" "2016-03-27" "2017-04-16" "2018-04-01" "2019-04-21"</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; [11] "2020-04-12"</span></a></code></pre></div>
+<p>There are also equivalent shortcut functions for <code><a href="../reference/on_easter_sunday.html">on_good_friday()</a></code> and <code><a href="../reference/on_easter_sunday.html">on_easter_monday()</a></code> etc.</p>
 </div>
 </div>
 <div id="united-states-federal-holidays" class="section level1">
 <h1 class="hasAnchor">
 <a href="#united-states-federal-holidays" class="anchor"></a>United States Federal Holidays</h1>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">on_mlk_day &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_third</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Jan"</span>))</a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5">on_presidents_day &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_third</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Feb"</span>))</a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9">on_memorial_day &lt;-</a>
-<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_last</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"May"</span>))</a>
-<a class="sourceLine" id="cb5-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb5-13" data-line-number="13">on_us_independence_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">4</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"July"</span>))</a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb5-15" data-line-number="15">on_labor_day &lt;-</a>
-<a class="sourceLine" id="cb5-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_first</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Sep"</span>))</a>
-<a class="sourceLine" id="cb5-18" data-line-number="18"></a>
-<a class="sourceLine" id="cb5-19" data-line-number="19">on_columbus_day &lt;-</a>
-<a class="sourceLine" id="cb5-20" data-line-number="20"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_second</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-21" data-line-number="21"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Oct"</span>))</a>
-<a class="sourceLine" id="cb5-22" data-line-number="22"></a>
-<a class="sourceLine" id="cb5-23" data-line-number="23">on_veterans_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">11</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Nov"</span>))</a>
-<a class="sourceLine" id="cb5-24" data-line-number="24"></a>
-<a class="sourceLine" id="cb5-25" data-line-number="25">on_us_thanksgiving &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb5-26" data-line-number="26"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_fourth</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Thu"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb5-27" data-line-number="27"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Nov"</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">on_us_federal_holidays &lt;-</a>
-<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="st">  </span>on_new_years_day <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_mlk_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_presidents_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_memorial_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_us_independence_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_labor_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_columbus_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_veterans_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_us_thanksgiving) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb6-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_christmas_day)</a></code></pre></div>
+<p>In this next example we will build a schedule of the federal holidays in the United States using the <code>gs</code> grammar. Each chunk of code below encodes the rule of the holiday.</p>
+<p>The <code>gs</code> grammer is designed to be readable, so you should be able to see what the syntax is doing just by reading it. For example in the first chunk below we are creating a schedule of Martin Luther King days, which in the US occur on the third Monday of January every year. To do this we find the intersection (using <code><a href="../reference/also_occur.html">only_occur()</a></code>) of all days which are the third (using <code><a href="../reference/on_nth.html">on_third()</a></code>) Monday (using <code><a href="../reference/on_mday.html">on_wday("Mon")</a></code>) of every month with the schedule of days occuring in Janurary (using <code><a href="../reference/in_month.html">in_month("Jan")</a></code>). The other holidays can be read similarly.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">on_mlk_day &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_third</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Jan"</span>))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">on_presidents_day &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_third</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Feb"</span>))</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">on_memorial_day &lt;-</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_last</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"May"</span>))</a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">on_us_independence_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">4</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"July"</span>))</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">on_labor_day &lt;-</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_first</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Sep"</span>))</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">on_columbus_day &lt;-</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_second</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Mon"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Oct"</span>))</a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">on_veterans_day &lt;-<span class="st"> </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_mday</a></span>(<span class="dv">11</span>), <span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Nov"</span>))</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24"></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">on_us_thanksgiving &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="st">  </span><span class="kw"><a href="../reference/on_nth.html">on_fourth</a></span>(<span class="kw"><a href="../reference/on_mday.html">on_wday</a></span>(<span class="st">"Thu"</span>), <span class="dt">within_given =</span> <span class="st">"month"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">only_occur</a></span>(<span class="kw"><a href="../reference/in_month.html">in_month</a></span>(<span class="st">"Nov"</span>))</a></code></pre></div>
+<p>To make these holidays into a single schedule, we combine them using the <code><a href="../reference/also_occur.html">also_occur()</a></code> function, which finds the union of two schedules. With the help of the pipe (<code>%&gt;%</code>) operator, this forms a neat chain of operations.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">on_us_federal_holidays &lt;-</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="st">  </span>on_new_years_day <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_mlk_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_presidents_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_memorial_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_us_independence_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_labor_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_columbus_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_veterans_day) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_us_thanksgiving) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_christmas_day)</a></code></pre></div>
+<p>This schedule is then available for use. For example we can use the <code><a href="../reference/schedule.html">schedule_days()</a></code> function to retrieve for us the occurances of US federal holidays in 2019 and 2020.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="../reference/schedule.html">schedule_days</a></span>(on_us_federal_holidays, <span class="dt">from =</span> <span class="dv">2019</span>, <span class="dt">to =</span> <span class="dv">2020</span>)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="co">#&gt;  [1] "2019-01-01" "2019-01-21" "2019-02-18" "2019-05-27" "2019-07-04"</span></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="co">#&gt;  [6] "2019-09-02" "2019-10-14" "2019-11-11" "2019-11-28" "2019-12-25"</span></a>
+<a class="sourceLine" id="cb6-4" data-line-number="4"><span class="co">#&gt; [11] "2020-01-01" "2020-01-20" "2020-02-17" "2020-05-25" "2020-07-04"</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; [16] "2020-09-07" "2020-10-12" "2020-11-11" "2020-11-26" "2020-12-25"</span></a></code></pre></div>
 </div>
   </div>
 
@@ -222,15 +186,6 @@
 <li>
 <a href="#general">General</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#easter">Easter</a></li>
-      </ul>
-</li>
-      <li>
-<a href="#uk">UK</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#england-and-wales">England and Wales</a></li>
-      <li><a href="#scotland">Scotland</a></li>
-      <li><a href="#northern-ireland">Northern Ireland</a></li>
-      <li><a href="#isle-of-man">Isle of Man</a></li>
-      <li><a href="#jersey-and-guernsey">Jersey and Guernsey</a></li>
       </ul>
 </li>
       <li><a href="#united-states-federal-holidays">United States Federal Holidays</a></li>
