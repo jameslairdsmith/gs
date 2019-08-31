@@ -4,6 +4,8 @@
 \alias{on_easter_sunday}
 \alias{on_good_friday}
 \alias{on_easter_monday}
+\alias{on_easter_saturday}
+\alias{on_easter_weekend}
 \title{Schedule dates during Easter}
 \usage{
 on_easter_sunday()
@@ -11,19 +13,30 @@ on_easter_sunday()
 on_good_friday()
 
 on_easter_monday()
+
+on_easter_saturday()
+
+on_easter_weekend()
 }
 \value{
 A schedule object.
 }
 \description{
-Creates a schedule of events occuring on the various Easter holidays.
+Creates a schedule of events occuring on the various Easter holidays
+in the Gregorian calendar.
+
+\code{on_easter_weekend()} creates a schedule containing the union of the other
+schedules.
+}
+\details{
+The algorithm for the date of Easter is provided by the \code{timeDate} package.
 }
 \examples{
 schedule_days(on_easter_sunday(), from = 2010, to = 2020)
 
 schedule_days(on_good_friday(), from = 2010, to = 2020)
 
-schedule_days(on_easter_saturday(), from = 2010, to = 2020)
+schedule_days(on_easter_monday(), from = 2010, to = 2020)
 }
 \keyword{easter,}
 \keyword{schedule}
