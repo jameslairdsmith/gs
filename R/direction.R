@@ -94,6 +94,8 @@ after <- function(start_event, within_given = NULL){
 
   class(out) <- "schedule"
 
+  out$n_terms <- 1
+
   out
 }
 
@@ -143,6 +145,8 @@ before <- function(end_event, within_given = NULL){
   out <- list(date_test = date_test)
 
   class(out) <- "schedule"
+
+  out$n_terms <- 1
 
   out
 }

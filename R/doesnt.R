@@ -57,6 +57,8 @@ doesnt_occur <- function(x, y = NULL){
 
     class(out) <- c("schedule")
 
+    out$n_terms <- 2
+
     out
 
   } else {
@@ -68,6 +70,8 @@ doesnt_occur <- function(x, y = NULL){
     out <- list(date_test = date_test)
 
     class(out) <- c("schedule")
+
+    out$n_terms <- 1
 
     x %>% only_occur(out)
   }

@@ -8,5 +8,7 @@ make_element <- function(x, .f, ...){
 
   class(out) <- "schedule"
 
+  out$n_terms <- 1
+
   out
 }

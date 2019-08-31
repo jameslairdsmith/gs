@@ -59,6 +59,8 @@ also_occur <- function(x, y){
 
   class(out) <- "schedule"
 
+  out$n_terms <- x$n_terms + y$n_terms
+
   out
 
 }
@@ -80,6 +82,8 @@ only_occur <- function(x, y){
   out <- list(date_test = date_test)
 
   class(out) <- "schedule"
+
+  out$n_terms <- x$n_terms + y$n_terms
 
   if("latest_date" %in% get_attribute_names(x)){
     attr(out, "latest_date") <- attr(x, "latest_date")

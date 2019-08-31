@@ -115,6 +115,8 @@ on_nth <- function(n, x, within_given){
 
   class(out) <- "schedule"
 
+  out$n_terms <- 1
+
   out
 }
 
