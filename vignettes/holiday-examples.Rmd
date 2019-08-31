@@ -1,5 +1,5 @@
 ---
-title: "Holiday examples"
+title: "Holiday examples using `gs`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Examples}
@@ -19,13 +19,28 @@ library(gs)
 library(magrittr)
 ```
 
-This is a work in progress compilation of the various public holidays. 
+In this brief vignette I will give some examples to demonstrate how a set of 
+national holidays can be put together using the `gs` grammar.
 
-Naturally I cannot ennumerate every public holiday in every country, but I 
-hope the following examples demonstrate the process well enough. Hopefully
-then users can fill in their own.
+Using the grammar this way means that we can avoid the hassle of ennumerating
+all the possible dates for national holidays and can rather rely on the 
+pre-scripted logic to produce the apppriate dates for us when we request them.
+
+In the future I plan to release a package that will catalogue this holiday
+logic for a wide set of countries. The purpose of this vignette is only to 
+provide some illustrative examples.
+
+If you haven't heard of the `gs` package before or you are unsure what the 
+grammar is, I recommend looking at the introductory vignette included in the
+package.
 
 # General
+
+There are certain holidays which are common in many countries. One advantage
+of the `gs` grammar is that the schedule objects only need to be created once
+and can be re-used as necessary when they are required.
+
+These common holidays are as follows:
 
 ```{r}
 on_new_years_day <- on_yday(1)
@@ -35,61 +50,31 @@ on_boxing_day <- only_occur(on_mday(26), in_month("Dec"))
 
 ## Easter
 
-WIP
-
-# UK
-
-UK holidays vary by jurisdication. All the holidays are specified in the 
-below chunk and are then assembled in the following sections.
+The date of Easter is notoriously tricky to calculate. For this reason there
+is a shortcut function provided for it in `gs` called `on_easter_sunday()`.
+This shortcut relies on the algorithm provided in the `timeDate` package.
 
 ```{r}
-on_second_jan <- on_yday(2)
-
-on_st_patricks_day <- only_occur(on_mday(17), in_month("Mar"))
-
-on_early_may_bank_holiday <- 
-  on_first(on_mday("Mon"), within_given = "month") %>% 
-  only_occur(in_month("May"))
-
-## ^ This needs some adjustment
-
-on_liberation_day <- only_occur(on_mday(9), in_month("May"))
-
-on_spring_bank_holiday <-
-  on_last(on_wday("Mon"), within_given = "month") %>% 
-  only_occur(in_month("May"))
-
-on_june_bank_holiday <- 
-  on_first(on_wday("Mon"), within_given = "month") %>% 
-  only_occur(in_month("June"))
-
-on_senior_race_day <-
-  on_first(on_wday("Fri"), within_given = "month") %>% 
-  only_occur(in_month("June"))
-
-on_tynwald_day <- only_occur(on_mday(5), in_month("July"))
-  
-on_battle_of_the_boyne <- only_occur(on_mday(12), in_month("July"))
-
+schedule_days(on_easter_sunday(), from = 2010, to = 2020)
 ```
 
-## England and Wales
-
-```{r}
-on_enland_wales_holidays <-
-  on_new_years_day %>% 
-  also_occur(on_early_may_bank_holiday)
-```
-
-## Scotland
-
-## Northern Ireland
-
-## Isle of Man
-
-## Jersey and Guernsey
+There are also equivalent shortcut functions for `on_good_friday()` and
+`on_easter_monday()`.
 
 # United States Federal Holidays
+
+In this next example we will build a schedule of the federal holidays in the
+United States using the `gs` grammar. Each chunk of code below encodes the
+rule of the holiday.
+
+The `gs` grammer is designed to be readable, so you should be able to see what
+the syntax is doing just by reading it. For example in the first chunk below
+we are creating a schedule of Martin Luther King days, which in the US occur 
+on the third monday of January every year. To do this we find the intersection
+(using `only_occur()`) of all days which are the third (using `on_third()`) 
+Monday (using `on_wday("Mon")`) of every month with the schedule of days 
+occuring in Janurary (using `in_month("Jan")`). The other holidays can be 
+read similarly.
 
 ```{r}
 on_mlk_day <- 
@@ -121,6 +106,10 @@ on_us_thanksgiving <-
   only_occur(in_month("Nov"))
 ```
 
+To make these holidays into a single schedule, we combine them using the 
+`also_occur()` function, which finds the union of two schedules. With the 
+help of the pipe (`%>%`) operator, this forms a neat chain of operations.
+
 ```{r}
 on_us_federal_holidays <-
   on_new_years_day %>% 
@@ -135,5 +124,9 @@ on_us_federal_holidays <-
   also_occur(on_christmas_day)
 ```
 
+This schedule is then available for use.
 
+```{r}
+schedule_days(on_us_federal_holidays, from = 2019, to = 2020)
+```
 
