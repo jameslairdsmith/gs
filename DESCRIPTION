@@ -21,7 +21,8 @@ Imports:
     purrr,
     lubridate,
     readr,
-    magrittr
+    magrittr,
+    timeDate
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
