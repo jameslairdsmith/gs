@@ -37,7 +37,6 @@ on_every_n <- function(n, unit, starting, inclusive = T, backdated = F){
       out
   }
 
-
 }
 
 on_every <- function(unit, starting, inclusive = T, backdated = F){
