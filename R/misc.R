@@ -31,3 +31,7 @@ get_attribute_names <- function(obj){
 is_whole_number <- function(x){
   (x%%1==0)
 }
+
+remove_first <- function(vec){
+  vec[-1]
+}

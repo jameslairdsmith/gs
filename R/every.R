@@ -89,6 +89,3 @@ on_every <- function(unit, starting, inclusive = T, backdated = F){
           backdated = backdated)
 }
 
-remove_first <- function(vec){
-  vec[-1]
-}
