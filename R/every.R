@@ -8,7 +8,7 @@ on_every_n <- function(n, unit, starting, inclusive = T, backdated = F){
 
         my_interval <- interval(starting, date)
 
-        period_period <- as.period(my_interval) / unit_freq
+        period_period <- suppressWarnings(as.period(my_interval) / unit_freq)
 
         interval_period <- my_interval / unit_freq
 
@@ -82,10 +82,10 @@ on_every_n <- function(n, unit, starting, inclusive = T, backdated = F){
 }
 
 on_every <- function(unit, starting, inclusive = T, backdated = F){
-  every_n(1,
-          unit = unit,
-          starting = starting,
-          inclusive = inclusive,
-          backdated = backdated)
+  on_every_n(1,
+             unit = unit,
+             starting = starting,
+             inclusive = inclusive,
+             backdated = backdated)
 }
 
