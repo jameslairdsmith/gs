@@ -53,5 +53,6 @@ reference:
     desc: "Extra schedules."
     contents:
       - on_nth
+      - on_every_nth
       - on_easter_sunday
 

@@ -1,4 +1,20 @@
-on_every_n <- function(n, unit, starting, inclusive = T, backdated = F){
+#' Schedule events incrementally
+#'
+#' @description
+#' Create a schedule of events occuring in increments from a fixed date.
+#'
+#' @param n A single integer specifying the increment of the events to create.
+#' @param unit The type of increment. Can be either:
+#'    * A `lubridate` period object eg. "lubridate::months".
+#'    * A schedule object.
+#' @param starting The first event of the series. Can be a date or datetime.
+#' @param inclusive Logical indicating whether the `starting` date should
+#' be included in the resulting schedule.
+#' @param backdated Logical indicating whether dates prior the `starting`
+#' date should be included in the resulting schedule.
+#' @return A schedule object.
+
+on_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE){
 
   if(class(unit) == "function"){
 
@@ -81,11 +97,14 @@ on_every_n <- function(n, unit, starting, inclusive = T, backdated = F){
 
 }
 
-on_every <- function(unit, starting, inclusive = T, backdated = F){
-  on_every_n(1,
-             unit = unit,
-             starting = starting,
-             inclusive = inclusive,
-             backdated = backdated)
+#' @rdname on_every_nth
+#' @export
+
+on_every <- function(unit, starting, inclusive = TRUE, backdated = FALSE){
+  on_every_nth(1,
+               unit = unit,
+               starting = starting,
+               inclusive = inclusive,
+               backdated = backdated)
 }
 
