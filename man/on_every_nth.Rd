@@ -3,19 +3,26 @@
 \name{on_every_nth}
 \alias{on_every_nth}
 \alias{on_every}
+\alias{on_every_second}
 \title{Schedule events incrementally}
 \usage{
 on_every_nth(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 
 on_every(unit, starting, inclusive = TRUE, backdated = FALSE)
+
+on_every_second(unit, starting, inclusive = TRUE, backdated = FALSE)
 }
 \arguments{
-\item{n}{A single integer specifying the increment of the events to create.}
+\item{n}{A single integer specifying the increment of the events to create.
+Eg. \code{2L} for every second event.}
 
-\item{unit}{The type of increment. Can be either:
+\item{unit}{The type of period to increment. Can be either:
 \itemize{
-\item A \code{lubridate} period object eg. "months".
-\item A schedule object.
+\item A character shortcut for a period object. Eg. "year", "years", "month",
+"months", "week", "weeks" etc. Can be any value accepted by
+\code{lubridate::period()}.
+\item A schedule object. Eg. \code{on_weekday()} for events occuring every \code{n}
+weekdays.
 }}
 
 \item{starting}{The first event of the series. Can be a date or datetime.}
@@ -31,4 +38,19 @@ A schedule object.
 }
 \description{
 Create a schedule of events occuring in increments from a fixed date.
+}
+\details{
+\code{on_every()} and \code{on_every_second()} are convenience functions for
+\code{on_every_nth()} where the \code{n} argument is pre-filled with \code{1L} and \code{2L}
+respectively.
+}
+\examples{
+monthly_from_millenium_start <- on_every("month", as.Date("2000-01-01"))
+schedule_days(monthly_from_millenium_start, during = 2000)
+
+fortnightly_from_millenium_start <- on_every_second("week", as.Date("2000-01-01"))
+schedule_days(fortnightly_from_millenium_start, during = 2000)
+
+tenth_weekend_day_from_millenium_start <- on_every_nth(10, on_weekend(), as.Date("2000-01-01"))
+schedule_days(tenth_weekend_day_from_millenium_start, during = 2000)
 }
