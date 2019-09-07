@@ -12,7 +12,7 @@ only_occurring <- function(...){
 
 not_occurring <- function(...){
 
-  doesnt_occur(...)
+  dont_occur(...)
 }
 
 is_occurring <- function(date, schedule){

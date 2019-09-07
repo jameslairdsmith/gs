@@ -315,7 +315,7 @@ the events occur on Christmas day, and 'also occur' on New Year's Day and
 
 Once you have a schedule it is often useful to have way to invert it so as to
 get the events that do not occur on that schedule. This can be done using
-the `doesnt_occur()` function. For example, say that 
+the `dont_occur()` function. For example, say that 
 instead of focusing on holidays, you instead wanted to get a schedule of 
 working (or business) days. These are the days that occur on neither weekends 
 nor on public holidays. You could get that schedule of events as follows. First
@@ -327,10 +327,10 @@ on_non_working_days <-
   also_occur(on_public_holidays)
 ```
 
-And then invert it using `doesnt_occur()`:
+And then invert it using `dont_occur()`:
 
 ```{r}
-on_business_days <- doesnt_occur(on_non_working_days)
+on_business_days <- dont_occur(on_non_working_days)
 ```
 
 You then have a new schedule of business days to work with that can be used in

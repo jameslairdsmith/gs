@@ -39,7 +39,7 @@ reference:
     desc: "Join schedules using set operations."
     contents:
       - also_occur
-      - doesnt_occur
+      - dont_occur
   - title: "Use schedules"
     desc: "Make use of schedules."
     contents:

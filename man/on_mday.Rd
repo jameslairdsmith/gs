@@ -93,7 +93,7 @@ week on both Tuesdays and Thursdays.
 
 \code{on_weekend()} is a convenience function for
 \code{on_wday("Sat", "Sun")}. \code{on_weekday()} is a convenience function for
-\code{doesnt_occur(on_wday("Sat", "Sun"))}.
+\code{dont_occur(on_wday("Sat", "Sun"))}.
 }
 \examples{
 

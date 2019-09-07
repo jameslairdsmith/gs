@@ -45,7 +45,7 @@
 #'
 #' `on_weekend()` is a convenience function for
 #' `on_wday("Sat", "Sun")`. `on_weekday()` is a convenience function for
-#' `doesnt_occur(on_wday("Sat", "Sun"))`.
+#' `dont_occur(on_wday("Sat", "Sun"))`.
 #'
 #' @param ... A numeric vector of day specifications. In the case of `on_wday` the
 #' elements can also be characters (see *Details* section below).
@@ -165,7 +165,7 @@ on_weekend <- function(){
 
 on_weekday <- function(){
 
-  out_func <- doesnt_occur(on_wday("Sat", "Sun"))
+  out_func <- dont_occur(on_wday("Sat", "Sun"))
 
   out_func
 }

@@ -27,22 +27,22 @@
 #'                      by = "1 day")
 #'
 #' happen(in_month("Jan"), my_dates)
-#' happen(doesnt_occur(in_month("Jan")), my_dates)
+#' happen(dont_occur(in_month("Jan")), my_dates)
 #' happen(on_wday("Sat"), my_dates)
-#' happen(doesnt_occur(on_wday("Sat")), my_dates)
+#' happen(dont_occur(on_wday("Sat")), my_dates)
 #'
 #' on_christmas <- only_occur(on_mday(25), in_month("Dec"))
 #' on_new_years_day <- on_yday(1)
 #' on_public_holidays <- also_occur(on_new_years_day, on_christmas)
 #'
 #' on_business_days <-
-#'   doesnt_occur(on_weekend()) %>%
-#'   doesnt_occur(on_public_holidays)
+#'   dont_occur(on_weekend()) %>%
+#'   dont_occur(on_public_holidays)
 #'
 #' happen(on_business_days, my_dates)
 #' @export
 
-doesnt_occur <- function(x, y = NULL){
+dont_occur <- function(x, y = NULL){
 
   elem_1 <- x$date_test
   elem_2 <- y$date_test
