@@ -78,8 +78,10 @@ on_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 
     date_test <- function(date){
 
+      candidate_dates <- date
+
       compiled_df <-
-        tibble::tibble(candidate_dates = date) %>%
+        tibble::tibble(candidate_dates) %>%
         dplyr::mutate(result = purrr::map(candidate_dates,
                                           schedule_days,
                                           x = unit,
