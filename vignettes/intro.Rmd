@@ -20,9 +20,9 @@ knitr::opts_chunk$set(
 
 Recurring calendar events are very common in everyday life.  When a set of 
 these events recur in a pattern, we call it a 'schedule'. While some 
-schedules are simple, others can be difficult to work with. This is 
-especially true when the pattern of events is irregular. The objective of 
-`gs` is to provide a framework to make working with schedules simpler.
+schedules are simple, others can complicated and thus difficult to work with. 
+This is especially true when the pattern of events is irregular. The objective 
+of `gs` is to provide a way to make working with schedules simpler and easier.
 
 To start with, we will import `gs` along with the `magrittr` package, which
 will be useful later on.
@@ -34,9 +34,11 @@ library(magrittr)
 
 `gs` builds atop the `lubridate` package and is designed for use
 alongside it. For this reason, it is imported automatically when `gs` is
-imported. When a `lubridate` function is used in this vignette, I will 
-prefix it with `lubridate::` to make it clear where the function comes from. 
-Users do not need to include the package name when writing their own code.
+imported. 
+
+<!-- When a `lubridate` function is used in this vignette, I will  -->
+<!-- prefix it with `lubridate::` to make it clear where the function comes from.  -->
+<!-- Users do not need to include the package name when writing their own code. -->
 
 # Creating a schedule
 
@@ -56,27 +58,26 @@ only on certain days of the year. The function is called `on_yday()` and it
 accepts numeric input depending on which day of the year you wish to schedule
 events for. For example, `on_yday(2)` would create a schedule of events 
 occurring on the second day of every year. But in our case we want to create 
-a schedule of events occurring on only the first day of every year. So we do
+a schedule of events occurring on only the first day of every year, so we do
 so as follows.
 
 ```{r}
 on_yday(1)
 ```
 
-You may be familiar with the `yday()` function from the `lubridate` package.
-`lubridate` provides a set of accessor functions for getting the various
-properties from a date or date-time object. The `yday()` function
-returns whatever day of the year a date or datetime occurs on. For example:
+You may be familiar with the similar `yday()` function from the `lubridate` 
+package. This is one of a few functions `lubridate` provides for accessing the
+properties of a date or date-time object. The `lubridate::yday()` function 
+returns whatever day of the year a date or datetime occurs on. `gs` provides
+equivalent functions which (instead of extracting the property from a datetime)
+allow you to create a schedule of events that meet the given input. So by 
+computing `on_yday(1)` above, we created a schedule of all the days occurring 
+on the first day of every year.
 
-```{r}
-lubridate::yday(as.Date("2000-01-01"))
-```
-
-The equivalent function in `gs` is `on_yday()` and it does the opposite. 
-Instead of the you providing a date and getting back the property of that date,
-rather you give it the property you want and it will return a schedule of 
-events with that particular property. So by computing `on_yday(1)` above, I 
-created a schedule of all the days occurring on the first day of the year.
+<!-- We have just used the equivalent function in `gs` is `on_yday()` and it does  -->
+<!-- the opposite. Instead of the you providing a date and getting back the property  -->
+<!-- of that date, rather you give it the property you want and it will return a  -->
+<!-- schedule of events with that particular property.  -->
 
 By itself, this isn't that useful. What will help make it more so is that 
 we can make this schedule into an object like so:
@@ -108,9 +109,9 @@ my_dates <- seq.Date(from = as.Date("2001-01-01"),
 my_dates
 ```
 
-We can then use the `happen()` function provided by `gs` to find out which of 
-these dates falls on New Year's Day. `happen()` takes a schedule object as 
-its first argument and a date or vector of dates as the second argument. The 
+We can then use the `happen()` function provided by `gs` to find out which (if
+any) of these dates fall on New Year's Day. `happen()` takes a schedule object 
+as its first argument and a date or vector of dates as the second argument. The 
 idea is that the syntax is readable. We are asking for the events which 
 'happen',  'on New Year's day' from '`my_dates`':
 
@@ -128,10 +129,10 @@ object if you don't want to. We could have achieved the same result as follows:
 happen(on_yday(1), my_dates)
 ```
 
-But, for reasons that will become clear, it is much more useful to create 
+But, for reasons that will become clear, it is often more useful to create 
 schedules objects. Whenever you do so, I also recommend giving them a 
-descriptive name and starting them with the prefix 'on_' or 'in_'. Among other
-things, this will make the syntax natural and readable.
+descriptive name and starting them with the prefix 'in_' or 'on_', as we did
+above. Among other things, this will make the syntax natural and readable.
 
 ## Getting events
 
@@ -142,7 +143,8 @@ schedule as its first argument.
 One snag with doing this however is that the total number of New Year's Days is 
 theoretically infinite. So if we try and run `schedule_days(on_new_years_day)`
 we will get an error. What we can do is place date limits on the 
-resulting output using the `from` and `to` arguments:
+resulting output using the `from` and `to` arguments, which can both accept
+a date value:
 
 ```{r}
 schedule_days(on_new_years_day, 
@@ -170,7 +172,7 @@ year. That means this code is equivalent to what we just ran:
 schedule_days(on_new_years_day, from = 1995, to = 2005)
 ```
 
-If the events we want only occur in a single year, we can use the `during`
+If the events we desire only occur in a single year, we can use the `during`
 argument as a further numeric shortcut, which is the equivalent of setting `to`
 and `from` to the start and end of one particular year:
 
@@ -181,10 +183,10 @@ schedule_days(on_new_years_day, during = 2005)
 # Further basic schedules
 
 The `on_yday()` function isn't the only type of schedule that you can create.
-`gs` provides a whole host of functions to create schedules. These all follow
-from the syntax of the accessor functions found in `lubridate`. In each case
-the same function text name is prefixed by either `on_` or `in_` depending on
-how one would naturally say it.
+`gs` provides a whole host of functions to create schedules. As explained these 
+all follow from the syntax of the accessor functions found in `lubridate`. 
+In each case the same function text name is prefixed by either `on_` or `in_`
+depending on how one would naturally say it.
 
 For example, the `on_mday()` function creates a schedule of events occurring on
 the specified days of every month. Imagine your job pays your salary 
@@ -206,10 +208,20 @@ on_weekly_payday <- on_wday("Friday")
 on_weekly_payday <- on_wday("Fri")
 ```
 
+If we wanted to create a schedule of events occurring in a particular month, we
+would use the `in_month()` function. For example, if we wanted to create a
+schedule of events occurring in December, we could do so in any of the following
+ways, each of which produces the same schedule:
+
+```{r}
+in_dec <- in_month(12)
+in_dec <- in_month("Dec")
+in_dec <- in_month("December")
+```
+
 I won't go over all the available functions here. You can see them for 
 yourself in the package reference documentation. They all follow the same
-principle of generating schedules from the inputs you provide to them. Some
-will also appear in the upcoming examples.
+principle of generating schedules from the inputs you provide to them.
 
 Each of the functions will accept multiple inputs which in each case creates
 a schedule of events occurring on both the inputs. For example 
@@ -250,8 +262,8 @@ on_christmas_day <- only_occur(on_mday(25), in_month(12))
 ```
 
 Again the syntax is designed to be readable. We are creating a schedule called
-`on_christmas_day` which 'only occur' on 25th day of the month and 'only occur'
-in the twelfth month of the year.
+`on_christmas_day` where the events 'only occur' on 25th day of the month and 
+'only occur' in the twelfth month of the year.
 
 Now that we have this new `on_christmas_day` object, we can do with it the 
 same set of things we did with the `on_new_years_day` object. We can test 
@@ -263,7 +275,7 @@ schedule_days(on_christmas_day, from = 2000, to = 2004)
 ```
 
 If I wanted to create a schedule of Boxing Day days, the process is the same.
-Boxing day occurs on Dec 26th.
+Boxing day occurs on Dec 26th:
 
 ```{r}
 on_boxing_day <- only_occur(on_mday(26), in_month(12))
@@ -274,8 +286,8 @@ schedule_days(on_boxing_day, from = 2000, to = 2004)
 ## Uniting schedules
 
 Sometimes, instead of finding the intersection between schedules, you will 
-instead want to unite schedules. For example, say now that we have the schedules
-for `on_new_years_day` and `on_christmas` we wanted to create a 
+instead want to unite schedules. For example, now that we have the schedules
+for `on_new_years_day` and `on_christmas` say we wanted to create a 
 schedule of public holidays. To do this, `gs` provides the `also_occur()`
 function which takes two schedules as input and returns a single unified 
 schedule as its output.
@@ -288,8 +300,8 @@ schedule_days(on_public_holidays, from = 2000, to = 2004)
 
 We now have a new schedule of public holidays available for us to use further.
 
-One other thing to take note of is that the schedules we made use of in this
-step were themselves generated in earlier steps. This can be done an 
+One thing to take note of is that the schedules we made use of in this
+step were themselves created in earlier steps. This can be done an 
 arbitrary number of times and allows huge flexibility when creating your own 
 schedules.
 
@@ -340,7 +352,7 @@ exactly the same ways already shown.
 
 One of the most common schedule patterns are when events take place on the nth
 occurrence of another schedule within a given period. For example, in the 
-United States, Martin Luther King Jr. Day is celebrated on the third Monday in
+United States (US), Martin Luther King Jr. Day is celebrated on the third Monday in
 January.
 
 This date rule has a few components. 'Monday', 'January' and 'third occurrence
@@ -363,7 +375,8 @@ on_third_monday_month <- on_third(on_monday, within_given = "month")
 ```
 
 But because Martin Luther King Jr. Day doesn't occur every month, it only 
-occurs in January, we have to refine our schedule one step further:
+occurs in January, we have to refine our schedule one step further using
+`only_occur()`:
 
 ```{r}
 on_mlk_jr_day <- 
@@ -371,7 +384,9 @@ on_mlk_jr_day <-
   only_occur(in_jan)
 ```
 
-We now have our schedule can can call on it for our purposes as before:
+We now have our schedule can can call on it for our purposes as before. Say 
+that we wanted to get the occurrences of Martin Luther King Jr. Day from 2010
+to 2020:
 
 ```{r}
 schedule_days(on_mlk_jr_day, from = 2010, to = 2020)
@@ -382,6 +397,17 @@ schedule_days(on_mlk_jr_day, from = 2010, to = 2020)
 convenience functions of `on_nth()` which instead accepts an integer as its
 first argument. Positive integers encode the nth occurring event within the 
 period; negative integers encode the nth last occurring events of the period.
+
+Say you wanted to get the occurrences of Memorial Day in the US, which occurs
+on the last Monday in May. This time, let's do it in one step:
+
+```{r}
+on_memorial_day <-
+  on_last(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("May"))
+
+schedule_days(on_memorial_day, from = 2010, to = 2020)
+```
 
 As a somewhat bizarre example, say that you play for a football team whose
 matches are on the 12th either Monday, Wednesday or Friday of every quarter. 
@@ -397,6 +423,18 @@ on_football_days <- on_nth(12,
 schedule_days(on_football_days, from = 2019, to = 2020)
 ```
 
+Equally bizarrely, let's instead say they occur on the 12th *last* either 
+Monday, Wednesday or Friday of every quarter. For this we do the same thing
+but use a negative integer:
+
+```{r}
+on_football_days <- on_nth(-12, 
+                           on_monday_wednesday_friday, 
+                           within_given = "quarter")
+
+schedule_days(on_football_days, from = 2019, to = 2020)
+```
+
 
 # Conclusion
 
@@ -404,9 +442,9 @@ This vignette has provided an introduction to the `gs` package, which
 implements a grammar of recurring calendar events in R. 
 
 `gs` has greater capabilities than just those explained above. The remainder 
-of the package documentation provides greater detail on both the features 
-shown and those I have not had time to mention.
+of the package documentation provides more detail on both the features 
+shown and those we have not had time to get to.
 
 Because `gs` is a grammar, it provides the building blocks for you as a user
-to combine the different parts in new and interesting ways and to make
+to combine the different parts in new and interesting ways. You can then make
 your own schedules based on your own needs.

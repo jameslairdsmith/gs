@@ -60,6 +60,7 @@ and \code{to = as.Date("2000-12-31")}.
 }
 }
 \examples{
+library(magrittr)
 on_paydays <- on_mday(25)
 
 schedule_days(on_paydays,

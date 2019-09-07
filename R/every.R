@@ -21,6 +21,7 @@
 #' `on_every_nth()` where the `n` argument is pre-filled with `1L` and `2L`
 #' respectively.
 #' @return A schedule object.
+#' @importFrom magrittr %>%
 #' @examples
 #' monthly_from_millenium_start <- on_every("month", as.Date("2000-01-01"))
 #' schedule_days(monthly_from_millenium_start, during = 2000)

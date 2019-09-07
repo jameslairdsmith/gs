@@ -34,6 +34,7 @@ the events of the second schedule from the first.
 }
 }
 \examples{
+library(magrittr)
 my_dates <- seq.Date(as.Date("1999-01-01"),
                      as.Date("1999-01-10"),
                      by = "1 day")

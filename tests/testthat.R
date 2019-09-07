@@ -1,4 +1,4 @@
 library(testthat)
-library(scheduler)
+library(gs)
 
-test_check("scheduler")
+test_check("gs")

@@ -1,5 +1,5 @@
 Package: gs
-Title: A grammar of recurring calendar events.
+Title: A grammar of recurring calendar events
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "James",
@@ -22,7 +22,9 @@ Imports:
     lubridate,
     readr,
     magrittr,
-    timeDate
+    timeDate,
+    dplyr,
+    tibble
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

@@ -27,6 +27,7 @@
 #'
 #' @return A schedule object.
 #' @examples
+#' library(magrittr)
 #' on_christmas <- only_occur(on_mday(25), in_month("Dec"))
 #'
 #' schedule_days(on_christmas, from = 2000, to = 2004)

@@ -22,6 +22,7 @@
 #'
 #' @return A schedule object.
 #' @examples
+#' library(magrittr)
 #' my_dates <- seq.Date(as.Date("1999-01-01"),
 #'                      as.Date("1999-01-10"),
 #'                      by = "1 day")
