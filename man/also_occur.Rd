@@ -3,7 +3,7 @@
 \name{also_occur}
 \alias{also_occur}
 \alias{only_occur}
-\title{Weave schedules together}
+\title{Join schedules together}
 \usage{
 also_occur(x, y)
 

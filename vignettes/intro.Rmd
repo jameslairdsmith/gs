@@ -217,7 +217,7 @@ a schedule of events occurring on both the inputs. For example
 of those days of the week. For convenience the `on_weekday()` and `on_weekend()` 
 functions are also provided in the package without you having to create them.
 
-# Combining schedules
+# Joining schedules
 
 By itself, New Year's Day isn't that interesting (from a calendar perspective).
 We could have achieved the same thing using base R. The power of `gs` comes

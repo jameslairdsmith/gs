@@ -35,8 +35,8 @@ reference:
       - in_month
       - in_quarter
       - in_year
-  - title: "Compose schedules"
-    desc: "Combine schedules using set operations."
+  - title: "Join schedules"
+    desc: "Join schedules using set operations."
     contents:
       - also_occur
       - doesnt_occur

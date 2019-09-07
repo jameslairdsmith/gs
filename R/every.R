@@ -1,4 +1,4 @@
-#' Schedule events incrementally
+#' Make incremental events
 #'
 #' @description
 #' Create a schedule of events occuring in increments from a fixed date.

@@ -4,7 +4,7 @@
 \alias{on_every_nth}
 \alias{on_every}
 \alias{on_every_second}
-\title{Schedule events incrementally}
+\title{Make incremental events}
 \usage{
 on_every_nth(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 
