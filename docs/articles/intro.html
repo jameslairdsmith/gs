@@ -92,7 +92,7 @@
       <h1>Work with recurring calendar events in R</h1>
                         <h4 class="author">James Laird-Smith</h4>
             
-            <h4 class="date">2019-09-06</h4>
+            <h4 class="date">2019-09-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/jameslairdsmith/gs/blob/master/vignettes/intro.Rmd"><code>vignettes/intro.Rmd</code></a></small>
       <div class="hidden name"><code>intro.Rmd</code></div>
@@ -185,9 +185,9 @@
 <p>I won’t go over all the available functions here. You can see them for yourself in the package reference documentation. They all follow the same principle of generating schedules from the inputs you provide to them. Some will also appear in the upcoming examples.</p>
 <p>Each of the functions will accept multiple inputs which in each case creates a schedule of events occurring on both the inputs. For example <code><a href="../reference/on_mday.html">on_wday("Mon", "Wed", "Fri")</a></code> creates a schedule of events occurring on all of those days of the week. For convenience the <code><a href="../reference/on_mday.html">on_weekday()</a></code> and <code><a href="../reference/on_mday.html">on_weekend()</a></code> functions are also provided in the package without you having to create them.</p>
 </div>
-<div id="combining-schedules" class="section level1">
+<div id="joining-schedules" class="section level1">
 <h1 class="hasAnchor">
-<a href="#combining-schedules" class="anchor"></a>Combining schedules</h1>
+<a href="#joining-schedules" class="anchor"></a>Joining schedules</h1>
 <p>By itself, New Year’s Day isn’t that interesting (from a calendar perspective). We could have achieved the same thing using base R. The power of <code>gs</code> comes when dealing with more intricate schedules. For this, we need something more. <code>gs</code> allows you to compose more complex schedules by combining basic ones.</p>
 <div id="intersecting-schedules" class="section level2">
 <h2 class="hasAnchor">
@@ -294,7 +294,7 @@
 </li>
       <li><a href="#further-basic-schedules">Further basic schedules</a></li>
       <li>
-<a href="#combining-schedules">Combining schedules</a><ul class="nav nav-pills nav-stacked">
+<a href="#joining-schedules">Joining schedules</a><ul class="nav nav-pills nav-stacked">
 <li><a href="#intersecting-schedules">Intersecting schedules</a></li>
       <li><a href="#uniting-schedules">Uniting schedules</a></li>
       <li><a href="#inverting-schedules">Inverting schedules</a></li>
