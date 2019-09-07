@@ -32,14 +32,9 @@ Each function call is limited to two schedules. But more complex schedules
 can be made by building schedules on top of one another. This process is
 greatly eased by using the pipe operator (\code{\%>\%}) from the \code{magrittr}
 package (see \emph{Examples}).
-
-Behind the scenes, both function outputs inherit the schedule limits from
-their inputs. For more
-details see the \href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
-on understanding schedule limits.
 }
 \examples{
-library(magrittr)
+library(magrittr, warn.conflicts = FALSE)
 on_christmas <- only_occur(on_mday(25), in_month("Dec"))
 
 schedule_days(on_christmas, from = 2000, to = 2004)

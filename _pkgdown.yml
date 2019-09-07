@@ -16,10 +16,6 @@ navbar:
     my_articles:
       text: "Articles"
       menu:
-      - text: Understanding schedule limits
-        href: articles/understanding-schedule-limits.html
-      - text: Understanding period limits
-        href: articles/understanding-period-limits.html
       - text: Holiday examples
         href: articles/holiday-examples.html
     reference:

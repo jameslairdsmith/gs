@@ -42,20 +42,12 @@ Creates a schedule of events occuring before or after either a certain
 date or another scheduled event.
 }
 \details{
-When \code{start_event} and/or \code{end_event} are date-time objects they place fixed
-lower and upper limits on the resulting schedule; for more details see the
-\href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
-on understanding schedule limits.
-
 When \code{start_event} and/or \code{end_event} are schedules they are likely to come
 around every year.  To have any events which can occur 'before' or 'after'
 them, they need a limit specified by the \code{within_given} argument. This can
 either be date accessor function like \code{lubridate::month()} or
 \code{lubridate::year()} or the provided character shortcuts
-\code{"day"}, \code{"week"}, \code{"month"}, \code{"quarter"} or \code{"year"}. For more details
-see the
-\href{https://jameslairdsmith.github.io/gs/articles/understanding-period-limits.html}{vignette}
-on understanding period limits.
+\code{"day"}, \code{"week"}, \code{"month"}, \code{"quarter"} or \code{"year"}.
 }
 \examples{
 christmas <-  only_occur(in_month("Dec"), on_mday(25))

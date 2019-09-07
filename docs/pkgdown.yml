@@ -4,8 +4,6 @@ pkgdown_sha: ~
 articles:
   holiday-examples: holiday-examples.html
   intro: intro.html
-  understanding-period-limits: understanding-period-limits.html
-  understanding-schedule-limits: understanding-schedule-limits.html
 urls:
   reference: https://jameslairdsmith.github.io/gs/reference
   article: https://jameslairdsmith.github.io/gs/articles

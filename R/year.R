@@ -14,11 +14,6 @@
 #'
 #'  * `isoyear()` returns years according to the ISO 8601 week calendar.
 #'  * `epiyear()` returns years according to the epidemilogical week calendars.
-#'
-#' The `in_year()` function will encode limits on the output schedule.
-#' For more details see the
-#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
-#' on understanding schedule limits.
 #' @examples
 #' my_dates <- seq(from = as.Date("2000-01-01"),
 #'                 to = as.Date("2005-01-01"),

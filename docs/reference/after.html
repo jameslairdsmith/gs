@@ -92,12 +92,6 @@ date or another scheduled event." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/understanding-schedule-limits.html">Understanding schedule limits</a>
-    </li>
-    <li>
-      <a href="../articles/understanding-period-limits.html">Understanding period limits</a>
-    </li>
-    <li>
       <a href="../articles/holiday-examples.html">Holiday examples</a>
     </li>
   </ul>
@@ -176,19 +170,12 @@ is a schedule. Can be either:</p><ul>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>When <code>start_event</code> and/or <code>end_event</code> are date-time objects they place fixed
-lower and upper limits on the resulting schedule; for more details see the
-<a href='https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html'>vignette</a>
-on understanding schedule limits.</p>
-<p>When <code>start_event</code> and/or <code>end_event</code> are schedules they are likely to come
+    <p>When <code>start_event</code> and/or <code>end_event</code> are schedules they are likely to come
 around every year.  To have any events which can occur 'before' or 'after'
 them, they need a limit specified by the <code>within_given</code> argument. This can
 either be date accessor function like <code><a href='http://lubridate.tidyverse.org/reference/month.html'>lubridate::month()</a></code> or
 <code><a href='http://lubridate.tidyverse.org/reference/year.html'>lubridate::year()</a></code> or the provided character shortcuts
-<code>"day"</code>, <code>"week"</code>, <code>"month"</code>, <code>"quarter"</code> or <code>"year"</code>. For more details
-see the
-<a href='https://jameslairdsmith.github.io/gs/articles/understanding-period-limits.html'>vignette</a>
-on understanding period limits.</p>
+<code>"day"</code>, <code>"week"</code>, <code>"month"</code>, <code>"quarter"</code> or <code>"year"</code>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

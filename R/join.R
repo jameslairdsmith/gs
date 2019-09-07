@@ -20,14 +20,9 @@
 #' greatly eased by using the pipe operator (`%>%`) from the `magrittr`
 #' package (see *Examples*).
 #'
-#' Behind the scenes, both function outputs inherit the schedule limits from
-#' their inputs. For more
-#' details see the [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
-#' on understanding schedule limits.
-#'
 #' @return A schedule object.
 #' @examples
-#' library(magrittr)
+#' library(magrittr, warn.conflicts = FALSE)
 #' on_christmas <- only_occur(on_mday(25), in_month("Dec"))
 #'
 #' schedule_days(on_christmas, from = 2000, to = 2004)

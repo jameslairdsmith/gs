@@ -5,11 +5,6 @@
 #'
 #' This function is best used when making ad-hoc changes to other schedules.
 #'
-#' @details
-#' The function encodes limits in the output schedule. For more
-#' details see the [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
-#' on understanding schedule limits.
-#'
 #' @param ... A vector of dates.
 #'
 #' @keywords date, schedule

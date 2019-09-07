@@ -30,11 +30,6 @@ a year. The other definitions from the \code{lubridate} package are quoted here:
 \item \code{isoyear()} returns years according to the ISO 8601 week calendar.
 \item \code{epiyear()} returns years according to the epidemilogical week calendars.
 }
-
-The \code{in_year()} function will encode limits on the output schedule.
-For more details see the
-\href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
-on understanding schedule limits.
 }
 \examples{
 my_dates <- seq(from = as.Date("2000-01-01"),

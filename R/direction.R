@@ -5,20 +5,12 @@
 #' date or another scheduled event.
 #'
 #' @details
-#' When `start_event` and/or `end_event` are date-time objects they place fixed
-#' lower and upper limits on the resulting schedule; for more details see the
-#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html)
-#' on understanding schedule limits.
-#'
 #' When `start_event` and/or `end_event` are schedules they are likely to come
 #' around every year.  To have any events which can occur 'before' or 'after'
 #' them, they need a limit specified by the `within_given` argument. This can
 #'  either be date accessor function like `lubridate::month()` or
 #'  `lubridate::year()` or the provided character shortcuts
-#'  `"day"`, `"week"`, `"month"`, `"quarter"` or `"year"`. For more details
-#'  see the
-#' [vignette](https://jameslairdsmith.github.io/gs/articles/understanding-period-limits.html)
-#' on understanding period limits.
+#'  `"day"`, `"week"`, `"month"`, `"quarter"` or `"year"`.
 #'
 #' @param start_event,end_event The start and/or end events of the schedule.
 #' Can be either:

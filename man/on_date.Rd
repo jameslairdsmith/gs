@@ -17,11 +17,6 @@ Creates a schedule of events occurring on the dates specified.
 
 This function is best used when making ad-hoc changes to other schedules.
 }
-\details{
-The function encodes limits in the output schedule. For more
-details see the \href{https://jameslairdsmith.github.io/gs/articles/understanding-schedule-limits.html}{vignette}
-on understanding schedule limits.
-}
 \examples{
 my_dates <- seq.Date(as.Date("2000-01-01"),
                      as.Date("2000-01-05"),
