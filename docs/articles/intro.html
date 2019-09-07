@@ -232,12 +232,12 @@
 <div id="inverting-schedules" class="section level2">
 <h2 class="hasAnchor">
 <a href="#inverting-schedules" class="anchor"></a>Inverting schedules</h2>
-<p>Once you have a schedule it is often useful to have way to invert it so as to get the events that do not occur on that schedule. This can be done using the <code><a href="../reference/doesnt_occur.html">doesnt_occur()</a></code> function. For example, say that instead of focusing on holidays, you instead wanted to get a schedule of working (or business) days. These are the days that occur on neither weekends nor on public holidays. You could get that schedule of events as follows. First you would create the schedule of non-working days as follows:</p>
+<p>Once you have a schedule it is often useful to have way to invert it so as to get the events that do not occur on that schedule. This can be done using the <code><a href="../reference/dont_occur.html">dont_occur()</a></code> function. For example, say that instead of focusing on holidays, you instead wanted to get a schedule of working (or business) days. These are the days that occur on neither weekends nor on public holidays. You could get that schedule of events as follows. First you would create the schedule of non-working days as follows:</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">on_non_working_days &lt;-<span class="st"> </span></a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="st">  </span><span class="kw"><a href="../reference/on_mday.html">on_weekend</a></span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="../reference/also_occur.html">also_occur</a></span>(on_public_holidays)</a></code></pre></div>
-<p>And then invert it using <code><a href="../reference/doesnt_occur.html">doesnt_occur()</a></code>:</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">on_business_days &lt;-<span class="st"> </span><span class="kw"><a href="../reference/doesnt_occur.html">doesnt_occur</a></span>(on_non_working_days)</a></code></pre></div>
+<p>And then invert it using <code><a href="../reference/dont_occur.html">dont_occur()</a></code>:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">on_business_days &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dont_occur.html">dont_occur</a></span>(on_non_working_days)</a></code></pre></div>
 <p>You then have a new schedule of business days to work with that can be used in exactly the same ways already shown.</p>
 </div>
 </div>
