@@ -1,4 +1,4 @@
-#' Weave schedules together
+#' Join schedules together
 #'
 #' @description
 #'

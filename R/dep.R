@@ -24,3 +24,9 @@ occur <- function(schedule, date){
 
   schedule(date)
 }
+
+test_date <- function(date, schedule, ...){
+
+  happen(schedule, date)
+}
+
