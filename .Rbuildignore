@@ -1,6 +1,11 @@
 ^docs$
+^logo$
+^pkgdown$
+^temp$
+^archive$
 ^_pkgdown\.yml$
 ^README\.Rmd$
 ^scheduler\.Rproj$
+^gs\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
