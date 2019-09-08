@@ -86,7 +86,7 @@ on_nth <- function(n, x, within_given){
     date_vec_changing <- date
     nth <- abs(n)
     applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing + lubridate::days(1))
-    appicable_test <- test_date(date_vec_changing, x)
+    appicable_test <- happen(x, date_vec_changing)
     applicable <- applicable_within & appicable_test
     num_vec <- vector(mode = "numeric", length = length(date_vec_changing))
 
@@ -95,7 +95,7 @@ on_nth <- function(n, x, within_given){
       date_vec_changing[applicable] <- date_vec_changing[applicable] + lubridate::days(1)
 
 
-      meet_criteria <- test_date(date_vec_changing, x)
+      meet_criteria <- happen(x, date_vec_changing)
       num_vec[meet_criteria & applicable] <- num_vec[meet_criteria & applicable] + 1
 
       applicable_within <- within_given(date_vec_changing) == within_given(date_vec_changing + lubridate::days(1))
