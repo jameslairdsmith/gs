@@ -87,3 +87,25 @@ rolled_dates[is_initial_date]
 
 ```
 
+```{r}
+on_payday <- on_mday(25)
+
+unchanged_result <- schedule_days(on_payday, during = 2000)
+
+result <- 
+  on_payday %>% 
+  roll_by(-1, "day", .p = on_wday("Sat")) %>% 
+  roll_by(+1, "day", .p = on_wday("Sun")) %>% 
+  schedule_days(during = 2000) 
+
+tibble::tibble(unchanged_result, 
+               wday(unchanged_result, label = T, abbr = T),
+               result, 
+               wday(result, label = T, abbr = T))
+
+#result[happen(only_occur(on_payday,on_wday("Sat")) , result)]
+#wday(result, label = T, abbr = T)
+
+# result
+```
+
