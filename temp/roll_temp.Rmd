@@ -109,3 +109,12 @@ tibble::tibble(unchanged_result,
 # result
 ```
 
+```{r}
+on_payday <- on_mday(25)
+
+on_payday %>% 
+  roll_by(-1, "day", .p = on_wday("Sat")) %>% 
+  roll_by(+1, "day", .p = on_wday("Sun")) %>% 
+  schedule_days(during = 2000) 
+```
+
