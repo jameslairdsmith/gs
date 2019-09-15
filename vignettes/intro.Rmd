@@ -1,7 +1,6 @@
 ---
 title: "Work with recurring calendar events in R"
 author: "James Laird-Smith"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
