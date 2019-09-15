@@ -1,0 +1,215 @@
+---
+title: "R Notebook"
+output: NA
+---
+
+ 
+
+```{r setup}
+library(lubridate)
+library(magrittr)
+```
+
+```{r}
+my_dates <- 
+  seq.Date(from = as.Date("2000-01-01"),
+           to = as.Date("2000-12-31"),
+           by = "1 day")
+
+on_sun <- on_wday("Sun")
+
+last_sun_month <- on_last(on_sun, within_given = "month")
+
+on_mon <- on_wday("Mon")
+
+my_result <- 
+  roll_forward(last_sun_month, to_following = on_mon) %>% 
+  schedule_days(during = 2000)
+
+#my_result
+
+schedule_days(last_sun_month, during = 2000)
+```
+
+```{r}
+my_dates <- 
+  seq.Date(from = as.Date("2000-01-01"),
+           to = as.Date("2000-12-31"),
+           by = "1 day")
+
+last_sun_month <- on_last(on_wday("Sun"), within_given = "month")
+on_mon <- on_wday("Mon")
+
+candidate_dates <- my_dates
+
+is_applicable_date <- happen(on_mon, candidate_dates)
+
+candidate_dates[!is_applicable_date] <- NA
+
+candidate_dates[is_applicable_date] <- candidate_dates[is_applicable_date] - days(1)
+
+happen(on_mon, candidate_dates)
+
+#happen(last_sun_month, candidate_dates)
+
+#<- happen(last_sun_month, my_dates)
+```
+
+```{r}
+candidate_dates <- seq.Date(from = as.Date("2000-01-01"),
+                            to = as.Date("2000-12-31"),
+                            by = "1 day")
+
+last_sun_month <- on_last(on_wday("Sun"), within_given = "month")
+on_target_schedule <- on_wday("Friday")
+
+rolled_dates <- candidate_dates
+is_initial_date <- happen(last_sun_month, rolled_dates)
+
+while(any(!happen(on_target_schedule, rolled_dates[is_initial_date]))){
+  
+  rolled_dates[is_initial_date] <- rolled_dates[is_initial_date] + days(1)
+  
+}
+
+candidate_dates[is_initial_date]
+rolled_dates[is_initial_date]
+
+
+# while(any(!happen(on_mon, rolled_dates))){
+#   
+#   rolled_dates[is_possible_final_date] <- 
+#     rolled_dates[is_possible_final_date] + days(1)
+# }
+
+#happen(on_mon, rolled_dates) & is_possible_final_date
+#is_possible_final_date & is_initial_date
+
+```
+
+```{r}
+on_payday <- on_mday(25)
+
+unchanged_result <- schedule_days(on_payday, during = 2000)
+
+result <- 
+  on_payday %>% 
+  roll_by(-1, "day", .p = on_wday("Sat")) %>% 
+  roll_by(+1, "day", .p = on_wday("Sun")) %>% 
+  schedule_days(during = 2000) 
+
+tibble::tibble(unchanged_result, 
+               wday(unchanged_result, label = T, abbr = T),
+               result, 
+               wday(result, label = T, abbr = T))
+
+#result[happen(only_occur(on_payday,on_wday("Sat")) , result)]
+#wday(result, label = T, abbr = T)
+
+# result
+```
+
+```{r}
+on_payday <- on_mday(25)
+
+on_payday %>% 
+  roll_by(-1, "day", .p = on_wday("Sat")) %>% 
+  roll_by(+1, "day", .p = on_wday("Sun")) %>% 
+  schedule_days(during = 2000) 
+```
+
+```{r}
+on_payday <- on_mday(25)
+
+on_payday %>% 
+  roll_backward(to = on_weekday(), .p = on_weekend()) %>% 
+  schedule_days(during = 2000)
+```
+
+```{r}
+candidate_dates <- seq.Date(from = as.Date("2000-01-01"),
+                            to = as.Date("2000-12-31"),
+                            by = "1 day")
+
+on_payday <- on_mday(25)
+on_business_days <- dont_occur(on_weekend())
+
+need_rolling <- !happen(on_payday, candidate_dates)
+
+rolling_dates <- candidate_dates
+
+
+# n_counter <- vector(mode = "numeric", length = length(candidate_dates))
+# 
+# n_counter <- rep_len(NA, length(candidate_dates))
+
+
+n_counter <- rep_len(0L, length(candidate_dates))
+
+while(any(need_rolling)){
+  
+  is_applicable <- happen(on_business_days, rolling_dates)
+  
+  n_counter[need_rolling & is_applicable] <-
+    n_counter[need_rolling & is_applicable] + 1L
+
+  rolling_dates[need_rolling] <- rolling_dates[need_rolling] %m-% days(1)
+  
+  need_rolling <- !happen(on_payday, rolling_dates)
+
+}
+
+#my_df <-
+  tibble::tibble(candidate_dates,
+               candidate_wday = wday(candidate_dates, label = T),
+               #need_rolling,
+               n_counter,
+               rolling_dates,
+               rolling_wday = wday(rolling_dates, label = T)
+               ) %>%
+  dplyr::filter(n_counter == 1L) %>%
+  dplyr::filter(happen(on_business_days, candidate_dates))
+# dplyr::group_by(rolling_dates) %>%
+# dplyr::filter(n_counter == min(n_counter)) #%>%
+# dplyr::filter(candidate_dates == min(candidate_dates))
+
+# sucs <- n_counter == 1L & happen(on_business_days, candidate_dates)
+# 
+# candidate_dates[[sucs]]
+```
+
+
+```{r}
+library(gs, warn.conflicts = FALSE)
+on_labor_day <- 
+  on_first(on_wday("Mon"), within_given = "month") %>% 
+  only_occur(in_month("Sep"))
+
+on_christmas_day <- only_occur(in_month("Dec"), on_mday(25))
+
+on_non_working_day <- 
+  on_weekend() %>% 
+  also_occur(on_labor_day) %>% 
+  also_occur(on_christmas_day)
+
+on_my_business_day <- dont_occur(on_non_working_day)
+
+on_normal_trash_day <- on_wday("Mon")
+
+on_trash_day <- 
+  on_normal_trash_day %>% 
+  roll_forward(to_schedule = on_my_business_day, .p = on_non_working_day)
+
+#' # A Monday in September
+happen(on_normal_trash_day, ymd("2019-09-09"))
+happen(on_trash_day, ymd("2019-09-09"))
+
+#' # Labor Day Monday should not be trash day
+happen(on_normal_trash_day, ymd("2019-09-02"))
+happen(on_trash_day, ymd("2019-09-02"))
+#'
+#' # The day after Labor Day Monday is trash day
+happen(on_normal_trash_day, ymd("2019-09-03"))
+happen(on_trash_day, ymd("2019-09-03"))
+```
+
