@@ -140,3 +140,20 @@ on_every_second <- function(unit, starting, inclusive = TRUE, backdated = FALSE)
                backdated = backdated)
 }
 
+
+#' @rdname on_every_nth
+#' @export
+
+
+in_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE){
+
+
+}
+
+get_semi_distinct <- function(x){
+  rle_object <- rle(x)
+  rle_values <- rle_object$values
+  result <- length(rle_values)
+
+  result
+}
