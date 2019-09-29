@@ -4,6 +4,7 @@
 \alias{on_every_nth}
 \alias{on_every}
 \alias{on_every_second}
+\alias{in_every_nth}
 \title{Make incremental events}
 \usage{
 on_every_nth(n, unit, starting, inclusive = TRUE, backdated = FALSE)
@@ -11,6 +12,8 @@ on_every_nth(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 on_every(unit, starting, inclusive = TRUE, backdated = FALSE)
 
 on_every_second(unit, starting, inclusive = TRUE, backdated = FALSE)
+
+in_every_nth(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 }
 \arguments{
 \item{n}{A single integer specifying the increment of the events to create.

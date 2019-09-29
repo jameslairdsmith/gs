@@ -18,6 +18,8 @@ navbar:
       menu:
       - text: Holiday examples
         href: articles/holiday-examples.html
+      - text: iCal examples
+        href: articles/iCal-examples.html
     reference:
       text: Reference
 
