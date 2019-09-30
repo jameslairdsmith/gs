@@ -1,0 +1,67 @@
+---
+title: "R Notebook"
+output: NA
+---
+
+ 
+
+```{r setup}
+library(tidyverse)
+library(lubridate)
+library(magrittr)
+```
+
+```{r}
+week(ymd("1997-09-13"))
+```
+
+```{r}
+my_dates <- seq.Date(dmy("01-01-1997"), to = dmy("31-12-1998"), by = "1 day")
+```
+
+```{r}
+#make_period_seq(start = dmy("01-01-1997"), end = ymd("1997-09-13"))
+```
+
+
+```{r}
+increment <- 3
+
+get_semi_distinct <- function(x){
+  rle_object <- rle(x)
+  rle_values <- rle_object$values
+  result <- length(rle_values)
+  
+  result
+}
+
+tibble(candidate_date = my_dates,
+       start_date = ymd("1997-09-13")
+       ) %>% 
+  mutate(dates_vec = map2(candidate_date, start_date, make_period_seq)) %>% 
+  mutate(weeks_vec = map(dates_vec, week)) %>% 
+  mutate(semi_distinct_weeks = map_dbl(weeks_vec, get_semi_distinct) - 1) %>% 
+  mutate(remainder = semi_distinct_weeks %% increment) #%>%
+  #pull()
+  #filter(remainder == 0) #%>% 
+  #pull(candidate_date)
+  #count(candidate_year, candidate_weeks, remainder) %>% 
+  #filter(remainder == 0)
+  # ggplot(aes(x = remainder)) +
+  # geom_histogram()
+  # ggplot(aes(x = candidate_weeks, y = n, fill = remainder)) +
+  # geom_col() +
+  # facet_grid(. ~ candidate_year)
+```
+
+```{r}
+
+length(rle(week(make_period_seq(start = dmy("01-01-1997"), end = ymd("1998-12-31"))))$values)
+```
+
+```{r}
+in_every_nth(3, "quarters", dmy("01/01/2000"), inclusive = T, backdated = T) %>% 
+  schedule_days(from = 1999, to = 2000) %>% 
+  quarter()
+```
+

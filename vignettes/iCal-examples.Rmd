@@ -1,0 +1,245 @@
+---
+title: "iCal examples"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{iCal_examples}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lubridate)
+library(gs)
+library(magrittr)
+```
+
+Here are the examples and how they would be run in `gs`.
+
+In most of the example (unless otherwise stated) the start date is 1997-09-02.
+At 9am.
+
+> Daily for 10 occurrences:
+
+```{r}
+on_every("day", starting = ymd("1997-09-02")) %>% 
+  only_occur(on_or_after(ymd("1997-09-02"))) %>% 
+  schedule_days(during = 1997) %>% 
+  head(10)
+```
+
+> Daily until December 24, 1997:
+
+```{r}
+on_every("day", starting = ymd("1997-09-02")) %>% 
+  only_occur(on_or_after(ymd("1997-09-02"))) %>% 
+  only_occur(before(dmy("24-12-1997"))) %>% 
+  schedule_days() 
+```
+
+> Every other day - forever:
+
+```{r}
+on_every_second("day", starting = ymd("1997-09-02")) %>% 
+  schedule_days(during = 1997)
+```
+
+> Every 10 days, 5 occurrences:
+
+```{r}
+on_every_nth(10, "days", starting = ymd("1997-09-02")) %>% 
+  schedule_days(during = 1997) %>% 
+  head(5)
+```
+
+> Every day in January, for 3 years:
+
+```{r}
+in_month("Jan") %>% 
+  only_occur(in_year(1999:2000)) %>% 
+  schedule_days()
+```
+
+> Weekly for 10 occurrences:
+
+```{r}
+on_every("week", starting = ymd("1997-09-02")) %>% 
+  schedule_days(during = 1997) %>% 
+  head(10)
+```
+
+> Weekly until December 24, 1997:
+
+```{r}
+on_every("week", starting = ymd("1997-09-02")) %>% 
+  only_occur(before(ymd("1997-12-24"))) %>% 
+  schedule_days(during = 1997)
+```
+
+> Every other week - forever:
+
+```{r}
+on_every_second("week", starting = ymd("1997-09-02")) %>% 
+  schedule_days(from = 1997, to = 1998)
+```
+
+> Weekly on Tuesday and Thursday for five weeks:
+
+```{r}
+on_wday("Tue", "Thu") %>% 
+  only_occur(on_or_after(ymd("1997-09-02"))) %>% 
+  schedule_days(to = ymd("1997-09-02") + weeks(5))
+```
+
+There is a difference here. The `gs` result stretches one further than iCal to
+include "1997-10-07".
+
+> Every other week on Monday, Wednesday, and Friday until December
+ 24, 1997, starting on Monday, September 1, 1997:
+ 
+```{r}
+in_every_second("week", starting = ymd("1997-09-01")) %>% 
+  only_occur(on_or_before(ymd("1997-12-24"))) %>% 
+  schedule_days(during = 1997)
+```
+ 
+ 
+> Every other week on Tuesday and Thursday, for 8 occurrences:
+
+```{r}
+## WIP
+```
+
+
+> Monthly on the first Friday for 10 occurrences:
+
+```{r}
+## WIP
+```
+
+> Monthly on the first Friday until December 24, 1997:
+
+```{r}
+## WIP
+```
+
+> Every other month on the first and last Sunday of the month for 10
+ occurrences:
+ 
+```{r}
+## WIP
+```
+ 
+ 
+> Monthly on the second-to-last Monday of the month for 6 months:
+
+```{r}
+start_date <- ymd("1997-09-02")
+
+on_nth(-2, on_wday("Mon"), within_given = "month") %>% 
+  only_occur(on_or_after(start_date)) %>% 
+  only_occur(on_or_before(start_date + months(6))) %>% 
+  schedule_days(from = 1997, to = 1998)
+```
+
+> Monthly on the third-to-the-last day of the month, forever:
+
+```{r}
+### WIP
+```
+
+> Monthly on the 2nd and 15th of the month for 10 occurrences:
+
+> Monthly on the first and last day of the month for 10 occurrences:
+
+> Every 18 months on the 10th thru 15th of the month for 10
+ occurrences:
+ 
+> Every Tuesday, every other month:
+
+> Yearly in June and July for 10 occurrences:
+
+> Every other year on January, February, and March for 10
+ occurrences:
+ 
+ > Every third year on the 1st, 100th, and 200th day for 10
+ occurrences:
+ 
+ > Every 20th Monday of the year, forever:
+ 
+```{r}
+on_nth(20, on_wday("Mon"), within_given = "year") %>% 
+  schedule_days(from = 1997, to = 1999)
+```
+ 
+ 
+ > Monday of week number 20 (where the default start of the week is
+ Monday), forever:
+ 
+```{r}
+in_isoweek(20) %>% 
+  only_occur(on_wday("Monday")) %>% 
+  schedule_days(from = 1997, to = 1999)
+```
+ 
+> Every Thursday in March, forever:
+
+```{r}
+on_wday("Thu") %>% 
+  only_occur(in_month("Mar")) %>% 
+  schedule_days(from = ymd("1997-03-13"), to = 1999)
+```
+
+> Every Thursday, but only during June, July, and August, forever:
+
+```{r}
+in_month("Jun", "Jul", "Aug") %>% 
+  only_occur(on_wday("Thu")) %>% 
+  schedule_days(from = ymd("1997-06-05"), to = 1999)
+```
+
+> Every Friday the 13th, forever:
+
+```{r}
+on_wday("Fri") %>% 
+  only_occur(on_mday(13)) %>% 
+  schedule(from = ymd("1997-09-02"), to = 2000)
+```
+
+> The first Saturday that follows the first Sunday of the month,
+ forever:
+ 
+```{r}
+on_first(on_wday("Sun"), within_given = "month") %>% 
+  roll_forward(to_schedule = on_wday("Sat")) %>% 
+  schedule_days(from = ymd("1997-09-13"), to = 1998)
+```
+ 
+> Every 4 years, the first Tuesday after a Monday in November,
+ forever (U.S. Presidential Election day):
+ 
+```{r}
+## WIP
+```
+ 
+> The third instance into the month of one of Tuesday, Wednesday, or
+ Thursday, for the next 3 months:
+ 
+> The second-to-last weekday of the month:
+
+> Every 3 hours from 9:00 AM to 5:00 PM on a specific day:
+
+> Every 15 minutes for 6 occurrences:
+
+> Every hour and a half for 4 occurrences:
+
+> Every 20 minutes from 9:00 AM to 4:40 PM every day:
+
+There are a few examples I need to express in words.
+ 

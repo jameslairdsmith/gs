@@ -6,7 +6,13 @@ strings_to_date_functions <- function(str){
     str == "month" ~ quote(lubridate::month),
     str == "quarter" ~ quote(lubridate::quarter),
     str == "semester" ~ quote(lubridate::semester),
-    str == "year" ~ quote(lubridate::year)
+    str == "year" ~ quote(lubridate::year),
+    str == "days" ~ quote(lubridate::day),
+    str == "weeks" ~ quote(lubridate::week),
+    str == "months" ~ quote(lubridate::month),
+    str == "quarters" ~ quote(lubridate::quarter),
+    str == "semesters" ~ quote(lubridate::semester),
+    str == "years" ~ quote(lubridate::year)
   )
   eval(.f)
 }

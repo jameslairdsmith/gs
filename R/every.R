@@ -140,3 +140,88 @@ on_every_second <- function(unit, starting, inclusive = TRUE, backdated = FALSE)
                backdated = backdated)
 }
 
+
+#' @rdname on_every_nth
+#' @export
+
+in_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE){
+
+  if(is.character(unit)){
+  unit <- strings_to_date_functions(unit)
+  }
+
+  #unit <- lubridate::period(n, units = unit)
+
+  date_test <- function(date){
+
+  candidate_date <- date
+
+  result <-
+    tibble::tibble(candidate_date, start_date = starting) %>%
+    dplyr::mutate(dates_vec = purrr::map2(candidate_date,
+                                          start_date,
+                                          make_period_seq)) %>%
+    dplyr::mutate(period_vec = purrr::map(dates_vec, unit)) %>%
+    dplyr::mutate(semi_distinct_weeks = purrr::map_dbl(period_vec,
+                                                       get_semi_distinct) - 1) %>%
+    dplyr::mutate(remainder = (semi_distinct_weeks %% n) == 0)
+
+  if(inclusive == FALSE){
+    result <-
+      result %>%
+      dplyr::mutate(remainder = dplyr::if_else(semi_distinct_weeks == 0,
+                                               FALSE,
+                                               remainder))
+  }
+
+  if(backdated == FALSE){
+    result <-
+      result %>%
+      dplyr::mutate(remainder = dplyr::if_else(candidate_date < start_date,
+                                               FALSE,
+                                               remainder))
+  }
+
+  result %>%
+    dplyr::pull()
+  }
+
+  out <- list(date_test = date_test)
+
+  class(out) <- "schedule"
+
+  out$n_terms <- 1
+
+  return(out)
+
+}
+
+#' @rdname on_every_nth
+#' @export
+
+in_every <- function(unit, starting, inclusive = TRUE, backdated = FALSE){
+  in_every_nth(1L,
+               unit = unit,
+               starting = starting,
+               inclusive = inclusive,
+               backdated = backdated)
+}
+
+#' @rdname on_every_nth
+#' @export
+
+in_every_second <- function(unit, starting, inclusive = TRUE, backdated = FALSE){
+  in_every_nth(2L,
+               unit = unit,
+               starting = starting,
+               inclusive = inclusive,
+               backdated = backdated)
+}
+
+get_semi_distinct <- function(x){
+  rle_object <- rle(x)
+  rle_values <- rle_object$values
+  result <- length(rle_values)
+
+  result
+}
