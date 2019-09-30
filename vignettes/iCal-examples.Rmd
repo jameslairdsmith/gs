@@ -104,7 +104,9 @@ include "1997-10-07".
  24, 1997, starting on Monday, September 1, 1997:
  
 ```{r}
-## WIP
+in_every_second("week", starting = ymd("1997-09-01")) %>% 
+  only_occur(on_or_before(ymd("1997-12-24"))) %>% 
+  schedule_days(during = 1997)
 ```
  
  
@@ -138,7 +140,12 @@ include "1997-10-07".
 > Monthly on the second-to-last Monday of the month for 6 months:
 
 ```{r}
-## WIP
+start_date <- ymd("1997-09-02")
+
+on_nth(-2, on_wday("Mon"), within_given = "month") %>% 
+  only_occur(on_or_after(start_date)) %>% 
+  only_occur(on_or_before(start_date + months(6))) %>% 
+  schedule_days(from = 1997, to = 1998)
 ```
 
 > Monthly on the third-to-the-last day of the month, forever:
