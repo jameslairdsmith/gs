@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(lubridate)
+library(lubridate, warn.conflicts = F)
 library(gs)
 library(magrittr)
 ```
