@@ -70,8 +70,7 @@ in_month("Jan") %>%
 
 ```{r}
 on_every("week", starting = ymd("1997-09-02")) %>% 
-  schedule_days(during = 1997) %>% 
-  head(10)
+  schedule_next_days(10, from = ymd("1997-09-02"))
 ```
 
 > Weekly until December 24, 1997:
