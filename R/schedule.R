@@ -97,6 +97,39 @@ schedule_hours <- function(x, from = NULL, to = NULL, during = NULL){
   schedule(x = x, from = from, to = to, during = during, period_type = "hour")
 }
 
+#' @rdname schedule
+#' @export
+
+schedule_next_days <- function(x, n, from, limit = lubridate::years(1)){
+
+  on_my_schedule <- x
+  start_date <- from
+  changing_date <- start_date
+  date_vector <- integer(0)
+  class(date_vector) <- "Date"
+  period_length <- months(12)
+  end_limit <- start_date + period_length
+  n_limit <- n
+  n <- 1
+
+  if(happen(on_my_schedule, start_date)){
+    date_vector <- c(date_vector, start_date)
+    n <- n + 1
+  }
+
+  while(n <= n_limit & changing_date < end_limit){
+
+    changing_date <- changing_date + days(1)
+
+    if(happen(on_my_schedule, changing_date)){
+      n <- n + 1
+      date_vector <- c(changing_date, date_vector)
+    }
+  }
+
+  sort(date_vector)
+}
+
 
 
 make_period_seq <- function(start, end, period_unit = "days", period_n = 1){

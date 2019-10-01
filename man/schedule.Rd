@@ -4,6 +4,7 @@
 \alias{schedule}
 \alias{schedule_days}
 \alias{schedule_hours}
+\alias{schedule_next_days}
 \title{Get the events of a schedule}
 \usage{
 schedule(x, from = NULL, to = NULL, during = NULL,
@@ -12,6 +13,8 @@ schedule(x, from = NULL, to = NULL, during = NULL,
 schedule_days(x, from = NULL, to = NULL, during = NULL)
 
 schedule_hours(x, from = NULL, to = NULL, during = NULL)
+
+schedule_next_days(x, n, from, limit = lubridate::years(1))
 }
 \arguments{
 \item{x}{A schedule object.}
