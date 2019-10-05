@@ -107,7 +107,7 @@ schedule_next_days <- function(x, n, from, limit = lubridate::years(1)){
   changing_date <- start_date
   date_vector <- integer(0)
   class(date_vector) <- "Date"
-  period_length <- months(12)
+  period_length <- limit
   end_limit <- start_date + period_length
   n_limit <- n
   n <- 1
