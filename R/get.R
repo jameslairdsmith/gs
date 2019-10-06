@@ -1,10 +1,10 @@
-get_from <- function(x, from, during){
+get_from <- function(x, from, during = NULL){
 
   if("earliest_date" %in% get_attribute_names(x)){
     return(attr(x, "earliest_date"))
   }
 
-  if(lubridate::is.Date(from)){
+  if(lubridate::is.instant(from)){
     return(from)
   }
 
@@ -19,13 +19,13 @@ get_from <- function(x, from, during){
   NULL
 }
 
-get_to <- function(x, to, during){
+get_to <- function(x, to, during = NULL){
 
   if("latest_date" %in% get_attribute_names(x)){
     return(attr(x, "latest_date"))
   }
 
-  if(lubridate::is.Date(to)){
+  if(lubridate::is.instant(to)){
     return(to)
   }
 

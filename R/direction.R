@@ -46,7 +46,7 @@ after <- function(start_event, within_given = NULL){
 
   x <- start_event
 
-  if(lubridate::is.Date(x)){
+  if(lubridate::is.instant(x)){
 
     date_test <- function(date){
       date > x
@@ -98,7 +98,7 @@ before <- function(end_event, within_given = NULL){
 
   x <- end_event
 
-  if(lubridate::is.Date(x)){
+  if(lubridate::is.instant(x)){
 
     date_test <- function(date){
       date < x
@@ -159,7 +159,7 @@ on_or_after <- function(start_event, within_given = NULL){
 
   x <- start_event
 
-  if(lubridate::is.Date(x)){
+  if(lubridate::is.instant(x)){
 
     date_test <- function(date){
       date >= x
@@ -184,7 +184,7 @@ on_or_before <- function(end_event, within_given = NULL){
 
   x <- end_event
 
-  if(lubridate::is.Date(x)){
+  if(lubridate::is.instant(x)){
 
     date_test <- function(date){
       date <= x
