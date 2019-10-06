@@ -69,6 +69,10 @@ on_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE)
 
       out$terms <- 1
 
+      if(backdated == F){
+        attr(out, "earliest_date") <- starting
+      }
+
       return(out)
   }
 
@@ -112,6 +116,10 @@ on_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE)
     class(out) <- "schedule"
 
     out$n_terms <- 1
+
+    if(backdated == F){
+      attr(out, "earliest_date") <- starting
+    }
 
     return(out)
   }
@@ -191,6 +199,10 @@ in_every_nth <- function(n, unit, starting, inclusive = TRUE, backdated = FALSE)
   class(out) <- "schedule"
 
   out$n_terms <- 1
+
+  if(backdated == F){
+    attr(out, "earliest_date") <- starting
+  }
 
   return(out)
 

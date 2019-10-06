@@ -143,6 +143,13 @@ roll_by <- function(x, n, unit, .p = NULL){
     out <- also_occur(out, applicable_schedule)
   }
 
+  if("latest_date" %in% get_attribute_names(x)){
+    attr(out, "latest_date") <- attr(x, "latest_date")
+  }
+  if("earliest_date" %in% get_attribute_names(x)){
+    attr(out, "earliest_date") <- attr(x, "earliest_date")
+  }
+
   out
 
 }
@@ -203,6 +210,13 @@ roll_forward <- function(x, to_schedule, n = 1, .p = NULL){
   if(!is.null(.p)){
     applicable_schedule <- only_occur(my_schedule, dont_occur(.p))
     out <- also_occur(out, applicable_schedule)
+  }
+
+  if("latest_date" %in% get_attribute_names(x)){
+    attr(out, "latest_date") <- attr(x, "latest_date")
+  }
+  if("earliest_date" %in% get_attribute_names(x)){
+    attr(out, "earliest_date") <- attr(x, "earliest_date")
   }
 
 
@@ -268,6 +282,12 @@ roll_backward <- function(x, to_schedule, n = 1, .p = NULL){
     out <- also_occur(out, applicable_schedule)
   }
 
+  if("latest_date" %in% get_attribute_names(x)){
+    attr(out, "latest_date") <- attr(x, "latest_date")
+  }
+  if("earliest_date" %in% get_attribute_names(x)){
+    attr(out, "earliest_date") <- attr(x, "earliest_date")
+  }
 
   out
 
