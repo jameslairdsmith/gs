@@ -1,0 +1,31 @@
+---
+title: "R Notebook"
+output: NA
+---
+
+ 
+
+```{r setup}
+library(tidyverse)
+library(lubridate)
+library(magrittr)
+```
+
+```{r}
+on_mday(5) %>% 
+  only_occur(in_month("Jan", "Feb")) %>% 
+  only_occur(on_or_after(dmy("01/01/2000"))) %>% 
+  only_occur(in_year(2000:2001)) %>% 
+  get_events(n = 5)
+```
+
+```{r}
+on_yday(1) %>% 
+  #only_occur(on_or_after(ymd_hms("2011-01-01 14:05:00 UTC"))) %>% 
+  get_events(since = ymd_hms("2011-01-01 14:05:00 UTC"),
+             until = ymd_hms("2011-01-02 12:00:00 UTC"),
+             #during = 2011, 
+             every = "minute",
+             every_n = 90)
+```
+
