@@ -1,8 +1,6 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gs <a href='https://jameslairdsmith.github.io/gs'><img src='https://github.com/jameslairdsmith/gs/raw/master/man/figures/logo.png' align="right" height="144" /></a>
-
 <!-- badges: start -->
 
 [![Lifecycle:
